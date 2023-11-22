@@ -1,0 +1,1796 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ]
+  },
+  "nluManager": {
+    "settings": {},
+    "languages": [
+      "en"
+    ],
+    "intentDomains": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "language": "en",
+          "useNoneFeature": true,
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "iterations": 20000,
+            "learningRate": 0.7,
+            "errorThresh": 0.00005,
+            "momentum": 0.5,
+            "deltaErrorThresh": 0.000001,
+            "maxDecimals": 9,
+            "leakyReluAlpha": 0.08,
+            "timeout": 120000
+          }
+        },
+        "language": "en",
+        "nluClassName": "BrainNLU",
+        "useMasterDomain": true,
+        "trainByDomain": false,
+        "keepStopwords": true,
+        "stemDict": {
+          "exousianavi,hello": {
+            "domain": "default",
+            "intent": "greetings.hello"
+          },
+          "exousianavi,hi": {
+            "domain": "default",
+            "intent": "greetings.hello"
+          },
+          "exousianavi,howdi": {
+            "domain": "default",
+            "intent": "greetings.hello"
+          },
+          "exousianavi": {
+            "domain": "default",
+            "intent": "greetings.asking"
+          },
+          "exousia": {
+            "domain": "default",
+            "intent": "greetings.asking"
+          },
+          "exousianavi,hey": {
+            "domain": "default",
+            "intent": "greetings.hello"
+          },
+          "exousianavi,greet": {
+            "domain": "default",
+            "intent": "greetings.hello"
+          },
+          "exousianavi,is,up,what": {
+            "domain": "default",
+            "intent": "greetings.hello"
+          },
+          "exousianavi,hey,there": {
+            "domain": "default",
+            "intent": "greetings.hello"
+          },
+          "exousianavi,is,this": {
+            "domain": "default",
+            "intent": "greetings.asking"
+          },
+          "guard,hous,is,locat,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "can,find,guard,hous,i,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "guard,hous,locat,me,of,tell,the,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "address,guard,hous,is,of,the,the,what": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "direct,give,guard,hous,me,the,to": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "can,exact,guard,hous,i,locat,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "about,guard,hous,inform,locat,pleas,provid,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "guard,hous,i,is,know,need,situat,the,to,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "could,guard,guid,hous,me,the,to,you": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "address,give,guard,hous,me,of,pleas,the,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "is,locat,loung,student,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "can,find,i,loung,student,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "locat,loung,me,of,student,tell,the,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "address,is,loung,of,student,the,the,what": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "direct,give,loung,me,student,the,to": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "can,exact,i,locat,loung,student,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "about,inform,locat,loung,pleas,provid,student,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "i,is,know,loung,need,situat,student,the,to,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "could,guid,loung,me,student,the,to,you": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "address,give,loung,me,of,pleas,student,the,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "is,locat,park,school,servic,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "can,find,i,park,school,servic,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "locat,me,of,park,school,servic,tell,the,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "address,is,of,park,school,servic,the,the,what": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "direct,give,me,park,school,servic,the,to": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "can,exact,i,locat,park,school,servic,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "about,inform,locat,park,pleas,provid,school,servic,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "i,is,know,need,park,school,servic,situat,the,to,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "could,guid,me,park,school,servic,the,to,you": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "address,give,me,of,park,pleas,school,servic,the,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "is,locat,pe,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "can,find,i,pe,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "locat,me,of,pe,tell,the,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "address,is,of,pe,the,the,what": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "direct,give,me,pe,the,to": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "can,exact,i,locat,pe,the,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "about,inform,locat,pe,pleas,provid,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "i,is,know,need,pe,situat,the,to,where": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "could,guid,me,pe,the,to,you": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "address,give,me,of,pe,pleas,the,the": {
+            "domain": "default",
+            "intent": "query.facilities"
+          },
+          "exousianavi,for,help,thank,your": {
+            "domain": "default",
+            "intent": "thanks"
+          },
+          "appreci,assist,exousianavi,i,your": {
+            "domain": "default",
+            "intent": "thanks"
+          },
+          "exousianavi,much,thank,veri,you": {
+            "domain": "default",
+            "intent": "thanks"
+          },
+          "a,exousianavi,lot,thank": {
+            "domain": "default",
+            "intent": "thanks"
+          },
+          "am,exousianavi,grate,i": {
+            "domain": "default",
+            "intent": "thanks"
+          },
+          "a,been,big,exousianavi,have,help,you": {
+            "domain": "default",
+            "intent": "thanks"
+          },
+          "am,exousianavi,for,i,support,thank,your": {
+            "domain": "default",
+            "intent": "thanks"
+          },
+          "exousianavi,thank,you": {
+            "domain": "default",
+            "intent": "thanks"
+          },
+          "a,bunch,exousianavi,thank": {
+            "domain": "default",
+            "intent": "thanks"
+          }
+        },
+        "intentDict": {
+          "greetings.hello": "default",
+          "greetings.asking": "default",
+          "query.facilities": "default",
+          "thanks": "default"
+        },
+        "useStemDict": true,
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "language": "en",
+              "useNoneFeature": true,
+              "config": {
+                "activation": "leaky-relu",
+                "hiddenLayers": [],
+                "iterations": 20000,
+                "learningRate": 0.7,
+                "errorThresh": 0.00005,
+                "momentum": 0.5,
+                "deltaErrorThresh": 0.000001,
+                "maxDecimals": 9,
+                "leakyReluAlpha": 0.08,
+                "timeout": 120000
+              }
+            },
+            "language": "en",
+            "keepStopwords": true,
+            "docs": [
+              {
+                "intent": "greetings.hello",
+                "tokens": [
+                  "hello",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "greetings.hello",
+                "tokens": [
+                  "hi",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "greetings.hello",
+                "tokens": [
+                  "howdi",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "greetings.asking",
+                "tokens": [
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "greetings.asking",
+                "tokens": [
+                  "exousia"
+                ]
+              },
+              {
+                "intent": "greetings.hello",
+                "tokens": [
+                  "hey",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "greetings.hello",
+                "tokens": [
+                  "greet",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "greetings.hello",
+                "tokens": [
+                  "what",
+                  "is",
+                  "up",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "greetings.hello",
+                "tokens": [
+                  "hey",
+                  "there",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "greetings.asking",
+                "tokens": [
+                  "is",
+                  "this",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "is",
+                  "the",
+                  "guard",
+                  "hous",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "can",
+                  "i",
+                  "find",
+                  "the",
+                  "guard",
+                  "hous"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "the",
+                  "locat",
+                  "of",
+                  "the",
+                  "guard",
+                  "hous"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "what",
+                  "is",
+                  "the",
+                  "address",
+                  "of",
+                  "the",
+                  "guard",
+                  "hous"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "give",
+                  "me",
+                  "direct",
+                  "to",
+                  "the",
+                  "guard",
+                  "hous"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "exact",
+                  "can",
+                  "i",
+                  "locat",
+                  "the",
+                  "guard",
+                  "hous"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "pleas",
+                  "provid",
+                  "inform",
+                  "about",
+                  "the",
+                  "guard",
+                  "hous",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "i",
+                  "need",
+                  "to",
+                  "know",
+                  "where",
+                  "the",
+                  "guard",
+                  "hous",
+                  "is",
+                  "situat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "could",
+                  "you",
+                  "guid",
+                  "me",
+                  "to",
+                  "the",
+                  "guard",
+                  "hous"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "give",
+                  "me",
+                  "the",
+                  "address",
+                  "of",
+                  "the",
+                  "guard",
+                  "hous",
+                  "pleas"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "is",
+                  "the",
+                  "student",
+                  "loung",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "can",
+                  "i",
+                  "find",
+                  "the",
+                  "student",
+                  "loung"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "the",
+                  "locat",
+                  "of",
+                  "the",
+                  "student",
+                  "loung"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "what",
+                  "is",
+                  "the",
+                  "address",
+                  "of",
+                  "the",
+                  "student",
+                  "loung"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "give",
+                  "me",
+                  "direct",
+                  "to",
+                  "the",
+                  "student",
+                  "loung"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "exact",
+                  "can",
+                  "i",
+                  "locat",
+                  "the",
+                  "student",
+                  "loung"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "pleas",
+                  "provid",
+                  "inform",
+                  "about",
+                  "the",
+                  "student",
+                  "loung",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "i",
+                  "need",
+                  "to",
+                  "know",
+                  "where",
+                  "the",
+                  "student",
+                  "loung",
+                  "is",
+                  "situat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "could",
+                  "you",
+                  "guid",
+                  "me",
+                  "to",
+                  "the",
+                  "student",
+                  "loung"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "give",
+                  "me",
+                  "the",
+                  "address",
+                  "of",
+                  "the",
+                  "student",
+                  "loung",
+                  "pleas"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "is",
+                  "the",
+                  "school",
+                  "servic",
+                  "park",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "can",
+                  "i",
+                  "find",
+                  "the",
+                  "school",
+                  "servic",
+                  "park"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "the",
+                  "locat",
+                  "of",
+                  "the",
+                  "school",
+                  "servic",
+                  "park"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "what",
+                  "is",
+                  "the",
+                  "address",
+                  "of",
+                  "the",
+                  "school",
+                  "servic",
+                  "park"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "give",
+                  "me",
+                  "direct",
+                  "to",
+                  "the",
+                  "school",
+                  "servic",
+                  "park"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "exact",
+                  "can",
+                  "i",
+                  "locat",
+                  "the",
+                  "school",
+                  "servic",
+                  "park"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "pleas",
+                  "provid",
+                  "inform",
+                  "about",
+                  "the",
+                  "school",
+                  "servic",
+                  "park",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "i",
+                  "need",
+                  "to",
+                  "know",
+                  "where",
+                  "the",
+                  "school",
+                  "servic",
+                  "park",
+                  "is",
+                  "situat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "could",
+                  "you",
+                  "guid",
+                  "me",
+                  "to",
+                  "the",
+                  "school",
+                  "servic",
+                  "park"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "give",
+                  "me",
+                  "the",
+                  "address",
+                  "of",
+                  "the",
+                  "school",
+                  "servic",
+                  "park",
+                  "pleas"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "is",
+                  "the",
+                  "pe",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "can",
+                  "i",
+                  "find",
+                  "the",
+                  "pe"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "the",
+                  "locat",
+                  "of",
+                  "the",
+                  "pe"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "what",
+                  "is",
+                  "the",
+                  "address",
+                  "of",
+                  "the",
+                  "pe"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "give",
+                  "me",
+                  "direct",
+                  "to",
+                  "the",
+                  "pe"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "where",
+                  "exact",
+                  "can",
+                  "i",
+                  "locat",
+                  "the",
+                  "pe"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "pleas",
+                  "provid",
+                  "inform",
+                  "about",
+                  "the",
+                  "pe",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "i",
+                  "need",
+                  "to",
+                  "know",
+                  "where",
+                  "the",
+                  "pe",
+                  "is",
+                  "situat"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "could",
+                  "you",
+                  "guid",
+                  "me",
+                  "to",
+                  "the",
+                  "pe"
+                ]
+              },
+              {
+                "intent": "query.facilities",
+                "tokens": [
+                  "give",
+                  "me",
+                  "the",
+                  "address",
+                  "of",
+                  "the",
+                  "pe",
+                  "pleas"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "thank",
+                  "you",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "thank",
+                  "for",
+                  "your",
+                  "help",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "i",
+                  "appreci",
+                  "your",
+                  "assist",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "thank",
+                  "you",
+                  "veri",
+                  "much",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "thank",
+                  "a",
+                  "lot",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "i",
+                  "am",
+                  "grate",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "you",
+                  "have",
+                  "been",
+                  "a",
+                  "big",
+                  "help",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "i",
+                  "am",
+                  "thank",
+                  "for",
+                  "your",
+                  "support",
+                  "exousianavi"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "exousianavi",
+                  "thank",
+                  "you"
+                ]
+              },
+              {
+                "intent": "thanks",
+                "tokens": [
+                  "exousianavi",
+                  "thank",
+                  "a",
+                  "bunch"
+                ]
+              }
+            ],
+            "features": {
+              "hello": 1,
+              "exousianavi": 19,
+              "hi": 1,
+              "howdi": 1,
+              "exousia": 1,
+              "hey": 2,
+              "greet": 1,
+              "what": 5,
+              "is": 14,
+              "up": 1,
+              "there": 1,
+              "this": 1,
+              "where": 16,
+              "the": 52,
+              "guard": 10,
+              "hous": 10,
+              "locat": 16,
+              "can": 8,
+              "i": 15,
+              "find": 4,
+              "tell": 4,
+              "me": 16,
+              "of": 12,
+              "address": 8,
+              "give": 8,
+              "direct": 4,
+              "to": 12,
+              "exact": 4,
+              "pleas": 8,
+              "provid": 4,
+              "inform": 4,
+              "about": 4,
+              "need": 4,
+              "know": 4,
+              "situat": 4,
+              "could": 4,
+              "you": 8,
+              "guid": 4,
+              "student": 10,
+              "loung": 10,
+              "school": 10,
+              "servic": 10,
+              "park": 10,
+              "pe": 10,
+              "thank": 7,
+              "for": 2,
+              "your": 3,
+              "help": 2,
+              "appreci": 1,
+              "assist": 1,
+              "veri": 1,
+              "much": 1,
+              "a": 3,
+              "lot": 1,
+              "am": 2,
+              "grate": 1,
+              "have": 1,
+              "been": 1,
+              "big": 1,
+              "support": 1,
+              "bunch": 1
+            },
+            "isEditing": false,
+            "className": "BrainNLU",
+            "classifier": {
+              "className": "BrainClassifier",
+              "settings": {
+                "language": "en",
+                "useNoneFeature": true,
+                "config": {
+                  "activation": "leaky-relu",
+                  "hiddenLayers": [],
+                  "iterations": 20000,
+                  "learningRate": 0.7,
+                  "errorThresh": 0.00005,
+                  "momentum": 0.5,
+                  "deltaErrorThresh": 0.000001,
+                  "maxDecimals": 9,
+                  "leakyReluAlpha": 0.08,
+                  "timeout": 120000
+                }
+              },
+              "labels": [],
+              "network": {
+                "sizes": [
+                  62,
+                  5
+                ],
+                "layers": [
+                  {
+                    "hello": {},
+                    "exousianavi": {},
+                    "hi": {},
+                    "howdi": {},
+                    "exousia": {},
+                    "hey": {},
+                    "greet": {},
+                    "what": {},
+                    "is": {},
+                    "up": {},
+                    "there": {},
+                    "this": {},
+                    "where": {},
+                    "the": {},
+                    "guard": {},
+                    "hous": {},
+                    "locat": {},
+                    "can": {},
+                    "i": {},
+                    "find": {},
+                    "tell": {},
+                    "me": {},
+                    "of": {},
+                    "address": {},
+                    "give": {},
+                    "direct": {},
+                    "to": {},
+                    "exact": {},
+                    "pleas": {},
+                    "provid": {},
+                    "inform": {},
+                    "about": {},
+                    "need": {},
+                    "know": {},
+                    "situat": {},
+                    "could": {},
+                    "you": {},
+                    "guid": {},
+                    "student": {},
+                    "loung": {},
+                    "school": {},
+                    "servic": {},
+                    "park": {},
+                    "pe": {},
+                    "thank": {},
+                    "for": {},
+                    "your": {},
+                    "help": {},
+                    "appreci": {},
+                    "assist": {},
+                    "veri": {},
+                    "much": {},
+                    "a": {},
+                    "lot": {},
+                    "am": {},
+                    "grate": {},
+                    "have": {},
+                    "been": {},
+                    "big": {},
+                    "support": {},
+                    "bunch": {},
+                    "nonefeature": {}
+                  },
+                  {
+                    "greetings.hello": {
+                      "bias": -1.034642623,
+                      "weights": {
+                        "hello": 11.764778137,
+                        "exousianavi": 1.657579422,
+                        "hi": 11.751829147,
+                        "howdi": 11.735409737,
+                        "exousia": -0.912595749,
+                        "hey": 11.76473999,
+                        "greet": 11.78850174,
+                        "what": 5.272119999,
+                        "is": 0.331409305,
+                        "up": 6.248782635,
+                        "there": 0.129337043,
+                        "this": -4.662801266,
+                        "where": -0.495642394,
+                        "the": -1.842292905,
+                        "guard": -0.700705588,
+                        "hous": -0.700705588,
+                        "locat": -0.479900807,
+                        "can": -0.217730969,
+                        "i": -3.184627295,
+                        "find": -0.217730969,
+                        "tell": -0.149595708,
+                        "me": -0.317598104,
+                        "of": -1.126254201,
+                        "address": -0.976657867,
+                        "give": -0.122601658,
+                        "direct": -0.122601658,
+                        "to": -0.168002397,
+                        "pleas": -0.052393645,
+                        "provid": -0.052393645,
+                        "inform": -0.052393645,
+                        "about": -0.052393645,
+                        "could": -0.045400739,
+                        "you": -2.64003849,
+                        "guid": -0.045400739,
+                        "student": -0.311843753,
+                        "loung": -0.311843753,
+                        "school": -0.208240211,
+                        "servic": -0.208240211,
+                        "park": -0.208240211,
+                        "pe": -0.621503174,
+                        "thank": -4.471393108,
+                        "for": -0.866051555,
+                        "your": -2.030103207,
+                        "help": -1.286617517,
+                        "appreci": -1.164051652,
+                        "assist": -1.164051652,
+                        "veri": -0.465204597,
+                        "much": -0.465204597,
+                        "a": -1.851834655,
+                        "lot": -0.934265375,
+                        "am": -1.802844524,
+                        "grate": -1.802844524,
+                        "have": -0.420565784,
+                        "been": -0.420565784,
+                        "big": -0.420565784,
+                        "bunch": -0.497003555,
+                        "nonefeature": -0.971869826
+                      }
+                    },
+                    "greetings.asking": {
+                      "bias": 4.348138494,
+                      "weights": {
+                        "hello": -11.105460167,
+                        "exousianavi": 6.937157154,
+                        "hi": -11.084834099,
+                        "howdi": -11.059095383,
+                        "exousia": 8.144741058,
+                        "hey": -11.194281578,
+                        "greet": -11.191159248,
+                        "what": -4.674182892,
+                        "is": -2.320328474,
+                        "up": -4.321831226,
+                        "there": -0.770758688,
+                        "this": 3.545684338,
+                        "where": -1.275481105,
+                        "the": -2.065172672,
+                        "guard": -0.5349828,
+                        "hous": -0.5349828,
+                        "locat": -1.207885861,
+                        "can": -0.083698288,
+                        "i": -5.10585165,
+                        "find": -0.083698288,
+                        "tell": -0.041328564,
+                        "me": -0.374512792,
+                        "of": -0.393684924,
+                        "address": -0.352356344,
+                        "give": -0.331718296,
+                        "direct": -0.331718296,
+                        "to": -0.421236664,
+                        "pleas": -0.062831998,
+                        "provid": -0.062831998,
+                        "inform": -0.062831998,
+                        "about": -0.062831998,
+                        "need": -0.08805266,
+                        "know": -0.08805266,
+                        "situat": -0.08805266,
+                        "could": -0.001466029,
+                        "you": -4.461079597,
+                        "guid": -0.001466029,
+                        "student": -0.417941421,
+                        "loung": -0.417941421,
+                        "school": -0.278557241,
+                        "servic": -0.278557241,
+                        "park": -0.278557241,
+                        "pe": -0.8336941,
+                        "thank": -6.82392931,
+                        "for": -0.630339563,
+                        "your": -2.483061552,
+                        "help": -1.374963403,
+                        "appreci": -1.852723718,
+                        "assist": -1.852723718,
+                        "veri": -0.191955194,
+                        "much": -0.191955194,
+                        "a": -3.223224401,
+                        "lot": -1.249360561,
+                        "am": -3.081380367,
+                        "grate": -3.081380367,
+                        "have": -0.744624138,
+                        "been": -0.744624138,
+                        "big": -0.744624138,
+                        "bunch": -1.229233146,
+                        "nonefeature": -4.317908287
+                      }
+                    },
+                    "query.facilities": {
+                      "bias": 0.719748337,
+                      "weights": {
+                        "hello": -0.066428177,
+                        "exousianavi": -2.358514309,
+                        "hi": -0.055926967,
+                        "howdi": -0.046281315,
+                        "exousia": -0.719747841,
+                        "hey": -0.017098727,
+                        "greet": -0.013927849,
+                        "what": 0.897882104,
+                        "is": 1.227628112,
+                        "up": -0.588622451,
+                        "this": -0.195325181,
+                        "where": 1.568867445,
+                        "the": 5.23826313,
+                        "guard": 1.122489095,
+                        "hous": 1.122489095,
+                        "locat": 1.500515103,
+                        "can": 1.043790102,
+                        "i": 0.412203908,
+                        "find": 1.272149563,
+                        "tell": 0.237921163,
+                        "me": 1.353863001,
+                        "of": 1.204711676,
+                        "address": 0.966789007,
+                        "give": 0.462308675,
+                        "direct": 0.982023597,
+                        "to": 1.498815656,
+                        "exact": -0.228365511,
+                        "pleas": 0.309338599,
+                        "provid": 0.829052389,
+                        "inform": 0.829052389,
+                        "about": 0.829052389,
+                        "need": -0.136834696,
+                        "know": -0.136834696,
+                        "situat": -0.136834696,
+                        "could": 0.653630674,
+                        "you": 0.137070924,
+                        "guid": 0.653630674,
+                        "student": 1.122488976,
+                        "loung": 1.122488976,
+                        "school": 0.748326004,
+                        "servic": 0.748326004,
+                        "park": 0.748326004,
+                        "pe": 2.244977236,
+                        "thank": -0.787252784,
+                        "for": -0.241563395,
+                        "your": -0.543966234,
+                        "help": -0.296610087,
+                        "appreci": -0.302402794,
+                        "assist": -0.302402794,
+                        "veri": -0.130148634,
+                        "much": -0.130148634,
+                        "a": -0.139217943,
+                        "lot": -0.084171228,
+                        "am": -0.192353517,
+                        "grate": -0.192353517,
+                        "have": -0.055046715,
+                        "been": -0.055046715,
+                        "big": -0.055046715,
+                        "nonefeature": -0.720537603
+                      }
+                    },
+                    "thanks": {
+                      "bias": -0.660274526,
+                      "weights": {
+                        "hello": -1.930085301,
+                        "exousianavi": 0.661364496,
+                        "hi": -1.829107046,
+                        "howdi": -1.714105964,
+                        "exousia": -0.171062142,
+                        "hey": -1.490193486,
+                        "greet": -1.301745296,
+                        "what": -0.449395239,
+                        "is": -0.960446119,
+                        "up": -0.449395239,
+                        "there": -0.343317896,
+                        "this": -0.49905175,
+                        "where": -0.740823328,
+                        "the": -1.342648268,
+                        "guard": -0.431615889,
+                        "hous": -0.431615889,
+                        "locat": -0.242942289,
+                        "can": -0.728824198,
+                        "i": 4.434203148,
+                        "find": -0.485882968,
+                        "me": -0.601823747,
+                        "to": -0.613822818,
+                        "exact": -0.242942289,
+                        "need": -0.011999139,
+                        "know": -0.011999139,
+                        "situat": -0.011999139,
+                        "could": -0.601823747,
+                        "you": 4.897968292,
+                        "guid": -0.601823747,
+                        "student": -0.274125993,
+                        "loung": -0.274125993,
+                        "school": -0.161220774,
+                        "servic": -0.161220774,
+                        "park": -0.161220774,
+                        "pe": -0.475690395,
+                        "thank": 7.600899696,
+                        "for": -0.607580364,
+                        "your": 2.283190012,
+                        "help": 3.222347736,
+                        "appreci": 2.8907547,
+                        "assist": 2.8907547,
+                        "veri": 0.000060574,
+                        "much": 0.000060574,
+                        "a": 3.376653194,
+                        "lot": 1.52136302,
+                        "am": 2.284272432,
+                        "grate": 5.780195236,
+                        "have": 0.333987027,
+                        "been": 0.333987027,
+                        "big": 0.333987027,
+                        "support": -3.495945692,
+                        "bunch": 1.521296382,
+                        "nonefeature": -0.468202859
+                      }
+                    },
+                    "None": {
+                      "bias": 2.30722598,
+                      "weights": {
+                        "hello": -0.31674844,
+                        "exousianavi": -2.307223558,
+                        "hi": -0.302653283,
+                        "howdi": -0.287098408,
+                        "exousia": -2.307223558,
+                        "hey": -0.19476527,
+                        "greet": -0.176308706,
+                        "what": -0.201449484,
+                        "is": -0.318239003,
+                        "up": -0.027681995,
+                        "there": -0.04259843,
+                        "this": -0.020519696,
+                        "where": -0.304403841,
+                        "the": -0.963893712,
+                        "guard": -0.206550106,
+                        "hous": -0.206550106,
+                        "locat": -0.313468844,
+                        "can": -0.208133921,
+                        "i": -0.209560037,
+                        "find": -0.208133921,
+                        "tell": -0.063008279,
+                        "me": -0.331531256,
+                        "of": -0.236775771,
+                        "address": -0.173767462,
+                        "give": -0.165088743,
+                        "direct": -0.165088743,
+                        "to": -0.268522978,
+                        "pleas": -0.154190719,
+                        "provid": -0.154190719,
+                        "inform": -0.154190719,
+                        "about": -0.154190719,
+                        "could": -0.103436507,
+                        "you": -0.123304471,
+                        "guid": -0.103436507,
+                        "student": -0.206550106,
+                        "loung": -0.206550106,
+                        "school": -0.137700066,
+                        "servic": -0.137700066,
+                        "park": -0.137700066,
+                        "pe": -0.413100094,
+                        "thank": -0.100323781,
+                        "for": -0.027740138,
+                        "your": -0.027740138,
+                        "help": -0.029482113,
+                        "veri": -0.003681114,
+                        "much": -0.003681114,
+                        "a": -0.056199647,
+                        "lot": -0.029360615,
+                        "am": -0.001426102,
+                        "grate": -0.001426102,
+                        "have": -0.001741976,
+                        "been": -0.001741976,
+                        "big": -0.001741976,
+                        "bunch": -0.025097053,
+                        "nonefeature": 10.192767143
+                      }
+                    }
+                  }
+                ],
+                "trainOpts": {
+                  "iterations": 20000,
+                  "errorThresh": 0.00005,
+                  "fixedError": false,
+                  "deltaErrorThresh": 0.000001,
+                  "learningRate": 0.7,
+                  "momentum": 0.5,
+                  "leakyReluAlpha": 0.08,
+                  "maxDecimals": 9,
+                  "log": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extraSentences": [
+      [
+        "en",
+        "Hello ExousiaNavi"
+      ],
+      [
+        "en",
+        "Hi ExousiaNavi"
+      ],
+      [
+        "en",
+        "Howdy ExousiaNavi"
+      ],
+      [
+        "en",
+        "ExousiaNavi"
+      ],
+      [
+        "en",
+        "Exousia"
+      ],
+      [
+        "en",
+        "Hey ExousiaNavi"
+      ],
+      [
+        "en",
+        "Greetings ExousiaNavi"
+      ],
+      [
+        "en",
+        "What's up ExousiaNavi"
+      ],
+      [
+        "en",
+        "Hey there ExousiaNavi"
+      ],
+      [
+        "en",
+        "Is this ExousiaNavi?"
+      ],
+      [
+        "en",
+        "Where is the guard house located?"
+      ],
+      [
+        "en",
+        "Where can I find the guard house?"
+      ],
+      [
+        "en",
+        "Tell me the location of the guard house"
+      ],
+      [
+        "en",
+        "What is the address of the guard house?"
+      ],
+      [
+        "en",
+        "Give me directions to the guard house"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the guard house?"
+      ],
+      [
+        "en",
+        "Please provide information about the guard house location."
+      ],
+      [
+        "en",
+        "I need to know where the guard house is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the guard house?"
+      ],
+      [
+        "en",
+        "Give me the address of the guard house please."
+      ],
+      [
+        "en",
+        "Where is the student lounge located?"
+      ],
+      [
+        "en",
+        "Where can I find the student lounge?"
+      ],
+      [
+        "en",
+        "Tell me the location of the student lounge"
+      ],
+      [
+        "en",
+        "What is the address of the student lounge?"
+      ],
+      [
+        "en",
+        "Give me directions to the student lounge"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the student lounge?"
+      ],
+      [
+        "en",
+        "Please provide information about the student lounge location."
+      ],
+      [
+        "en",
+        "I need to know where the student lounge is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the student lounge?"
+      ],
+      [
+        "en",
+        "Give me the address of the student lounge please."
+      ],
+      [
+        "en",
+        "Where is the school service parking located?"
+      ],
+      [
+        "en",
+        "Where can I find the school service parking?"
+      ],
+      [
+        "en",
+        "Tell me the location of the school service parking"
+      ],
+      [
+        "en",
+        "What is the address of the school service parking?"
+      ],
+      [
+        "en",
+        "Give me directions to the school service parking"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the school service parking?"
+      ],
+      [
+        "en",
+        "Please provide information about the school service parking location."
+      ],
+      [
+        "en",
+        "I need to know where the school service parking is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the school service parking?"
+      ],
+      [
+        "en",
+        "Give me the address of the school service parking please."
+      ],
+      [
+        "en",
+        "Where is the pe located?"
+      ],
+      [
+        "en",
+        "Where can I find the pe?"
+      ],
+      [
+        "en",
+        "Tell me the location of the pe"
+      ],
+      [
+        "en",
+        "What is the address of the pe?"
+      ],
+      [
+        "en",
+        "Give me directions to the pe"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the pe?"
+      ],
+      [
+        "en",
+        "Please provide information about the pe location."
+      ],
+      [
+        "en",
+        "I need to know where the pe is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the pe?"
+      ],
+      [
+        "en",
+        "Give me the address of the pe please."
+      ],
+      [
+        "en",
+        "Thank you ExousiaNavi."
+      ],
+      [
+        "en",
+        "Thanks for your help, ExousiaNavi."
+      ],
+      [
+        "en",
+        "I appreciate your assistance, ExousiaNavi."
+      ],
+      [
+        "en",
+        "Thank you very much, ExousiaNavi."
+      ],
+      [
+        "en",
+        "Thanks a lot, ExousiaNavi."
+      ],
+      [
+        "en",
+        "I'm grateful, ExousiaNavi."
+      ],
+      [
+        "en",
+        "You've been a big help, ExousiaNavi."
+      ],
+      [
+        "en",
+        "I'm thankful for your support, ExousiaNavi."
+      ],
+      [
+        "en",
+        "ExousiaNavi, thank you."
+      ],
+      [
+        "en",
+        "ExousiaNavi, thanks a bunch."
+      ]
+    ]
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {}
+  },
+  "slotManager": {},
+  "responses": {
+    "en": {
+      "greetings.hello": [
+        {
+          "response": "Hey there! How can I help you?"
+        },
+        {
+          "response": "Greetings! What can I do for you?"
+        }
+      ],
+      "greetings.asking": [
+        {
+          "response": "Hello there! What can I do for you?"
+        },
+        {
+          "response": "Yes, how can I assist you?"
+        }
+      ],
+      "query.facilities": [
+        {
+          "response": "would you like me to give you a map?"
+        }
+      ],
+      "query.facilities.show": [
+        {
+          "response": "ofcourse!, here is the map with navigation attach to it!. is there anything i can do for you?"
+        }
+      ],
+      "query.persons": [
+        {
+          "response": "yeah!, sure.!"
+        }
+      ],
+      "query.persons.position": [
+        {
+          "response": "yeah!, sure.!"
+        }
+      ],
+      "query.persons.facilities.show": [
+        {
+          "response": "ofcourse!, here is the map with navigation attach to it!"
+        }
+      ],
+      "thanks": [
+        {
+          "response": "your welcome!"
+        },
+        {
+          "response": "Im happy to serve you!"
+        },
+        {
+          "response": "have a good day!"
+        }
+      ]
+    }
+  },
+  "actions": {},
+  "utteranceDict": {
+    "?": "help"
+  }
+}
