@@ -1,15 +1,16 @@
 module.exports = function addPersons(manager, persons) {
     persons.forEach((person) => {
-        manager.addDocument("en", `Who is ${person}?`, 'query.persons');
-        manager.addDocument("en", `Tell me about ${person}.`, 'query.persons');
-        manager.addDocument("en", `What can you tell me about ${person}?`, 'query.persons');
-        manager.addDocument("en", `Give me information on ${person}.`, 'query.persons');
-        manager.addDocument("en", `Can you provide details about ${person}?`, 'query.persons');
-        manager.addDocument("en", `Do you have any information on ${person}?`, 'query.persons');
-        manager.addDocument("en", `How can you describe ${person}?`, 'query.persons');
-        manager.addDocument("en", `Tell me more about ${person}.`, 'query.persons');
-        manager.addDocument("en", `What do you know about ${person}?`, 'query.persons');
-        manager.addDocument("en", `Give me details about ${person}.`, 'query.persons');
+        manager.addNamedEntityText('person', person, ['en'], [person])
+        manager.addDocument("en", `Who is %person%?`, 'query.persons', {person: person});
+        manager.addDocument("en", `Tell me about %person%.`, 'query.persons', {person: person});
+        manager.addDocument("en", `What can you tell me about %person%?`, 'query.persons', {person: person});
+        manager.addDocument("en", `Give me information on %person%.`, 'query.persons', {person: person});
+        manager.addDocument("en", `Can you provide details about %person%?`, 'query.persons', {person: person});
+        manager.addDocument("en", `Do you have any information on %person%?`, 'query.persons', {person: person});
+        manager.addDocument("en", `How can you describe %person%?`, 'query.persons', {person: person});
+        manager.addDocument("en", `Tell me more about %person%.`, 'query.persons', {person: person});
+        manager.addDocument("en", `What do you know about %person%?`, 'query.persons', {person: person});
+        manager.addDocument("en", `Give me details about %person%.`, 'query.persons', {person: person});
 
         // Add 10 more variations for querying the principal at Eastwoods within the "query.persons" intent
         manager.addDocument("en", `Who is the principal at Eastwoods?`, 'query.persons.position');

@@ -37,7 +37,7 @@
               
               <div class="box box4">
                   <div class="box-content2 answerbtn" data-value="yes">
-                      <box-icon type='solid' name='checkbox-checked' class="mission sml" data-value="mission"></box-icon>
+                      <box-icon type='solid' name='checkbox-checked' data-value="mission"></box-icon>
                       <p class="label">YES</p> <!-- Add label for teachers -->
                   </div>
               </div>

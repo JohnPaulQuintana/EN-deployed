@@ -43,6 +43,7 @@ class Navi extends Controller
                         [
                             'flag' => 'false',
                             'query' => 'yes',
+                            'entity' => false,
                             'answer' => 'yes',
                             'data' => '',
                         ],
@@ -95,7 +96,7 @@ class Navi extends Controller
         
             if (
                 isset($result['navi'][0]['data']) &&
-                isset($result['navi'][0]['data']['floor'])
+                isset($result['navi'][0]['data']['floor']) && isset($result['navi'][0]['entity'])
             ) {
                 // 'floor' key is present in the specified structure
                 $floor = $result['navi'][0]['data']['floor'];
@@ -139,7 +140,7 @@ class Navi extends Controller
                     return response()->json(['response' => $this->generateText($response),'floor'=>$floor, 'facility'=>$facility, 'continuation'=>'information']);
                 }
             } else {
-
+// dd($result);
                 if($result['navi'][0]['data']){
                     // 'floor' key is not present in the specified structure
                     //get the facilities cred
@@ -150,6 +151,43 @@ class Navi extends Controller
                     // dd($fac['facilities']);
                     // $floor = false;
                     $continuation = 'information';
+
+                }elseif($result['navi'][0]['entity']){
+                   
+                    //check if its a persons location question
+                    switch ($result['navi'][0]['query']) {
+                        //not found but has a entity
+                        case 'persons.location.not':
+                            //call this function naviProcessInformationSearch
+                             // format a request
+                            //  $t = Teacher::where('name',$result['navi'][0]['entity'])->first();
+                            $t = Teacher::join('eastwoods_Facilities', 'teachers.facilities_id', '=', 'eastwoods_Facilities.id')
+                                ->where('teachers.name', $result['navi'][0]['entity'])
+                                ->first();
+                            // dd($t);
+                            $formatrequest = new Request([
+                                'infoId' => $t['id'],
+                                'locationFloor' => $t['floor'],
+                                'teacherLocation' => $t['facilities'],
+                                'infoModel' => 'Teacher', // Replace with the actual model name
+                                'data' => $t,
+                            ]);
+                            // dd($formatrequest);
+                            return $this->naviProcessInformationSearch($formatrequest);
+                            break;
+                        
+                        default:
+                            # code...
+                            break;
+                    }
+                    $fac = EastwoodsFacilities::where('facilities', $result['navi'][0]['entity'])->first();
+                    session(['floor' => $fac['floor'], 'facility' => $fac['facilities']]);
+                    $floor = $fac['floor'];
+                    $facility = $fac['facilities'];
+                    // dd($fac['facilities']);
+                    // $floor = false;
+                    $continuation = 'information';
+
                 }else{
                     $floor = null;
                     $facility = null; 
@@ -239,6 +277,9 @@ class Navi extends Controller
         $responseData['message'] = 'No matching floor found';
     }
 
+    // Remove duplicates
+    // $uniqueServerResponds = array_unique($serverResponds);
+
     // dd($floorData); 
     return response()->json([
         'details' => $responseData, 
@@ -271,12 +312,19 @@ class Navi extends Controller
     // process for searching
     public function naviProcessInformationSearch(Request $request){
         // dd($request);
+        
         $reqInfoId = $request->input('infoId');
         $modelClass = 'App\Models\\' . $request->input('infoModel');
-        $findInformation = $modelClass::where('id',$reqInfoId)->first();
+        if(!$request->input('data')){
+            $findInformation = $modelClass::where('id',$reqInfoId)->first();
+        }else{
+            // all info including location also
+            $findInformation = $request->input('data');
+        }
+    //    dd($findInformation);
         $continuation = false;
         $facilityFound = false; // Initialize a flag to track if the facility is found
-
+        // dd($findInformation);
         switch ($request->input('infoModel')) {
 
             case 'EastwoodsFacilities':
@@ -296,6 +344,7 @@ class Navi extends Controller
                         $response = [
                             "flag" => "false",
                             "query" => "facilities.found",
+                            "entity" => false,
                             "data" => $findInformation,
                         ];
                         session(['floor' => $findInformation->floor, 'facility' => $findInformation->facilities]);
@@ -307,6 +356,7 @@ class Navi extends Controller
                         $response = [
                             "flag" => "false",
                             "query" => "facilities.layout.not",
+                            "entity" => false,
                             "data" => $findInformation->facilities,
                         ];
                         return response()->json(['response' => $this->generateText($response),'floor'=>$findInformation->floor, 'facility'=>$findInformation->facilities, 'continuation'=>'information']);
@@ -317,16 +367,18 @@ class Navi extends Controller
                     $response = [
                         "flag" => "false",
                         "query" => "facilities.layout.not",
+                        "entity" => false,
                         "data" => $findInformation->facilities,
                     ];
                     return response()->json(['response' => $this->generateText($response),'floor'=>$findInformation->floor, 'facility'=>$findInformation->facilities, 'continuation'=>'information']);
                 }
                 
-                
+                // for teachers
             case 'Teacher':
                 $response = [
                     "flag" => "false",
                     "query" => "persons.found",
+                    "entity" => false,
                     "data" => $findInformation,
                 ];
                 session(['floor' => $request->input('locationFloor'), 'facility' => $request->input('teacherLocation')]);
@@ -343,373 +395,383 @@ class Navi extends Controller
     // generating text
     public function generateText($data)
     {
-        //     "flag" => "false"
-        //   "query" => "persons"
-        //   "answer" => "yeah!, sure.!"
-        //   "data" => array:5 [
-        //     "id" => 1
-        //     "name" => "teacher1"
-        //     "position" => "teacher"
-        //     "created_at" => "2023-09-10T12:50:22.000Z"
-        //     "updated_at" => "2023-09-10T13:57:21.000Z"
-
-        // not found optional server response text
-        // $serverResponseText = $data['answer'];
-        // dd($data);
-        $recomposed = $this->randomText($data['query'], $data['data']);
+        // dd($data['entity']);
+        $recomposed = $this->randomText($data['query'], $data['data'], $data['entity']);
 
         $response = [
             'flag' => 'true',
             'answer' => $recomposed,
+            'entity' => $data['entity'],
             'data' => false,
         ];
         return $response;
     }
 
     // get random text response
-    public function randomText($query, $data)
+
+    public $openingForFalsePerson = [
+        'I couldn\'t find any information about that person. Is there anything else I can assist you with?',
+        'Im sorry, but I couldnt locate any details for that individual. How else can I help you?',
+        'It seems I don\'t have any information on that person. Please provide more details or try another query.',
+        'Unfortunately, I couldn\'t find any information on the person you mentioned. Can I assist you with something else?',
+        'I couldn\'t find any records for that person. Please double-check the name or provide additional information.',
+        'I apologize, but there are no records matching that person in my database. Can I assist you with something else?',
+        'I couldn\'t locate any information for the person you specified. Is there another request youd like to make?',
+        'Im sorry, but I couldnt find any information about that person. How else can I assist you?',
+        'Unfortunately, I don\'t have any data on that person. Please provide more details or try a different query.',
+        'It appears there are no records for that person. Can I help you with a different request?',
+    ];
+
+    // Person Found
+    public $openingForFoundPerson = [
+        'Excellent news! Ive successfully retrieved comprehensive information about [name] in their location is [position].',
+        'Im pleased to inform you that Ive located detailed records for [name] in their capacity is [position].',
+        'Youre in good hands! I possess comprehensive information on [name] in their location is [position].',
+        'Im delighted to share that Ive found the information you requested regarding [name] in their location is [position].',
+        'Ive successfully retrieved detailed information for [name] in their location is [position].',
+        'Rest assured, I have in-depth information about [name] in their location is [position].',
+        'Ive successfully located [name] in their location is [position]. What specific details are you seeking?',
+        'Youre in luck! Ive found comprehensive information about [name] in their location is [position].',
+        'Ive diligently gathered extensive details for [name] in their location is [position].',
+        'I possess thorough information on [name] in their location is [position]. How may I further assist you?',
+    ];
+
+    // facilities
+    public $openingForFalseFacility = [
+        'I couldn\'t find any information about that facility. Is there anything else I can assist you with?',
+        'Im sorry, but I couldnt locate any details for that facility. How else can I help you?',
+        'It seems I don\'t have any information on that facility. Please provide more details or try another query.',
+        'Unfortunately, I couldn\'t find any information on the facility you mentioned. Can I assist you with something else?',
+        'I couldn\'t find any records for that facility. Please double-check the name or provide additional information.',
+        'I apologize, but there are no records matching that facility in my database. Can I assist you with something else?',
+        'I couldn\'t locate any information for the facility you specified. Is there another request youd like to make?',
+        'Im sorry, but I couldnt find any information about that facility. How else can I assist you?',
+        'Unfortunately, I don\'t have any data on that facility. Please provide more details or try a different query.',
+        'It appears there are no records for that facility. Can I help you with a different request?',
+    ];
+
+    public $openingForFoundFacilityStart = [
+        'Found [facilities] on [floor]. Operating hours: [operation_time]. Go there?',
+        'Located [facilities] on [floor]. Operating hours: [operation_time]. Ready to go?',
+        'Info: [facilities] on [floor]. Operating hours: [operation_time]. Lets head there?',
+        "Details for [facilities] on [floor]. Operating hours: [operation_time]. Shall we go?",
+        "Facility: [facilities] on [floor]. Hours: [operation_time]. Go now?",
+        "Info: [facilities] on [floor]. Operating hours: [operation_time]. Ready to visit?",
+        "Found [facilities] on [floor]. Operating hours: [operation_time]. Go there now?",
+        "Located [facilities] on [floor]. Operating hours: [operation_time]. Ready to go now?",
+        "Info: [facilities] on [floor]. Operating hours: [operation_time]. Time to head there?",
+        "Details for [facilities] on [floor]. Operating hours: [operation_time]. Lets go!",
+    ];
+    
+    
+    
+    // person location found
+    // $openingForFoundPersonLocation = [
+    //     'Great news! I found information on navigating to [facilities] where you can find [persons]. The operation time is [operation_time].',
+    //     'Good news! I located details for reaching [facilities] where you can find [persons]. The operation time is [operation_time].',
+    //     'You\'re in luck! I have directions for [facilities] where you can locate [persons]. The operation time is [operation_time].',
+    //     'I found navigation instructions for accessing [facilities] where you can find [persons]. The operation time is [operation_time].',
+    //     'I\'ve found guidance on reaching [facilities] where you can discover [persons]. The operation time is [operation_time].',
+    //     'You\'re in the right place! I have directions to [facilities] where you can locate [persons]. The operation time is [operation_time].',
+    //     'I found the route to [facilities] where you can find [persons]. The operation time is [operation_time].',
+    //     'You\'re in luck! I located information on how to get to [facilities] where you can find [persons]. The operation time is [operation_time].',
+    //     'I\'ve successfully provided navigation details for [facilities] where you can find [persons]. The operation time is [operation_time].',
+    //     'Good news! I have navigation instructions for reaching [facilities] where you can find [persons]. The operation time is [operation_time].',
+    // ];
+
+    // persons position at eastwoods
+    public $personsPositionAtEastwoods = [
+        'The principal at Eastwoods is [name].',
+        'At Eastwoods, the principal is [name].',
+        'You are inquiring about the principal at Eastwoods, and that would be [name].',
+        'The person in charge of the principal role at Eastwoods is [name].',
+        'The current principal at Eastwoods is [name].',
+        'Youll find [name] as the principal at Eastwoods.',
+        'The role of principal at Eastwoods is held by [name].',
+        'Eastwoods School is led by [name] as the principal.',
+        'The principal at Eastwoods goes by the name of [name].',
+        'At Eastwoods, [name] serves as the principal.'
+    ];
+
+    //person located response message
+    public $openingForFoundPersonLocation = [
+        'Great news! Directions to [facilities] where you can find [persons] are available.',
+        'Good news! Details on [facilities] where you can find [persons] are ready.',
+        'Directions to [facilities] for locating [persons] are at your service.',
+        'Find your way to [facilities] to discover [persons].',
+        'Guidance to [facilities] for discovering [persons] is here.',
+        'Youre in the right place! Directions to [facilities] for finding [persons] are provided.',
+        'The route to [facilities] where you can locate [persons] is available.',
+        'Youre in luck! Information on reaching [facilities] to find [persons] is here.',
+        'Navigation details for [facilities] to locate [persons] are ready.',
+        'Discover directions to [facilities] for finding [persons].',
+    ];
+    
+    public $positiveResponses = [
+        "Explore the facility on [floor] below. Enjoy!",
+        "Get ready to explore on [floor]. Enjoy the map!",
+        "Discover the facility on [floor] with the map below!",
+        "Your map for [floor] is coming up. Enjoy exploring!",
+        "Exciting! [floor] facility on the map below. Dive in!",
+        "Explore [floor] with the map coming up. Enjoy!",
+        "Ready for [floor]? Map below. Enjoy your exploration!",
+        "Brace yourself for [floor] on the map. Dive in!",
+        "Your map for [floor] is ready. Start exploring!",
+        "Map for [floor] coming up. Enjoy your exploration!"
+    ];
+    
+    
+    // negative response for no
+    public $negativeResponses = [
+        "No problem! If you change your mind or have any more questions, feel free to ask. I'm here to help!",
+        "That's alright! If you have any other questions or need assistance with something else, just let me know.",
+        "Sure thing! If you ever decide to explore further or need assistance later, don't hesitate to reach out.",
+        "Understood! If you have more questions or need assistance in the future, feel free to come back anytime.",
+        "Alright! If you ever want to see the map or have any other inquiries, I'm here to assist you.",
+        "No worries! If you change your mind or need assistance with anything else, don't hesitate to ask.",
+        "Okay! If you have any more questions or need assistance later, don't hesitate to reach out to me.",
+        "Certainly! If you ever decide to view the map or have any other questions, I'm here to assist you.",
+        "Got it! If you change your mind or need help with anything else, feel free to get in touch.",
+        "That's perfectly fine! If you have any more questions or need assistance in the future, I'm here to help."
+    ];
+
+    //layout not found
+    public $layoutNotFoundMessages = [
+        "I apologize, but it seems we don't currently have the layout information for this facility's location.",
+        "We understand your request for the layout, but at this moment, the layout for this facility's location is unavailable.",
+        "Regrettably, the layout details for this facility's location are not present in our database.",
+        "We're sorry to inform you that we couldn't locate the layout for this facility's location.",
+        "Unfortunately, the layout for this facility's location is not currently accessible in our records.",
+        "Apologies, but we're currently missing the layout information for this facility's location.",
+        "The layout for this facility's location is regrettably absent from our database.",
+        "I regret to inform you that we are unable to provide the layout for this facility's location at this time.",
+        "We've conducted a search, but the layout for this facility's location is nowhere to be found.",
+        "We're actively working on obtaining the layout for this facility's location, but it's not yet available.",
+        "The layout for this facility's location is currently undergoing updates, and we don't have the latest version.",
+        "Layout data for this facility's location is temporarily out of reach. We apologize for any inconvenience.",
+        "Our team is diligently searching for the layout of this facility's location, but it has proven elusive.",
+        "The layout for this facility's location is in a pending state and hasn't been finalized yet.",
+        "Please check back later for the layout details of this facility's location as we continue our efforts to obtain it.",
+        "We sincerely apologize, but the layout information for this facility's location is currently unavailable.",
+        "We understand your desire for the layout, but we're unable to provide it as of now.",
+        "The layout for this facility's location is still in the process of being updated, and we don't have the latest version.",
+        "We're sorry for the inconvenience, but the layout is currently not accessible to us.",
+        "We're doing our best to acquire the layout for this facility's location, but it's not yet ready for retrieval.",
+    ];
+    
+    public $endingPartLoc = [
+        'To continue the conversation, press yes.',
+        'Press yes to proceed further.',
+        'To move forward, simply press yes.',
+        'To continue, press yes anytime.',
+        'Feel free to press yes to continue.',
+        'You can press yes to keep going.',
+        'To proceed, press yes whenever youre ready.',
+        'When youre ready to continue, press yes.',
+        'Press yes if youd like to continue.',
+        'To continue, press yes whenever youre ready.',
+    ];
+
+    // ending part
+    public $endingPart = [
+        'How can I assist you further?',
+        'What else would you like to know?',
+        'How may I help you with it?',
+        'What would you like to do next?',
+        'How can I assist you with it?',
+        'How may I assist you further?',
+        'What specific information do you need?',
+        'What else can I do for you today?',
+        'How can I assist you today?',
+        'How may I help you with it?',
+        'Is there anything else on your mind?',
+        'Feel free to ask any other questions.',
+        'Im here to help. Whats next?',
+        'What can I do to make your day better?',
+        'Dont hesitate to ask if you need more information.',
+        'Your satisfaction is my priority. Whats your next query?',
+        'Im at your service. Whats your request?',
+        'Let me know how I can be of further assistance.',
+        'What other assistance do you require today?',
+        'Im here to assist you. Whats your next question?',
+    ];
+
+    // greetings
+    public $greetings = [
+        "Hello there! Welcome to Eastwoods Guide, your dedicated resource for all things Eastwoods. How may I assist you today?",
+        "Greetings! Eastwoods Guide is here to assist you with any questions or information related to Eastwoods. What can I do for you?",
+        "Good day! Eastwoods Guide is your trusted companion for Eastwoods-related information and support. How can I enhance your day?",
+        "Hi! Welcome to Eastwoods Guide, your friendly source for all things Eastwoods. How can I be of service to you?",
+        "Hello! Eastwoods Guide is here to serve you. How can I assist you during your time at Eastwoods?",
+        "Hey! I'm Eastwoods Guide, dedicated to making your Eastwoods experience smoother. How can I assist you today?",
+        "Howdy! It's great to see you on campus. Eastwoods Guide is here to help. What can I do for you today?",
+        "Hi there! Eastwoods Guide is ready to provide Eastwoods-related support. How can I make your day more productive?",
+        "Hey there! Welcome to Eastwoods Guide. How can I assist you in navigating Eastwoods?",
+        "Good to see you! Eastwoods Guide is here to provide Eastwoods-related information and assistance. What's on your mind?"
+    ]; 
+
+    // thanks
+    public $thanks = [
+        "You're welcome! If you have any more questions, feel free to ask.",
+        "No problem at all! If there's anything else I can assist you with, just let me know.",
+        "You got it! If you need further assistance, don't hesitate to reach out.",
+        "Glad I could help! If you have more inquiries, I'm here to assist.",
+        "Anytime! If you have additional questions, feel free to ask.",
+        "You're welcome! If there's anything else on your mind, don't hesitate to ask.",
+        "No worries! If you require further assistance, feel free to reach out.",
+        "It was my pleasure assisting you! If you have more questions later, I'll be here.",
+        "You're welcome! If there's anything specific you'd like to know, just ask.",
+        "Happy to help! If you ever need assistance in the future, don't hesitate to ask me."
+    ];
+
+    // bad words
+    public $badWordResponses = [
+        "I'm here to provide useful information and assistance. Please refrain from using offensive language.",
+        "Let's keep the conversation respectful and appropriate. How can I assist you further?",
+        "I appreciate a polite and respectful conversation. How can I help you today?",
+        "Using respectful language makes communication more effective. What can I assist you with?",
+        "I'm here to help with your questions. Please keep the conversation civil and respectful.",
+        "Respectful communication leads to better outcomes. How can I assist you today?",
+        "Thank you for maintaining a courteous tone in our conversation. How can I assist you further?",
+        "Your polite language is appreciated. How can I be of assistance to you?",
+        "Let's keep our conversation respectful and focused on your needs. How can I assist you today?",
+        "Politeness and respect go a long way in our conversation. How can I help you further?"
+    ];   
+    
+    public $defaultAnswers = [
+        "I'm sorry, I couldn't find an answer to that question. Is there anything else I can help you with? If you're looking for specific options, I can navigate you to them.",
+        "It seems like I don't have the information you're looking for. If you have another question, feel free to ask. I can also guide you to available options if needed.",
+        "I apologize, but I'm unable to provide an answer to that question. Please let me know if there's anything else I can assist you with, or if you'd like me to navigate you to available options.",
+        "Unfortunately, I don't have the information you need at the moment. If you have a different question, I'm here to help. I can also guide you to available options if that would be helpful.",
+        "I'm sorry if I can't answer that question. Feel free to ask anything else you might be curious about. Additionally, I can navigate you to available options if you'd like.",
+        "It looks like I don't have the answer you're seeking. Is there another question you'd like assistance with? I can also guide you to available options based on your preferences.",
+        "I appreciate your question, but I don't have the answer right now. If you have other inquiries, I'm here to assist. Additionally, I can navigate you to available options if that would be helpful.",
+        "I'm sorry, but I can't provide a response to that question. If you have additional questions, feel free to ask. I can also guide you to available options if you're interested.",
+        "I apologize if I can't answer your question. Is there something else I can help you with, or would you like me to navigate you to available options?",
+        "Unfortunately, I don't have the information you're looking for. If you have another question, I'm here to assist you. I can also guide you to available options if that suits your needs."
+    ];
+    public function randomText($query, $data, $entity)
     {
-        // dd($query);
-        // person
-        $openingForFalsePerson = [
-            'I couldn\'t find any information about that person. Is there anything else I can assist you with?',
-            'Im sorry, but I couldnt locate any details for that individual. How else can I help you?',
-            'It seems I don\'t have any information on that person. Please provide more details or try another query.',
-            'Unfortunately, I couldn\'t find any information on the person you mentioned. Can I assist you with something else?',
-            'I couldn\'t find any records for that person. Please double-check the name or provide additional information.',
-            'I apologize, but there are no records matching that person in my database. Can I assist you with something else?',
-            'I couldn\'t locate any information for the person you specified. Is there another request youd like to make?',
-            'Im sorry, but I couldnt find any information about that person. How else can I assist you?',
-            'Unfortunately, I don\'t have any data on that person. Please provide more details or try a different query.',
-            'It appears there are no records for that person. Can I help you with a different request?',
-        ];
-
-        // Person Found
-        $openingForFoundPerson = [
-            'Excellent news! Ive successfully retrieved comprehensive information about [name] in their role as [position].',
-            'Im pleased to inform you that Ive located detailed records for [name] in their capacity as [position].',
-            'Youre in good hands! I possess comprehensive information on [name] in their role as [position].',
-            'Im delighted to share that Ive found the information you requested regarding [name] in their role as [position].',
-            'Ive successfully retrieved detailed information for [name] in their capacity as [position].',
-            'Rest assured, I have in-depth information about [name] in their role as [position].',
-            'Ive successfully located [name] in their capacity as [position]. What specific details are you seeking?',
-            'Youre in luck! Ive found comprehensive information about [name] in their role as [position].',
-            'Ive diligently gathered extensive details for [name] in their role as [position].',
-            'I possess thorough information on [name] in their capacity as [position]. How may I further assist you?',
-        ];
-
-        // facilities
-        $openingForFalseFacility = [
-            'I couldn\'t find any information about that facility. Is there anything else I can assist you with?',
-            'Im sorry, but I couldnt locate any details for that facility. How else can I help you?',
-            'It seems I don\'t have any information on that facility. Please provide more details or try another query.',
-            'Unfortunately, I couldn\'t find any information on the facility you mentioned. Can I assist you with something else?',
-            'I couldn\'t find any records for that facility. Please double-check the name or provide additional information.',
-            'I apologize, but there are no records matching that facility in my database. Can I assist you with something else?',
-            'I couldn\'t locate any information for the facility you specified. Is there another request youd like to make?',
-            'Im sorry, but I couldnt find any information about that facility. How else can I assist you?',
-            'Unfortunately, I don\'t have any data on that facility. Please provide more details or try a different query.',
-            'It appears there are no records for that facility. Can I help you with a different request?',
-        ];
-
-        $openingForFoundFacilityStart = [
-            'Found [facilities] on [floor]. Operating hours: [operation_time]. Go there?',
-            'Located [facilities] on [floor]. Operating hours: [operation_time]. Ready to go?',
-            'Info: [facilities] on [floor]. Operating hours: [operation_time]. Lets head there?',
-            "Details for [facilities] on [floor]. Operating hours: [operation_time]. Shall we go?",
-            "Facility: [facilities] on [floor]. Hours: [operation_time]. Go now?",
-            "Info: [facilities] on [floor]. Operating hours: [operation_time]. Ready to visit?",
-            "Found [facilities] on [floor]. Operating hours: [operation_time]. Go there now?",
-            "Located [facilities] on [floor]. Operating hours: [operation_time]. Ready to go now?",
-            "Info: [facilities] on [floor]. Operating hours: [operation_time]. Time to head there?",
-            "Details for [facilities] on [floor]. Operating hours: [operation_time]. Lets go!",
-        ];
-        
-        
-        
-        // person location found
-        // $openingForFoundPersonLocation = [
-        //     'Great news! I found information on navigating to [facilities] where you can find [persons]. The operation time is [operation_time].',
-        //     'Good news! I located details for reaching [facilities] where you can find [persons]. The operation time is [operation_time].',
-        //     'You\'re in luck! I have directions for [facilities] where you can locate [persons]. The operation time is [operation_time].',
-        //     'I found navigation instructions for accessing [facilities] where you can find [persons]. The operation time is [operation_time].',
-        //     'I\'ve found guidance on reaching [facilities] where you can discover [persons]. The operation time is [operation_time].',
-        //     'You\'re in the right place! I have directions to [facilities] where you can locate [persons]. The operation time is [operation_time].',
-        //     'I found the route to [facilities] where you can find [persons]. The operation time is [operation_time].',
-        //     'You\'re in luck! I located information on how to get to [facilities] where you can find [persons]. The operation time is [operation_time].',
-        //     'I\'ve successfully provided navigation details for [facilities] where you can find [persons]. The operation time is [operation_time].',
-        //     'Good news! I have navigation instructions for reaching [facilities] where you can find [persons]. The operation time is [operation_time].',
-        // ];
-
-        // persons position at eastwoods
-        $personsPositionAtEastwoods = [
-            'The principal at Eastwoods is [name].',
-            'At Eastwoods, the principal is [name].',
-            'You are inquiring about the principal at Eastwoods, and that would be [name].',
-            'The person in charge of the principal role at Eastwoods is [name].',
-            'The current principal at Eastwoods is [name].',
-            'Youll find [name] as the principal at Eastwoods.',
-            'The role of principal at Eastwoods is held by [name].',
-            'Eastwoods School is led by [name] as the principal.',
-            'The principal at Eastwoods goes by the name of [name].',
-            'At Eastwoods, [name] serves as the principal.'
-        ];
-
-        //person located response message
-        $openingForFoundPersonLocation = [
-            'Great news! Directions to [facilities] where you can find [persons] are available.',
-            'Good news! Details on [facilities] where you can find [persons] are ready.',
-            'Directions to [facilities] for locating [persons] are at your service.',
-            'Find your way to [facilities] to discover [persons].',
-            'Guidance to [facilities] for discovering [persons] is here.',
-            'Youre in the right place! Directions to [facilities] for finding [persons] are provided.',
-            'The route to [facilities] where you can locate [persons] is available.',
-            'Youre in luck! Information on reaching [facilities] to find [persons] is here.',
-            'Navigation details for [facilities] to locate [persons] are ready.',
-            'Discover directions to [facilities] for finding [persons].',
-        ];
-        
-        $positiveResponses = [
-            "Explore the facility on [floor] below. Enjoy!",
-            "Get ready to explore on [floor]. Enjoy the map!",
-            "Discover the facility on [floor] with the map below!",
-            "Your map for [floor] is coming up. Enjoy exploring!",
-            "Exciting! [floor] facility on the map below. Dive in!",
-            "Explore [floor] with the map coming up. Enjoy!",
-            "Ready for [floor]? Map below. Enjoy your exploration!",
-            "Brace yourself for [floor] on the map. Dive in!",
-            "Your map for [floor] is ready. Start exploring!",
-            "Map for [floor] coming up. Enjoy your exploration!"
-        ];
-        
-        
-        // negative response for no
-        $negativeResponses = [
-            "No problem! If you change your mind or have any more questions, feel free to ask. I'm here to help!",
-            "That's alright! If you have any other questions or need assistance with something else, just let me know.",
-            "Sure thing! If you ever decide to explore further or need assistance later, don't hesitate to reach out.",
-            "Understood! If you have more questions or need assistance in the future, feel free to come back anytime.",
-            "Alright! If you ever want to see the map or have any other inquiries, I'm here to assist you.",
-            "No worries! If you change your mind or need assistance with anything else, don't hesitate to ask.",
-            "Okay! If you have any more questions or need assistance later, don't hesitate to reach out to me.",
-            "Certainly! If you ever decide to view the map or have any other questions, I'm here to assist you.",
-            "Got it! If you change your mind or need help with anything else, feel free to get in touch.",
-            "That's perfectly fine! If you have any more questions or need assistance in the future, I'm here to help."
-        ];
-
-        //layout not found
-        $layoutNotFoundMessages = [
-            "I apologize, but it seems we don't currently have the layout information for this facility's location.",
-            "We understand your request for the layout, but at this moment, the layout for this facility's location is unavailable.",
-            "Regrettably, the layout details for this facility's location are not present in our database.",
-            "We're sorry to inform you that we couldn't locate the layout for this facility's location.",
-            "Unfortunately, the layout for this facility's location is not currently accessible in our records.",
-            "Apologies, but we're currently missing the layout information for this facility's location.",
-            "The layout for this facility's location is regrettably absent from our database.",
-            "I regret to inform you that we are unable to provide the layout for this facility's location at this time.",
-            "We've conducted a search, but the layout for this facility's location is nowhere to be found.",
-            "We're actively working on obtaining the layout for this facility's location, but it's not yet available.",
-            "The layout for this facility's location is currently undergoing updates, and we don't have the latest version.",
-            "Layout data for this facility's location is temporarily out of reach. We apologize for any inconvenience.",
-            "Our team is diligently searching for the layout of this facility's location, but it has proven elusive.",
-            "The layout for this facility's location is in a pending state and hasn't been finalized yet.",
-            "Please check back later for the layout details of this facility's location as we continue our efforts to obtain it.",
-            "We sincerely apologize, but the layout information for this facility's location is currently unavailable.",
-            "We understand your desire for the layout, but we're unable to provide it as of now.",
-            "The layout for this facility's location is still in the process of being updated, and we don't have the latest version.",
-            "We're sorry for the inconvenience, but the layout is currently not accessible to us.",
-            "We're doing our best to acquire the layout for this facility's location, but it's not yet ready for retrieval.",
-        ];
-        
-        $endingPartLoc = [
-            'To continue the conversation, press yes.',
-            'Press yes to proceed further.',
-            'To move forward, simply press yes.',
-            'To continue, press yes anytime.',
-            'Feel free to press yes to continue.',
-            'You can press yes to keep going.',
-            'To proceed, press yes whenever youre ready.',
-            'When youre ready to continue, press yes.',
-            'Press yes if youd like to continue.',
-            'To continue, press yes whenever youre ready.',
-        ];
-
-        // ending part
-        $endingPart = [
-            'How can I assist you further?',
-            'What else would you like to know?',
-            'How may I help you with it?',
-            'What would you like to do next?',
-            'How can I assist you with it?',
-            'How may I assist you further?',
-            'What specific information do you need?',
-            'What else can I do for you today?',
-            'How can I assist you today?',
-            'How may I help you with it?',
-            'Is there anything else on your mind?',
-            'Feel free to ask any other questions.',
-            'Im here to help. Whats next?',
-            'What can I do to make your day better?',
-            'Dont hesitate to ask if you need more information.',
-            'Your satisfaction is my priority. Whats your next query?',
-            'Im at your service. Whats your request?',
-            'Let me know how I can be of further assistance.',
-            'What other assistance do you require today?',
-            'Im here to assist you. Whats your next question?',
-        ];
-
-        // greetings
-        $greetings = [
-            "Hello there! Welcome to Eastwoods Guide, your dedicated resource for all things Eastwoods. How may I assist you today?",
-            "Greetings! Eastwoods Guide is here to assist you with any questions or information related to Eastwoods. What can I do for you?",
-            "Good day! Eastwoods Guide is your trusted companion for Eastwoods-related information and support. How can I enhance your day?",
-            "Hi! Welcome to Eastwoods Guide, your friendly source for all things Eastwoods. How can I be of service to you?",
-            "Hello! Eastwoods Guide is here to serve you. How can I assist you during your time at Eastwoods?",
-            "Hey! I'm Eastwoods Guide, dedicated to making your Eastwoods experience smoother. How can I assist you today?",
-            "Howdy! It's great to see you on campus. Eastwoods Guide is here to help. What can I do for you today?",
-            "Hi there! Eastwoods Guide is ready to provide Eastwoods-related support. How can I make your day more productive?",
-            "Hey there! Welcome to Eastwoods Guide. How can I assist you in navigating Eastwoods?",
-            "Good to see you! Eastwoods Guide is here to provide Eastwoods-related information and assistance. What's on your mind?"
-        ]; 
-
-        // thanks
-        $thanks = [
-            "You're welcome! If you have any more questions, feel free to ask.",
-            "No problem at all! If there's anything else I can assist you with, just let me know.",
-            "You got it! If you need further assistance, don't hesitate to reach out.",
-            "Glad I could help! If you have more inquiries, I'm here to assist.",
-            "Anytime! If you have additional questions, feel free to ask.",
-            "You're welcome! If there's anything else on your mind, don't hesitate to ask.",
-            "No worries! If you require further assistance, feel free to reach out.",
-            "It was my pleasure assisting you! If you have more questions later, I'll be here.",
-            "You're welcome! If there's anything specific you'd like to know, just ask.",
-            "Happy to help! If you ever need assistance in the future, don't hesitate to ask me."
-        ];
-
-        // bad words
-        $badWordResponses = [
-            "I'm here to provide useful information and assistance. Please refrain from using offensive language.",
-            "Let's keep the conversation respectful and appropriate. How can I assist you further?",
-            "I appreciate a polite and respectful conversation. How can I help you today?",
-            "Using respectful language makes communication more effective. What can I assist you with?",
-            "I'm here to help with your questions. Please keep the conversation civil and respectful.",
-            "Respectful communication leads to better outcomes. How can I assist you today?",
-            "Thank you for maintaining a courteous tone in our conversation. How can I assist you further?",
-            "Your polite language is appreciated. How can I be of assistance to you?",
-            "Let's keep our conversation respectful and focused on your needs. How can I assist you today?",
-            "Politeness and respect go a long way in our conversation. How can I help you further?"
-        ];   
-        
-        $defaultAnswers = [
-            "I'm sorry, I couldn't find an answer to that question. Is there anything else I can help you with? If you're looking for specific options, I can navigate you to them.",
-            "It seems like I don't have the information you're looking for. If you have another question, feel free to ask. I can also guide you to available options if needed.",
-            "I apologize, but I'm unable to provide an answer to that question. Please let me know if there's anything else I can assist you with, or if you'd like me to navigate you to available options.",
-            "Unfortunately, I don't have the information you need at the moment. If you have a different question, I'm here to help. I can also guide you to available options if that would be helpful.",
-            "I'm sorry if I can't answer that question. Feel free to ask anything else you might be curious about. Additionally, I can navigate you to available options if you'd like.",
-            "It looks like I don't have the answer you're seeking. Is there another question you'd like assistance with? I can also guide you to available options based on your preferences.",
-            "I appreciate your question, but I don't have the answer right now. If you have other inquiries, I'm here to assist. Additionally, I can navigate you to available options if that would be helpful.",
-            "I'm sorry, but I can't provide a response to that question. If you have additional questions, feel free to ask. I can also guide you to available options if you're interested.",
-            "I apologize if I can't answer your question. Is there something else I can help you with, or would you like me to navigate you to available options?",
-            "Unfortunately, I don't have the information you're looking for. If you have another question, I'm here to assist you. I can also guide you to available options if that suits your needs."
-        ];
-        
-        
-
         $length = 0;
         switch ($query) {
 
             case 'greetings':
-                $length = mt_rand(0, count($greetings) - 1);
-                $randomResponse = $greetings[$length];
+                $length = mt_rand(0, count($this->greetings) - 1);
+                $randomResponse = $this->greetings[$length];
                 break;
 
             case 'persons.not':
-                $length = mt_rand(0, count($openingForFalsePerson) - 1);
-                // Get the random response
-                $randomResponse = $openingForFalsePerson[$length];
+                if($entity){
+                    $randomResponse = $this->entityHelper('person', $entity);
+                }else{
+                    $length = mt_rand(0, count($this->openingForFalsePerson) - 1);
+                    // Get the random response
+                    $randomResponse = $this->openingForFalsePerson[$length];
+                }
+
+               
                 break;
 
             case 'persons.found':
-                $length = mt_rand(0, count($openingForFoundPerson) - 1);
+                // dd($data);
+                $length = mt_rand(0, count($this->openingForFoundPerson) - 1);
                 // Get the random response
                 $randomResponse = str_replace(
                     ['[name]', '[position]'],
-                    [$data['name'], $data['position']],
-                    $openingForFoundPerson[$length]
+                    [$data['name'], $data['facilities'].' on '.$data['floor']],
+                    $this->openingForFoundPerson[$length]
                 ) .
-                    '! ' . $endingPart[$length];
+                    '! ' . $this->endingPart[$length];
                 break;
 
             case 'persons.position.found':
-                $length = mt_rand(0, count($personsPositionAtEastwoods) - 1);
+                $length = mt_rand(0, count($this->personsPositionAtEastwoods) - 1);
                 // Get the random response
                 $randomResponse = str_replace(
                     ['[name]'],
                     [$data['name']],
-                    $personsPositionAtEastwoods[$length]
+                    $this->personsPositionAtEastwoods[$length]
                 ) .
-                    '! ' . $endingPart[$length];
+                    '! ' . $this->endingPart[$length];
                 break;
 
             case 'persons.position.not':
-                $length = mt_rand(0, count($openingForFalsePerson) - 1);
-                // Get the random response
-                $randomResponse = $openingForFalsePerson[$length];
+                if($entity){
+                    $randomResponse = $this->entityHelper('person.position', $entity);
+                }else{
+                    $length = mt_rand(0, count($this->openingForFalsePerson) - 1);
+                    // Get the random response
+                    $randomResponse = $this->openingForFalsePerson[$length];
+                }
                 break;
 
                 //person location question
             case 'persons.location.found':
                 // dd($data);
-                $length = mt_rand(0, count($openingForFoundPersonLocation) - 1);
+                $length = mt_rand(0, count($this->openingForFoundPersonLocation) - 1);
                 // Get the random response
                 $randomResponse = str_replace(
                     ['[persons]'],
                     [$data['name']],
-                    $openingForFoundPersonLocation[$length]
+                    $this->openingForFoundPersonLocation[$length]
                 ) .
-                    '! ' . $endingPartLoc[$length];
+                    '! ' . $this->endingPartLoc[$length];
                 break;
 
             case 'persons.location.not':
-                $length = mt_rand(0, count($openingForFalsePerson) - 1);
-                // Get the random response
-                $randomResponse = $openingForFalsePerson[$length];
+                if($entity){
+                    $randomResponse = $this->entityHelper('person.location', $entity);
+                }else{
+                    $length = mt_rand(0, count($this->openingForFalsePerson) - 1);
+                    // Get the random response
+                    $randomResponse = $this->openingForFalsePerson[$length];
+                }
                 break;
 
             case 'facilities.not':
-                $length = mt_rand(0, count($openingForFalseFacility) - 1);
-                $randomResponse = $openingForFalseFacility[$length];
+                if($entity){
+                    $randomResponse = $this->entityHelper('facilities', $entity);
+                    // dd($randomResponse);
+                }else{
+                    $length = mt_rand(0, count($this->openingForFalseFacility) - 1);
+                    $randomResponse = $this->openingForFalseFacility[$length];
+                }
                 break;
 
             case 'facilities.found':
-                $length = mt_rand(0, count($openingForFoundFacilityStart) - 1);
+                // dd($data);
+                $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);
                 $randomResponse = str_replace(
                     ['[facilities]', '[operation_time]', '[floor]'],
                     [$data['facilities'], $data['operation_time'], $data['floor']],
-                    $openingForFoundFacilityStart[$length]
+                    $this->openingForFoundFacilityStart[$length]
                 ) .
                     '! ';
                 break;
 
             case 'facilities.layout.not':
-                $length = mt_rand(0, count($layoutNotFoundMessages) - 1);
-                $randomResponse = $layoutNotFoundMessages[$length].'! '. $endingPart[$length];
+                if($entity){
+                    $randomResponse = $this->entityHelper('layout', $entity);
+                }else{
+                    $length = mt_rand(0, count($this->layoutNotFoundMessages) - 1);
+                    $randomResponse = $this->layoutNotFoundMessages[$length].'! '. $this->endingPart[$length];
+                }
                 break;
            
 
             case 'badwords':
-                $length = mt_rand(0, count($badWordResponses) - 1);
-                $randomResponse = $badWordResponses[$length];
+                $length = mt_rand(0, count($this->badWordResponses) - 1);
+                $randomResponse = $this->badWordResponses[$length];
                 break;
 
             case 'goodbye':
-                $length = mt_rand(0, count($thanks) - 1);
-                $randomResponse = $thanks[$length];
+                $length = mt_rand(0, count($this->thanks) - 1);
+                $randomResponse = $this->thanks[$length];
                 break;
 
             case 'yes':
-                $length = mt_rand(0, count($positiveResponses) - 1);
-                $randomResponse = $positiveResponses[$length]. '! ';
+                $length = mt_rand(0, count($this->positiveResponses) - 1);
+                $randomResponse = $this->positiveResponses[$length]. '! ';
                 // $randomResponse = str_replace(
                 //     ['[floor]'],
                 //     [$data['floor']],
@@ -718,13 +780,13 @@ class Navi extends Controller
                 break;
 
             case 'no':
-                $length = mt_rand(0, count($negativeResponses) - 1);
-                $randomResponse = $negativeResponses[$length] .'! '.$endingPart[$length];
+                $length = mt_rand(0, count($this->negativeResponses) - 1);
+                $randomResponse = $this->negativeResponses[$length] .'! '.$this->endingPart[$length];
                 break;
 
             default:
-                $length = mt_rand(0, count($defaultAnswers) - 1);
-                $randomResponse = $defaultAnswers[$length];
+                $length = mt_rand(0, count($this->defaultAnswers) - 1);
+                $randomResponse = $this->defaultAnswers[$length];
                 break;
         }
 
@@ -835,5 +897,80 @@ class Navi extends Controller
         ];
         // dd($resultAll);
         return response()->json(['result'=>$response]);
+    }
+
+
+    //sub helper for entity
+   public function entityHelper($types, $entity){
+        $length = 0;
+        // dd($type);
+        switch ($types) {
+            case 'person':
+                $p = Teacher::where('name', $entity)->first();
+                $length = mt_rand(0, count($this->openingForFoundPerson) - 1);
+                // Get the random response
+                $randomResponse = str_replace(
+                    ['[name]', '[position]'],
+                    [$p['name'], $p['position']],
+                    $this->openingForFoundPerson[$length]
+                ) .
+                    '! ' . $this->endingPart[$length];
+                break;
+            case 'person.position':
+                $p = Teacher::where('name', $entity)->first();
+                $length = mt_rand(0, count($this->personsPositionAtEastwoods) - 1);
+                // Get the random response
+                $randomResponse = str_replace(
+                    ['[name]'],
+                    [$p['name']],
+                    $this->personsPositionAtEastwoods[$length]
+                ) .
+                    '! ' . $this->endingPart[$length];
+                
+                break;
+
+            case 'persons.location':
+                $p = Teacher::where('name', $entity)->first();
+                $length = mt_rand(0, count($this->openingForFoundPersonLocation) - 1);
+                // Get the random response
+                $randomResponse = str_replace(
+                    ['[persons]'],
+                    [$p['name']],
+                    $this->openingForFoundPersonLocation[$length]
+                ) .
+                    '! ' . $this->endingPartLoc[$length];
+                break;
+
+            case 'facilities':
+                $f = EastwoodsFacilities::where('facilities',$entity)->first();
+                // dd($f);
+                $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);
+                $randomResponse = str_replace(
+                    ['[facilities]', '[operation_time]', '[floor]'],
+                    [$f['facilities'], $f['operation_time'], $f['floor']],
+                    $this->openingForFoundFacilityStart[$length]
+                ) .
+                    '! ';
+
+                    session(['floor' => $f['floor'], 'facility' => $f['facilities']]);
+                break;
+            case 'layout':
+                $f = EastwoodsFacilities::where('facilities',$entity)->first();
+                $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);
+                $randomResponse = str_replace(
+                    ['[facilities]', '[operation_time]', '[floor]'],
+                    [$f['facilities'], $f['operation_time'], $f['floor']],
+                    $this->openingForFoundFacilityStart[$length]
+                ) .
+                    '! ';
+                    session(['floor' => $f['floor'], 'facility' => $f['facilities']]);
+                break;
+            
+            default:
+                $length = mt_rand(0, count($this->defaultAnswers) - 1);
+                $randomResponse = $this->defaultAnswers[$length];
+                break;
+        }
+        return $randomResponse;
     }
 }

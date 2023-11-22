@@ -88,6 +88,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "facilities.found",
+                            entity: response.intities,
                             answer: response.answer,
                             data: datas,
                         },
@@ -97,6 +98,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "facilities.not",
+                            entity: response.intities,
                             answer: "oh!, sorry looks like i dont have the details!",
                             data: false,
                         },
@@ -111,6 +113,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "true",
                             query: "facilities.found",
+                            entity: response.intities,
                             answer: response.answer,
                             data: datas,
                         },
@@ -120,6 +123,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "true",
                             query: "facilities.not",
+                            entity: response.intities,
                             answer: "im not able to show you the facilities right now!",
                             data: false,
                         },
@@ -134,6 +138,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "persons.found",
+                            entity: response.intities,
                             answer: response.answer,
                             data: datas,
                         },
@@ -143,6 +148,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "persons.not",
+                            entity: response.intities,
                             answer: "im sorry i dont know that persons is!",
                             data: false,
                         },
@@ -157,6 +163,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "persons.position.found",
+                            entity: response.intities,
                             answer: response.answer,
                             data: datas,
                         },
@@ -166,6 +173,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "persons.position.not",
+                            entity: response.intities,
                             answer: "im sorry i dont know that persons is!",
                             data: false,
                         },
@@ -180,6 +188,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "persons.location.found",
+                            entity: response.intities,
                             answer: response.answer,
                             data: datas,
                         },
@@ -189,6 +198,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "persons.location.not",
+                            entity: response.intities,
                             answer: "im sorry i dont know that persons is!",
                             data: false,
                         },
@@ -203,6 +213,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "true",
                             query: "continue",
+                            entity: response.intities,
                             answer: response.answer,
                             data: datas,
                         },
@@ -212,6 +223,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "true",
                             query: "continue",
+                            entity: response.intities,
                             answer: "i didnt know that, my data is limited!",
                             data: false,
                         },
@@ -227,6 +239,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "goodbye",
+                            entity: response.intities,
                             answer: response.answer,
                             data: datas,
                         },
@@ -236,6 +249,7 @@ async function processNLPQuestion(question, persons, facilities) {
                         {
                             flag: "false",
                             query: "goodbye",
+                            entity: response.intities,
                             answer: "i didnt know that person!",
                             data: false,
                         },
@@ -248,6 +262,7 @@ async function processNLPQuestion(question, persons, facilities) {
                     {
                         flag: "false",
                         query: "404",
+                        entity: response.intities,
                         answer: "Sorry my knowledge is limited, i cant help you with that!",
                         data: "",
                     },

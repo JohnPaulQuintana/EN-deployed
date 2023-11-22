@@ -767,15 +767,6 @@
                                 }
                             }
 
-
-
-                            // startToSpeak(mess)
-                            //     .then((finished) => {
-                            //         if (finished) {
-                            //             // Speech finished
-                            //             console.log(finished)
-                            //         }
-                            //     });
                         }
 
                     case 'scanner':
@@ -842,34 +833,19 @@
                                     $('#searchModal').css({"display":'flex'})
                                     if (responseData.floor !== "false") {
                                         console.log(responseData.continuation)
-                                        // if (responseData.continuation !== false && responseData
-                                        //     .continuation !== undefined && responseData.continuation !==
-                                        //     'information' && responseData.continuation !== 'deactivate') {
-                                        //     processFacilitiesNavigation(responseData.floor, responseData
-                                        //         .facility)
-                                        //     $("#myModal").modal("show");
-
-                                        // } else if (responseData.continuation !== 'information') {
-                                        //     $('#overlay-updates').toggleClass('active');
-                                        //     $('#popup-continuation').toggleClass('active');
-                                        // } else if (responseData.continuation == 'deactivate') {
-                                        //     alert('yes')
-                                        //     $('#overlay-updates').removeClass('active');
-                                        //     $('#popup-continuation').removeClass('active');
-                                        // }else {
-                                        //     $('#popup-continuation-teacher').toggleClass('active');
-                                        // }
+                                        boxes.show(); // Ensure boxes are visible before fading in
                                         switch (responseData.continuation) {
                                             case false:
-                                                // alert('yes')
-                                                console.log('yes')
+                                                // alert('false response')
+                                                console.log('false response')
                                                 // Handle the case when continuation is false
                                                 // $('#overlay-updates').toggleClass('active');
-                                               $('#searchModal').fadeOut(400)
+                                                $('#searchModal').fadeOut(400)
                                                 $('#popup-continuation').css({"display":"flex"})
                                                 break;
 
                                             case 'information':
+                                            console.log('information response')
                                                 // Handle the case when continuation is 'information'
                                                 $('#searchModal').fadeOut(400)
                                                 $('#popup-continuation-teacher').css({"display":"flex"});
@@ -879,11 +855,13 @@
                                                 // Handle the case when continuation is 'deactivate'
                                                 // alert('yes');
                                                 // $('#overlay-updates').removeClass('active');
+                                                console.log('deactivate response')
                                                 $('#searchModal').fadeOut(400)
                                                 $('#popup-continuation').fadeOut(400);
                                                 break;
 
                                             default:
+                                            console.log('default response')
                                                 // Handle the case when continuation is not 'information' or 'deactivate'
                                                 processFacilitiesNavigation(responseData.floor,
                                                     responseData.facility);
@@ -1105,6 +1083,7 @@
                 const responseData = await response.json();
 
                 console.log(responseData.details)
+                
                 var serverResponds = responseData.details;
                 const gridContainer = $("#grid-container");
                 
@@ -1289,14 +1268,10 @@
                             }
 
 
-                        } else {
-                            console.log('gridDetails is null or not an array');
                         }
                     } else {
                         $('#next-floor-button').fadeIn('slow');
                         $('#back-floor-button').fadeIn('slow');
-
-                        // console.log(abbrevDatas)
                     }
                 }
 
@@ -1381,7 +1356,7 @@
 
                 // Dijkstra's Algorithm
                 async function dijkstra(startX, startY, endX, endY) {
-                    console.log(startX, startY, endX, endY)
+                    // console.log(startX, startY, endX, endY)
                     try {
                         const startNode = document.querySelector(
                             `[data-x="${startX}"][data-y="${startY}"]`
@@ -1412,7 +1387,7 @@
                                 return Math.sqrt(dx * dx + dy * dy);
                             } else {
                                 // Handle the case where either node1 or node2 (or their datasets) is null or undefined
-                                console.log('Invalid nodes or datasets.');
+                                // console.log('Invalid nodes or datasets.');
                                 return Infinity; // or any other appropriate value
                             }
                         }
@@ -1495,9 +1470,7 @@
                                                     distances[currentY][currentX] + distanceToNeighbor;
                                             }
                                         }
-                                    } else {
-                                        console.log('neighborNode is null or undefined.');
-                                    }
+                                    } 
 
                                 }
                             }
@@ -1626,7 +1599,7 @@
                         // Run animation recursively with a delay
                         async function runAnimation() {
                             await animateShortestPath(shortestPath);
-                            console.log("Animation is complete");
+                            // console.log("Animation is complete");
 
                             dijkstra(startingX, startingY, targetX, targetY);
                         }
@@ -1695,7 +1668,7 @@
                         // Start the animation
                         // animateShortestPath(shortestPath);
                     } catch (error) {
-                        console.log(error)
+                        // console.log(error)
                     }
                 }
 
@@ -1815,6 +1788,31 @@
                 $('#popup-designated').removeClass('active')
             })
 
+            //random response for exit
+            function ranExit(){
+                  // Array of possible responses
+                const responses = [
+                    "Sure, how can I assist you?",
+                    "Absolutely! What do you need help with?",
+                    "Of course! Let me know what I can do for you.",
+                    "I'm here to help! What can I do for you?",
+                    "No problem! Feel free to ask for any assistance.",
+                    "Sure thing! Let me know how I can support you.",
+                    "Certainly! Your request is my command.",
+                    "Absolutely! I'm ready to assist.",
+                    "No worries! I'm at your service.",
+                    "You got it! What can I do for you?",
+                    // Add more responses as needed
+                ];
+
+                // Randomly select a response
+                const randomIndex = Math.floor(Math.random() * responses.length);
+                const randomResponse = responses[randomIndex];
+
+                // Return the random response and the original message
+                return randomResponse;
+            }
+
             //clicked exit inside of a circle
             $(document).on('click', '.exit', function() {
                 var boxes = $('.box');
@@ -1827,8 +1825,7 @@
                     }, (totalBoxes - index - 1) * 200);
                 });
                 stopSpeaking()
-                startToSpeak(
-                'If there\'s anything I can do for you, just let me know. I\'m happy to help!');
+                startToSpeak(ranExit());
                 setTimeout(function() {
                     $('#searchModal').fadeOut(500);
                     $('#popup-continuation').fadeOut(500);
@@ -1857,8 +1854,9 @@
             //navigation exit
             $(document).on('click', '.navi-exit', function() {
                 abbrevPeriodicTable.empty()
+                stopSpeaking()
                 startToSpeak(
-                'If there\'s anything I can do for you, just let me know. I\'m happy to help!');
+                ranExit());
                 $('#navigationPopup').fadeOut(500);
                 $('#designatedPopup').fadeOut(500);
                 search2Pops.css({
@@ -1867,9 +1865,10 @@
             })
             //navigation exit
             $(document).on('click', '.conti-exit', function() {
+                stopSpeaking()
                 abbrevPeriodicTable.empty()
                 startToSpeak(
-                'If there\'s anything I can do for you, just let me know. I\'m happy to help!');
+                ranExit());
                 $('#popup-continuation').fadeOut(500);
                 $('#searchModal').css({"display":'flex'}).hide().fadeIn(500);;
                 search2Pops.css({

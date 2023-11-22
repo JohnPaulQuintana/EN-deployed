@@ -11,15 +11,16 @@ module.exports = function addPersonLocation(manager, persons) {
     // manager.addDocument("en", `How can I find [${persons.join('|')}]? Where are they located?`, 'query.persons.facilities.show');    
 
     persons.forEach((person) => {
-        manager.addDocument("en", `What's the location of [${person}]?`, 'query.persons.facilities.show');
-        manager.addDocument("en", `Can you tell me where to find [${person}]?`, 'query.persons.facilities.show');
-        manager.addDocument("en", `I'm looking for [${person}]'s location. Where can I find them?`, 'query.persons.facilities.show');
-        manager.addDocument("en", `Could you direct me to [${person}]? I need to know their location.`, 'query.persons.facilities.show');
-        manager.addDocument("en", `Tell me the whereabouts of [${person}] please.`, 'query.persons.facilities.show');
-        manager.addDocument("en", `I'd like to know where [${person}] is located. Can you help?`, 'query.persons.facilities.show');
-        manager.addDocument("en", `Where can I locate [${person}] on campus?`, 'query.persons.facilities.show');
-        manager.addDocument("en", `Can you provide information on the location of [${person}]?`, 'query.persons.facilities.show');
-        manager.addDocument("en", `I'm searching for the location of [${person}] on campus.`, 'query.persons.facilities.show');
-        manager.addDocument("en", `How can I find [${person}]? Where are they located?`, 'query.persons.facilities.show');  
+        manager.addNamedEntityText('person', person, ['en'], [person])
+        manager.addDocument("en", `What's the location of %person%?`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `Can you tell me where to find %person%?`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `I'm looking for %person%'s location. Where can I find them?`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `Could you direct me to %person%? I need to know their location.`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `Tell me the whereabouts of %person% please.`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `I'd like to know where %person% is located. Can you help?`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `Where can I locate %person% on campus?`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `Can you provide information on the location of %person%?`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `I'm searching for the location of %person% on campus.`, 'query.persons.facilities.show', {person : person});
+        manager.addDocument("en", `How can I find %person%? Where are they located?`, 'query.persons.facilities.show', {person : person});  
     }) 
 }

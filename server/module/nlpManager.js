@@ -28,9 +28,15 @@ const trainAndProcessNLP = async (question, persons, facilities) => {
                 await manager.save(modelPath);
             }
 
+             
+
             const response = await manager.process("en", question);
+            // Use a ternary operator to get utteranceText or set it to undefined if no entities
+            const intities = response.entities && response.entities.length > 0
+            ? response.entities[0].utteranceText
+            : false;
             const { intent, score, answer } = response;
-            resolve({ intent, score, answer });
+            resolve({ intent, score, answer, intities });
         } catch (error) {
             console.log(error);
             reject(error);
