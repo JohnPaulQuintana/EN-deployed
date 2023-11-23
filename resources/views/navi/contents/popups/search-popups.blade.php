@@ -23,15 +23,21 @@
                 </div>
             </div>
             <div class="box box3">
-                <div class="box-content" data-value="vision" data-model="Vision">
+                <div class="box-content" data-value="vision" data-model="SchoolHMV">
                     <box-icon type='solid' name='checkbox-checked' class="vision sml" data-value="vision"></box-icon>
                     <p class="label">Vision</p> <!-- Add label for teachers -->
                 </div>
             </div>
             <div class="box box4">
-                <div class="box-content" data-value="mission" data-model="Mission">
+                <div class="box-content" data-value="mission" data-model="SchoolHMV">
                     <box-icon type='solid' name='checkbox-checked' class="mission sml" data-value="mission"></box-icon>
                     <p class="label">Mission</p> <!-- Add label for teachers -->
+                </div>
+            </div>
+            <div class="box box5">
+                <div class="box-content" data-value="hymn" data-model="SchoolHMV">
+                    <box-icon type='solid' name='videos' class="hymn sml" data-value="hymn"></box-icon>
+                    <p class="label">Hymn</p> <!-- Add label for teachers -->
                 </div>
             </div>
         </div>

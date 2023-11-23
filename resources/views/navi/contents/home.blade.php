@@ -282,6 +282,9 @@
     {{-- continuation for teacher location --}}
     <link rel="stylesheet" href="{{ asset('css/teacher-location.css') }}">
 
+    {{-- hymn --}}
+    <link rel="stylesheet" href="{{ asset('css/mv.css') }}">
+
 @endsection
 
 @section('contents')
@@ -356,6 +359,11 @@
         {{-- designated --}}
         @include('navi.contents.popups.designatedTeacher')
 
+        {{-- Eastwoods Hymn --}}
+        @include('navi.contents.popups.hymn')
+        {{-- Eastwoods mv --}}
+        @include('navi.contents.popups.mv')
+
     </section>
 
     <footer>
@@ -396,6 +404,7 @@
     {{-- pusher events --}}
     <script src="{{ asset('js/pusher.min.js') }}"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
     <!-- materialdesign icon js-->
     {{-- <script src="{{ asset('backend/assets/js/pages/materialdesign.init.js') }}"></script> --}}
@@ -530,7 +539,7 @@
 
                 // Clear the loading indicator
                 clearInterval(loadInterval);
-                // console.log(response)
+                console.log(response)
                 handleResponse(response)
             };
 
@@ -583,8 +592,9 @@
                     }),
 
                 });
-                // $('#overlay-updates').toggleClass('active');
-                // $('#popup-continuation').css({'display':'flex'})
+                // $('#overlay-updates').toggleClass('active');\
+                $('#popup-continuation-teacher').fadeOut(400);
+                $('#popup-continuation').fadeOut(400)
                 // const responseData = await response.json();
                 handleResponse(response)
             })
@@ -892,9 +902,11 @@
                 if (response.ok) {
                     const responseData = await response.json();
                     $('#popup-searching').removeClass('active');
-                    $('#popup-searchingInfo').toggleClass('active');
-                    // console.log(responseData)
-                    $('.info-title').text(`Available's Information on ${responseData.modelClass}`)
+                    if(responseData.modelClass !== 'SchoolHMV'){
+                        $('#popup-searchingInfo').toggleClass('active');
+                        // console.log(responseData)
+                        $('.info-title').text(`Available's Information on ${responseData.modelClass}`)
+                    }
                     var html = ''
                     responseData.informations.forEach((info, key) => {
                         // console.log(info)
@@ -909,7 +921,57 @@
                                     <span class="grid-item" data-info-model="${responseData.modelClass}" data-flo="${info.floor}" data-faci="${info.facility_name}" data-info-id="${info.id}" data-info-search="${info.name}">${info.name.toUpperCase()}</span>
                                 `
                                 break;
+                            case "SchoolHMV":
+                                    $('#searchModal').fadeOut(400)
+                                    if(info.type === 'hymn'){
+                                        startToSpeak(`Here is the ${info.type} of Eastwoods.`)
+                                        .then((finished) => {
+                                            
+                                            $('#east-play').html(
+                                                `<source src="${info.path}" type="video/mp4">
+                                                Your browser does not support the video tag.`
+                                            )
+                                            afterElement.addClass('circle-after');
+                                            circle.append(afterElement);
+                                            $('#hymnPopup').css({"display":'flex'}).hide().fadeIn(500);
 
+                                            // Attach an event listener to the 'ended' event of the video
+                                            $('#east-play').on('ended', function() {
+                                                // Close the modal, replace this with your actual modal closing logic
+                                                startToSpeak(`Thank you for Watching Eastwoods Hymns. Have a nice day.`)
+                                                .then((finished) => {
+                                                    $('#hymnPopup').fadeOut(400);
+                                                })
+                                                
+                                            });
+                                        })
+                                    }else{
+                                        let index = 0;
+                                        const textToType = info.descriptions;
+
+                                        function typeText() {
+                                            $('#mv-text-title').text(info.type);
+                                            $('.mv-text').html(`<span class="typing-text">"${textToType.substring(0, index)}"</span>`);
+
+                                            index++;
+
+                                            if (index <= textToType.length) {
+                                                setTimeout(typeText, 70); // Adjust the delay as needed
+                                            }
+                                        }
+
+                                        typeText();
+                            
+                                        
+                                        $('#mvPopup').css({"display":'flex'}).hide().fadeIn(500);
+                                        startToSpeak(`Here is the ${info.type} of Eastwoods. ${info.descriptions.replace(/,/g, '.')}`)
+                                        .then((finished) => {
+                                            
+                                        })
+                                        
+                                    }
+                                
+                                break;
                             default:
                                 break;
                         }
@@ -1082,9 +1144,15 @@
                 // handleResponse(response)
                 const responseData = await response.json();
 
-                console.log(responseData.details)
-                
-                var serverResponds = responseData.details;
+                // console.log(responseData.details)
+                // Assuming responseData.details is an array of objects with an 'id' property
+                const uniqueDetails = Array.from(new Set(responseData.details.map(detail => detail.id))).map(id => {
+                    return responseData.details.find(detail => detail.id === id);
+                });
+
+                console.log(uniqueDetails);
+
+                var serverResponds = uniqueDetails;
                 const gridContainer = $("#grid-container");
                 
                 let gridPoints = [];
@@ -1758,25 +1826,34 @@
                 });
 
                 const designatedTeachers = await responses.json();
-                console.log(designatedTeachers)
+                // console.log(designatedTeachers)
                 $('#navigationPopup').fadeOut(500);
 
                 $('.at').text(designatedTeachers.result.facility.facilities);
                 var teach = ''
+                if (designatedTeachers.result.teachers.length > 0) {
+                    designatedTeachers.result.teachers.forEach(ts => {
 
-                designatedTeachers.result.teachers.forEach(ts => {
+                        teach += `
+                                <div class="abbrev-element designated-teacher">
+                                    <box-icon name='user' type='solid' ></box-icon><br>
+                                    <span class="abbr designated-teacher-t">${ts.name}</span><br>
+                                    <hr>
+                                    <span class="abbr-m">${ts.position}</span>
+                                </div>
+                                `;
 
-                    teach += `
-                            <div class="abbrev-element designated-teacher">
-                                <box-icon name='user' type='solid' ></box-icon><br>
-                                <span class="abbr designated-teacher-t">${ts.name}</span><br>
-                                <hr>
-                                <span class="abbr-m">${ts.position}</span>
-                            </div>
-                            `;
-
-                });
-
+                    });
+                }else{
+                    teach = `<h4 class="text-center no-record">There's is no record on this facilities</h4>  
+                    `
+                    // <lord-icon
+                    //     src="https://cdn.lordicon.com/amjaykqd.json"
+                    //     trigger="hover"
+                    //     colors="primary:#0a5c15,secondary:#66ee78"
+                    //     style="width:350px;height:350px">
+                    // </lord-icon>
+                }
 
                 $('.l-des').html(teach)
                 $('#designatedPopup').css({'display':'flex'})
@@ -1858,6 +1935,19 @@
                 startToSpeak(
                 ranExit());
                 $('#navigationPopup').fadeOut(500);
+                $('#hymnPopup').fadeOut(400);
+                $('#mvPopup').fadeOut(400);
+                $('#designatedPopup').fadeOut(500);
+                search2Pops.css({
+                    'display': 'flex'
+                });
+            })
+
+            //back
+            $(document).on('click', '.mv-back', function(){
+                $('#navigationPopup').fadeOut(500);
+                $('#hymnPopup').fadeOut(400);
+                $('#mvPopup').fadeOut(400);
                 $('#designatedPopup').fadeOut(500);
                 search2Pops.css({
                     'display': 'flex'
@@ -1875,7 +1965,6 @@
                     'display': 'flex'
                 });
             })
-
 
             // open abbrev popups
             $(document).on('click', '.abbrev-means', function(){

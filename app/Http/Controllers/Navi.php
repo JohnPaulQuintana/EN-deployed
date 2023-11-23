@@ -20,11 +20,12 @@ class Navi extends Controller
     {
         $frequentlies = Frequently::get();
         $systems = Functionality::all();
-        return view('navi.contents.home')->with(['frequentlies' => $frequentlies, 'systems'=> $systems]);
+        return view('navi.contents.home')->with(['frequentlies' => $frequentlies, 'systems' => $systems]);
     }
 
     public function naviProcess(Request $request)
     {
+        // dd($request);
         $query = $request->input('query');
         $allowedPrompts = ['yes', 'just do it', 'ofcourse', 'please'];
         // get all user names
@@ -34,7 +35,7 @@ class Navi extends Controller
         $continuation = false;
         // for answer yes or no in facilities
         if (is_null($query) || !in_array($request->input('prompt'), $allowedPrompts)) {
-            if($request->input('prompt') === 'yes'){
+            if ($request->input('prompt') === 'yes') {
                 $floor = Session::get('floor');
                 $facility = Session::get('facility');
                 $continuation = true;
@@ -53,8 +54,8 @@ class Navi extends Controller
                 Session::forget('floor');
                 Session::forget('facility');
 
-                return response()->json(['response' => $this->generateText($dataArray['navi'][0]),'floor'=>$floor, 'facility'=>$facility, 'continuation'=>$continuation]);
-            }elseif ($request->input('prompt') === 'no') {
+                return response()->json(['response' => $this->generateText($dataArray['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
+            } elseif ($request->input('prompt') === 'no') {
                 $floor = 'false';
                 $facility = 'false';
                 $continuation = false;
@@ -63,6 +64,7 @@ class Navi extends Controller
                         [
                             'flag' => 'false',
                             'query' => 'no',
+                            'entity' => false,
                             'answer' => 'no',
                             'data' => '',
                         ],
@@ -72,237 +74,285 @@ class Navi extends Controller
                 Session::forget('floor');
                 Session::forget('facility');
 
-                return response()->json(['response' => $this->generateText($dataArray['navi'][0]),'floor'=>$floor, 'facility'=>$facility, 'continuation'=>$continuation]);
+                return response()->json(['response' => $this->generateText($dataArray['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
             }
 
             // Tokenize the prompt into words or tokens
             // $tokens = str_word_count($request->input('prompt'), 1); // This splits the prompt into an array of words
             // dd($tokens);
             // dd('ginagwaa');
-            $client = new Client();
-            $response = $client->post('http://localhost:5000/nlp', [
-                'json' => [
-                    'prompt' => $request->input('prompt'),
-                    'persons' => $names,
-                    'facilities' => $facilities,
-                ]
-            ]);
+            // dd($query);
+            if ($request->input('prompt') !== null) {
+                $client = new Client();
+                $response = $client->post('http://localhost:5000/nlp', [
+                    'json' => [
+                        'prompt' => $request->input('prompt'),
+                        'persons' => $names,
+                        'facilities' => $facilities,
+                    ]
+                ]);
+                $result = json_decode($response->getBody(), true);
+                $floor = '';
+                $facility = '';
+                // dd($result['navi'][0]);
+                // for facilities question
 
-            $result = json_decode($response->getBody(), true);
-            $floor = '';
-            $facility = '';
-            // dd($result['navi'][0]);
-            // for facilities question
-        
-            if (
-                isset($result['navi'][0]['data']) &&
-                isset($result['navi'][0]['data']['floor']) && isset($result['navi'][0]['entity'])
-            ) {
-                // 'floor' key is present in the specified structure
-                $floor = $result['navi'][0]['data']['floor'];
-                // $floorId = $result['navi'][0]['data']['id'];
-                $facility = $result['navi'][0]['data']['facilities'];
-                // dd($floor);
-                // Store $floor and $facility in the session
-                session(['floor' => $floor, 'facility' => $facility]);
-                $facilityFound = false;
-                $floorFound = Floorplan::where('floor', $floor)->first();
-                // dd($floorFound);
-                if($floorFound){
-                    foreach ($floorFound['gridDetails'] as $value) {
-                        // dd($value);
-                        if (isset($value['label']) && ($value['label'] === $facility || ($value['sublabel'] ?? null) === $facility)) {
-                            // dd('found');
-                            $facilityFound = true; // Set the flag to true if the facility is found
-                            break; // Stop searching once found
+                if (
+                    isset($result['navi'][0]['data']) &&
+                    isset($result['navi'][0]['data']['floor']) && isset($result['navi'][0]['entity'])
+                ) {
+                    // 'floor' key is present in the specified structure
+                    $floor = $result['navi'][0]['data']['floor'];
+                    // $floorId = $result['navi'][0]['data']['id'];
+                    $facility = $result['navi'][0]['data']['facilities'];
+                    // dd($floor);
+                    // Store $floor and $facility in the session
+                    session(['floor' => $floor, 'facility' => $facility]);
+                    $facilityFound = false;
+                    $floorFound = Floorplan::where('floor', $floor)->first();
+                    // dd($floorFound);
+                    if ($floorFound) {
+                        foreach ($floorFound['gridDetails'] as $value) {
+                            // dd($value);
+                            if (isset($value['label']) && ($value['label'] === $facility || ($value['sublabel'] ?? null) === $facility)) {
+                                // dd('found');
+                                $facilityFound = true; // Set the flag to true if the facility is found
+                                break; // Stop searching once found
+                            }
                         }
-                        
-                    }
 
-                    if(!$facilityFound){   
-                        // dd($value);
+                        if (!$facilityFound) {
+                            // dd($value);
+                            $response = [
+                                "flag" => "false",
+                                "query" => "facilities.layout.not",
+                                "data" => $facility,
+                            ];
+                            return response()->json(['response' => $this->generateText($response), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'information']);
+                        }
+
+                        // dd($jsonData);
+                    } else {
+                        // dd('not found!');
                         $response = [
                             "flag" => "false",
                             "query" => "facilities.layout.not",
                             "data" => $facility,
                         ];
-                        return response()->json(['response' => $this->generateText($response),'floor'=>$floor, 'facility'=>$facility, 'continuation'=>'information']);    
+                        return response()->json(['response' => $this->generateText($response), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'information']);
                     }
-                    
-                    // dd($jsonData);
-                }else{
-                    // dd('not found!');
-                    $response = [
-                        "flag" => "false",
-                        "query" => "facilities.layout.not",
-                        "data" => $facility,
-                    ];
-                    return response()->json(['response' => $this->generateText($response),'floor'=>$floor, 'facility'=>$facility, 'continuation'=>'information']);
-                }
-            } else {
-// dd($result);
-                if($result['navi'][0]['data']){
-                    // 'floor' key is not present in the specified structure
-                    //get the facilities cred
-                    $fac = EastwoodsFacilities::where('id', $result['navi'][0]['data']['facilities_id'])->first();
-                    session(['floor' => $fac['floor'], 'facility' => $fac['facilities']]);
-                    $floor = $fac['floor'];
-                    $facility = $fac['facilities'];
-                    // dd($fac['facilities']);
-                    // $floor = false;
-                    $continuation = 'information';
+                } else {
+                    // dd($result);
+                    if ($result['navi'][0]['data']) {
+                        // dd('if');
+                        // 'floor' key is not present in the specified structure
+                        //get the facilities cred
+                        $fac = EastwoodsFacilities::where('id', $result['navi'][0]['data']['facilities_id'])->first();
+                        // dd($fac);
+                        session(['floor' => $fac['floor'], 'facility' => $fac['facilities']]);
+                        $floor = $fac['floor'];
+                        $facility = $fac['facilities'];
+                        // dd($fac['facilities']);
+                        // $floor = false;
+                        $continuation = 'information';
+                    } elseif ($result['navi'][0]['entity']) {
+                        // dd('else if');
+                        //check if its a persons location question
+                        switch ($result['navi'][0]['query']) {
+                                //not found but has a entity
+                            case 'persons.location.not':
+                                //call this function naviProcessInformationSearch
+                                // format a request
+                                //  $t = Teacher::where('name',$result['navi'][0]['entity'])->first();
+                                $t = Teacher::join('eastwoods_Facilities', 'teachers.facilities_id', '=', 'eastwoods_Facilities.id')
+                                    ->where('teachers.name', $result['navi'][0]['entity'])
+                                    ->first();
+                                // dd($t);
+                                $formatrequest = new Request([
+                                    'infoId' => $t['id'],
+                                    'locationFloor' => $t['floor'],
+                                    'teacherLocation' => $t['facilities'],
+                                    'infoModel' => 'Teacher', // Replace with the actual model name
+                                    'data' => $t,
+                                ]);
 
-                }elseif($result['navi'][0]['entity']){
-                   
-                    //check if its a persons location question
-                    switch ($result['navi'][0]['query']) {
-                        //not found but has a entity
-                        case 'persons.location.not':
-                            //call this function naviProcessInformationSearch
-                             // format a request
-                            //  $t = Teacher::where('name',$result['navi'][0]['entity'])->first();
-                            $t = Teacher::join('eastwoods_Facilities', 'teachers.facilities_id', '=', 'eastwoods_Facilities.id')
-                                ->where('teachers.name', $result['navi'][0]['entity'])
-                                ->first();
-                            // dd($t);
-                            $formatrequest = new Request([
-                                'infoId' => $t['id'],
-                                'locationFloor' => $t['floor'],
-                                'teacherLocation' => $t['facilities'],
-                                'infoModel' => 'Teacher', // Replace with the actual model name
-                                'data' => $t,
-                            ]);
-                            // dd($formatrequest);
-                            return $this->naviProcessInformationSearch($formatrequest);
-                            break;
-                        
-                        default:
-                            # code...
-                            break;
+                                // dd($formatrequest);
+                                return $this->naviProcessInformationSearch($formatrequest);
+                                // break;
+
+                            case 'persons.not':
+                                // dd($result['navi'][0]);
+                                //call this function naviProcessInformationSearch
+                                // format a request
+                                //  $t = Teacher::where('name',$result['navi'][0]['entity'])->first();
+                                $t2 = Teacher::join('eastwoods_Facilities', 'teachers.facilities_id', '=', 'eastwoods_Facilities.id')
+                                    ->where('teachers.name', $result['navi'][0]['entity'])
+                                    ->first();
+                                //dd($t2);
+                                $formatrequest = new Request([
+                                    'infoId' => $t2['id'],
+                                    'locationFloor' => $t2['floor'],
+                                    'teacherLocation' => $t2['facilities'],
+                                    'infoModel' => 'Teacher', // Replace with the actual model name
+                                    'data' => $t2,
+                                ]);
+                                // dd($formatrequest);
+                                return $this->naviProcessInformationSearch($formatrequest);
+                                // break;
+
+                            case '404':
+                                $formatrequest = new Request([
+                                    'infoId' => null,
+                                    'locationFloor' => null,
+                                    'teacherLocation' => null,
+                                    'infoModel' => null, // Replace with the actual model name
+                                    'data' => false,
+                                ]);
+                                // dd($formatrequest);
+                                return $this->naviProcessInformationSearch($formatrequest);
+                            default:
+                                break;
+                        }
+                        $fac = EastwoodsFacilities::where('facilities', $result['navi'][0]['entity'])->first();
+                        session(['floor' => $fac['floor'], 'facility' => $fac['facilities']]);
+                        $floor = $fac['floor'];
+                        $facility = $fac['facilities'];
+                        // dd($fac['facilities']);
+                        // $floor = false;
+                        $continuation = 'information';
+                    } else {
+                        $floor = null;
+                        $facility = null;
+                        $continuation = 'deactivate';
                     }
-                    $fac = EastwoodsFacilities::where('facilities', $result['navi'][0]['entity'])->first();
-                    session(['floor' => $fac['floor'], 'facility' => $fac['facilities']]);
-                    $floor = $fac['floor'];
-                    $facility = $fac['facilities'];
-                    // dd($fac['facilities']);
-                    // $floor = false;
-                    $continuation = 'information';
-
-                }else{
-                    $floor = null;
-                    $facility = null; 
-                    $continuation = 'deactivate';
                 }
+                // dd($result['navi'][0]);
+                return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
+            }else{
+                $response = [
+                    'flag' => 'true',
+                    'answer' => 'Ooops sorry!, looks like your accidentally send a request without a question. dont be affraid to ask, im here to help.',
+                    'entity' => false,
+                    'data' => false,
+                ];
+                return response()->json(['response' => $response, 'floor' => null, 'facility' => null, 'continuation' => 'deactivate']);
             }
 
-            // dd($result['navi'][0]);
-            return response()->json(['response' => $this->generateText($result['navi'][0]),'floor'=>$floor, 'facility'=>$facility, 'continuation'=>$continuation]);
-        } 
-
+        } else {
+            return response()->json(['error' => 'error']);
+        }
     }
 
     // process navigation
     public function naviProcessNavigation(Request $request)
-{
-    $requestedFloorLabel = $request->input('floor');
-    $requestedFacilityLabel = $request->input('facility');
-    
-    // ending part
-    $endingPart = [
-        'How can I assist you further?',
-        'What else would you like to know?',
-        'How may I help you with it?',
-        'What would you like to do next?',
-        'How can I assist you with it?',
-        'How may I assist you further?',
-        'What specific information do you need?',
-        'What else can I do for you today?',
-        'How can I assist you today?',
-        'How may I help you with it?',
-        'Is there anything else on your mind?',
-        'Feel free to ask any other questions.',
-        'Im here to help. Whats next?',
-        'What can I do to make your day better?',
-        'Dont hesitate to ask if you need more information.',
-        'Your satisfaction is my priority. Whats your next query?',
-        'Im at your service. Whats your request?',
-        'Let me know how I can be of further assistance.',
-        'What other assistance do you require today?',
-        'Im here to assist you. Whats your next question?',
-    ];
+    {
+        $requestedFloorLabel = $request->input('floor');
+        $requestedFacilityLabel = $request->input('facility');
 
-    // Find the target floor
-    $targetFloor = Floorplan::where('floor', $requestedFloorLabel)->first();
+        // ending part
+        $endingPart = [
+            'How can I assist you further?',
+            'What else would you like to know?',
+            'How may I help you with it?',
+            'What would you like to do next?',
+            'How can I assist you with it?',
+            'How may I assist you further?',
+            'What specific information do you need?',
+            'What else can I do for you today?',
+            'How can I assist you today?',
+            'How may I help you with it?',
+            'Is there anything else on your mind?',
+            'Feel free to ask any other questions.',
+            'Im here to help. Whats next?',
+            'What can I do to make your day better?',
+            'Dont hesitate to ask if you need more information.',
+            'Your satisfaction is my priority. Whats your next query?',
+            'Im at your service. Whats your request?',
+            'Let me know how I can be of further assistance.',
+            'What other assistance do you require today?',
+            'Im here to assist you. Whats your next question?',
+        ];
 
-    if (!$targetFloor) {
-        return response()->json(['details' => [], 'message' => 'Target floor not found.']);
-    }
+        // Find the target floor
+        $targetFloor = Floorplan::where('floor', $requestedFloorLabel)->first();
 
-    // Include the ground floor in the response
-    $groundFloor = Floorplan::where('floor', 'ground-floor')->first();
-    $responseData = [];
-    $responseGuide = [];
-    $length = 0;
-    if ($groundFloor) {
-        $responseData[] = $groundFloor->toArray();
-    }
-
-    // Include floors leading to the target floor
-    $floors = Floorplan::where('floor', '<=', $requestedFloorLabel)->get();
-    // dd($groundFloor['floor']);
-    if (!$floors->isEmpty()) {
-        $responseGuide[] = $this->generateTextStairs($groundFloor['floor'], $requestedFacilityLabel, false);
-        foreach ($floors as $floor) {
-            $floorData = $floor->toArray();
-            $floorData['found'] = true;
-            $responseData[] = $floorData;
-            // dd($floor->floor.' '.$requestedFloorLabel);
-            if ($floor->floor === $requestedFloorLabel) {
-                // dd('ginagawa');
-                $length = mt_rand(0, count($endingPart) - 1);
-                $randomResponse = $endingPart[$length];
-
-                $responseGuide[] = $this->generateTextStairs($floor->floor, $requestedFacilityLabel, true). ' !' . $randomResponse;
-                break;
-            }else{
-                $responseGuide[] = $this->generateTextStairs($floor->floor, $requestedFacilityLabel, false); 
-            }
-        
+        if (!$targetFloor) {
+            return response()->json(['details' => [], 'message' => 'Target floor not found.']);
         }
 
-        // dd($responseGuide);
-        
-    } else {
-        $responseData['found'] = false;
-        $responseData['message'] = 'No matching floor found';
+        // Include the ground floor in the response
+        $groundFloor = Floorplan::where('floor', 'ground-floor')->first();
+        $responseData = [];
+        $responseGuide = [];
+        $length = 0;
+        if ($groundFloor) {
+            $responseData[] = $groundFloor->toArray();
+        }
+
+        // Include floors leading to the target floor
+        $floors = Floorplan::where('floor', '<=', $requestedFloorLabel)->get();
+        // dd($groundFloor['floor']);
+        if (!$floors->isEmpty()) {
+            $responseGuide[] = $this->generateTextStairs($groundFloor['floor'], $requestedFacilityLabel, false);
+            foreach ($floors as $floor) {
+                $floorData = $floor->toArray();
+                $floorData['found'] = true;
+                $responseData[] = $floorData;
+                // dd($floor->floor.' '.$requestedFloorLabel);
+                if ($floor->floor === $requestedFloorLabel) {
+                    // dd('ginagawa');
+                    $length = mt_rand(0, count($endingPart) - 1);
+                    $randomResponse = $endingPart[$length];
+
+                    $responseGuide[] = $this->generateTextStairs($floor->floor, $requestedFacilityLabel, true) . ' !' . $randomResponse;
+                    break;
+                } else {
+                    $responseGuide[] = $this->generateTextStairs($floor->floor, $requestedFacilityLabel, false);
+                }
+            }
+
+            // dd($responseGuide);
+
+        } else {
+            $responseData['found'] = false;
+            $responseData['message'] = 'No matching floor found';
+        }
+
+        // Remove duplicates
+        // $uniqueServerResponds = array_unique($serverResponds);
+
+        // dd($floorData); 
+        return response()->json(
+            [
+                'details' => $responseData,
+                'navigationMessage' => $responseGuide
+            ]
+        );
     }
-
-    // Remove duplicates
-    // $uniqueServerResponds = array_unique($serverResponds);
-
-    // dd($floorData); 
-    return response()->json([
-        'details' => $responseData, 
-        'navigationMessage'=>$responseGuide]
-    );
-}
 
 
     // process information request for browsing
-    public function naviProcessInformationRequest(Request $request){
+    public function naviProcessInformationRequest(Request $request)
+    {
         try {
+            // dd();
             $reqInfo = $request->input('requestInfo');
             $modelClass = 'App\Models\\' . $request->input('modelClass');
-            
-           if($reqInfo !== 'facilities'){
+
+            //this is for teacher
+            if ($reqInfo !== 'facilities' && $reqInfo !== 'mission' && $reqInfo !== 'vision' && $reqInfo !== 'hymn') {
                 $informations = $modelClass::join('eastwoods_facilities', 'eastwoods_facilities.id', '=', 'teachers.facilities_id')
-                ->select('teachers.*', 'eastwoods_facilities.facilities as facility_name', 'eastwoods_facilities.floor' )
-                ->get();
-           }else{
-                $informations = $modelClass::get();  
-           }
+                    ->select('teachers.*', 'eastwoods_facilities.facilities as facility_name', 'eastwoods_facilities.floor')
+                    ->get();
+    
+            }elseif($reqInfo === 'mission' || $reqInfo === 'vision' || $reqInfo === 'hymn'){ 
+                $informations = $modelClass::where('type',$reqInfo)->get();
+                // dd($informations);
+            }else {
+                $informations = $modelClass::get();
+            }
             // dd($informations);
-            return response()->json(['informations'=>$informations, 'modelClass'=>$request->input('modelClass')]);
+            return response()->json(['informations' => $informations, 'modelClass' => $request->input('modelClass')]);
         } catch (\Throwable $th) {
             throw $th;
             // dd($th);
@@ -310,18 +360,22 @@ class Navi extends Controller
     }
 
     // process for searching
-    public function naviProcessInformationSearch(Request $request){
+    public function naviProcessInformationSearch(Request $request)
+    {
         // dd($request);
+
+
+            $reqInfoId = $request->input('infoId');
+            $modelClass = 'App\Models\\' . $request->input('infoModel');
         
-        $reqInfoId = $request->input('infoId');
-        $modelClass = 'App\Models\\' . $request->input('infoModel');
-        if(!$request->input('data')){
-            $findInformation = $modelClass::where('id',$reqInfoId)->first();
-        }else{
+
+        if (!$request->input('data') && $request->input('infoModel') !== null) {
+            $findInformation = $modelClass::where('id', $reqInfoId)->first();
+        } else {
             // all info including location also
             $findInformation = $request->input('data');
         }
-    //    dd($findInformation);
+        //    dd($findInformation);
         $continuation = false;
         $facilityFound = false; // Initialize a flag to track if the facility is found
         // dd($findInformation);
@@ -330,7 +384,7 @@ class Navi extends Controller
             case 'EastwoodsFacilities':
                 $floorFound = Floorplan::where('floor', $findInformation->floor)->first();
                 // dd($floorFound['gridDetails']);
-                if($floorFound){
+                if ($floorFound) {
                     foreach ($floorFound['gridDetails'] as $value) {
                         // dd($value);
                         if (isset($value['label']) && $value['label'] == $findInformation->facilities || $value['sublabel'] == $findInformation->facilities) {
@@ -340,7 +394,7 @@ class Navi extends Controller
                     }
 
                     if ($facilityFound) {
-                        // dd('found');
+                        // dd($findInformation);
                         $response = [
                             "flag" => "false",
                             "query" => "facilities.found",
@@ -348,9 +402,9 @@ class Navi extends Controller
                             "data" => $findInformation,
                         ];
                         session(['floor' => $findInformation->floor, 'facility' => $findInformation->facilities]);
-                        return response()->json(['response' => $this->generateText($response),'floor'=>$findInformation->floor, 'facility'=>$findInformation->facilities, 'continuation'=>$continuation]);
-                       // break; // Stop searching once found
-                    }else{
+                        return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => $continuation]);
+                        // break; // Stop searching once found
+                    } else {
                         // print($value['label']);
 
                         $response = [
@@ -359,10 +413,10 @@ class Navi extends Controller
                             "entity" => false,
                             "data" => $findInformation->facilities,
                         ];
-                        return response()->json(['response' => $this->generateText($response),'floor'=>$findInformation->floor, 'facility'=>$findInformation->facilities, 'continuation'=>'information']);
+                        return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'information']);
                     }
                     // dd($jsonData);
-                }else{
+                } else {
                     // dd('not found!');
                     $response = [
                         "flag" => "false",
@@ -370,9 +424,9 @@ class Navi extends Controller
                         "entity" => false,
                         "data" => $findInformation->facilities,
                     ];
-                    return response()->json(['response' => $this->generateText($response),'floor'=>$findInformation->floor, 'facility'=>$findInformation->facilities, 'continuation'=>'information']);
+                    return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'information']);
                 }
-                
+
                 // for teachers
             case 'Teacher':
                 $response = [
@@ -383,19 +437,27 @@ class Navi extends Controller
                 ];
                 session(['floor' => $request->input('locationFloor'), 'facility' => $request->input('teacherLocation')]);
                 $continuation = 'information';
-                return response()->json(['response' => $this->generateText($response),'floor'=>$request->input('locationFloor'), 'facility'=>$request->input('teacherLocation'), 'continuation'=>$continuation]);
-                
-            
+                return response()->json(['response' => $this->generateText($response), 'floor' => $request->input('locationFloor'), 'facility' => $request->input('teacherLocation'), 'continuation' => $continuation]);
+
+            case null:
+                $response = [
+                    "flag" => "false",
+                    "query" => "persons.not",
+                    "entity" => false,
+                    "data" => $findInformation,
+                ];
+               
+                $continuation = 'deactivate';
+                return response()->json(['response' => $this->generateText($response), 'floor' => null, 'facility' => null, 'continuation' => $continuation]);
             default:
                 # code...
                 break;
         }
-
     }
     // generating text
     public function generateText($data)
     {
-        // dd($data['entity']);
+        // dd($data);
         $recomposed = $this->randomText($data['query'], $data['data'], $data['entity']);
 
         $response = [
@@ -425,7 +487,7 @@ class Navi extends Controller
     // Person Found
     public $openingForFoundPerson = [
         'Excellent news! Ive successfully retrieved comprehensive information about [name] in their location is [position].',
-        'Im pleased to inform you that Ive located detailed records for [name] in their capacity is [position].',
+        'Im pleased to inform you that Ive located detailed records for [name] in their location is [position].',
         'Youre in good hands! I possess comprehensive information on [name] in their location is [position].',
         'Im delighted to share that Ive found the information you requested regarding [name] in their location is [position].',
         'Ive successfully retrieved detailed information for [name] in their location is [position].',
@@ -451,20 +513,20 @@ class Navi extends Controller
     ];
 
     public $openingForFoundFacilityStart = [
-        'Found [facilities] on [floor]. Operating hours: [operation_time]. Go there?',
-        'Located [facilities] on [floor]. Operating hours: [operation_time]. Ready to go?',
-        'Info: [facilities] on [floor]. Operating hours: [operation_time]. Lets head there?',
-        "Details for [facilities] on [floor]. Operating hours: [operation_time]. Shall we go?",
-        "Facility: [facilities] on [floor]. Hours: [operation_time]. Go now?",
-        "Info: [facilities] on [floor]. Operating hours: [operation_time]. Ready to visit?",
-        "Found [facilities] on [floor]. Operating hours: [operation_time]. Go there now?",
-        "Located [facilities] on [floor]. Operating hours: [operation_time]. Ready to go now?",
-        "Info: [facilities] on [floor]. Operating hours: [operation_time]. Time to head there?",
-        "Details for [facilities] on [floor]. Operating hours: [operation_time]. Lets go!",
+        'Found [facilities] on [floor]. Go there?',
+        'Located [facilities] on [floor]. Ready to go?',
+        'Info: [facilities] on [floor]. Lets head there?',
+        "Details for [facilities] on [floor]. Shall we go?",
+        "Facility: [facilities] on [floor]. Go now?",
+        "Info: [facilities] on [floor]. Ready to visit?",
+        "Found [facilities] on [floor]. Go there now?",
+        "Located [facilities] on [floor]. Ready to go now?",
+        "Info: [facilities] on [floor]. Time to head there?",
+        "Details for [facilities] on [floor]. Lets go!",
     ];
-    
-    
-    
+
+
+
     // person location found
     // $openingForFoundPersonLocation = [
     //     'Great news! I found information on navigating to [facilities] where you can find [persons]. The operation time is [operation_time].',
@@ -506,21 +568,21 @@ class Navi extends Controller
         'Navigation details for [facilities] to locate [persons] are ready.',
         'Discover directions to [facilities] for finding [persons].',
     ];
-    
+
     public $positiveResponses = [
-        "Explore the facility on [floor] below. Enjoy!",
-        "Get ready to explore on [floor]. Enjoy the map!",
-        "Discover the facility on [floor] with the map below!",
-        "Your map for [floor] is coming up. Enjoy exploring!",
-        "Exciting! [floor] facility on the map below. Dive in!",
-        "Explore [floor] with the map coming up. Enjoy!",
-        "Ready for [floor]? Map below. Enjoy your exploration!",
-        "Brace yourself for [floor] on the map. Dive in!",
-        "Your map for [floor] is ready. Start exploring!",
-        "Map for [floor] coming up. Enjoy your exploration!"
+        "Get ready to explore. Enjoy the map!",
+        "Discover the area with the map below!",
+        "Your map is coming up. Enjoy exploring!",
+        "Exciting! Dive into the map below.",
+        "Explore with the map coming up. Enjoy!",
+        "Ready? Map below. Enjoy your exploration!",
+        "Brace yourself for the map. Dive in!",
+        "Your map is ready. Start exploring!",
+        "Map coming up. Enjoy your exploration!",
+        "Map coming up. Enjoy your exploration!"
     ];
-    
-    
+
+
     // negative response for no
     public $negativeResponses = [
         "No problem! If you change your mind or have any more questions, feel free to ask. I'm here to help!",
@@ -558,7 +620,7 @@ class Navi extends Controller
         "We're sorry for the inconvenience, but the layout is currently not accessible to us.",
         "We're doing our best to acquire the layout for this facility's location, but it's not yet ready for retrieval.",
     ];
-    
+
     public $endingPartLoc = [
         'To continue the conversation, press yes.',
         'Press yes to proceed further.',
@@ -608,7 +670,7 @@ class Navi extends Controller
         "Hi there! Eastwoods Guide is ready to provide Eastwoods-related support. How can I make your day more productive?",
         "Hey there! Welcome to Eastwoods Guide. How can I assist you in navigating Eastwoods?",
         "Good to see you! Eastwoods Guide is here to provide Eastwoods-related information and assistance. What's on your mind?"
-    ]; 
+    ];
 
     // thanks
     public $thanks = [
@@ -636,8 +698,8 @@ class Navi extends Controller
         "Your polite language is appreciated. How can I be of assistance to you?",
         "Let's keep our conversation respectful and focused on your needs. How can I assist you today?",
         "Politeness and respect go a long way in our conversation. How can I help you further?"
-    ];   
-    
+    ];
+
     public $defaultAnswers = [
         "I'm sorry, I couldn't find an answer to that question. Is there anything else I can help you with? If you're looking for specific options, I can navigate you to them.",
         "It seems like I don't have the information you're looking for. If you have another question, feel free to ask. I can also guide you to available options if needed.",
@@ -661,24 +723,27 @@ class Navi extends Controller
                 break;
 
             case 'persons.not':
-                if($entity){
+                if ($entity) {
                     $randomResponse = $this->entityHelper('person', $entity);
-                }else{
+                } else {
                     $length = mt_rand(0, count($this->openingForFalsePerson) - 1);
                     // Get the random response
                     $randomResponse = $this->openingForFalsePerson[$length];
                 }
 
-               
+
                 break;
 
             case 'persons.found':
-                // dd($data);
+                $data = Teacher::join('eastwoods_Facilities', 'teachers.facilities_id', '=', 'eastwoods_Facilities.id')
+                    ->where('teachers.name', $data['name'])
+                    ->first();
+                // dd($facility);
                 $length = mt_rand(0, count($this->openingForFoundPerson) - 1);
                 // Get the random response
                 $randomResponse = str_replace(
                     ['[name]', '[position]'],
-                    [$data['name'], $data['facilities'].' on '.$data['floor']],
+                    [$data['name'], $data['facilities'] . ' on ' . $data['floor']],
                     $this->openingForFoundPerson[$length]
                 ) .
                     '! ' . $this->endingPart[$length];
@@ -696,9 +761,9 @@ class Navi extends Controller
                 break;
 
             case 'persons.position.not':
-                if($entity){
+                if ($entity) {
                     $randomResponse = $this->entityHelper('person.position', $entity);
-                }else{
+                } else {
                     $length = mt_rand(0, count($this->openingForFalsePerson) - 1);
                     // Get the random response
                     $randomResponse = $this->openingForFalsePerson[$length];
@@ -719,9 +784,9 @@ class Navi extends Controller
                 break;
 
             case 'persons.location.not':
-                if($entity){
+                if ($entity) {
                     $randomResponse = $this->entityHelper('person.location', $entity);
-                }else{
+                } else {
                     $length = mt_rand(0, count($this->openingForFalsePerson) - 1);
                     // Get the random response
                     $randomResponse = $this->openingForFalsePerson[$length];
@@ -729,10 +794,10 @@ class Navi extends Controller
                 break;
 
             case 'facilities.not':
-                if($entity){
+                if ($entity) {
                     $randomResponse = $this->entityHelper('facilities', $entity);
                     // dd($randomResponse);
-                }else{
+                } else {
                     $length = mt_rand(0, count($this->openingForFalseFacility) - 1);
                     $randomResponse = $this->openingForFalseFacility[$length];
                 }
@@ -740,24 +805,30 @@ class Navi extends Controller
 
             case 'facilities.found':
                 // dd($data);
+                if($entity){
+                    $f = EastwoodsFacilities::where('facilities', $entity)->first();
+                }else{
+                    $f = $data;
+                }
+                
                 $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);
                 $randomResponse = str_replace(
-                    ['[facilities]', '[operation_time]', '[floor]'],
-                    [$data['facilities'], $data['operation_time'], $data['floor']],
+                    ['[facilities]', '[floor]'],
+                    [$f['facilities'], $f['floor']],
                     $this->openingForFoundFacilityStart[$length]
                 ) .
                     '! ';
                 break;
 
             case 'facilities.layout.not':
-                if($entity){
+                if ($entity) {
                     $randomResponse = $this->entityHelper('layout', $entity);
-                }else{
+                } else {
                     $length = mt_rand(0, count($this->layoutNotFoundMessages) - 1);
-                    $randomResponse = $this->layoutNotFoundMessages[$length].'! '. $this->endingPart[$length];
+                    $randomResponse = $this->layoutNotFoundMessages[$length] . '! ' . $this->endingPart[$length];
                 }
                 break;
-           
+
 
             case 'badwords':
                 $length = mt_rand(0, count($this->badWordResponses) - 1);
@@ -770,8 +841,9 @@ class Navi extends Controller
                 break;
 
             case 'yes':
+                // dd(Session::get('floor'));
                 $length = mt_rand(0, count($this->positiveResponses) - 1);
-                $randomResponse = $this->positiveResponses[$length]. '! ';
+                $randomResponse = $this->positiveResponses[$length] . '! ';
                 // $randomResponse = str_replace(
                 //     ['[floor]'],
                 //     [$data['floor']],
@@ -781,7 +853,7 @@ class Navi extends Controller
 
             case 'no':
                 $length = mt_rand(0, count($this->negativeResponses) - 1);
-                $randomResponse = $this->negativeResponses[$length] .'! '.$this->endingPart[$length];
+                $randomResponse = $this->negativeResponses[$length] . '! ' . $this->endingPart[$length];
                 break;
 
             default:
@@ -794,7 +866,8 @@ class Navi extends Controller
     }
 
     // generate response message on taking stairs
-    public function generateTextStairs($floor, $facility, $found){
+    public function generateTextStairs($floor, $facility, $found)
+    {
 
         // dd($facility);
         $length = 0;
@@ -866,7 +939,7 @@ class Navi extends Controller
             "Your guide to [facility] on [floor] is ready. Follow the guide to reach [facility].",
             "For [floor], your guide is your trusted companion to find [facility].",
         ];
-        
+
         if ($floor === 'ground-floor') {
             $length = mt_rand(0, count($messagesGroundFloor) - 1);
             $randomResponse = str_replace('[facilities]', $facility, $messagesGroundFloor[$length]);
@@ -874,21 +947,22 @@ class Navi extends Controller
             $length = mt_rand(0, count($floorguide) - 1);
             $randomResponse = str_replace('[floor]', $floor, $floorguide[$length]);
         }
-        
+
         if ($found) {
             $length = mt_rand(0, count($foundfloorguide) - 1);
             $randomResponse = str_replace(['[facility]', '[floor]'], [$facility, $floor], $foundfloorguide[$length]) . '! ';
         }
-        
+
         return $randomResponse;
     }
 
     //valiable
-    public function designatedTeacher(Request $request){
+    public function designatedTeacher(Request $request)
+    {
         // dd($request);
         $faci = $request->input('designated');
         $result = EastwoodsFacilities::where('facilities', $faci)->first();
-        
+
         $resultAll = Teacher::where('facilities_id', $result->id)->get();
 
         $response = [
@@ -896,12 +970,13 @@ class Navi extends Controller
             'teachers' => $resultAll,
         ];
         // dd($resultAll);
-        return response()->json(['result'=>$response]);
+        return response()->json(['result' => $response]);
     }
 
 
     //sub helper for entity
-   public function entityHelper($types, $entity){
+    public function entityHelper($types, $entity)
+    {
         $length = 0;
         // dd($type);
         switch ($types) {
@@ -926,7 +1001,7 @@ class Navi extends Controller
                     $this->personsPositionAtEastwoods[$length]
                 ) .
                     '! ' . $this->endingPart[$length];
-                
+
                 break;
 
             case 'persons.location':
@@ -942,7 +1017,7 @@ class Navi extends Controller
                 break;
 
             case 'facilities':
-                $f = EastwoodsFacilities::where('facilities',$entity)->first();
+                $f = EastwoodsFacilities::where('facilities', $entity)->first();
                 // dd($f);
                 $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);
                 $randomResponse = str_replace(
@@ -952,10 +1027,10 @@ class Navi extends Controller
                 ) .
                     '! ';
 
-                    session(['floor' => $f['floor'], 'facility' => $f['facilities']]);
+                session(['floor' => $f['floor'], 'facility' => $f['facilities']]);
                 break;
             case 'layout':
-                $f = EastwoodsFacilities::where('facilities',$entity)->first();
+                $f = EastwoodsFacilities::where('facilities', $entity)->first();
                 $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);
                 $randomResponse = str_replace(
                     ['[facilities]', '[operation_time]', '[floor]'],
@@ -963,9 +1038,9 @@ class Navi extends Controller
                     $this->openingForFoundFacilityStart[$length]
                 ) .
                     '! ';
-                    session(['floor' => $f['floor'], 'facility' => $f['facilities']]);
+                session(['floor' => $f['floor'], 'facility' => $f['facilities']]);
                 break;
-            
+
             default:
                 $length = mt_rand(0, count($this->defaultAnswers) - 1);
                 $randomResponse = $this->defaultAnswers[$length];

@@ -36,6 +36,7 @@
                     <li><a href="{{ route('admin.table', ['parameter' => 'eastwoods_facilities', 'actions'=>'destroy_ef', 'routes'=>'admin.facilities']) }}">Facilities</a></li>
                     {{-- <li><a href="{{ route('admin.table', ['parameter' => 'teachers', 'actions'=>'destroy_e']) }}">Events</a></li> --}}
                     <li><a href="{{ route('admin.table', ['parameter' => 'frequentlies', 'actions'=>'destroy_f', 'routes'=>'admin.frequently']) }}">Frequently Ask</a></li>
+                    <li><a href="{{ route('hmv') }}">HMV</a></li>
                 </ul>
             </li>
 

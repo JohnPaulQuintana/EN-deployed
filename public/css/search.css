@@ -145,9 +145,10 @@
     }
 
     .searchModal .modal-content .circle-container .box1 { top: -180px; left: 50%; animation-delay: 0.3s; }
-    .searchModal .modal-content .circle-container .box2 { top: 50%; left: 180px; animation-delay: 0.6s; }
-    .searchModal .modal-content .circle-container .box3 { top: 180px; left: 50%; animation-delay: 0.9s; }
-    .searchModal .modal-content .circle-container .box4 { top: 50%; left: -180px; animation-delay: 1.2s; }
+    .searchModal .modal-content .circle-container .box2 { top: -38px; left: 191px; animation-delay: 0.6s; }
+    .searchModal .modal-content .circle-container .box3 { top: 155px; left: 141px; animation-delay: 0.9s; }
+    .searchModal .modal-content .circle-container .box4 { top: 155px; left: -141px; animation-delay: 1.2s; }
+    .searchModal .modal-content .circle-container .box5 { top: -38px; left: -191px; animation-delay: 1.5s; }
 
     @keyframes fadeIn {
       to {

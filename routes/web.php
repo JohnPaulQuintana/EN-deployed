@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\FrequentlyController;
 use App\Http\Controllers\FunctionalityController;
+use App\Http\Controllers\SchoolHMVController;
 use App\Http\Controllers\UpdateController;
 
 /*
@@ -67,6 +68,15 @@ Route::middleware('auth')->group(function () {
     // functionality
     Route::get('/functionality',[FunctionalityController::class,'manage'])->name('func.manage');
     Route::post('/functionality-updates',[FunctionalityController::class,'update'])->name('func.update');
+
+    // HMV
+    Route::get('/hmv',[SchoolHMVController::class,'hmv'])->name('hmv');
+    //hymn
+    Route::post('/hymn',[SchoolHMVController::class, 'hymn'])->name('hymn');
+    // vision
+    Route::post('/vision',[SchoolHMVController::class, 'vision'])->name('vision');
+    // mission
+    Route::post('/mission',[SchoolHMVController::class, 'mission'])->name('mission');
 });
 
 // navi route

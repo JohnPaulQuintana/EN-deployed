@@ -1,0 +1,27 @@
+.mv-text{
+    background: linear-gradient( 45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21) );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textMove 3s linear infinite;
+    font-size: 32px;
+    /* border: 1px solid red; */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 200px;
+    
+}
+
+/* box-icon[name='chevrons-down']{
+    position: absolute;
+    z-index: 1000;
+    width: 80px;
+    height: 60px;
+    border-radius: 10px;
+    background: rgb(3, 68, 3);
+    
+  } */

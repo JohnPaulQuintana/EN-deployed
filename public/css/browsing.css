@@ -82,6 +82,12 @@
             fill: rgba(14, 59, 3, 0.9);
 
         }
+        .browseCard:nth-child(5) .hymn {
+            /* opacity: 0; */
+            transition: .2s ease-in-out;
+            fill: rgba(14, 59, 3, 0.9);
+
+        }
 
         .main:hover {
             /* width: 20em; */
@@ -124,6 +130,9 @@
         .browseCard:nth-child(4):hover .mission {
             fill: white;
         }
+        .browseCard:nth-child(5):hover .hymn {
+            fill: white;
+        }
 
 
         .text {
@@ -155,6 +164,12 @@
             width: 70px;
             /* Set the width to your desired size */
             height: 70px;
+            /* Set the height to your desired size */
+        }
+        box-icon[name='videos'] {
+            width: 60px;
+            /* Set the width to your desired size */
+            height: 60px;
             /* Set the height to your desired size */
         }
 
