@@ -989,22 +989,22 @@
               "facil": 10,
               "locat": 12,
               "can": 12,
-              "i": 28,
+              "i": 61,
               "me": 15,
               "address": 2,
               "give": 5,
-              "to": 22,
-              "exact": 16,
-              "pleas": 33,
-              "provid": 20,
-              "inform": 21,
-              "about": 25,
-              "need": 17,
-              "know": 20,
-              "situat": 16,
-              "could": 17,
-              "you": 31,
-              "guid": 16,
+              "to": 55,
+              "exact": 49,
+              "pleas": 99,
+              "provid": 53,
+              "inform": 54,
+              "about": 58,
+              "need": 50,
+              "know": 53,
+              "situat": 49,
+              "could": 50,
+              "you": 64,
+              "guid": 49,
               "find": 3,
               "tell": 7,
               "direct": 1,
@@ -2413,6 +2413,1326 @@
       ],
       [
         "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
+        "Where is the %facility% located?"
+      ],
+      [
+        "en",
+        "Where can I find the %facility%?"
+      ],
+      [
+        "en",
+        "Tell me the location of the %facility%"
+      ],
+      [
+        "en",
+        "What is the address of the %facility%?"
+      ],
+      [
+        "en",
+        "Give me directions to the %facility%"
+      ],
+      [
+        "en",
+        "Where exactly can I locate the %facility%?"
+      ],
+      [
+        "en",
+        "Please provide information about the %facility% location."
+      ],
+      [
+        "en",
+        "I need to know where the %facility% is situated."
+      ],
+      [
+        "en",
+        "Could you guide me to the %facility%?"
+      ],
+      [
+        "en",
+        "Give me the address of the %facility% please."
+      ],
+      [
+        "en",
         "Who is %person%?"
       ],
       [
@@ -2619,9 +3939,6 @@
             "tesda focal office": [
               "tesda focal office"
             ],
-            "lobby": [
-              "lobby"
-            ],
             "room 101": [
               "room 101"
             ],
@@ -2644,10 +3961,100 @@
               "engineering department faculty"
             ],
             "male restroom": [
+              "male restroom",
+              "male restroom",
+              "male restroom",
               "male restroom"
             ],
             "female restroom": [
+              "female restroom",
+              "female restroom",
+              "female restroom",
               "female restroom"
+            ],
+            "clinic": [
+              "clinic"
+            ],
+            "library": [
+              "library"
+            ],
+            "server room": [
+              "server room"
+            ],
+            "computer laboratory 1": [
+              "computer laboratory 1"
+            ],
+            "computer laboratory 2": [
+              "computer laboratory 2"
+            ],
+            "computer laboratory 3": [
+              "computer laboratory 3"
+            ],
+            "cs department faculty": [
+              "cs department faculty"
+            ],
+            "room 301": [
+              "room 301"
+            ],
+            "room 302": [
+              "room 302"
+            ],
+            "room 303": [
+              "room 303"
+            ],
+            "room 304": [
+              "room 304"
+            ],
+            "caregiving room": [
+              "caregiving room"
+            ],
+            "storage room": [
+              "storage room"
+            ],
+            "gen ed faculty room": [
+              "gen ed faculty room"
+            ],
+            "room 401": [
+              "room 401"
+            ],
+            "room 402": [
+              "room 402"
+            ],
+            "room 403": [
+              "room 403"
+            ],
+            "chemistry laboratory": [
+              "chemistry laboratory"
+            ],
+            "physics laboratory": [
+              "physics laboratory"
+            ],
+            "massage therapy room": [
+              "massage therapy room"
+            ],
+            "room 501": [
+              "room 501"
+            ],
+            "room 502": [
+              "room 502"
+            ],
+            "room 503": [
+              "room 503"
+            ],
+            "kitchen laboratory": [
+              "kitchen laboratory"
+            ],
+            "mini bar and restaurant": [
+              "mini bar and restaurant"
+            ],
+            "pantry and storage": [
+              "pantry and storage"
+            ],
+            "standard and suite room": [
+              "standard and suite room"
+            ],
+            "hm department faculty": [
+              "hm department faculty"
             ]
           }
         }

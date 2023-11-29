@@ -27,7 +27,7 @@ app.post("/nlp", async (req, sendToClient) => {
         // console.log(req.body.facilities)
         if (badWords.isProfane(question)) {
           console.log("Profanity detected");
-          nlpResponse = [{flag:'false',query:'badwords',answer:'bad words detected',data:false}]
+          nlpResponse = [{flag:'false',query:'badwords',answer:'bad words detected',data:false, 'entity':'badwords'}]
         } else {
           console.log("Text is clean.");
             const words = tokenizer.tokenize(question) // make words [ 'who', 'is', 'jaypee' ]

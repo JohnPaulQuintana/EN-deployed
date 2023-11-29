@@ -927,10 +927,14 @@
                                         startToSpeak(`Here is the ${info.type} of Eastwoods.`)
                                         .then((finished) => {
                                             
-                                            $('#east-play').html(
+                                            $('#east-play').append(
                                                 `<source src="${info.path}" type="video/mp4">
                                                 Your browser does not support the video tag.`
                                             )
+                                            // Load the new video source
+                                            $('#east-play')[0].load();
+                                            $('#east-play')[0].play();
+
                                             afterElement.addClass('circle-after');
                                             circle.append(afterElement);
                                             $('#hymnPopup').css({"display":'flex'}).hide().fadeIn(500);
@@ -940,6 +944,12 @@
                                                 // Close the modal, replace this with your actual modal closing logic
                                                 startToSpeak(`Thank you for Watching Eastwoods Hymns. Have a nice day.`)
                                                 .then((finished) => {
+                                                    // Pause the video
+                                                    $('#east-play')[0].pause();
+                                                    // Remove the existing <source> element
+                                                    $('#east-play source').remove();
+
+                                                    
                                                     $('#hymnPopup').fadeOut(400);
                                                 })
                                                 
@@ -956,7 +966,7 @@
                                             index++;
 
                                             if (index <= textToType.length) {
-                                                setTimeout(typeText, 70); // Adjust the delay as needed
+                                                setTimeout(typeText, 60); // Adjust the delay as needed
                                             }
                                         }
 
@@ -1171,18 +1181,19 @@
                 var startingX;
                 var startingY;
 
-                const validLabelsMale = ['male','MR']; // Add more labels as needed for abbrev
-                const validLabelsFemale = ['female','FR']; // Add more labels as needed for abbrev
+                const validLabelsMale = ['male','MR', 'MRX','MRN','MRF']; // Add more labels as needed for abbrev
+                const validLabelsFemale = ['female','FR', 'FRU','FRF','FRZ']; // Add more labels as needed for abbrev
 
                 let uniqueEntries = new Set();
 
                 function createGridPoints(target, prevBool) {
                     if (floorIndex < len) {
+                        
                         // $('#next-floor-button').hide();
                         // $('#back-floor-button').hide();
                         // console.log('count', floorIndex, '<', len)
                         // console.log(serverResponds[floorIndex]['gridDetails'])
-                        $('#span-floor').text(serverResponds[floorIndex]['floor'])
+                        $('.floor-title').text(serverResponds[floorIndex]['floor'])
                         // console.log(serverResponds[floorIndex]['floor'])
                         targetFacilities = target;
                        
@@ -1253,12 +1264,15 @@
                                     // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
                                 } else if (coordinates.label == targetFacilities || coordinates
                                     .sublabel == targetFacilities) {
+                                         // Remove the class 'targetFacilities' from all elements
+                                    // $('.st').removeClass('targetFacilities');
                                     point.addClass('targetFacilities');
                                     targetX = parseInt(coordinates.x);
                                     targetY = parseInt(coordinates.y);
                                     // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
                                     // Set the flag to true when the target is found
                                     isTargetFound = true;
+                                    console.log("nag true mna",isTargetFound)
                                 } else if (coordinates.label === 'front') {
                                     startingX = parseInt(coordinates.x);
                                     startingY = parseInt(coordinates.y);
@@ -1267,16 +1281,10 @@
                                     point.append(`<i class="fa-solid fa-street-view fa-2xl"></i>`)
                                 } else if (coordinates.label === 'wall') {
                                     point.addClass('blocked wall');
-                                }
+                                   
+                                } 
 
-                                if (isTargetFound === false && coordinates.label === 'stair-in') {
-                                    console.log('not found')
-                                    point.addClass('targetFacilities');
-                                    targetX = parseInt(coordinates.x);
-                                    targetY = parseInt(coordinates.y);
-                                    // console.log(coordinates.label,targetX, targetY)
-                                    // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
-                                }
+                                
 
                                 if (coordinates.label === 'wall') {
                                     point.addClass('blocked wall');
@@ -1311,13 +1319,33 @@
                                     )
                                 }
 
+                                if (coordinates.label === 'stair-in' && floorIndex < len-1) {
+                                    // console.log(floorIndex , len)
+            
+                                    point.addClass('targetFacilities st');
+                                    point.removeClass('blocked')
+                                    targetX = parseInt(coordinates.x);
+                                    targetY = parseInt(coordinates.y);
+                                    // console.log(coordinates.label,targetX, targetY)
+                                    // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
+                                }
+
                                 // Add the point to the gridPoints array
                                 gridPoints.push(point);
                                 // $('#target-selection').html(targetSelection);
 
-                                if (target != 'n/a') {
+                                if (target != 'n/a' && startingX != 0 && startingY != 0) {
+                                    console.log(startingX, startingY, targetX, targetY)
                                     dijkstra(startingX, startingY, targetX, targetY);
+                               
+                                    
                                 }
+                               if(floorIndex < len-1){
+                                    console.log("ito yun")
+                                    startingX = 0;
+                                    startingY = 0;
+                               }
+
                             });
                             // console.log()
                             // starting point x, y  target x,y
@@ -1935,6 +1963,10 @@
                 startToSpeak(
                 ranExit());
                 $('#navigationPopup').fadeOut(500);
+                 // Remove the existing <source> element
+                    // Pause the video
+                $('#east-play')[0].pause();
+                $('#east-play source').remove();
                 $('#hymnPopup').fadeOut(400);
                 $('#mvPopup').fadeOut(400);
                 $('#designatedPopup').fadeOut(500);
@@ -1946,6 +1978,10 @@
             //back
             $(document).on('click', '.mv-back', function(){
                 $('#navigationPopup').fadeOut(500);
+                 // Remove the existing <source> element
+                    // Pause the video
+                $('#east-play')[0].pause();
+                $('#east-play source').remove();
                 $('#hymnPopup').fadeOut(400);
                 $('#mvPopup').fadeOut(400);
                 $('#designatedPopup').fadeOut(500);

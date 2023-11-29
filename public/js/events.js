@@ -14,7 +14,9 @@ let circle = document.querySelector('.circle');
 // });
 
 $('.circle').on('click',()=>{
-    // alert('dwadawd')
+  // stopSpeaking()
+   location.reload(true)
+    
 })
 
 

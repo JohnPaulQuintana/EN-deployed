@@ -822,6 +822,15 @@
                         </div>
                         `
                 });
+                fc += `
+                        <div class="col-sm-2">
+                            <div class="card edit-col">
+                               
+                                <h5 class="card-title border wall ct" data-sublabel="stair-in">Stair</h5>
+                               
+                            </div>
+                        </div>
+                `
                 fc += `<div class="col-sm-2">
                             <div class="card edit-col">
                                

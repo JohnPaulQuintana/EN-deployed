@@ -51,7 +51,7 @@ REM Wait for a moment to ensure the PHP server starts
 timeout /t 5
 
 REM Open the URL in the default web browser
-start "" http://127.0.0.1:8000
+start "" "chrome.exe" --kiosk http://127.0.0.1:8000/navi
 
 
 

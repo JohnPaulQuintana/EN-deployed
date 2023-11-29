@@ -180,6 +180,17 @@ class Navi extends Controller
                                 return $this->naviProcessInformationSearch($formatrequest);
                                 // break;
 
+                            case 'facilities.not':
+                                $fac = EastwoodsFacilities::where('facilities', $result['navi'][0]['entity'])->first();
+                                session(['floor' => $fac['floor'], 'facility' => $fac['facilities']]);
+                                $floor = $fac['floor'];
+                                $facility = $fac['facilities'];
+                                // dd($fac['facilities']);
+                                // $floor = false;
+                                $continuation = 'information';
+                                // dd($result['navi'][0]);
+                                return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
+                            
                             case 'persons.not':
                                 // dd($result['navi'][0]);
                                 //call this function naviProcessInformationSearch
@@ -200,6 +211,9 @@ class Navi extends Controller
                                 return $this->naviProcessInformationSearch($formatrequest);
                                 // break;
 
+                            case 'badwords':
+                                return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
+
                             case '404':
                                 $formatrequest = new Request([
                                     'infoId' => null,
@@ -211,7 +225,8 @@ class Navi extends Controller
                                 // dd($formatrequest);
                                 return $this->naviProcessInformationSearch($formatrequest);
                             default:
-                                break;
+                            return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
+                               
                         }
                         $fac = EastwoodsFacilities::where('facilities', $result['navi'][0]['entity'])->first();
                         session(['floor' => $fac['floor'], 'facility' => $fac['facilities']]);

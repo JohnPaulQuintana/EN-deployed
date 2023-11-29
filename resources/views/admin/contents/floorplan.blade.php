@@ -337,11 +337,14 @@
                                 <h6 class="font-size-13">
                                     <div class="input-group d-flex align-items-center text-success">
                                         <select id="floor-selected" class="form-control text-white mt-2">
-                                            
                                             {{-- <option value="ground-floor">Ground Floor</option> --}}
                                             @php
-                                                for ($i = 0; $i < 10; $i++) { 
-                                                    echo "<option value=".$flist[$i].">".$i+1 . ($i == 0 ? "st" : ($i == 1 ? "nd" : ($i == 2 ? "rd" : "th"))) . " Floor</option>";
+                                                // for ($i = 0; $i < count($flist)-1; $i++) { 
+                                                //     echo "<option value=".$flist[$i].">".$i+1 . ($i == 0 ? "st" : ($i == 1 ? "nd" : ($i == 2 ? "rd" : "th"))) . " Floor</option>";
+                                                // }
+                                                foreach ($flist as $key => $floor) {
+                                                    $ordinal = ($key == 0 ? "st" : ($key == 1 ? "nd" : ($key == 2 ? "rd" : "th")));
+                                                    echo "<option value=".$floor.">".$floor ."</option>";
                                                 }
                                             @endphp
                                         </select>
