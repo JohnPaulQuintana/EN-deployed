@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Merge Example</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            margin: 100px auto;
+            width: fit-content;
+        }
+        .grid-item {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            text-align: center;
+            line-height: 50px;
+            gap: 0;
+            cursor: pointer;
+        }
+        .merged-box {
+            background-color: #252b3b;
+            perspective: 1000px;
+            color: #f3ecec;
+            transform-style: preserve-3d;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container" id="gridContainer">
+    <!-- Add the click event listener to each grid item -->
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 1)">1</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 2)">2</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 3)">3</div>
+    <div class="grid-item" onclick="mergeClicked(this, 4)">4</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 5)">5</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 6)">6</div>
+    <div class="grid-item" onclick="mergeClicked(this, 7)">7</div>
+    <div class="grid-item" onclick="mergeClicked(this, 8)">8</div>
+    <div class="grid-item" onclick="mergeClicked(this, 9)">9</div>
+    <div class="grid-item" onclick="mergeClicked(this, 10)">10</div>
+    <!-- Add the click event listener to each grid item -->
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 11)">11</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 12)">12</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 13)">13</div>
+    <div class="grid-item" onclick="mergeClicked(this, 14)">14</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 15)">15</div>
+    <div class="grid-item" onclick="mergeClicked(this, 16)">16</div>
+    <div class="grid-item" onclick="mergeClicked(this, 17)">17</div>
+    <div class="grid-item" onclick="mergeClicked(this, 18)">18</div>
+    <div class="grid-item" onclick="mergeClicked(this, 19)">19</div>
+    <div class="grid-item" onclick="mergeClicked(this, 20)">20</div>
+    <!-- Add the click event listener to each grid item -->
+    <div class="grid-item" onclick="mergeClicked(this, 21)">21</div>
+    <div class="grid-item" onclick="mergeClicked(this, 22)">22</div>
+    <div class="grid-item" onclick="mergeClicked(this, 23)">23</div>
+    <div class="grid-item" onclick="mergeClicked(this, 24)">24</div>
+    <div class="grid-item" onclick="mergeClicked(this, 25)">25</div>
+    <div class="grid-item" onclick="mergeClicked(this, 26)">26</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 27)">27</div>
+    <div class="grid-item" onclick="mergeClicked(this, 28)">28</div>
+    <div class="grid-item" onclick="mergeClicked(this, 29)">29</div>
+    <div class="grid-item" onclick="mergeClicked(this, 30)">30</div>
+    <!-- Add the click event listener to each grid item -->
+    <div class="grid-item" onclick="mergeClicked(this, 31)">31</div>
+    <div class="grid-item" onclick="mergeClicked(this, 32)">32</div>
+    <div class="grid-item" onclick="mergeClicked(this, 33)">33</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 34)">34</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 35)">35</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 36)">36</div>
+    <div class="grid-item merged-box" onclick="mergeClicked(this, 37)">37</div>
+    <div class="grid-item" onclick="mergeClicked(this, 38)">38</div>
+    <div class="grid-item" onclick="mergeClicked(this, 39)">39</div>
+    <div class="grid-item" onclick="mergeClicked(this, 40)">40</div>
+    <!-- ... (similarly for other grid items) -->
+</div>
+
+<script>
+    // Function to handle the click event for merging
+    function mergeClicked(element, number) {
+        const maxDistance = 3; // Adjust the maximum distance as needed
+
+        // Check if the clicked box is too far from the previously clicked box
+        if (element.classList.contains('clicked')) {
+            const prevClicked = document.querySelector('.clicked');
+            const prevNumber = parseInt(prevClicked.textContent);
+            const rowDiff = Math.abs(Math.floor((prevNumber - 1) / 5) - Math.floor((number - 1) / 5));
+            const colDiff = Math.abs((prevNumber - 1) % 5 - (number - 1) % 5);
+
+            if (rowDiff <= maxDistance && colDiff <= maxDistance) {
+                // Merge logic here (you can update the styling or perform other actions)
+                element.classList.add('merged-box');
+                alert('Merged successfully!');
+            } else {
+                alert('Cannot merge. Too far!');
+            }
+        } else {
+            element.classList.add('clicked');
+        }
+    }
+</script>
+
+</body>
+</html>

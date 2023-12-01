@@ -33,7 +33,7 @@ const extractKeywords = async(question)=> {
   const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   const stopwords = natural.stopwords;
 
-  const customWords = ['sir', 'ma\'am', 'location', 'eastwoods', 'professor', 'find', 'located', ' ', 'im', 'information'];
+  const customWords = ['sir', 'ma\'am','office', 'my','maam','teacher','madaam','location', 'eastwoods', 'professor', 'find', 'located', ' ', 'im', 'information'];
   console.log(processedKeywords)
   // const filteredTokens = processedKeywords.filter(token => !stopwords.includes(token.toLowerCase()) && !customWords.includes(token.toLowerCase()));
   const filteredTokens = processedKeywords
@@ -61,7 +61,7 @@ const extractKeywords = async(question)=> {
               keywordsObject['t'] = record.tableName;//table name
               keywordsObject['k'] = token.toLowerCase();//keywords
               
-              keywordsObject['data']= match;;//match
+              keywordsObject['data']= match;//match
               keywordsObject[token] = match; // Use the token as the key to store the specific row
             } else {
               keywordsObject['k'] = token.toLowerCase();
@@ -150,15 +150,23 @@ function findMatchInData(tableName, data, filterFields, token) {
     const dataMatched = [];
 
     const match = data.find(item => item.tableName === tableName);
-    // console.log(match)
+    console.log(match)
     if (match) {
       match.data.forEach(row => {
+        //original
+        // const isMatch = filterFields.some(({ name, value }) => {
+        //   const rowValue = row[name];
+        //   console.log(rowValue, value)
+        //   return rowValue && String(rowValue).toLowerCase() === value.toLowerCase();
+        // });
+
+        // updates
         const isMatch = filterFields.some(({ name, value }) => {
           const rowValue = row[name];
-          // console.log(rowValue)
-          return rowValue && String(rowValue).toLowerCase() === value.toLowerCase();
+          console.log(rowValue, value)
+          return rowValue && String(rowValue).toLowerCase().includes(value.toLowerCase());
         });
-
+        
         if (isMatch) {
           const filteredRow = Object.keys(row).reduce((obj, key) => {
             if (!['hymn', 'vision', 'mission'].includes(key) &&

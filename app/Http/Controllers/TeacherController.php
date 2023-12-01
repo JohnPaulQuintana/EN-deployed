@@ -31,6 +31,7 @@ class TeacherController extends Controller
         $inputs = $request->input('teachers_name', []);
         $inputsPosition = $request->input('teachers_position', []);
         $inputsLocated = $request->input('teachers_located', []);
+        $inputsGender = $request->input('teachers_gender', []);
         $ids = $request->input('ids', []);
         $req = $request->input('action');
         // dd($req);
@@ -45,7 +46,7 @@ class TeacherController extends Controller
             for ($i = 0; $i < count($inputs); $i++) {
                 switch ($req) {
                     case 'add':
-                        $input = Teacher::create(['name' => $inputs[$i], 'position' => $inputsPosition[$i], 'facilities_id' => $inputsLocated[$i]]);
+                        $input = Teacher::create(['name' => $inputs[$i],'gender' => $inputsGender[$i], 'position' => $inputsPosition[$i], 'facilities_id' => $inputsLocated[$i]]);
                         $insertedNotif[] = $input;
                         $actionText = 'Added';
                         $actionType = 'success';
@@ -59,6 +60,9 @@ class TeacherController extends Controller
                         if ($input && $located) {
                             if ($input->name !== $inputs[$i]) {
                                 $input->name = $inputs[$i];
+                            }
+                            if ($input->gender !== $inputsGender[$i]) {
+                                $input->gender = $inputsGender[$i];
                             }
                             if ($input->position !== $inputsPosition[$i]) {
                                 $input->position = $inputsPosition[$i];

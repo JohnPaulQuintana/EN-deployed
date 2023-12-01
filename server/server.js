@@ -62,6 +62,7 @@ async function processNLPQuestion(question, persons, facilities) {
                     {
                         flag: "false",
                         query: "greetings",
+                        entity: 'greetings',
                         answer: response.answer,
                         data: false,
                     },
@@ -74,6 +75,7 @@ async function processNLPQuestion(question, persons, facilities) {
                     {
                         flag: "false",
                         query: "greetings",
+                        entity: 'greetings',
                         answer: response.answer,
                         data: false,
                     },

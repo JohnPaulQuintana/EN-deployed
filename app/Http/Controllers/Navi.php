@@ -147,7 +147,12 @@ class Navi extends Controller
                         // dd('if');
                         // 'floor' key is not present in the specified structure
                         //get the facilities cred
-                        $fac = EastwoodsFacilities::where('id', $result['navi'][0]['data']['facilities_id'])->first();
+                        if (isset($result['navi'][0]['data']['facilities_id'])) {
+                            $fac = EastwoodsFacilities::where('id', $result['navi'][0]['data']['facilities_id'])->first();
+                        }else{
+                            $fac = EastwoodsFacilities::where('id', $result['navi'][0]['data']['facility_id'])->first();
+                        }
+                        
                         // dd($fac);
                         session(['floor' => $fac['floor'], 'facility' => $fac['facilities']]);
                         $floor = $fac['floor'];
@@ -212,6 +217,8 @@ class Navi extends Controller
                                 // break;
 
                             case 'badwords':
+                                return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
+                            case 'greetings':
                                 return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
 
                             case '404':
@@ -400,6 +407,7 @@ class Navi extends Controller
                 $floorFound = Floorplan::where('floor', $findInformation->floor)->first();
                 // dd($floorFound['gridDetails']);
                 if ($floorFound) {
+                    // dd('nagtrue');
                     foreach ($floorFound['gridDetails'] as $value) {
                         // dd($value);
                         if (isset($value['label']) && $value['label'] == $findInformation->facilities || $value['sublabel'] == $findInformation->facilities) {
@@ -428,18 +436,18 @@ class Navi extends Controller
                             "entity" => false,
                             "data" => $findInformation->facilities,
                         ];
-                        return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'information']);
+                        return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'deactivate']);
                     }
                     // dd($jsonData);
                 } else {
-                    // dd('not found!');
+                   
                     $response = [
                         "flag" => "false",
                         "query" => "facilities.layout.not",
                         "entity" => false,
                         "data" => $findInformation->facilities,
                     ];
-                    return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'information']);
+                    return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'deactivate']);
                 }
 
                 // for teachers
@@ -497,6 +505,16 @@ class Navi extends Controller
         'Im sorry, but I couldnt find any information about that person. How else can I assist you?',
         'Unfortunately, I don\'t have any data on that person. Please provide more details or try a different query.',
         'It appears there are no records for that person. Can I help you with a different request?',
+        'I couldn\'t retrieve any information about the specified individual. Is there anything else I can assist you with? Can you edit your question?',
+        'I apologize, but I couldn\'t locate any details for that person. How else may I be of service? Can you edit your question?',
+        'It seems I don\'t have any information on the individual you mentioned. Please provide more details or try another query. Can you edit your question?',
+        'Unfortunately, I couldn\'t find any information on the person you specified. Can I assist you with something else? Can you edit your question?',
+        'I couldn\'t find any records for that person. Please double-check the name or provide additional information. Can you edit your question?',
+        'I apologize, but there are no records matching that person in my database. Can I assist you with something else? Can you edit your question?',
+        'I couldn\'t locate any information for the person you specified. Is there another request youd like to make? Can you edit your question?',
+        'Im sorry, but I couldnt find any information about that person. How else can I assist you? Can you edit your question?',
+        'Unfortunately, I don\t have any data on that person. Please provide more details or try a different query. Can you edit your question?',
+        'It appears there are no records for that person. Can I help you with a different request? Can you edit your question?',
     ];
 
     // Person Found
@@ -788,14 +806,40 @@ class Navi extends Controller
                 //person location question
             case 'persons.location.found':
                 // dd($data);
-                $length = mt_rand(0, count($this->openingForFoundPersonLocation) - 1);
-                // Get the random response
-                $randomResponse = str_replace(
-                    ['[persons]'],
-                    [$data['name']],
-                    $this->openingForFoundPersonLocation[$length]
-                ) .
-                    '! ' . $this->endingPartLoc[$length];
+                $name = $data['name'] ?? null;
+                $facility = $data['facility_id'] ?? null;
+                if($name !== null){
+                    $length = mt_rand(0, count($this->openingForFoundPersonLocation) - 1);
+                    // Get the random response
+                    $randomResponse = str_replace(
+                        ['[persons]'],
+                        [$data['name']],
+                        $this->openingForFoundPersonLocation[$length]
+                    ) .
+                        '! ' . $this->endingPartLoc[$length];
+                }else{
+                    if($facility !== null){
+                        $data2 = EastwoodsFacilities::where('id', $facility)->first();
+                        $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);
+                        $randomResponse = str_replace(
+                            ['[facilities]', '[floor]'],
+                            [$data2['facilities'], $data2['floor']],
+                            $this->openingForFoundFacilityStart[$length]
+                        ) .
+                        '! ';
+                    }else{
+                        $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);
+                        $randomResponse = str_replace(
+                            ['[facilities]', '[floor]'],
+                            [$data['facilities'], $data['floor']],
+                            $this->openingForFoundFacilityStart[$length]
+                        ) .
+                        '! ';
+                    }
+                    
+                }
+
+                
                 break;
 
             case 'persons.location.not':
@@ -823,7 +867,13 @@ class Navi extends Controller
                 if($entity){
                     $f = EastwoodsFacilities::where('facilities', $entity)->first();
                 }else{
-                    $f = $data;
+                    $facility = $data['facility_id'] ?? null;
+                    if($facility !== null){
+                        $f = EastwoodsFacilities::where('id', $facility)->first();
+                    }else{
+                        $f = $data;
+                    }
+                   
                 }
                 
                 $length = mt_rand(0, count($this->openingForFoundFacilityStart) - 1);

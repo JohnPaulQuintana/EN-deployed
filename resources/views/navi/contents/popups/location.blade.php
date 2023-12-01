@@ -40,9 +40,13 @@
                             </div><!-- end card -->
                         </div>
                     </div>
+                    
                     {{-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div> --}}
+                </div>
+                <div class="legend">
+                    <h1>legend here</h1>
                 </div>
             </div>
         </div>

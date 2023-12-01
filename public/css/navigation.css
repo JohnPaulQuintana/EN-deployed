@@ -96,12 +96,24 @@
     margin-top: 400px;
     width: inherit;
     height: 55%;
+    max-height: 55%;
     background: #1a1f19;
     /* box-shadow: 0 0 10px #fff, inset 0 0 10px #fff; */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
+    /* overflow: auto; */
+}
+
+.popup-content .abbrev-periodic-table{
+  max-height: 90%;
+  padding-top: 20px;
+  overflow: auto;
+}
+
+.popup-content .abbrev-periodic-table::-webkit-scrollbar{
+  width: 0;
 }
 
 .popup-container .popup-content .floor-title{
@@ -148,4 +160,51 @@
     right: 10px;
     font-size: 18px;
     color: #333;
+}
+.legend .legend-title{
+  background: linear-gradient(
+        45deg,
+        rgba(65, 230, 79, 1),
+        rgb(233, 233, 227),
+        rgb(0, 255, 21)
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textMove 3s linear infinite;
+    font-size: 22px;
+    /* border: 1px solid red; */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+ .legend .legend-contents{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+ }
+
+
+.legend .legend-contents .legend-box{
+    width: 200px;
+    height: 50px;
+    
+    background-color: transparent;
+    /* border: 0.5px transparent; */
+    display: flex;
+    gap: 10px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    /* color: #f3ecec; */
+    /* position: relative; */
+    transition: transform 0.3s ease-in-out;
+    transform-style: preserve-3d;
+    z-index: 1;
+    /* border: 1px solid rgb(11, 93, 234); */
+    /* border: 1px solid green; */
+    color: rgb(11, 93, 234);
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgba(7, 7, 7, 0.8);
+    font-weight: 600
 }

@@ -194,6 +194,10 @@
             "domain": "default",
             "intent": "query.persons.position"
           },
+          "can,find,i,is,person,sir,what": {
+            "domain": "default",
+            "intent": "query.persons.facilities.show"
+          },
           "is,locat,of,person,the,what": {
             "domain": "default",
             "intent": "query.persons.facilities.show"
@@ -202,7 +206,11 @@
             "domain": "default",
             "intent": "query.persons.facilities.show"
           },
-          "am,can,find,for,i,i,is,locat,look,person,them,where": {
+          "am,can,find,for,i,i,locat,look,person,them,where": {
+            "domain": "default",
+            "intent": "query.persons.facilities.show"
+          },
+          "for,im,look,person": {
             "domain": "default",
             "intent": "query.persons.facilities.show"
           },
@@ -505,109 +513,6 @@
                 ]
               },
               {
-                "intent": "query.persons",
-                "tokens": [
-                  "who",
-                  "is",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "tell",
-                  "me",
-                  "about",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "what",
-                  "can",
-                  "you",
-                  "tell",
-                  "me",
-                  "about",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "give",
-                  "me",
-                  "inform",
-                  "on",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "can",
-                  "you",
-                  "provid",
-                  "detail",
-                  "about",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "do",
-                  "you",
-                  "have",
-                  "ani",
-                  "inform",
-                  "on",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "how",
-                  "can",
-                  "you",
-                  "describ",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "tell",
-                  "me",
-                  "more",
-                  "about",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "what",
-                  "do",
-                  "you",
-                  "know",
-                  "about",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons",
-                "tokens": [
-                  "give",
-                  "me",
-                  "detail",
-                  "about",
-                  "person"
-                ]
-              },
-              {
                 "intent": "query.persons.position",
                 "tokens": [
                   "who",
@@ -674,6 +579,30 @@
               {
                 "intent": "query.persons.position",
                 "tokens": [
+                  "describ",
+                  "the",
+                  "princip",
+                  "at",
+                  "eastwood"
+                ]
+              },
+              {
+                "intent": "query.persons.position",
+                "tokens": [
+                  "what",
+                  "is",
+                  "the",
+                  "role",
+                  "of",
+                  "the",
+                  "princip",
+                  "at",
+                  "eastwood"
+                ]
+              },
+              {
+                "intent": "query.persons.position",
+                "tokens": [
                   "do",
                   "you",
                   "know",
@@ -681,6 +610,122 @@
                   "the",
                   "princip",
                   "is",
+                  "at",
+                  "eastwood"
+                ]
+              },
+              {
+                "intent": "query.persons.position",
+                "tokens": [
+                  "can",
+                  "you",
+                  "provid",
+                  "inform",
+                  "on",
+                  "the",
+                  "princip",
+                  "at",
+                  "eastwood"
+                ]
+              },
+              {
+                "intent": "query.persons",
+                "tokens": [
+                  "give",
+                  "me",
+                  "inform",
+                  "on",
+                  "person"
+                ]
+              },
+              {
+                "intent": "query.persons",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "more",
+                  "about",
+                  "person"
+                ]
+              },
+              {
+                "intent": "query.persons",
+                "tokens": [
+                  "give",
+                  "me",
+                  "inform",
+                  "on",
+                  "person"
+                ]
+              },
+              {
+                "intent": "query.persons",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "more",
+                  "about",
+                  "person"
+                ]
+              },
+              {
+                "intent": "query.persons",
+                "tokens": [
+                  "give",
+                  "me",
+                  "inform",
+                  "on",
+                  "person"
+                ]
+              },
+              {
+                "intent": "query.persons.position",
+                "tokens": [
+                  "describ",
+                  "the",
+                  "princip",
+                  "at",
+                  "eastwood"
+                ]
+              },
+              {
+                "intent": "query.persons",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "about",
+                  "person"
+                ]
+              },
+              {
+                "intent": "query.persons",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "more",
+                  "about",
+                  "person"
+                ]
+              },
+              {
+                "intent": "query.persons",
+                "tokens": [
+                  "what",
+                  "do",
+                  "you",
+                  "know",
+                  "about",
+                  "person"
+                ]
+              },
+              {
+                "intent": "query.persons.position",
+                "tokens": [
+                  "tell",
+                  "me",
+                  "about",
+                  "the",
+                  "princip",
                   "at",
                   "eastwood"
                 ]
@@ -709,37 +754,79 @@
                 ]
               },
               {
-                "intent": "query.persons.position",
+                "intent": "query.persons.facilities.show",
                 "tokens": [
-                  "what",
+                  "i",
+                  "had",
+                  "like",
+                  "to",
+                  "know",
+                  "where",
+                  "person",
                   "is",
-                  "the",
-                  "role",
-                  "of",
-                  "the",
-                  "princip",
-                  "at",
-                  "eastwood"
+                  "locat",
+                  "can",
+                  "you",
+                  "help"
                 ]
               },
               {
-                "intent": "query.persons.position",
+                "intent": "query.persons.facilities.show",
                 "tokens": [
+                  "i",
+                  "had",
+                  "like",
+                  "to",
+                  "know",
+                  "where",
+                  "person",
+                  "is",
+                  "locat",
+                  "can",
+                  "you",
+                  "help"
+                ]
+              },
+              {
+                "intent": "query.persons.facilities.show",
+                "tokens": [
+                  "how",
+                  "can",
+                  "i",
+                  "find",
+                  "person",
+                  "where",
+                  "are",
+                  "they",
+                  "locat"
+                ]
+              },
+              {
+                "intent": "query.persons.facilities.show",
+                "tokens": [
+                  "i",
+                  "had",
+                  "like",
+                  "to",
+                  "know",
+                  "where",
+                  "person",
+                  "is",
+                  "locat",
+                  "can",
+                  "you",
+                  "help"
+                ]
+              },
+              {
+                "intent": "query.persons.facilities.show",
+                "tokens": [
+                  "can",
+                  "you",
                   "provid",
                   "inform",
                   "on",
                   "the",
-                  "princip",
-                  "at",
-                  "eastwood"
-                ]
-              },
-              {
-                "intent": "query.persons.facilities.show",
-                "tokens": [
-                  "what",
-                  "is",
-                  "the",
                   "locat",
                   "of",
                   "person"
@@ -748,47 +835,14 @@
               {
                 "intent": "query.persons.facilities.show",
                 "tokens": [
-                  "can",
-                  "you",
-                  "tell",
-                  "me",
-                  "where",
-                  "to",
-                  "find",
-                  "person"
-                ]
-              },
-              {
-                "intent": "query.persons.facilities.show",
-                "tokens": [
-                  "i",
-                  "am",
-                  "look",
-                  "for",
-                  "person",
-                  "is",
-                  "locat",
-                  "where",
+                  "how",
                   "can",
                   "i",
                   "find",
-                  "them"
-                ]
-              },
-              {
-                "intent": "query.persons.facilities.show",
-                "tokens": [
-                  "could",
-                  "you",
-                  "direct",
-                  "me",
-                  "to",
                   "person",
-                  "i",
-                  "need",
-                  "to",
-                  "know",
-                  "their",
+                  "where",
+                  "are",
+                  "they",
                   "locat"
                 ]
               },
@@ -985,61 +1039,61 @@
               "up": 1,
               "there": 1,
               "this": 1,
-              "where": 9,
+              "where": 49,
               "facil": 10,
-              "locat": 12,
-              "can": 12,
-              "i": 61,
-              "me": 15,
+              "locat": 92,
+              "i": 62,
+              "me": 17,
               "address": 2,
-              "give": 5,
-              "to": 55,
+              "give": 4,
               "exact": 49,
-              "pleas": 99,
-              "provid": 53,
-              "inform": 54,
-              "about": 58,
-              "need": 50,
+              "pleas": 139,
+              "about": 92,
+              "need": 10,
               "know": 53,
               "situat": 49,
-              "could": 50,
-              "you": 64,
+              "could": 10,
               "guid": 49,
-              "find": 3,
-              "tell": 7,
-              "direct": 1,
-              "what": 5,
-              "is": 9,
-              "of": 7,
-              "the": 22,
-              "who": 3,
+              "who": 45,
               "person": 20,
-              "on": 7,
-              "detail": 3,
-              "do": 3,
-              "have": 2,
-              "ani": 1,
-              "how": 2,
-              "describ": 2,
-              "more": 2,
-              "princip": 10,
-              "at": 10,
-              "eastwood": 10,
-              "name": 1,
-              "role": 1,
+              "describ": 27,
+              "princip": 13,
+              "at": 13,
+              "eastwood": 13,
+              "have": 1,
+              "ani": null,
+              "tell": 52,
+              "more": 33,
+              "name": null,
+              "provid": 41,
+              "can": 47,
+              "detail": 1,
+              "inform": 41,
+              "on": 123,
+              "you": 8,
+              "of": 84,
+              "the": 84,
               "am": 4,
-              "look": 1,
-              "for": 4,
-              "them": 1,
-              "their": 1,
-              "whereabout": 1,
-              "had": 1,
-              "like": 1,
-              "help": 3,
-              "campus": 2,
-              "search": 1,
-              "are": 1,
-              "they": 1,
+              "whereabout": 41,
+              "had": 41,
+              "like": 41,
+              "help": 43,
+              "campus": 82,
+              "search": 41,
+              "how": 41,
+              "are": 41,
+              "they": 41,
+              "what": null,
+              "sir": null,
+              "look": null,
+              "them": null,
+              "im": null,
+              "direct": null,
+              "their": null,
+              "is": 1,
+              "find": 1,
+              "for": 3,
+              "to": 1,
               "thank": 7,
               "your": 3,
               "appreci": 1,
@@ -1077,7 +1131,7 @@
               "labels": [],
               "network": {
                 "sizes": [
-                  79,
+                  70,
                   8
                 ],
                 "layers": [
@@ -1089,7 +1143,7 @@
                     "exousia": {},
                     "hey": {},
                     "greet": {},
-                    "what": {},
+                    "nonefeature": {},
                     "is": {},
                     "up": {},
                     "there": {},
@@ -1117,36 +1171,27 @@
                     "you": {},
                     "guid": {},
                     "who": {},
-                    "person": {},
-                    "tell": {},
-                    "on": {},
-                    "detail": {},
-                    "do": {},
-                    "have": {},
-                    "ani": {},
-                    "how": {},
-                    "describ": {},
-                    "more": {},
                     "princip": {},
                     "at": {},
                     "eastwood": {},
-                    "name": {},
-                    "role": {},
-                    "find": {},
-                    "am": {},
-                    "look": {},
-                    "for": {},
-                    "them": {},
-                    "direct": {},
-                    "their": {},
-                    "whereabout": {},
+                    "tell": {},
+                    "detail": {},
+                    "on": {},
+                    "describ": {},
+                    "person": {},
+                    "more": {},
                     "had": {},
                     "like": {},
                     "help": {},
-                    "campus": {},
-                    "search": {},
+                    "how": {},
+                    "find": {},
                     "are": {},
                     "they": {},
+                    "whereabout": {},
+                    "campus": {},
+                    "am": {},
+                    "search": {},
+                    "for": {},
                     "thank": {},
                     "your": {},
                     "appreci": {},
@@ -1156,559 +1201,495 @@
                     "a": {},
                     "lot": {},
                     "grate": {},
+                    "have": {},
                     "been": {},
                     "big": {},
                     "support": {},
-                    "bunch": {},
-                    "nonefeature": {}
+                    "bunch": {}
                   },
                   {
                     "greetings.hello": {
-                      "bias": -1.099932437,
+                      "bias": -0.921115647,
                       "weights": {
-                        "hello": 11.534036636,
-                        "exousianavi": 1.918244958,
-                        "hi": 11.516737938,
-                        "howdi": 11.494792938,
-                        "exousia": -0.816941977,
-                        "hey": 11.534860611,
-                        "greet": 11.565772057,
-                        "what": 5.211050034,
-                        "is": 0.218447238,
-                        "up": 6.219594479,
-                        "there": 0.168934777,
-                        "this": -4.642900944,
-                        "i": -3.336023808,
+                        "hello": 11.497828484,
+                        "exousianavi": 1.772940278,
+                        "hi": 11.480005264,
+                        "howdi": 11.457574844,
+                        "exousia": -0.865561306,
+                        "hey": 11.501532555,
+                        "greet": 11.531669617,
+                        "nonefeature": -0.507211626,
+                        "is": 2.72735405,
+                        "up": 8.917854309,
+                        "there": 0.169871882,
+                        "this": -5.733263016,
+                        "i": -3.408557177,
                         "need": -0.379812926,
                         "to": -0.40282926,
-                        "know": -0.407703578,
+                        "know": -0.436719835,
                         "where": -0.497069627,
-                        "the": -1.642055631,
+                        "the": -1.016787529,
                         "facil": -0.749433637,
                         "situat": -0.379812926,
                         "exact": -0.117256686,
-                        "can": -0.374474287,
-                        "locat": -0.581967831,
-                        "give": -0.21844843,
-                        "me": -0.598936498,
+                        "can": -0.137640208,
+                        "locat": -0.204457581,
+                        "give": -0.355552137,
+                        "me": -0.655363679,
                         "address": -0.142146751,
-                        "of": -0.935396492,
+                        "of": -0.142146751,
                         "pleas": -0.229347661,
-                        "provid": -0.11560183,
-                        "inform": -0.235885873,
-                        "about": -0.500964284,
+                        "provid": -0.107584409,
+                        "inform": -0.296336859,
+                        "about": -0.445555955,
                         "could": -0.023016328,
-                        "you": -2.75116086,
+                        "you": -2.729774237,
                         "guid": -0.023016328,
-                        "who": -0.185184926,
-                        "person": -1.166556239,
-                        "tell": -0.357471764,
-                        "on": -0.148684978,
-                        "detail": -0.028400932,
-                        "do": -0.100273974,
-                        "have": -0.439113349,
-                        "ani": -0.072383299,
-                        "how": -0.0414127,
-                        "describ": -0.140785426,
-                        "princip": -0.5151124,
-                        "at": -0.5151124,
-                        "eastwood": -0.5151124,
-                        "name": -0.20758523,
-                        "role": -0.208154291,
-                        "am": -1.732363582,
-                        "for": -0.896868408,
-                        "help": -1.263598442,
-                        "thank": -4.412575245,
-                        "your": -2.003459215,
-                        "appreci": -1.106590748,
-                        "assist": -1.106590748,
-                        "veri": -0.425325483,
-                        "much": -0.425325483,
-                        "a": -1.878513932,
-                        "lot": -0.969020545,
-                        "grate": -1.732363582,
-                        "been": -0.366730034,
-                        "big": -0.366730034,
-                        "bunch": -0.542763293,
-                        "nonefeature": -0.869889259
+                        "who": -0.077426687,
+                        "princip": -0.267353922,
+                        "at": -0.267353922,
+                        "eastwood": -0.267353922,
+                        "tell": -0.276795208,
+                        "detail": -0.024652932,
+                        "on": -0.209135965,
+                        "describ": -0.059425205,
+                        "person": -0.43698898,
+                        "more": -0.153636202,
+                        "help": -1.308288932,
+                        "am": -1.777916431,
+                        "for": -0.889944494,
+                        "thank": -4.57238245,
+                        "your": -2.023514986,
+                        "appreci": -1.133570552,
+                        "assist": -1.133570552,
+                        "veri": -0.458018959,
+                        "much": -0.458018959,
+                        "a": -1.88966012,
+                        "lot": -0.956646144,
+                        "grate": -1.777916431,
+                        "have": -0.418344676,
+                        "been": -0.418344676,
+                        "big": -0.418344676,
+                        "bunch": -0.514669418
                       }
                     },
                     "greetings.asking": {
-                      "bias": 3.947314118,
+                      "bias": 4.285446938,
                       "weights": {
-                        "hello": -10.755637169,
-                        "exousianavi": 7.033284187,
-                        "hi": -10.729430199,
-                        "howdi": -10.696720123,
-                        "exousia": 8.540917397,
-                        "hey": -10.868760109,
-                        "greet": -10.864839554,
-                        "what": -4.328670025,
-                        "is": -2.548421383,
-                        "up": -4.143887997,
-                        "there": -0.781253755,
-                        "this": 4.079687595,
-                        "i": -5.0772295,
+                        "hello": -10.725393295,
+                        "exousianavi": 6.667408466,
+                        "hi": -10.698942184,
+                        "howdi": -10.665929794,
+                        "exousia": 8.203429222,
+                        "hey": -10.841036797,
+                        "greet": -10.837244034,
+                        "nonefeature": -4.253609657,
+                        "is": -3.398262262,
+                        "up": -7.190165043,
+                        "there": -0.699742198,
+                        "this": 4.94658947,
+                        "i": -5.060245037,
                         "need": -0.341684818,
                         "to": -0.341684818,
-                        "know": -0.341684818,
-                        "where": -0.389544994,
-                        "the": -1.449200273,
-                        "facil": -0.70852381,
+                        "know": -0.351695269,
+                        "where": -0.365266979,
+                        "the": -1.498816133,
+                        "facil": -0.593323708,
                         "situat": -0.341684818,
                         "exact": -0.023582181,
-                        "can": -0.156548396,
-                        "locat": -0.248879343,
-                        "give": -0.329853207,
-                        "me": -0.689474463,
-                        "address": -0.150291398,
-                        "of": -0.292633832,
-                        "pleas": -0.343259335,
-                        "provid": -0.22229825,
-                        "inform": -0.404637456,
-                        "about": -0.585215449,
-                        "you": -4.368691921,
-                        "who": -1.975876331,
-                        "person": -2.323957443,
-                        "tell": -0.359621853,
-                        "on": -0.211669698,
-                        "detail": -0.032626547,
-                        "do": -0.035404518,
-                        "have": -0.735273361,
-                        "ani": -0.035404518,
-                        "how": -0.036914811,
-                        "describ": -0.310180396,
-                        "more": -0.011078117,
-                        "princip": -0.732625544,
-                        "at": -0.732625544,
-                        "eastwood": -0.732625544,
-                        "name": -0.09955816,
-                        "role": -0.034734014,
-                        "find": -0.024278017,
-                        "am": -2.953597307,
-                        "look": -0.024278017,
-                        "for": -0.664439321,
-                        "them": -0.024278017,
-                        "help": -1.340030432,
-                        "thank": -6.611896992,
-                        "your": -2.398526192,
-                        "appreci": -1.758366346,
-                        "assist": -1.758366346,
-                        "veri": -0.176147133,
-                        "much": -0.176147133,
-                        "a": -3.146869659,
-                        "lot": -1.236254215,
-                        "grate": -2.929319143,
-                        "been": -0.699868977,
-                        "big": -0.699868977,
-                        "bunch": -1.210744977,
-                        "nonefeature": -3.911353111
+                        "can": -0.023582181,
+                        "locat": -0.194508478,
+                        "give": -0.553729475,
+                        "me": -1.319532037,
+                        "address": -0.057133045,
+                        "of": -0.415607512,
+                        "pleas": -0.228059307,
+                        "provid": -0.170926362,
+                        "inform": -0.667523861,
+                        "about": -0.946740448,
+                        "you": -4.326108456,
+                        "who": -0.45447588,
+                        "princip": -0.905493736,
+                        "at": -0.905493736,
+                        "eastwood": -0.905493736,
+                        "tell": -0.765802264,
+                        "on": -0.496597767,
+                        "describ": -0.082792349,
+                        "person": -1.262655616,
+                        "more": -0.213196829,
+                        "help": -1.347913623,
+                        "am": -2.935817957,
+                        "for": -0.626869798,
+                        "thank": -6.626451492,
+                        "your": -2.386030674,
+                        "appreci": -1.759161234,
+                        "assist": -1.759161234,
+                        "veri": -0.18254213,
+                        "much": -0.18254213,
+                        "a": -3.125565767,
+                        "lot": -1.215149283,
+                        "grate": -2.935817957,
+                        "have": -0.721043169,
+                        "been": -0.721043169,
+                        "big": -0.721043169,
+                        "bunch": -1.189368963
                       }
                     },
                     "query.facilities": {
-                      "bias": 0.116842434,
+                      "bias": 0.200995056,
                       "weights": {
-                        "exousianavi": -0.304603338,
-                        "exousia": -0.116842367,
-                        "what": -1.004399538,
-                        "is": -0.988510251,
-                        "i": 0.570625305,
-                        "need": 0.2248393,
-                        "to": 1.440757155,
-                        "know": 0.069277562,
-                        "where": 1.449314475,
-                        "the": 3.189126015,
-                        "facil": 5.641514301,
-                        "situat": 0.786213756,
-                        "exact": 1.12511909,
-                        "can": -0.250457287,
-                        "locat": 0.657915533,
-                        "give": 0.635894239,
-                        "me": 0.10364528,
-                        "address": 1.129251957,
-                        "of": -0.218899667,
-                        "pleas": 1.902625561,
-                        "provid": 0.61384213,
-                        "inform": 0.441121489,
-                        "about": -0.062987477,
-                        "could": 0.852878988,
-                        "you": -0.259015948,
-                        "guid": 1.414251685,
-                        "who": -0.719973743,
-                        "person": -3.503663063,
-                        "tell": -1.385129929,
-                        "on": -0.801054955,
-                        "detail": -0.320636421,
-                        "how": -0.026549876,
-                        "describ": -0.026549876,
-                        "princip": -1.36580658,
-                        "at": -1.36580658,
-                        "eastwood": -1.36580658,
-                        "name": -0.261560678,
-                        "find": -0.306457698,
-                        "am": -0.430127919,
-                        "look": -0.263684154,
-                        "for": -0.319171518,
-                        "them": -0.263684154,
-                        "direct": -0.561374366,
-                        "their": -0.561374366,
-                        "whereabout": -0.413315594,
-                        "had": -0.155561775,
-                        "like": -0.155561775,
-                        "help": -0.155561775,
-                        "campus": -0.055487331,
-                        "search": -0.055487331,
-                        "your": -0.193646893,
-                        "appreci": -0.193646893,
-                        "assist": -0.193646893,
-                        "grate": -0.110956438,
-                        "nonefeature": -0.116936363
-                      }
-                    },
-                    "query.persons": {
-                      "bias": 0.856602649,
-                      "weights": {
-                        "hello": -0.031538628,
-                        "exousianavi": -1.638064623,
-                        "hi": -0.026459645,
-                        "howdi": -0.022162523,
-                        "exousia": -0.856539488,
-                        "hey": -0.006277493,
-                        "greet": -0.005036297,
-                        "what": -0.324224055,
-                        "is": 1.047192812,
-                        "up": -0.515616477,
-                        "this": -0.357549787,
-                        "i": -1.453027964,
-                        "need": -0.573463738,
-                        "to": -3.262995481,
-                        "know": -0.055760596,
-                        "where": -3.56909585,
-                        "the": -5.394561291,
-                        "can": -0.003165437,
-                        "locat": -3.914565325,
-                        "give": 0.682482719,
-                        "me": 0.361508846,
-                        "of": -3.1889534,
-                        "pleas": -0.727416396,
-                        "provid": 0.717364192,
-                        "inform": 1.976620674,
-                        "about": 3.758502483,
-                        "could": -0.573463738,
-                        "you": 0.328655809,
-                        "who": 3.326363325,
-                        "person": 7.26999855,
-                        "tell": 0.252488971,
-                        "on": 1.352055073,
-                        "detail": -0.428637326,
-                        "do": 0.665839493,
-                        "have": -0.097908996,
-                        "ani": 0.14813602,
-                        "how": 2.023863792,
-                        "describ": 2.023863792,
-                        "more": 0.000802421,
-                        "princip": -2.205618382,
-                        "at": -2.205618382,
-                        "eastwood": -2.205618382,
-                        "find": -2.94453001,
-                        "am": -0.254998773,
-                        "look": -0.254998773,
-                        "for": -0.254998773,
-                        "them": -0.254998773,
-                        "direct": -0.573463738,
-                        "their": -0.573463738,
-                        "whereabout": -0.727416396,
-                        "help": -0.246045232,
-                        "campus": -0.624565601,
-                        "thank": -0.406011015,
-                        "veri": -0.114948452,
-                        "much": -0.114948452,
-                        "a": -0.25798279,
-                        "lot": -0.011937588,
-                        "been": -0.246045232,
-                        "big": -0.246045232,
-                        "nonefeature": -0.856546581
+                        "exousianavi": -0.379265696,
+                        "exousia": -0.200994909,
+                        "nonefeature": -0.203420267,
+                        "is": -0.88367182,
+                        "i": 0.549470723,
+                        "need": 0.905994892,
+                        "to": 1.123858094,
+                        "know": -0.107153326,
+                        "where": 1.087275028,
+                        "the": 2.924157619,
+                        "facil": 5.793078899,
+                        "situat": 0.905994892,
+                        "exact": 1.42925334,
+                        "can": -0.259007424,
+                        "locat": 0.774776697,
+                        "give": 0.5747087,
+                        "me": 0.469868541,
+                        "address": 1.198499203,
+                        "of": -0.275258243,
+                        "pleas": 1.613950253,
+                        "provid": 0.671888173,
+                        "inform": 0.216169447,
+                        "about": 0.304983854,
+                        "could": 1.147158742,
+                        "you": -0.306275815,
+                        "guid": 1.147158742,
+                        "who": -0.602028668,
+                        "princip": -1.653510571,
+                        "at": -1.653510571,
+                        "eastwood": -1.653510571,
+                        "tell": -1.252002597,
+                        "detail": -0.168069735,
+                        "on": -1.062717676,
+                        "person": -3.021477699,
+                        "more": -0.018516118,
+                        "had": -0.929295182,
+                        "like": -0.929295182,
+                        "help": -0.929295182,
+                        "how": -0.318679065,
+                        "find": -0.318679065,
+                        "are": -0.318679065,
+                        "they": -0.318679065,
+                        "whereabout": -0.696728826,
+                        "campus": -0.166706949,
+                        "am": -0.341819912,
+                        "search": -0.166706949,
+                        "for": -0.186305016,
+                        "thank": -0.027763758,
+                        "your": -0.215585083,
+                        "appreci": -0.195987016,
+                        "assist": -0.195987016,
+                        "a": -0.008165701,
+                        "lot": -0.008165701,
+                        "grate": -0.155514911,
+                        "support": -0.019598054
                       }
                     },
                     "query.persons.position": {
-                      "bias": 0.104526741,
+                      "bias": -0.065862708,
                       "weights": {
-                        "hello": -0.034755819,
-                        "exousianavi": -0.566312909,
-                        "hi": -0.030521642,
-                        "howdi": -0.026096953,
-                        "exousia": -0.131491661,
-                        "hey": -0.013273893,
-                        "greet": -0.010916012,
-                        "what": 0.154657423,
-                        "is": 0.235290945,
-                        "up": -0.171714291,
-                        "there": -0.000381244,
-                        "this": -0.093851388,
-                        "i": -0.27470994,
-                        "need": -0.223086372,
-                        "to": -0.696220815,
-                        "know": -0.094594665,
-                        "where": -0.521064162,
-                        "the": 1.461525917,
-                        "facil": -0.825170279,
-                        "situat": -0.193181753,
-                        "can": 0.033895358,
-                        "locat": -1.137773156,
-                        "give": -0.052449651,
-                        "me": -0.134967044,
-                        "address": -0.197536796,
-                        "of": -0.327332973,
-                        "pleas": -0.83267951,
-                        "provid": 0.096941262,
-                        "inform": 0.096941262,
-                        "about": 0.622353554,
-                        "could": -0.175156683,
-                        "you": -0.033895619,
-                        "guid": -0.145252079,
-                        "who": 0.344731092,
-                        "person": -1.583283782,
-                        "tell": 0.0926392,
-                        "on": 0.386140972,
-                        "detail": 0.14508678,
-                        "do": 0.128492057,
-                        "describ": 0.580024064,
-                        "more": -0.000003438,
-                        "princip": 3.451308012,
-                        "at": 3.451308012,
-                        "eastwood": 3.451308012,
-                        "name": 0.517408133,
-                        "role": 0.517408133,
-                        "find": -0.327882409,
-                        "am": -0.020951446,
-                        "for": -0.040043134,
-                        "direct": -0.029904611,
-                        "their": -0.029904611,
-                        "whereabout": -0.345943183,
-                        "help": -0.040043134,
-                        "thank": -0.110479601,
-                        "your": -0.070715271,
-                        "appreci": -0.030672137,
-                        "assist": -0.030672137,
-                        "a": -0.049310546,
-                        "lot": -0.031359874,
-                        "grate": -0.020951446,
-                        "bunch": -0.017950671,
-                        "nonefeature": -0.135996684
+                        "hello": -0.017637555,
+                        "exousianavi": -0.325575858,
+                        "hi": -0.015239249,
+                        "howdi": -0.012829574,
+                        "exousia": -0.032225195,
+                        "hey": -0.006511942,
+                        "greet": -0.005448725,
+                        "nonefeature": 0.062810391,
+                        "is": 0.239972442,
+                        "up": -0.07661473,
+                        "this": -0.062677823,
+                        "i": -0.606212914,
+                        "need": -0.425956488,
+                        "to": -0.550150335,
+                        "know": -0.343249857,
+                        "where": -0.500530541,
+                        "the": 1.85477674,
+                        "facil": -1.003810406,
+                        "situat": -0.425956488,
+                        "exact": -0.074574105,
+                        "can": 0.318029433,
+                        "locat": -0.628851354,
+                        "give": -0.292926192,
+                        "me": -0.337817043,
+                        "address": -0.147640854,
+                        "of": 0.010514884,
+                        "pleas": -0.680406928,
+                        "provid": 0.161158279,
+                        "inform": -0.356354117,
+                        "about": 0.521404624,
+                        "could": -0.12419419,
+                        "you": 0.337616742,
+                        "guid": -0.12419419,
+                        "who": 0.022913419,
+                        "princip": 3.482732296,
+                        "at": 3.482732296,
+                        "eastwood": 3.482732296,
+                        "tell": 0.079301603,
+                        "detail": 0.372226626,
+                        "on": -0.197561696,
+                        "describ": 0.262888998,
+                        "person": -2.160660744,
+                        "more": -5.04e-7,
+                        "help": -0.030831125,
+                        "whereabout": -0.301320463,
+                        "campus": -0.072653666,
+                        "am": -0.080664292,
+                        "search": -0.072653666,
+                        "for": -0.103484794,
+                        "thank": -0.084970981,
+                        "your": -0.055849258,
+                        "appreci": -0.025018135,
+                        "assist": -0.025018135,
+                        "a": -0.040640719,
+                        "lot": -0.026096636,
+                        "grate": -0.008010622,
+                        "bunch": -0.014544086
+                      }
+                    },
+                    "query.persons": {
+                      "bias": 0.403072077,
+                      "weights": {
+                        "hello": -0.077507056,
+                        "exousianavi": -0.836434782,
+                        "hi": -0.06810572,
+                        "howdi": -0.058494199,
+                        "exousia": -0.415088862,
+                        "hey": -0.043563593,
+                        "greet": -0.0259757,
+                        "nonefeature": -0.404021442,
+                        "is": -0.886309981,
+                        "there": -0.015051267,
+                        "i": -1.285799265,
+                        "to": -0.886309981,
+                        "know": 1.932400823,
+                        "where": -1.285799265,
+                        "the": -3.956911564,
+                        "can": -1.98677969,
+                        "locat": -1.98677969,
+                        "give": 2.071184874,
+                        "me": 2.382134676,
+                        "of": -1.879079461,
+                        "pleas": -1.178099036,
+                        "provid": -0.700980484,
+                        "inform": 1.370208859,
+                        "about": 4.307762623,
+                        "you": 0.840499341,
+                        "princip": -2.077836752,
+                        "at": -2.077836752,
+                        "eastwood": -2.077836752,
+                        "tell": 0.310947686,
+                        "on": 1.177366376,
+                        "describ": -0.195861489,
+                        "person": 5.096038342,
+                        "more": 0.000060096,
+                        "had": -0.886309981,
+                        "like": -0.886309981,
+                        "help": -0.886309981,
+                        "how": -0.206647694,
+                        "find": -0.206647694,
+                        "are": -0.206647694,
+                        "they": -0.206647694,
+                        "whereabout": -1.178099036,
+                        "campus": -0.192841664,
+                        "thank": -0.505831361,
+                        "veri": -0.077789031,
+                        "much": -0.077789031,
+                        "a": -0.114911482,
+                        "lot": -0.070269622,
+                        "bunch": -0.04464186
                       }
                     },
                     "query.persons.facilities.show": {
-                      "bias": -1.701737202,
+                      "bias": -0.893247978,
                       "weights": {
-                        "exousianavi": -1.489198089,
-                        "exousia": -0.1163349,
-                        "what": 0.22153616,
-                        "is": -0.296205163,
-                        "up": -0.018536886,
-                        "this": -0.000923926,
-                        "i": -0.666802943,
-                        "need": -0.199749276,
-                        "to": 2.624343395,
-                        "know": -0.000139097,
-                        "where": 2.484423399,
-                        "the": 0.324205488,
-                        "facil": -4.660028458,
-                        "situat": -1.506839395,
-                        "exact": -1.974223852,
-                        "can": 0.642474294,
-                        "locat": 5.551689625,
-                        "give": -1.620712399,
-                        "me": 0.179021135,
-                        "address": -0.454199791,
-                        "of": 4.530049324,
-                        "pleas": 1.813190699,
-                        "provid": 0.363753915,
-                        "inform": -1.258036137,
-                        "about": -4.472225189,
-                        "could": 0.58231461,
-                        "you": -0.353586137,
-                        "guid": -0.724776506,
-                        "who": -1.872518897,
-                        "person": 3.870461464,
-                        "tell": 1.217419386,
-                        "on": 0.530725121,
-                        "detail": -0.072999731,
-                        "do": -0.528278232,
-                        "have": -0.589112043,
-                        "ani": -0.528278232,
-                        "how": -1.227607846,
-                        "describ": -1.23256886,
-                        "princip": -0.885737062,
-                        "at": -0.885737062,
-                        "eastwood": -0.885737062,
-                        "name": -0.465101659,
-                        "role": -0.420637041,
-                        "find": 3.537180662,
-                        "am": -0.694402397,
-                        "look": 0.182966813,
-                        "for": -0.593015432,
-                        "them": 0.182966813,
-                        "direct": 1.307092309,
-                        "their": 1.307092309,
-                        "whereabout": 2.267389297,
-                        "had": 0.19961001,
-                        "like": 0.19961001,
-                        "help": -0.054141734,
-                        "campus": 1.788766026,
-                        "search": -0.439938903,
-                        "are": 0.004959293,
-                        "they": 0.004959293,
-                        "thank": -0.88290441,
-                        "your": -0.567736685,
-                        "appreci": -0.231693774,
-                        "assist": -0.231693774,
-                        "veri": -0.174218148,
-                        "much": -0.174218148,
-                        "a": -0.060833741,
-                        "grate": -0.294305503,
-                        "been": -0.060833741,
-                        "big": -0.060833741,
-                        "support": -0.143124387,
-                        "nonefeature": -0.122619122
+                        "exousianavi": -1.050623178,
+                        "exousia": -0.098426521,
+                        "nonefeature": -0.288534045,
+                        "is": 0.01422325,
+                        "i": 0.485493749,
+                        "need": -0.797236621,
+                        "to": 0.234349042,
+                        "know": -0.481698751,
+                        "where": 0.937643707,
+                        "the": -0.036404263,
+                        "facil": -3.481960058,
+                        "situat": -0.797236621,
+                        "exact": -2.054619789,
+                        "can": 2.311579943,
+                        "locat": 2.731515408,
+                        "give": -1.98544085,
+                        "me": -0.953629732,
+                        "address": -0.470114559,
+                        "of": 3.680364609,
+                        "pleas": 2.583868504,
+                        "provid": 0.416709483,
+                        "inform": -1.098615885,
+                        "about": -3.058196306,
+                        "you": 0.457274497,
+                        "princip": -0.925039232,
+                        "at": -0.925039232,
+                        "eastwood": -0.925039232,
+                        "tell": 1.031811357,
+                        "on": 1.057559848,
+                        "person": 3.873264551,
+                        "more": -1.108062863,
+                        "had": 1.031586528,
+                        "like": 1.031586528,
+                        "help": 0.766429782,
+                        "how": 0.763437629,
+                        "find": 0.763437629,
+                        "are": 0.763437629,
+                        "they": 0.763437629,
+                        "whereabout": 3.213971615,
+                        "campus": 1.996189952,
+                        "am": -0.212751999,
+                        "search": 0.00169385,
+                        "for": -0.183677524,
+                        "thank": -0.516986609,
+                        "your": -0.424778551,
+                        "appreci": -0.239406005,
+                        "assist": -0.239406005,
+                        "veri": -0.090006366,
+                        "much": -0.090006366,
+                        "a": -0.108623937,
+                        "lot": -0.002638533,
+                        "grate": -0.188245147,
+                        "have": -0.105985411,
+                        "been": -0.105985411,
+                        "big": -0.105985411,
+                        "support": -0.026201854
                       }
                     },
                     "thanks": {
-                      "bias": -1.026725323,
+                      "bias": -0.970689665,
                       "weights": {
-                        "hello": -2.020119429,
-                        "exousianavi": 1.029978633,
-                        "hi": -1.916442037,
-                        "howdi": -1.799964666,
-                        "exousia": -0.141588822,
-                        "hey": -1.574555635,
-                        "greet": -1.374112844,
-                        "what": -0.4777776,
-                        "is": -1.550912142,
-                        "up": -0.367234051,
-                        "there": -0.368691534,
-                        "this": -0.352285266,
-                        "i": 4.099164009,
-                        "need": -0.514499068,
-                        "to": -1.259868264,
-                        "know": -1.123166323,
-                        "where": -0.990276754,
-                        "the": -0.696026325,
-                        "facil": -0.503501058,
-                        "situat": -0.207917809,
-                        "exact": -0.158881396,
-                        "can": -1.332132578,
-                        "locat": -1.212120891,
-                        "me": -0.554281473,
-                        "of": -0.123179562,
-                        "provid": -0.246589363,
-                        "inform": -0.480048954,
-                        "about": -0.288239151,
-                        "could": -0.443285137,
-                        "you": 4.592951298,
-                        "guid": -0.136702091,
-                        "person": -1.944822669,
-                        "tell": -0.110997804,
-                        "on": -0.603226781,
-                        "detail": -0.17724137,
-                        "do": -0.410701692,
-                        "have": 0.275395304,
-                        "ani": -0.410701692,
-                        "how": -0.192641407,
-                        "describ": -0.192641407,
-                        "princip": -0.069348373,
-                        "at": -0.069348373,
-                        "eastwood": -0.069348373,
-                        "find": -0.014811663,
-                        "am": 2.375264406,
-                        "look": -0.014811663,
-                        "for": -0.75826335,
-                        "them": -0.014811663,
-                        "direct": -0.306582987,
-                        "their": -0.306582987,
-                        "had": -0.608665884,
-                        "like": -0.608665884,
-                        "help": 2.965527296,
-                        "campus": -0.123179562,
-                        "search": -0.123179562,
-                        "thank": 7.903645992,
-                        "your": 2.385679007,
-                        "appreci": 3.005941391,
-                        "assist": 3.005941391,
-                        "veri": 0.000197531,
-                        "much": 0.000197531,
-                        "a": 3.290734291,
-                        "lot": 1.302415133,
-                        "grate": 6.021608829,
-                        "been": 0.686095476,
-                        "big": 0.686095476,
-                        "support": -3.508363485,
-                        "bunch": 1.30221045,
-                        "nonefeature": -0.424172878
+                        "hello": -2.015110016,
+                        "exousianavi": 0.973799527,
+                        "hi": -1.91148591,
+                        "howdi": -1.795203686,
+                        "exousia": -0.144430026,
+                        "hey": -1.563721776,
+                        "greet": -1.367249012,
+                        "nonefeature": -0.571491718,
+                        "is": -1.649421215,
+                        "up": -0.427104086,
+                        "there": -0.353019327,
+                        "this": -0.281505138,
+                        "i": 4.144415379,
+                        "need": -0.208433032,
+                        "to": -1.192107558,
+                        "know": -1.503175974,
+                        "where": -1.099539161,
+                        "the": -1.053874254,
+                        "facil": -0.61845392,
+                        "situat": -0.208433032,
+                        "exact": -0.15872705,
+                        "can": -1.097441792,
+                        "locat": -1.120192409,
+                        "me": -0.251294583,
+                        "of": -0.229085982,
+                        "provid": -0.206334457,
+                        "inform": -0.206334457,
+                        "about": -0.562363207,
+                        "could": -0.251294583,
+                        "you": 4.588929653,
+                        "guid": -0.251294583,
+                        "princip": -0.206334457,
+                        "at": -0.206334457,
+                        "eastwood": -0.206334457,
+                        "on": -0.435420305,
+                        "person": -1.523829103,
+                        "had": -0.732381999,
+                        "like": -0.732381999,
+                        "help": 2.888058901,
+                        "campus": -0.229085982,
+                        "am": 2.288962126,
+                        "search": -0.229085982,
+                        "for": -0.741620243,
+                        "thank": 7.907820225,
+                        "your": 2.442470074,
+                        "appreci": 2.954992771,
+                        "assist": 2.954992771,
+                        "veri": 0.000186994,
+                        "much": 0.000186994,
+                        "a": 3.255408525,
+                        "lot": 1.333703995,
+                        "grate": 6.062829018,
+                        "have": 0.588180482,
+                        "been": 0.588180482,
+                        "big": 0.588180482,
+                        "support": -3.544791698,
+                        "bunch": 1.333511949
                       }
                     },
                     "None": {
-                      "bias": 2.140636061,
+                      "bias": 2.139745819,
                       "weights": {
-                        "hello": -0.295051813,
-                        "exousianavi": -2.140633583,
-                        "hi": -0.281691879,
-                        "howdi": -0.267140538,
-                        "exousia": -2.140633583,
-                        "hey": -0.181968957,
-                        "greet": -0.164657369,
-                        "what": -0.104577459,
-                        "is": -0.596090138,
-                        "up": -0.023956914,
-                        "there": -0.041058525,
-                        "this": -0.015045301,
-                        "i": -0.213663831,
-                        "need": -0.069327414,
-                        "to": -0.119206041,
-                        "know": -0.121049143,
-                        "where": -0.213663831,
-                        "the": -0.728559732,
-                        "facil": -0.388882786,
-                        "situat": -0.069327414,
-                        "exact": -0.122102715,
-                        "can": -0.282802105,
-                        "locat": -0.190960661,
-                        "give": -0.190655649,
-                        "me": -0.471568823,
-                        "address": -0.100951508,
-                        "of": -0.112442404,
-                        "pleas": -0.147574812,
-                        "provid": -0.086489461,
-                        "inform": -0.228409708,
-                        "about": -0.369758517,
-                        "could": -0.049878877,
-                        "you": -0.332660526,
-                        "guid": -0.049878877,
-                        "who": -0.476271719,
-                        "person": -1.068273306,
-                        "tell": -0.231034815,
-                        "on": -0.181785807,
-                        "detail": -0.040379241,
-                        "do": -0.144316614,
-                        "have": -0.092594832,
-                        "ani": -0.092594832,
-                        "how": -0.104568608,
-                        "describ": -0.393039733,
-                        "more": -0.011795628,
-                        "princip": -0.339678645,
-                        "at": -0.339678645,
-                        "eastwood": -0.339678645,
-                        "name": -0.01149089,
-                        "find": -0.022234414,
-                        "for": -0.026950466,
-                        "help": -0.026950466,
-                        "are": -0.022234414,
-                        "they": -0.022234414,
-                        "thank": -0.079750612,
-                        "your": -0.026950466,
-                        "a": -0.052800149,
-                        "lot": -0.02790598,
-                        "bunch": -0.02489417,
-                        "nonefeature": 10.359355927
+                        "hello": -0.275126368,
+                        "exousianavi": -2.139743328,
+                        "hi": -0.262340933,
+                        "howdi": -0.248502567,
+                        "exousia": -2.139743328,
+                        "hey": -0.164159223,
+                        "greet": -0.149688423,
+                        "nonefeature": 10.360246658,
+                        "is": -0.84171474,
+                        "up": -0.18063201,
+                        "there": -0.028867006,
+                        "this": -0.01086152,
+                        "i": -0.235079765,
+                        "need": -0.065020196,
+                        "to": -0.078974396,
+                        "know": -0.987359345,
+                        "where": -0.235079765,
+                        "the": -0.892532349,
+                        "facil": -0.274353415,
+                        "situat": -0.065020196,
+                        "exact": -0.140046388,
+                        "can": -0.170059577,
+                        "locat": -0.193190381,
+                        "give": -0.217615485,
+                        "me": -0.329211414,
+                        "address": -0.032201927,
+                        "of": -0.596446455,
+                        "pleas": -0.05533272,
+                        "provid": -0.023130791,
+                        "inform": -0.208544344,
+                        "about": -1.043109775,
+                        "could": -0.013954206,
+                        "you": -0.936293364,
+                        "guid": -0.013954206,
+                        "who": -0.020956444,
+                        "princip": -0.618178785,
+                        "at": -0.618178785,
+                        "eastwood": -0.618178785,
+                        "tell": -0.097641818,
+                        "on": -0.185413569,
+                        "describ": -0.016039232,
+                        "person": -1.218467116,
+                        "more": -0.062933281,
+                        "help": -0.022286488,
+                        "how": -0.030013178,
+                        "find": -0.030013178,
+                        "are": -0.030013178,
+                        "they": -0.030013178,
+                        "for": -0.022286488,
+                        "thank": -0.065648779,
+                        "your": -0.022286488,
+                        "a": -0.043362301,
+                        "lot": -0.022986624,
+                        "bunch": -0.020375671
                       }
                     }
                   }
@@ -3813,6 +3794,3210 @@
       ],
       [
         "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Who is %person%?"
+      ],
+      [
+        "en",
+        "Tell me about %person%."
+      ],
+      [
+        "en",
+        "What can you tell me about %person%?"
+      ],
+      [
+        "en",
+        "Give me information on %person%."
+      ],
+      [
+        "en",
+        "Can you provide details about %person%?"
+      ],
+      [
+        "en",
+        "Do you have any information on %person%?"
+      ],
+      [
+        "en",
+        "How can you describe %person%?"
+      ],
+      [
+        "en",
+        "Tell me more about %person%."
+      ],
+      [
+        "en",
+        "What do you know about %person%?"
+      ],
+      [
+        "en",
+        "Give me details about %person%."
+      ],
+      [
+        "en",
+        "Who is the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Tell me about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the name of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Give me details about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Can you provide information on the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Do you know who the principal is at Eastwoods?"
+      ],
+      [
+        "en",
+        "Describe the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "Tell me more about the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What is the role of the principal at Eastwoods?"
+      ],
+      [
+        "en",
+        "Provide information on the principal at Eastwoods."
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
         "What's the location of %person%?"
       ],
       [
@@ -3821,7 +7006,1931 @@
       ],
       [
         "en",
-        "I'm looking for %person%'s location. Where can I find them?"
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
+      ],
+      [
+        "en",
+        "Could you direct me to %person%? I need to know their location."
+      ],
+      [
+        "en",
+        "Tell me the whereabouts of %person% please."
+      ],
+      [
+        "en",
+        "I'd like to know where %person% is located. Can you help?"
+      ],
+      [
+        "en",
+        "Where can I locate %person% on campus?"
+      ],
+      [
+        "en",
+        "Can you provide information on the location of %person%?"
+      ],
+      [
+        "en",
+        "I'm searching for the location of %person% on campus."
+      ],
+      [
+        "en",
+        "How can I find %person%? Where are they located?"
+      ],
+      [
+        "en",
+        "What's can i find sir %person%?"
+      ],
+      [
+        "en",
+        "What's the location of %person%?"
+      ],
+      [
+        "en",
+        "Can you tell me where to find %person%?"
+      ],
+      [
+        "en",
+        "I'm looking for %person%' location. Where can I find them?"
+      ],
+      [
+        "en",
+        "im looking for %person%'"
       ],
       [
         "en",
@@ -4067,9 +9176,169 @@
         },
         "locales": {
           "en": {
-            "test": [
-              "test",
-              "test"
+            "Acosta Allan L.": [
+              "Acosta Allan L.",
+              "Acosta Allan L."
+            ],
+            "Aleviado Nomer D.": [
+              "Aleviado Nomer D.",
+              "Aleviado Nomer D."
+            ],
+            "Araos Katherine V.": [
+              "Araos Katherine V.",
+              "Araos Katherine V."
+            ],
+            "Bartolome Sarah Jane B.": [
+              "Bartolome Sarah Jane B.",
+              "Bartolome Sarah Jane B."
+            ],
+            "Bautista Marie-Nel C.": [
+              "Bautista Marie-Nel C.",
+              "Bautista Marie-Nel C."
+            ],
+            "Borja Percian Joseph C.": [
+              "Borja Percian Joseph C.",
+              "Borja Percian Joseph C."
+            ],
+            "Carino Sherwin A.": [
+              "Carino Sherwin A.",
+              "Carino Sherwin A."
+            ],
+            "Cayabyab Aries John G.": [
+              "Cayabyab Aries John G.",
+              "Cayabyab Aries John G."
+            ],
+            "Clacio Corazon S.": [
+              "Clacio Corazon S.",
+              "Clacio Corazon S."
+            ],
+            "Chua Josephn V.": [
+              "Chua Josephn V.",
+              "Chua Josephn V."
+            ],
+            "Cordova Jr. Adelino B.": [
+              "Cordova Jr. Adelino B.",
+              "Cordova Jr. Adelino B."
+            ],
+            "Corpus Nino L.": [
+              "Corpus Nino L.",
+              "Corpus Nino L."
+            ],
+            "De Guzman Doreliza Pearl R.": [
+              "De Guzman Doreliza Pearl R.",
+              "De Guzman Doreliza Pearl R."
+            ],
+            "De Guzman Jairryl Anne L.": [
+              "De Guzman Jairryl Anne L.",
+              "De Guzman Jairryl Anne L."
+            ],
+            "De Guzman Paulo F.": [
+              "De Guzman Paulo F.",
+              "De Guzman Paulo F."
+            ],
+            "Delos Reyes Alexander John C.": [
+              "Delos Reyes Alexander John C.",
+              "Delos Reyes Alexander John C."
+            ],
+            "Enriquez Maria Deth A.": [
+              "Enriquez Maria Deth A.",
+              "Enriquez Maria Deth A."
+            ],
+            "Espiritu Ellaine R.": [
+              "Espiritu Ellaine R.",
+              "Espiritu Ellaine R."
+            ],
+            "Galeos Angelica Marie G.": [
+              "Galeos Angelica Marie G.",
+              "Galeos Angelica Marie G."
+            ],
+            "Gloria Gladys": [
+              "Gloria Gladys",
+              "Gloria Gladys"
+            ],
+            "Gomez Mariz R.": [
+              "Gomez Mariz R.",
+              "Gomez Mariz R."
+            ],
+            "Gomez Rochelle V.": [
+              "Gomez Rochelle V.",
+              "Gomez Rochelle V."
+            ],
+            "Gutierrez Jessica C.": [
+              "Gutierrez Jessica C.",
+              "Gutierrez Jessica C."
+            ],
+            "Layug Romeo M.": [
+              "Layug Romeo M.",
+              "Layug Romeo M."
+            ],
+            "Macalinao Christian T.": [
+              "Macalinao Christian T.",
+              "Macalinao Christian T."
+            ],
+            "Mangayao Saira Marie S.": [
+              "Mangayao Saira Marie S.",
+              "Mangayao Saira Marie S."
+            ],
+            "Nopia Alexander B.": [
+              "Nopia Alexander B.",
+              "Nopia Alexander B."
+            ],
+            "Padal Ericka A.": [
+              "Padal Ericka A.",
+              "Padal Ericka A."
+            ],
+            "Palazo Moneliza D.": [
+              "Palazo Moneliza D.",
+              "Palazo Moneliza D."
+            ],
+            "Pelaez Evangeline L.": [
+              "Pelaez Evangeline L.",
+              "Pelaez Evangeline L."
+            ],
+            "Reyes Liza N.": [
+              "Reyes Liza N.",
+              "Reyes Liza N."
+            ],
+            "Rodriguez Arberlyn A.": [
+              "Rodriguez Arberlyn A.",
+              "Rodriguez Arberlyn A."
+            ],
+            "Roman Marijuane S.": [
+              "Roman Marijuane S.",
+              "Roman Marijuane S."
+            ],
+            "Sevilla Zenaida D.": [
+              "Sevilla Zenaida D.",
+              "Sevilla Zenaida D."
+            ],
+            "Seno Charmie Lyn N.": [
+              "Seno Charmie Lyn N.",
+              "Seno Charmie Lyn N."
+            ],
+            "Sioson Chrislyn Colleen I.": [
+              "Sioson Chrislyn Colleen I.",
+              "Sioson Chrislyn Colleen I."
+            ],
+            "Turalde Ma. Leilanie B.": [
+              "Turalde Ma. Leilanie B.",
+              "Turalde Ma. Leilanie B."
+            ],
+            "Ventura Jenny Rose D.": [
+              "Ventura Jenny Rose D.",
+              "Ventura Jenny Rose D."
+            ],
+            "Vibar Grace Kelly U.": [
+              "Vibar Grace Kelly U.",
+              "Vibar Grace Kelly U."
+            ],
+            "Visperas Jenice Anne Marie B.": [
+              "Visperas Jenice Anne Marie B.",
+              "Visperas Jenice Anne Marie B."
+            ],
+            "Zabala Sheila Marie M.": [
+              "Zabala Sheila Marie M.",
+              "Zabala Sheila Marie M."
             ]
           }
         }

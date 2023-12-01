@@ -83,6 +83,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Name</th>
+                                                <th>Gender</th>
                                                 <th>Position</th>
                                                 <th>Located</th>
                                             </tr>
@@ -97,6 +98,20 @@
                                                         <input type="text" name="teachers_name[]"
                                                             class="form-control text-white mt-2 add-input"
                                                             placeholder="jaypee quintana" required>
+                                                    </h6>
+                                                </td>
+                                                <td width='100'>
+                                                    {{-- {{ $facilities }} --}}
+                                                    <h6 class="font-size-13">
+                                                        <i
+                                                            class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
+                                                        <span class="text-secondary">Please Select a gender.</span>
+                                                        <select id="floor-selected" name="teachers_gender[]" class="form-select text-white mt-2">
+                                                            
+                                                                <option value="male">{{ __('Male') }}</option>
+                                                                <option value="female">{{ __('Female') }}</option>
+                                                            
+                                                        </select>
                                                     </h6>
                                                 </td>
                                                 <td>
@@ -155,6 +170,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Name</th>
+                                                <th>Gender</th>
                                                 <th>Position</th>
                                                 <th>Located</th>
                                                 {{-- <th width='30'>Action</th> --}}
@@ -175,6 +191,22 @@
                                                                     class="form-control text-white mt-2 edit-input"
                                                                     placeholder="who is navi team?"
                                                                     value="{{ $teacher->name }}">
+
+                                                            </div>
+                                                        </h6>
+                                                    </td>
+                                                    <td>
+                                                        {{-- {{ $facilities }} --}}
+                                                        <h6 class="font-size-13">
+
+                                                            <span class="text-secondary"><span
+                                                                    class="text-danger">Update</span> gender.</span>
+                                                            <div class="input-group align-items-center text-danger">
+                                                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                                                                <input type="text" name="teachers_gender[]"
+                                                                    class="form-control text-white mt-2 edit-input"
+                                                                   
+                                                                    value="{{ $teacher->gender }}">
 
                                                             </div>
                                                         </h6>
@@ -290,6 +322,20 @@
                                                         <input type="text" name="teachers_name[]"
                                                             class="form-control text-white mt-2"
                                                             placeholder="jaypee quintana">
+                                                    </h6>
+                                                </td>
+                                                <td width='100'>
+                                                    {{-- {{ $facilities }} --}}
+                                                    <h6 class="font-size-13">
+                                                        <i
+                                                            class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
+                                                        <span class="text-secondary">Please Select a gender.</span>
+                                                        <select id="floor-selected" name="teachers_gender[]" class="form-select text-white mt-2">
+                                                            
+                                                                <option value="male">{{ __('Male') }}</option>
+                                                                <option value="female">{{ __('Female') }}</option>
+                                                            
+                                                        </select>
                                                     </h6>
                                                 </td>
                                                 <td>

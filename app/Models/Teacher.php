@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
-    public $fillable = ['name', 'position','facilities_id'];
+    public $fillable = ['name', 'position','gender','facilities_id'];
 }

@@ -62,7 +62,7 @@
 
         /* Style for the grid container */
         .grid-container {
-            padding: 10px;
+            /* padding: 10px; */
             /* width: fit-content; */
             /* Adjust the width of the floorplan */
             height: fit-content;
@@ -74,7 +74,7 @@
             /* Adjust the number of columns */
             grid-template-rows: repeat(4, 1fr);
             /* Adjust the number of rows */
-            gap: 5px;
+            gap: -5px;
             /* Adjust the gap between rooms */
             background-color: transparent;
             background-clip: border-box;
@@ -93,9 +93,9 @@
         .grid-point {
             width: 70px;
             height: 70px;
-            background-color: transparent;
+            /* background-color: transparent; */
             /* Light background color for rooms */
-            border: 0.5px transparent;
+            /* border: 0.5px transparent; */
             /* Add borders */
             display: flex;
             justify-content: center;
@@ -109,7 +109,7 @@
             position: relative;
             transition: transform 0.3s ease-in-out;
             /* Add smooth transform transition */
-            transform-style: preserve-3d;
+            /* transform-style: preserve-3d; */
             /* Preserve 3D effect */
             z-index: 1;
         }
@@ -152,10 +152,11 @@
             color: white;
 
             transition: transform ease-in-out;
-            Apply the rotation animation over 3 seconds opacity: 0;
+            /* Apply the rotation animation over 3 seconds opacity: 0; */
             /* Initially hide the background image */
         }
 
+        
         .grid-point.passed.up:not(.targetFacilities):not(.starting-point) {
             transform: rotate(0);
             /* Rotate the background image 0 degrees*/
@@ -184,6 +185,7 @@
         /* starting point */
         .starting-point {
             border: 1px solid rgb(11, 93, 234);
+           
             transform: translateZ(20px);
             /* Dark background color for walls */
             box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
@@ -192,15 +194,17 @@
 
         /* starting point */
         .targetFacilities {
-            border: 1px solid rgb(11, 93, 234);
+            background: rgba(11, 93, 234, 0.747);
+            width: 75px;
             /* border: 1px solid green; */
             /* Dark background color for walls */
             box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
-            color: rgb(11, 93, 234);
-            transform: translateZ(20px);
+            color: rgb(246, 247, 250);
+            /* transform: translateZ(20px); */
             cursor: pointer;
             text-shadow: 2px 2px 3px rgba(7, 7, 7, 0.8);
             font-weight: 600;
+            z-index: 1000;
         }
 
         .wall {
@@ -345,7 +349,7 @@
         @include('navi.contents.popups.options')
 
         <!-- searching popups info -->
-        @include('navi.contents.popups.information')
+        {{-- @include('navi.contents.popups.information') --}}
 
         <!-- waiting for answer systems popups for speech recognition -->
         @include('navi.contents.popups.answer')
@@ -363,7 +367,8 @@
         @include('navi.contents.popups.hymn')
         {{-- Eastwoods mv --}}
         @include('navi.contents.popups.mv')
-
+        {{-- facility information popup --}}
+        @include('navi.contents.popups.information2')
     </section>
 
     <footer>
@@ -903,23 +908,69 @@
                     const responseData = await response.json();
                     $('#popup-searching').removeClass('active');
                     if(responseData.modelClass !== 'SchoolHMV'){
-                        $('#popup-searchingInfo').toggleClass('active');
+                        //original
+                        // $('#popup-searchingInfo').toggleClass('active');
+                        // updated
+                        search2Pops.fadeOut(400)
+                        $('#facilityInformationPopup').css({'display':'flex'});
+
                         // console.log(responseData)
                         $('.info-title').text(`Available's Information on ${responseData.modelClass}`)
                     }
                     var html = ''
+                    var genderColor = ''
+                    var genderBackColor = ''
                     responseData.informations.forEach((info, key) => {
-                        // console.log(info)
+                        console.log(info)
                         switch (responseData.modelClass) {
                             case "EastwoodsFacilities":
-                                html += `
-                                    <span class="grid-item" data-info-model="${responseData.modelClass}" data-info-id="${info.id}" data-info-search="${info.facilities}">${info.facilities.toUpperCase()}</span>
-                                `
+                                    $('.ft').text(`available facilitie's`)
+                                    $('.fg').text(`list of facilities`)
+                                // html += `
+                                //     <span class="grid-item" data-info-model="${responseData.modelClass}" data-info-id="${info.id}" data-info-search="${info.facilities}">${info.facilities.toUpperCase()}</span>
+                                // `
+                                 html += `
+                                    <div class="abbrev-element designated-teacher mb-3 grid-item-con">
+                                        <box-icon name='building-house' type='solid' style="position:absolute;top:-30px;left:45px;fill:#fff;width:80px;height:50px;border-radius:10px;margin-top:15px;background:rgb(3,68,3);"></box-icon><br>
+                                        <span class="abbr designated-teacher-t">${info.facilities.toUpperCase()}</span><br>
+                                        <hr>
+                                        <span class="abbr-m">${info.floor.toUpperCase()}</span> <br/>
+                                        <div style="padding:10px;"></div>
+                                        <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center;">
+                                            <span class="abbr-m btn btn-success grid-item" data-info-model="${responseData.modelClass}" data-info-id="${info.id}" data-info-search="${info.facilities}">Go now?</span>
+                                        </div>
+
+                                        
+                                    </div>
+                                 `
                                 break;
                             case "Teacher":
+                                $('.ft').text(`available teacher's`)
+                                $('.fg').text(`list of teachers`)
+                                // html += `
+                                //     <span class="grid-item" data-info-model="${responseData.modelClass}" data-flo="${info.floor}" data-faci="${info.facility_name}" data-info-id="${info.id}" data-info-search="${info.name}">${info.name.toUpperCase()}</span>
+                                // `
+                                if(info.gender != 'male'){
+                                    genderColor = 'rgb(223, 9, 223)'
+                                    // genderBackColor = ''
+                                }else{
+                                    genderBackColor = 'rgb(3,68,3)'
+                                    genderColor= '#fff'
+                                }
                                 html += `
-                                    <span class="grid-item" data-info-model="${responseData.modelClass}" data-flo="${info.floor}" data-faci="${info.facility_name}" data-info-id="${info.id}" data-info-search="${info.name}">${info.name.toUpperCase()}</span>
-                                `
+                                    <div class="abbrev-element designated-teacher mb-3 grid-item-con">
+                                        <box-icon name='user' type='solid' style="position:absolute;top:-30px;left:45px;fill:${genderColor};width:80px;height:50px;border-radius:10px;margin-top:15px;background:${genderBackColor};"></box-icon><br>
+                                        <span class="abbr designated-teacher-t">${info.name.toUpperCase()}</span><br>
+                                        <hr>
+                                        <span class="abbr-m">${info.position.toUpperCase()}</span> <br/>
+                                        <div style="padding:10px;"></div>
+                                        <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center;">
+                                            <span class="abbr-m btn btn-success grid-item" data-info-model="${responseData.modelClass}" data-flo="${info.floor}" data-faci="${info.facility_name}" data-info-id="${info.id}" data-info-search="${info.name}">Locate ?</span>
+                                        </div>
+
+                                        
+                                    </div>
+                                 `
                                 break;
                             case "SchoolHMV":
                                     $('#searchModal').fadeOut(400)
@@ -986,14 +1037,14 @@
                                 break;
                         }
                     })
-                    $('.information-container').html(html)
+                    $('.information-container-fac').html(html)
 
                     // search functionality
                     $('#search-input').on('input', function() {
                         const searchQuery = $(this).val().toLowerCase();
-
+                        // alert(searchQuery)
                         // Filter grid items based on the search query
-                        $('.grid-item').each(function() {
+                        $('.grid-item-con').each(function() {
                             const itemText = $(this).text().toLowerCase();
                             if (itemText.includes(searchQuery)) {
                                 $(this).show(); // Display matching items
@@ -1013,8 +1064,9 @@
                         var prompt = $(this).data('info-search')
 
                         $('#popup-searching').removeClass('active');
-                        $('#popup-searchingInfo').toggleClass('active');
-
+                        // old
+                        // $('#popup-searchingInfo').toggleClass('active');
+                        $('#facilityInformationPopup').css({'display':'flex'});
                         const response = await fetch('/navi/process/search', {
                             method: 'POST',
                             headers: {
@@ -1031,8 +1083,8 @@
 
                         });
                         // $('#overlay-updates').removeClass('active');
-                        $('#popup-searchingInfo').removeClass('active');
-
+                        // $('#popup-searchingInfo').removeClass('active');
+                        $('#facilityInformationPopup').fadeOut(400);
                         $('#popup-continuation').fadeOut(400);
                         // const responseData = await response.json();
                         handleResponse(response)
@@ -1040,7 +1092,7 @@
 
                     $(document).off('click', '#searchingInfo-Cancel').on('click', '#searchingInfo-Cancel',
                         function() {
-                            $('#popup-searchingInfo').removeClass('active');
+                            $('#facilityInformationPopup').fadeOut(400);
                             boxes.show(); // Ensure boxes are visible before fading in
                             search2Pops.css({
                                 'display': 'flex'
@@ -1154,7 +1206,7 @@
                 // handleResponse(response)
                 const responseData = await response.json();
 
-                // console.log(responseData.details)
+                console.log(responseData)
                 // Assuming responseData.details is an array of objects with an 'id' property
                 const uniqueDetails = Array.from(new Set(responseData.details.map(detail => detail.id))).map(id => {
                     return responseData.details.find(detail => detail.id === id);
@@ -1360,7 +1412,7 @@
                             if (!prevBool) {
                                 floorIndex++; // Move to the next floor
                                 setTimeout(() => createGridPoints(facility, false),
-                                    10000); // Display the next floor after 10 seconds
+                                    6000); // Display the next floor after 10 seconds
                             }
 
 
@@ -1969,6 +2021,7 @@
                 $('#east-play source').remove();
                 $('#hymnPopup').fadeOut(400);
                 $('#mvPopup').fadeOut(400);
+                $('#facilityInformationPopup').fadeOut(400);
                 $('#designatedPopup').fadeOut(500);
                 search2Pops.css({
                     'display': 'flex'
