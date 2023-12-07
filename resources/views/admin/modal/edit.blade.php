@@ -9,7 +9,7 @@
 
             <div class="row editing-fac">
 
-                <div class="col-sm-2">
+                <div class="col-sm-2 p-2">
                   <div class="card edit-col">
                       <h5 class="card-title border ct">TH</h5>
                   </div>

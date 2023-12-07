@@ -9,6 +9,7 @@ use App\Events\UpdateSystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\EastwoodsFacilities;
+use Carbon\Carbon;
 
 class FacilityController extends Controller
 {
@@ -47,7 +48,7 @@ class FacilityController extends Controller
                         });
 
                         if(!$exists) {
-                            $input = EastwoodsFacilities::create(['facilities' => $facilities[$i], 'operation_time' => $operation_hours[$i], 'floor' => $selected_floor[$i]]);
+                            $input = EastwoodsFacilities::create(['facilities' => $facilities[$i], 'operation_time' => Carbon::now(), 'floor' => $selected_floor[$i]]);
                             $abbrevModel = Abbrev::create(['facility_id' => $input->id, 'abbrev' => $this->generateUniqueAbbreviation($facilities[$i])]);
                             $insertedNotif[] = $input;
                             $actionText = 'Successfully Added';
@@ -66,18 +67,50 @@ class FacilityController extends Controller
                         break;
                     case 'update':
                         $input = EastwoodsFacilities::where('id', $ids[$i])->first();
+                        // dd($input);
+                        $changeF = $input->facilities;
                         if ($input) {
                             if ($input->facilities !== $facilities[$i]) {
                                 $input->facilities = $facilities[$i];
                             }
-                            if ($input->operation_time !== $operation_hours[$i]) {
-                                $input->operation_time = $operation_hours[$i];
+                            if ($input->operation_time !== Carbon::now()) {
+                                $input->operation_time = Carbon::now();
                             }
                             if ($input->floor !== $selected_floor[$i]) {
                                 $input->floor = $selected_floor[$i];
                             }
                             if ($input->isDirty()) {
                                 $input->save();
+                                // dd($input);
+                                 // abbrevs updates
+                                $abbrev = Abbrev::where('facility_id', $input->id)->first();
+                                $abbrev->abbrev = $this->generateUniqueAbbreviation($facilities[$i]);
+                                $abbrev->save();
+
+                                //floorplan updates
+                                $fl = Floorplan::where('floor', $input->floor)->first();
+                                // dd($changeF);
+                                if($fl){
+                                    // Get the current JSON data
+                                    $jsonData = $fl->gridDetails;
+                                    $changesMade = false;
+                                    
+                                    foreach ($jsonData as $key => $value) {
+                                        if ($value['sublabel'] === $changeF) {
+                                            $jsonData[$key]['label'] = $abbrev['abbrev'];
+                                            $jsonData[$key]['sublabel'] = $input->facilities;
+                                            $changesMade = true;
+                                        }
+                                    }
+                                    
+                                    // Save the model to persist changes
+                                    if ($changesMade) {
+                                        $fl->gridDetails = $jsonData;
+                                        $fl->save();
+                                    }
+                                    
+                                }
+
                                 $insertedNotif[] = $input;
                                 $actionText = 'Successfully Updated';
                                 $actionType = 'success';
@@ -183,9 +216,12 @@ class FacilityController extends Controller
     //edit facilities in floor plan
     function facilitiesManageEdit(Request $request){
         $excludeAbbrev = $request->input('abbrev');
+        $floor = $request->input('floor');
 
         $query = DB::table('eastwoods_facilities')
+            // ->join('')
             ->join('abbrevs', 'eastwoods_facilities.id', '=', 'abbrevs.facility_id')
+            ->where('floor', '=', $floor)
             ->select('eastwoods_facilities.*', 'abbrevs.abbrev');
 
         // Conditionally add the where clause if $excludeAbbrev is defined

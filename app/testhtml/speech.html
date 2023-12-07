@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Indicator</title>
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 20px;
+            display: none;
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Adjusted gap for better spacing */
+        }
+
+        /* Style the icons */
+        .icon-container i {
+            font-size: 24px;
+        }
+
+        .text-container {
+            margin-left: 10px; /* Adjusted margin for better alignment */
+        }
+
+        .dot-container {
+            display: flex;
+            gap: 8px;
+            margin-left: auto; /* Push dots to the right */
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="speech-bubble" id="speechIndicator">
+    <div class="icon-container">
+        <!-- <i class="fas fa-microphone"></i> -->
+        <i class="fas fa-volume-up"></i>
+        <div class="text-container">Speaking</div>
+        <div class="dot-container">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simulate listening when the page loads
+    document.addEventListener('DOMContentLoaded', function () {
+        simulateListening();
+    });
+
+    // You can simulate changes in the indicator based on your logic
+    function simulateListening() {
+        // Display the indicator
+        showIndicator();
+    }
+
+    // Function to display the speech indicator
+    function showIndicator() {
+        const speechIndicator = document.getElementById('speechIndicator');
+        speechIndicator.style.display = 'flex';
+    }
+
+    // Function to hide the speech indicator
+    function hideIndicator() {
+        const speechIndicator = document.getElementById('speechIndicator');
+        speechIndicator.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

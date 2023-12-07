@@ -1,0 +1,30 @@
+#keysDisplay{
+    max-height: 725px;
+    overflow: auto;
+}
+#keysDisplay::-webkit-scrollbar{
+    width: 0;
+}
+.keys{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center; 
+    gap: 5px;
+    
+}
+.floor-keys{
+    width: 35px;
+    height: 35px;
+    box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    color: rgb(14, 199, 8);
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.floor-mean{
+    font-size: 14px;
+    margin-left: 10px;
+    text-transform: capitalize;
+    font-weight: 700;
+}

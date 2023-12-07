@@ -1,8 +1,8 @@
 <div id="navigationPopup" class="popup-container">
 
     <div class="header-search">
-        <div id="search-title" class="text-center"><b>EXOUSIA-NAVI</b></div>
-        <span id="search-sub-title" class="text-white"><b>Eastwoods Professional College</b></span>
+        <div id="search-title-navi" class="text-center"><b>EXOUSIA-NAVI</b></div>
+        <span id="search-sub-title-navi" class="text-white"><b>Eastwoods Professional College</b></span>
     </div>
 
     <div class="header-circle">
@@ -33,7 +33,79 @@
         </div>
         <p class="floor-guide">follow the navigation guide to reach your destination.</p>
    
-        <div class="grid-container" id="grid-container"></div>
+        <div class="nav-container row">
+            <div class="col-md-2 left-container">
+                <p class="text-center keys-title mt-2">FACILITIES</p>
+                    <div class="card-body" id="keysDisplay">
+                       
+
+                        
+                        
+                        
+                        
+                    </div>
+                <div>
+                    {{-- <p class="text-center keys-title mt-2">FACILITIES</p>
+                    <div class="card-body" id="keysDisplay">
+                       
+
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        <div class="keys mb-2">
+                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                            <span class="floor-keys">EDF</span>
+                            <span class="floor-mean">Engineering Department Faculty</span>
+                        </div>
+                        
+                        
+                    </div> --}}
+                </div>
+            </div>
+            <div class="grid-container col-md-10" id="grid-container"></div>
+        </div>
         <hr>
         <div class="legend">
             <h5 class="legend-title">legend here</h5>

@@ -3,6 +3,7 @@
 
     <head>
         @yield('links')
+        <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Add this line -->
     </head>
 
     <body data-topbar="dark">
@@ -28,6 +29,9 @@
 
                 @yield('content')
                 <!-- End Page-content -->
+
+                @include('admin.modal.qr')
+                @include('admin.modal.print')
                
                 <footer class="footer">
                     @include('admin.body.footer')
@@ -65,6 +69,47 @@
             console.log(JSON.stringify(data));
             });
 
+            $(document).ready(function(){
+                $(document).on('click', '#generate_qr',function(){
+                    $('#qr').modal('show')
+                })
+            })
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            $(document).ready(function(){
+                $(document).on('click', '.generate',function(){
+                    let data = {
+                        type : $('#type').val(),
+                        count : $('#count').val(),
+                        size : $('#size').val()
+                    }
+                    makeRequest('/qr',data, csrfToken)
+                    .done(res => {
+                        console.log(res)
+                        $('#qr').modal('hide')
+
+                        $('#frame').attr('src',res.path)
+                        $('#printModal').modal('show')
+                    })
+                    .fail(err => {
+                        console.log(err)
+                    })
+                })
+            })
+
+           
+            // make a request to the ai
+            function makeRequest(url, data, csrfToken) {
+                // console.log(id)
+                return $.ajax({
+                    method: 'POST',
+                    url: url,
+                    data: data,
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    }
+                });
+            }
             // custom popups
             function notifyPopUps(message){
                     // Set Toastr options

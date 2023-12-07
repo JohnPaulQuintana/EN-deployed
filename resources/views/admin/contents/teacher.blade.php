@@ -106,7 +106,7 @@
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Select a gender.</span>
-                                                        <select id="floor-selected" name="teachers_gender[]" class="form-select text-white mt-2">
+                                                        <select id="floor-selected" name="teachers_gender[]" class="form-select mt-2">
                                                             
                                                                 <option value="male">{{ __('Male') }}</option>
                                                                 <option value="female">{{ __('Female') }}</option>
@@ -129,7 +129,7 @@
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Enter your facilities.</span>
-                                                        <select id="floor-selected" name="teachers_located[]" class="form-control text-white mt-2">
+                                                        <select id="floor-selected" name="teachers_located[]" class="form-control mt-2">
                                                             @foreach ($facilities as $facility)
                                                                 <option value="{{ $facility->id }}">{{ $facility->facilities }}</option>
                                                             @endforeach
@@ -188,7 +188,7 @@
                                                             <div class="input-group align-items-center text-danger">
                                                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                                 <input type="text" name="teachers_name[]"
-                                                                    class="form-control text-white mt-2 edit-input"
+                                                                    class="form-control mt-2 edit-input"
                                                                     placeholder="who is navi team?"
                                                                     value="{{ $teacher->name }}">
 
@@ -204,7 +204,7 @@
                                                             <div class="input-group align-items-center text-danger">
                                                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                                 <input type="text" name="teachers_gender[]"
-                                                                    class="form-control text-white mt-2 edit-input"
+                                                                    class="form-control mt-2 edit-input"
                                                                    
                                                                     value="{{ $teacher->gender }}">
 
@@ -219,7 +219,7 @@
                                                             <div class="input-group align-items-center text-danger">
                                                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                                 <input type="text" name="teachers_position[]"
-                                                                    class="form-control text-white mt-2 edit-input"
+                                                                    class="form-control mt-2 edit-input"
                                                                     placeholder="who is navi team?"
                                                                     value="{{ $teacher->position }}">
 
@@ -235,7 +235,7 @@
                                                             <div class="input-group align-items-center text-danger">
                                                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                                 <input type="text" name="teachers_located[]"
-                                                                    class="form-control text-white mt-2 edit-input"
+                                                                    class="form-control mt-2 edit-input"
                                                                     placeholder="who is navi team?"
                                                                     value="{{ $teacher->facilities }}">
                                                             </div>

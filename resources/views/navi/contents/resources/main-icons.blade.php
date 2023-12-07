@@ -29,7 +29,7 @@
             </path>
         </svg></b>
 </span>
-
+{{-- {{ $systems }} --}}
 @php
     if (isset($systems[0])) {
         $auth = $systems[0]->status;
@@ -52,8 +52,8 @@
         </svg></b>
 </span>
 @php
-    if (isset($systems[2])) {
-        $auth = $systems[2]->status;
+    if (isset($systems[1])) {
+        $auth = $systems[1]->status;
         if ($auth) {
             $className = 'icons';
         } else {
@@ -61,7 +61,7 @@
         }
     }
 @endphp
-<span id="svg-title" class="text-white">
+<span id="svg-title" style="display:none">
     <b><svg class="{{ $className }}" data-id="scanner" xmlns="http://www.w3.org/2000/svg" width="40"
             height="40" viewBox="0 0 24 24">
             <path d="M4 4h4.01V2H2v6h2V4zm0 12H2v6h6.01v-2H4v-4zm16 4h-4v2h6v-6h-2v4zM16 4h4v4h2V2h-6v2z"></path>

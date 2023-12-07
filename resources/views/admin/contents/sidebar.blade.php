@@ -3,7 +3,7 @@
     <!-- User details -->
     <div class="user-profile text-center mt-3">
         <div class="">
-            <img src="{{ asset('backend/assets/images/users/avatar-9.ico') }}" alt="" class="avatar-md rounded-circle">
+            <img src="{{ asset('backend/assets/images/epcst_logo.png') }}" alt="" class="avatar-md rounded-circle">
         </div>
         <div class="mt-3">
             <h4 class="font-size-16 mb-1">Administrator</h4>
@@ -83,6 +83,7 @@
                 </a>
                 <ul class="sub-menu" aria-expanded="false">
                     <li><a href="{{ route('func.manage') }}">Manage System</a></li>
+                    <li><a id="generate_qr">Generate QR Codes</a></li>
                 </ul>
             </li>
 

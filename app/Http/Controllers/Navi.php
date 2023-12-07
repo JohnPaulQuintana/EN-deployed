@@ -374,6 +374,8 @@ class Navi extends Controller
                 $informations = $modelClass::get();
             }
             // dd($informations);
+           
+
             return response()->json(['informations' => $informations, 'modelClass' => $request->input('modelClass')]);
         } catch (\Throwable $th) {
             throw $th;
@@ -425,6 +427,7 @@ class Navi extends Controller
                             "data" => $findInformation,
                         ];
                         session(['floor' => $findInformation->floor, 'facility' => $findInformation->facilities]);
+                        
                         return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => $continuation]);
                         // break; // Stop searching once found
                     } else {
@@ -436,6 +439,8 @@ class Navi extends Controller
                             "entity" => false,
                             "data" => $findInformation->facilities,
                         ];
+
+                        
                         return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'deactivate']);
                     }
                     // dd($jsonData);
@@ -519,7 +524,7 @@ class Navi extends Controller
 
     // Person Found
     public $openingForFoundPerson = [
-        'Excellent news! Ive successfully retrieved comprehensive information about [name] in their location is [position].',
+        'Excellent news! Ive successfully retrieved information about [name] in their location is [position].',
         'Im pleased to inform you that Ive located detailed records for [name] in their location is [position].',
         'Youre in good hands! I possess comprehensive information on [name] in their location is [position].',
         'Im delighted to share that Ive found the information you requested regarding [name] in their location is [position].',
@@ -546,16 +551,16 @@ class Navi extends Controller
     ];
 
     public $openingForFoundFacilityStart = [
-        'Found [facilities] on [floor]. Go there?',
-        'Located [facilities] on [floor]. Ready to go?',
-        'Info: [facilities] on [floor]. Lets head there?',
-        "Details for [facilities] on [floor]. Shall we go?",
-        "Facility: [facilities] on [floor]. Go now?",
-        "Info: [facilities] on [floor]. Ready to visit?",
-        "Found [facilities] on [floor]. Go there now?",
-        "Located [facilities] on [floor]. Ready to go now?",
-        "Info: [facilities] on [floor]. Time to head there?",
-        "Details for [facilities] on [floor]. Lets go!",
+        'Found [facilities] on [floor].',
+        'Located [facilities] on [floor].',
+        'Info: [facilities] on [floor].',
+        "Details for [facilities] on [floor].",
+        "Facility: [facilities] on [floor].",
+        "Info: [facilities] on [floor].",
+        "Found [facilities] on [floor].",
+        "Located [facilities] on [floor].",
+        "Info: [facilities] on [floor].",
+        "Details for [facilities] on [floor].",
     ];
 
 
@@ -779,7 +784,7 @@ class Navi extends Controller
                     [$data['name'], $data['facilities'] . ' on ' . $data['floor']],
                     $this->openingForFoundPerson[$length]
                 ) .
-                    '! ' . $this->endingPart[$length];
+                    '! ';
                 break;
 
             case 'persons.position.found':
@@ -816,7 +821,7 @@ class Navi extends Controller
                         [$data['name']],
                         $this->openingForFoundPersonLocation[$length]
                     ) .
-                        '! ' . $this->endingPartLoc[$length];
+                        '! ';
                 }else{
                     if($facility !== null){
                         $data2 = EastwoodsFacilities::where('id', $facility)->first();

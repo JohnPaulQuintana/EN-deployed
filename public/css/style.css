@@ -321,7 +321,9 @@
     /* font-size: 28px; */
     height: 3rem;
     /* border-radius: 18px; */
-    background: #fff;
+    background: url(../backend/assets/images/epcst_logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 
   }
   section .container{

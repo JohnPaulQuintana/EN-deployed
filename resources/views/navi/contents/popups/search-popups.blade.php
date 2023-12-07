@@ -44,9 +44,9 @@
     </div>
 
     <div class="header-search-footer">
-        <box-icon name='chevrons-right' class="arrow"></box-icon>
+        {{-- <box-icon name='chevrons-right' class="arrow"></box-icon> --}}
         {{-- <div id="search-title" class="text-center "><b>EXOUSIA-NAVI</b></div> --}}
-        <span id="search-sub-title" class="text-white"><b>Click the circle inside to exit</b></span>
-        <box-icon name='chevrons-left' class="arrow-back"></box-icon>
+        <span id="search-sub-title" class="text-white guide-text"><b>Click the circle inside to exit</b></span>
+        {{-- <box-icon name='chevrons-left' class="arrow-back"></box-icon> --}}
       </div>
 </div>

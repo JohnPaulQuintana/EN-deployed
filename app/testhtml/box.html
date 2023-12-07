@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+      border: 1px solid red;
+      width: 50px;
+      height: 50px;
+      margin: auto;
+    }
+
+    .tooltip {
+      visibility: hidden;
+      position: absolute;
+      background-color: #333;
+      color: #fff;
+      padding: 8px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.3s, visibility 0.3s;
+      white-space: nowrap;
+    }
+
+    .tooltip-container:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+      left: -50%;
+      top: -50%;
+      transform: translateX(-50% 50%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tooltip-container">
+    Hover over me
+    <div class="tooltip">This is a custom tooltip</div>
+  </div>
+  <div class="tooltip-container">
+    Hover over me
+    <div class="tooltip">This is a custom tooltip</div>
+  </div>
+  <div class="tooltip-container">
+    Hover over me
+    <div class="tooltip">This is a custom tooltip</div>
+  </div>
+  <div class="tooltip-container">
+    Hover over me
+    <div class="tooltip">This is a custom tooltip</div>
+  </div>
+  <div class="tooltip-container">
+    Hover over me
+    <div class="tooltip">This is a custom tooltip</div>
+  </div>
+
+  <script>
+    const tooltipContainer = document.querySelector('.tooltip-container');
+    const tooltip = document.querySelector('.tooltip');
+
+    tooltipContainer.addEventListener('mouseover', () => {
+      const containerRect = tooltipContainer.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+
+      // Adjust left position if tooltip goes beyond the left edge
+      if (tooltipRect.left < 0) {
+        tooltip.style.left = '0';
+      }
+
+      // Adjust right position if tooltip goes beyond the right edge
+      if (tooltipRect.right > window.innerWidth) {
+        tooltip.style.left = window.innerWidth - tooltipRect.width + 'px';
+      }
+
+      // Adjust top position if tooltip goes beyond the top edge
+      if (tooltipRect.top < 0) {
+        tooltip.style.top = containerRect.height + 'px';
+      }
+
+      // Adjust bottom position if tooltip goes beyond the bottom edge
+      if (tooltipRect.bottom > window.innerHeight) {
+        tooltip.style.top = -tooltipRect.height + 'px';
+      }
+    });
+  </script>
+
+</body>
+</html>

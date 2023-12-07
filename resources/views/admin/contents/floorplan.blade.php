@@ -446,10 +446,19 @@
                 <div class="col-xl-9">
                     <div class="card">
                         <div class="card-body">
-                            {{-- {{ $facilities }} --}}
+                            
+                            {{-- <div class="dropdown float-end">
+                                <div class="form-check form-switch mt-1" dir="ltr">
+                                    <label for="customSwitch1">Merge Cell</label>
+                                    <input type="checkbox" class="form-check-input custom-switch srh"
+                                        id="customSwitch1">
+                                </div>               
+                            </div> --}}
+                            
                             <h4 class="card-title mb-4">
                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                 Floor Plan Layout
+                                
                             </h4>
 
                             <div class="table-responsive row align-items-center" id="con">
@@ -532,7 +541,7 @@
             let startingPoint;
             let details;
             let highestX = -Infinity; // Start with negative infinity as the initial value
-                let highestY = -Infinity;
+            let highestY = -Infinity;
             // Function to create and append points to the grid
             function createGridPoints(width, height, gridDetails) {
                 gridPointWidth = width;
@@ -1090,6 +1099,17 @@
                 // alert(selectedFloor)
                 filterFacilitiesByFloor(selectedFloor);
             });
+
+            //enabled mergin
+            // $("#customSwitch1").on("click", function() {
+            //     var isChecked = $("#customSwitch1").prop("checked");
+
+            //     if (isChecked) {
+            //     alert("Checkbox is checked");
+            //     } else {
+            //     alert("Checkbox is not checked");
+            //     }
+            // });
 
            async function filterFacilitiesByFloor(floor) {
                 $('.drag-item').fadeOut(300); // Hide all facilities with a fade-out animation

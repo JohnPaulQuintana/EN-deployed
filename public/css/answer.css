@@ -32,7 +32,9 @@
   .popup-continuation .conti-exit{
     position: absolute;
     border: 1px solid rgb(247, 245, 245);
-    background-color: rgb(238, 245, 239);
+    background: url(../backend/assets/images/epcst_logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 25px;
     border-radius: 50%;
     transform: translate(-1.5%, -5%);

@@ -74,7 +74,7 @@
                                                 <form action="{{ route('mission') }}" method="post" class="form-control"
                                                     style="position: relative;">
                                                     @csrf
-                                                    <textarea class="form-control text-justify" name="mission" id="wordCountMission" rows="12" maxlength="500">
+                                                    <textarea class="form-control font-size-20 text-justify" name="mission" id="wordCountMission" rows="12" maxlength="500">
                                                         {{ $model->descriptions }}
                                                     </textarea>
                                                     <small id="wordCount" class="form-text text-muted"
@@ -102,7 +102,7 @@
                                                 <form action="{{ route('vision') }}" method="post" class="form-control"
                                                     style="position: relative;">
                                                     @csrf
-                                                    <textarea class="form-control" name="vision" id="wordCountVision" rows="12" maxlength="500" required>
+                                                    <textarea class="form-control font-size-20 text-justify" name="vision" id="wordCountVision" rows="12" maxlength="500" required>
                                                         {{ $model->descriptions }}
                                                     </textarea>
                                                     <small id="wordCountVisionT" class="form-text text-muted"
@@ -133,7 +133,7 @@
                                                     <lord-icon src="https://cdn.lordicon.com/ilsmzilo.json" trigger="hover"
                                                         style="width:350px;height:230px;" data-path="{{ $model->path }}">
                                                     </lord-icon>
-                                                    <p class="text-center">Eastwoods Hymn</p>
+                                                    <p class="text-center font-size-14">Eastwoods Hymn</p>
                                                     <input type="button" class="btn btn-danger" id="upt"
                                                         value="Update Hymn">
                                                 </form>

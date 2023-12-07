@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\FrequentlyController;
 use App\Http\Controllers\FunctionalityController;
+use App\Http\Controllers\QrcodeController;
 use App\Http\Controllers\SchoolHMVController;
 use App\Http\Controllers\UpdateController;
 
@@ -50,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/facilities', [FacilityController::class, 'facilities'])->name('admin.facilities');
     Route::post('/facilities-manage', [FacilityController::class, 'facilitiesManage'])->name('bulk.manage.facilities');
     Route::post('/facilities-edit', [FacilityController::class, 'facilitiesManageEdit'])->name('manage.facilities.edit');
-    Route::post('//floorplan-edit', [FacilityController::class, 'editFloorPlan'])->name('manage.floorplan.edit');
+    Route::post('/floorplan-edit', [FacilityController::class, 'editFloorPlan'])->name('manage.floorplan.edit');
 
     // dynamic table content
     Route::get('/tables', [TableController::class, 'tables'])->name('admin.table');
@@ -77,6 +78,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/vision',[SchoolHMVController::class, 'vision'])->name('vision');
     // mission
     Route::post('/mission',[SchoolHMVController::class, 'mission'])->name('mission');
+
+    // qr
+    Route::post('/qr',[QrcodeController::class, 'generateQrCode'])->name('qr');
 });
 
 // navi route
@@ -87,7 +91,8 @@ Route::post('/navi/process/search',[Navi::class, 'naviProcessInformationSearch']
 Route::post('/navi/process/navigation',[Navi::class, 'naviProcessNavigation'])->name('navi.server.process.navigation');
 
 Route::post('/available',[Navi::class,'designatedTeacher'])->name('available');
-
+// auth required
+Route::get('/auth-required', [FunctionalityController::class,'checkAuth'])->name('checkAuth');
 
 
 require __DIR__.'/auth.php';

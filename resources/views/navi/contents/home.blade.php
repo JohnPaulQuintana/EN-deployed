@@ -27,7 +27,7 @@
     <!-- Icons Css -->
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     {{-- loader css --}}
-    <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/loader.css') }}"> --}}
 
     {{-- new navigation --}}
     <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
@@ -62,10 +62,15 @@
 
         /* Style for the grid container */
         .grid-container {
+            overflow-x: auto;
+
+
             /* padding: 10px; */
             /* width: fit-content; */
+            margin-top: 0;
+            margin-left: 170px;
             /* Adjust the width of the floorplan */
-            height: fit-content;
+            height: 670px;
             /* Adjust the height of the floorplan */
             box-shadow: rgba(37, 43, 59, 0.2) 0px 7px 29px 0px;
             /* margin: 50px auto; */
@@ -74,7 +79,7 @@
             /* Adjust the number of columns */
             grid-template-rows: repeat(4, 1fr);
             /* Adjust the number of rows */
-            gap: -5px;
+            /* gap: -5px; */
             /* Adjust the gap between rooms */
             background-color: transparent;
             background-clip: border-box;
@@ -89,10 +94,36 @@
             z-index: 1000;
         }
 
+        /* Define scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 5px;
+            /* Adjust as needed */
+        }
+
+        /* Track styles */
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle styles */
+        ::-webkit-scrollbar-thumb {
+            background: rgba(11, 93, 234, 0.747);
+            /* Handle color */
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(22, 53, 107, 0.747);
+            /* Hover color */
+        }
+
+        /* .grid-container::-webkit-scrollbar{
+                                width: 0;
+                            } */
         /* Style for each room (grid point) */
         .grid-point {
-            width: 70px;
-            height: 70px;
+            width: 65px;
+            height: 65px;
             /* background-color: transparent; */
             /* Light background color for rooms */
             /* border: 0.5px transparent; */
@@ -102,7 +133,7 @@
             align-items: center;
             font-family: Arial, sans-serif;
             /* Specify a common font */
-            font-size: 14px;
+            font-size: 13px;
             /* Adjust font size */
             color: #f3ecec;
             /* Text color */
@@ -124,11 +155,12 @@
 
         /* Style for the walls (blocks) */
         .blocked {
-            box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
+            /* box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
             color: rgb(150, 189, 139);
             font-size: 14pt;
             font-weight: 700;
-            border: 1px solid transparent;
+            background: rgba(10, 10, 10, 0.2);
+            /* border: 1px solid transparent; */
             transform: translateZ(20px);
             cursor: pointer;
         }
@@ -156,7 +188,7 @@
             /* Initially hide the background image */
         }
 
-        
+
         .grid-point.passed.up:not(.targetFacilities):not(.starting-point) {
             transform: rotate(0);
             /* Rotate the background image 0 degrees*/
@@ -174,18 +206,18 @@
 
         /* Style for animation */
         /* .grid-point.passed {
-                                                        background-color: transparent;
-                                                       
-                                                        color: white;
-                                                        border: none;
-                                                        animation: animatePath 4s linear infinite;
-                                                        
-                                                    } */
+                                                                                background-color: transparent;
+                                                                               
+                                                                                color: white;
+                                                                                border: none;
+                                                                                animation: animatePath 4s linear infinite;
+                                                                                
+                                                                            } */
 
         /* starting point */
         .starting-point {
             border: 1px solid rgb(11, 93, 234);
-           
+
             transform: translateZ(20px);
             /* Dark background color for walls */
             box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
@@ -195,10 +227,10 @@
         /* starting point */
         .targetFacilities {
             background: rgba(11, 93, 234, 0.747);
-            width: 75px;
+            /* width: 75px; */
             /* border: 1px solid green; */
             /* Dark background color for walls */
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
+            /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
             color: rgb(246, 247, 250);
             /* transform: translateZ(20px); */
             cursor: pointer;
@@ -210,8 +242,8 @@
         .wall {
             background-color: transparent;
             /* Set the background color for the grid points */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border: .6px solid transparent;
+            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+            /* border: .6px solid transparent; */
             /* Add a border to each grid point */
             /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px, rgba(0, 0, 0, 0.3) 0px 1px 3px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
             transform: translateZ(10px);
@@ -289,6 +321,17 @@
     {{-- hymn --}}
     <link rel="stylesheet" href="{{ asset('css/mv.css') }}">
 
+    {{-- scanner --}}
+    <link rel="stylesheet" href="{{ asset('css/scanner.css') }}">
+
+    {{-- count --}}
+    <link rel="stylesheet" href="{{ asset('css/count.css') }}">
+
+    {{-- indicator speech --}}
+    <link rel="stylesheet" href="{{ asset('css/indicator.css') }}">
+
+    {{-- speaking --}}
+    <link rel="stylesheet" href="{{ asset('css/speaking.css') }}">
 @endsection
 
 @section('contents')
@@ -310,8 +353,8 @@
     </main>
 
     @php
-        if (isset($systems[1])) {
-            $auth = $systems[1]->status;
+        if (isset($systems[2])) {
+            $auth = $systems[2]->status;
             if ($auth) {
                 $className = '';
             } else {
@@ -369,31 +412,20 @@
         @include('navi.contents.popups.mv')
         {{-- facility information popup --}}
         @include('navi.contents.popups.information2')
+        {{-- scanner --}}
+        @include('navi.contents.popups.scanner')
+        {{-- count down --}}
+        @include('navi.contents.popups.countdown')
+        {{-- indicator speech --}}
+        @include('navi.contents.popups.indicator')
+        {{-- indicator of speacking --}}
+        @include('navi.contents.popups.speaking')
+        {{-- <button type="button" id="autoClicker"></button> --}}
     </section>
 
     <footer>
         <span>Capstone2</span>
     </footer>
-
-    <!-- Modal -->
-    {{-- <div id="AssistantModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 text-gray-900 dark:text-gray-100" id="reader">
-
-                            <!-- <h1>Place your QR Code in here!</h1>
-                            <div id="reader" class="card" style="width: 500px;">
-
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 @endsection
 
 @section('scripts')
@@ -411,6 +443,7 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
+    <script src="{{ asset('html5-qrcodes/html5-qrcode.min.js') }}"></script>
     <!-- materialdesign icon js-->
     {{-- <script src="{{ asset('backend/assets/js/pages/materialdesign.init.js') }}"></script> --}}
     @if (session('message'))
@@ -427,7 +460,11 @@
         $(document).ready(function() {
 
             // debug
-            // $('#navigationPopup').css({"display":'flex'});
+            // $('#popup-count').addClass('active')
+            // $('#popup-scanner').toggleClass('active')
+            // $('#navigationPopup').css({
+            //     "display": 'flex'
+            // });
             // $('#abbrevPopup').css({"display":'flex'});
             // $('#designatedPopup').css({'display':'flex'})
             // $('#popup-continuation').css({'display':'flex'})
@@ -452,9 +489,11 @@
             let updates = localStorage.getItem('updates') || false;
             let abbrevDatas = []
             let abbrevMeans = []
+            let mvTimeout;
+            let index = 0;
             const abbrevPeriodicTable = $('.abbrev-periodic-table')
             // Enable pusher logging - don't include this in production
-            Pusher.logToConsole = true;
+            // Pusher.logToConsole = true;
 
             var pusher = new Pusher('4ef07d09e997c8b8f24b', {
                 cluster: 'ap1'
@@ -464,7 +503,7 @@
             channel.bind('initialize-updates', function(data) {
                 // Parse the JSON data
                 // var eventData = JSON.parse(data);
-                console.log(data.message)
+                // console.log(data.message)
                 var message = data.message
                 input.hide();
                 subBTN.hide();
@@ -472,7 +511,8 @@
                     .then((finished) => {
                         if (finished) {
                             // Speech finished
-                            console.log(finished)
+                            // console.log(finished)
+                            hideIndicatorSpeaking()
                             $('#overlay-updates').toggleClass('active');
                             $('#popup').toggleClass('active');
                             // Call the animateCube function to start the animation
@@ -497,27 +537,8 @@
                     });
             });
 
-            //auto fullscreen
-            // function toggleFullscreen() {
-            // // Check if the browser supports the Fullscreen API
-            //     if (document.fullscreenEnabled) {
-            //         // Toggle fullscreen mode
-            //         if (!document.fullscreenElement) {
-            //         document.documentElement.requestFullscreen();
-            //         } else {
-            //         document.exitFullscreen();
-            //         }
-            //     } else {
-            //         console.log("Fullscreen not supported by this browser.");
-            //     }
-            // }
-
-            // // Automatically trigger fullscreen when the page loads
-            // window.onload = function() {
-            // toggleFullscreen();
-            // };
             // loader
-            $('.loader').hide()
+            // $('.loader').hide()
             const handleSubmit = async (e) => {
                 e.preventDefault();
                 // hide input
@@ -632,11 +653,13 @@
                 switch (svg) {
                     // frequently ask
                     case 'ask':
+                        stopSpeaking()
                         $('#popup-ask').toggleClass('active');
                         $('#popup-searching').removeClass('active');
                         break;
                         // browsing
                     case 'search':
+                        stopSpeaking()
                         $('#popup-ask').removeClass('active');
                         $('#popup-searching').toggleClass('active');
                         break;
@@ -647,8 +670,14 @@
                         // searchCirlce.toggleClass('circle-after')
                         stopSpeaking()
                         startToSpeak(
-                            'Hello There. These are the available options that you can choose. Just Pressed what your looking for.'
+                                'Hello There. These are the available options that you can choose. Just Pressed what your looking for.'
                             )
+                            .then((done) => {
+                                if (done) {
+                                    hideIndicatorSpeaking()
+                                }
+
+                            })
 
                         search2Pops.css({
                             'display': 'flex'
@@ -663,12 +692,13 @@
                                 .then((finished) => {
                                     if (finished) {
                                         // Speech finished
+                                        hideIndicatorSpeaking()
                                         console.log(finished)
                                     }
                                 });
                         } else {
                             var mess =
-                                "Speak Recognition Initialized!. What can i do for you?";
+                                "Speak Recognition Initialized!";
                             const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
                             recognition.continuous = true;
                             // recognition.interimResults = true;
@@ -684,16 +714,28 @@
                                     startToSpeak("Good Morning..." + mess)
                                         .then((s) => {
                                             if (s) {
+                                                hideIndicatorSpeaking()
                                                 console.log('done speaking...')
                                                 recognition.start();
+
+                                                // indicator speech
+                                                showIndicator();
+
+                                                input.hide();
+                                                subBTN.hide();
                                             }
                                         })
                                 } else if (hour > 12 && hour < 17) {
                                     startToSpeak("Good Afternoon..." + mess)
                                         .then((s) => {
                                             if (s) {
+                                                hideIndicatorSpeaking()
                                                 console.log('done speaking...')
                                                 recognition.start();
+
+                                                showIndicator();
+                                                input.hide();
+                                                subBTN.hide();
                                             }
                                         })
                                 } else {
@@ -702,6 +744,11 @@
                                             if (s) {
                                                 console.log('done speaking...')
                                                 recognition.start();
+
+                                                // indicator speech
+                                                showIndicator();
+                                                input.hide();
+                                                subBTN.hide();
                                             }
                                         })
                                 }
@@ -726,12 +773,15 @@
 
                             recognition.onspeechend = () => {
                                 console.log("Speech has stopped being detected");
+                                hideIndicator()
+                                input.show();
+                                subBTN.show();
                                 isListening = false;
                             };
 
                             async function takeCommand(message) {
                                 try {
-                                    console.log(message);
+                                    // console.log(message);
                                     $('#popup-continuation-speech').removeClass('active');
                                     if (message.includes('yes')) {
                                         recognition.stop();
@@ -765,13 +815,35 @@
                                         // Handle 'no' case
                                         $('#popup-continuation-speech').toggleClass('active');
                                         startToSpeak(
-                                            'Oh, sorry! can speak again or manually type your question!'
-                                        );
+                                                'Oh, sorry! can speak again or manually type your question!'
+                                            )
+                                            .then((done) => {
+                                                if (done) {
+                                                    hideIndicatorSpeaking()
+                                                }
+                                            })
+                                    } else if (message.includes('exit')) {
+                                        startToSpeak(
+                                                'got it!'
+                                            )
+                                            .then((done) => {
+                                                if (done) {
+                                                    hideIndicatorSpeaking()
+                                                }
+
+                                            })
+                                        recognition.stop();
+                                        stopSpeaking();
                                     } else {
 
                                         $('#popup-continuation-speech').toggleClass('active');
                                         $('#speech-input').val(message + ' ?');
-                                        startToSpeak(message + 'I am right?');
+                                        startToSpeak(message + 'I am right?')
+                                            .then((done) => {
+                                                if (done) {
+                                                    hideIndicatorSpeaking()
+                                                }
+                                            })
                                     }
 
 
@@ -783,6 +855,7 @@
                             }
 
                         }
+                        break;
 
                     case 'scanner':
                         if ($(this).hasClass('disabled')) {
@@ -792,11 +865,28 @@
                             startToSpeak(scannerMess)
                                 .then((finished) => {
                                     if (finished) {
+                                        hideIndicatorSpeaking()
                                         // Speech finished
                                         console.log(finished)
                                     }
                                 });
+                        } else {
+                            startToSpeak(
+                                    "Kindly Placed your qrcodes on the camera to start authentication process. thank you!"
+                                )
+                                .then((finished) => {
+                                    if (finished) {
+                                        hideIndicatorSpeaking()
+                                        // Speech finished
+                                        console.log(finished)
+                                    }
+                                });
+
+                            $('#popup-scanner').css({
+                                'display': 'flex'
+                            })
                         }
+                        break;
                     default:
                         break;
                 }
@@ -838,14 +928,17 @@
                         // startToSpeak(parsedData.answer)
 
                         startToSpeak(parsedData.answer)
-                            .then((finished) => {
+                            .then(async (finished) => {
                                 if (finished) {
+                                    hideIndicatorSpeaking()
                                     // Speech finished
-                                    console.log(finished)
+                                    // console.log(finished)
                                     // subBTN.show()
                                     // $('#overlay-updates').removeClass('active');
                                     $('#popup-continuation').fadeOut(400)
-                                    $('#searchModal').css({"display":'flex'})
+                                    $('#searchModal').css({
+                                        "display": 'flex'
+                                    })
                                     if (responseData.floor !== "false") {
                                         console.log(responseData.continuation)
                                         boxes.show(); // Ensure boxes are visible before fading in
@@ -854,16 +947,46 @@
                                                 // alert('false response')
                                                 console.log('false response')
                                                 // Handle the case when continuation is false
-                                                // $('#overlay-updates').toggleClass('active');
+                                                //submit auto yes
+                                                const response = await fetch('/navi/process', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': csrfToken,
+                                                    },
+                                                    body: JSON.stringify({
+                                                        prompt: `yes`,
+                                                    }),
+
+                                                });
+                                                //call its own
+                                                handleResponse(response)
                                                 $('#searchModal').fadeOut(400)
-                                                $('#popup-continuation').css({"display":"flex"})
+                                                // $('#popup-continuation').css({
+                                                //     "display": "flex"
+                                                // })
                                                 break;
 
                                             case 'information':
-                                            console.log('information response')
+                                                console.log('information response')
                                                 // Handle the case when continuation is 'information'
                                                 $('#searchModal').fadeOut(400)
-                                                $('#popup-continuation-teacher').css({"display":"flex"});
+                                                const responseT = await fetch('/navi/process', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': csrfToken,
+                                                    },
+                                                    body: JSON.stringify({
+                                                        prompt: `yes`,
+                                                    }),
+
+                                                });
+                                                //call its own
+                                                handleResponse(responseT)
+                                                // $('#popup-continuation-teacher').css({
+                                                //     "display": "flex"
+                                                // });
                                                 break;
 
                                             case 'deactivate':
@@ -876,7 +999,7 @@
                                                 break;
 
                                             default:
-                                            console.log('default response')
+                                                console.log('default response')
                                                 // Handle the case when continuation is not 'information' or 'deactivate'
                                                 processFacilitiesNavigation(responseData.floor,
                                                     responseData.facility);
@@ -907,12 +1030,14 @@
                 if (response.ok) {
                     const responseData = await response.json();
                     $('#popup-searching').removeClass('active');
-                    if(responseData.modelClass !== 'SchoolHMV'){
+                    if (responseData.modelClass !== 'SchoolHMV') {
                         //original
                         // $('#popup-searchingInfo').toggleClass('active');
                         // updated
                         search2Pops.fadeOut(400)
-                        $('#facilityInformationPopup').css({'display':'flex'});
+                        $('#facilityInformationPopup').css({
+                            'display': 'flex'
+                        });
 
                         // console.log(responseData)
                         $('.info-title').text(`Available's Information on ${responseData.modelClass}`)
@@ -921,15 +1046,17 @@
                     var genderColor = ''
                     var genderBackColor = ''
                     responseData.informations.forEach((info, key) => {
-                        console.log(info)
+                        // console.log(info)
                         switch (responseData.modelClass) {
+
                             case "EastwoodsFacilities":
-                                    $('.ft').text(`available facilitie's`)
-                                    $('.fg').text(`list of facilities`)
+                                stopSpeaking()
+                                $('.ft').text(`available facilitie's`)
+                                $('.fg').text(`list of facilities`)
                                 // html += `
-                                //     <span class="grid-item" data-info-model="${responseData.modelClass}" data-info-id="${info.id}" data-info-search="${info.facilities}">${info.facilities.toUpperCase()}</span>
-                                // `
-                                 html += `
+                            //     <span class="grid-item" data-info-model="${responseData.modelClass}" data-info-id="${info.id}" data-info-search="${info.facilities}">${info.facilities.toUpperCase()}</span>
+                            // `
+                                html += `
                                     <div class="abbrev-element designated-teacher mb-3 grid-item-con">
                                         <box-icon name='building-house' type='solid' style="position:absolute;top:-30px;left:45px;fill:#fff;width:80px;height:50px;border-radius:10px;margin-top:15px;background:rgb(3,68,3);"></box-icon><br>
                                         <span class="abbr designated-teacher-t">${info.facilities.toUpperCase()}</span><br>
@@ -945,17 +1072,18 @@
                                  `
                                 break;
                             case "Teacher":
+                                stopSpeaking()
                                 $('.ft').text(`available teacher's`)
                                 $('.fg').text(`list of teachers`)
                                 // html += `
-                                //     <span class="grid-item" data-info-model="${responseData.modelClass}" data-flo="${info.floor}" data-faci="${info.facility_name}" data-info-id="${info.id}" data-info-search="${info.name}">${info.name.toUpperCase()}</span>
-                                // `
-                                if(info.gender != 'male'){
+                            //     <span class="grid-item" data-info-model="${responseData.modelClass}" data-flo="${info.floor}" data-faci="${info.facility_name}" data-info-id="${info.id}" data-info-search="${info.name}">${info.name.toUpperCase()}</span>
+                            // `
+                                if (info.gender != 'male') {
                                     genderColor = 'rgb(223, 9, 223)'
                                     // genderBackColor = ''
-                                }else{
+                                } else {
                                     genderBackColor = 'rgb(3,68,3)'
-                                    genderColor= '#fff'
+                                    genderColor = '#fff'
                                 }
                                 html += `
                                     <div class="abbrev-element designated-teacher mb-3 grid-item-con">
@@ -973,11 +1101,12 @@
                                  `
                                 break;
                             case "SchoolHMV":
-                                    $('#searchModal').fadeOut(400)
-                                    if(info.type === 'hymn'){
-                                        startToSpeak(`Here is the ${info.type} of Eastwoods.`)
+                                stopSpeaking()
+                                $('#searchModal').fadeOut(400)
+                                if (info.type === 'hymn') {
+                                    startToSpeak(`Here is the ${info.type} of Eastwoods.`)
                                         .then((finished) => {
-                                            
+                                            hideIndicatorSpeaking()
                                             $('#east-play').append(
                                                 `<source src="${info.path}" type="video/mp4">
                                                 Your browser does not support the video tag.`
@@ -988,55 +1117,77 @@
 
                                             afterElement.addClass('circle-after');
                                             circle.append(afterElement);
-                                            $('#hymnPopup').css({"display":'flex'}).hide().fadeIn(500);
+                                            $('#hymnPopup').css({
+                                                "display": 'flex'
+                                            }).hide().fadeIn(500);
 
                                             // Attach an event listener to the 'ended' event of the video
                                             $('#east-play').on('ended', function() {
                                                 // Close the modal, replace this with your actual modal closing logic
-                                                startToSpeak(`Thank you for Watching Eastwoods Hymns. Have a nice day.`)
-                                                .then((finished) => {
-                                                    // Pause the video
-                                                    $('#east-play')[0].pause();
-                                                    // Remove the existing <source> element
-                                                    $('#east-play source').remove();
+                                                startToSpeak(
+                                                        `Thank you for Watching Eastwoods Hymns. Have a nice day.`
+                                                    )
+                                                    .then((finished) => {
+                                                        if (finished) {
+                                                            hideIndicatorSpeaking()
+                                                        }
+                                                        // Pause the video
+                                                        $('#east-play')[0].pause();
+                                                        // Remove the existing <source> element
+                                                        $('#east-play source')
+                                                            .remove();
 
-                                                    
-                                                    $('#hymnPopup').fadeOut(400);
-                                                })
-                                                
+
+                                                        $('#hymnPopup').fadeOut(
+                                                            400);
+                                                    })
+
                                             });
                                         })
-                                    }else{
-                                        let index = 0;
-                                        const textToType = info.descriptions;
+                                } else {
+                                    // let index = 0;
+                                    const textToType = info.descriptions;
 
-                                        function typeText() {
-                                            $('#mv-text-title').text(info.type);
-                                            $('.mv-text').html(`<span class="typing-text">"${textToType.substring(0, index)}"</span>`);
+                                    function typeText() {
+                                        $('#mv-text-title').text(info.type);
+                                        $('.mv-text').html(
+                                            `<span class="typing-text">"${textToType.substring(0, index)}"</span>`
+                                        );
 
-                                            index++;
+                                        index++;
 
-                                            if (index <= textToType.length) {
-                                                setTimeout(typeText, 60); // Adjust the delay as needed
-                                            }
+                                        if (index <= textToType.length) {
+                                            mvTimeout = setTimeout(typeText,
+                                                60); // Adjust the delay as needed
                                         }
-
-                                        typeText();
-                            
-                                        
-                                        $('#mvPopup').css({"display":'flex'}).hide().fadeIn(500);
-                                        startToSpeak(`Here is the ${info.type} of Eastwoods. ${info.descriptions.replace(/,/g, '.')}`)
-                                        .then((finished) => {
-                                            
-                                        })
-                                        
                                     }
-                                
+
+                                    typeText();
+
+
+                                    $('#mvPopup').css({
+                                        "display": 'flex'
+                                    }).hide().fadeIn(400);
+                                    startToSpeak(
+                                            `Here is the ${info.type} of Eastwoods. ${info.descriptions.replace(/,/g, '.')}`
+                                        )
+                                        .then((done) => {
+                                            if (done) {
+                                                hideIndicatorSpeaking()
+                                            }
+                                        })
+
+
+                                }
+
                                 break;
                             default:
                                 break;
                         }
                     })
+
+
+
                     $('.information-container-fac').html(html)
 
                     // search functionality
@@ -1056,6 +1207,8 @@
 
                     // click handler on grid-item
                     $(document).off('click', '.grid-item').on('click', '.grid-item', async function() {
+                        //stop talk
+                        stopSpeaking()
                         var infoModel = $(this).data('info-model')
                         var infoId = $(this).data('info-id')
                         var dataFaci = $(this).data('faci')
@@ -1066,7 +1219,9 @@
                         $('#popup-searching').removeClass('active');
                         // old
                         // $('#popup-searchingInfo').toggleClass('active');
-                        $('#facilityInformationPopup').css({'display':'flex'});
+                        $('#facilityInformationPopup').css({
+                            'display': 'flex'
+                        });
                         const response = await fetch('/navi/process/search', {
                             method: 'POST',
                             headers: {
@@ -1106,9 +1261,19 @@
                 }
             }
 
+            // reset typing text
+            function resetTyping() {
+                const afterElement = circle.find('.circle-after');
+                afterElement.removeClass("circle-after")
+                clearTimeout(mvTimeout);
+                index = 0;
+                $('.mv-text').html('');
+            }
+
             // Function to stop the current speech synthesis
             const stopSpeaking = () => {
                 if (currentUtterance) {
+                    hideIndicatorSpeaking()
                     speechSynthesis.cancel(); // Cancel the current utterance
                     currentUtterance = null; // Clear the current utterance reference
                 }
@@ -1117,6 +1282,7 @@
             const startToSpeak = async (sentence) => {
                 // Stop any ongoing speech before starting a new one
                 stopSpeaking();
+
                 // speak
                 input.hide()
                 subBTN.hide()
@@ -1148,7 +1314,8 @@
                             currentUtterance =
                                 null; // Clear the current utterance reference when speech finishes
                             // loader
-                            $('.loader').hide();
+                            hideIndicatorSpeaking()
+                            // $('.loader').hide();
                             const afterElement = circle.find('.circle-after');
 
                             if (afterElement.length) {
@@ -1175,7 +1342,9 @@
                         // start talked
                         setTimeout(() => {
                             afterElement.addClass('circle-after');
-                            $('.loader').show();
+                            // $('.loader').show();
+                            //show indicator
+                            simulateSpeaking()
                             circle.append(afterElement);
                             speechSynthesis.speak(utterance);
                         }, 1000);
@@ -1208,15 +1377,16 @@
 
                 console.log(responseData)
                 // Assuming responseData.details is an array of objects with an 'id' property
-                const uniqueDetails = Array.from(new Set(responseData.details.map(detail => detail.id))).map(id => {
-                    return responseData.details.find(detail => detail.id === id);
-                });
+                const uniqueDetails = Array.from(new Set(responseData.details.map(detail => detail.id)))
+                    .map(id => {
+                        return responseData.details.find(detail => detail.id === id);
+                    });
 
                 console.log(uniqueDetails);
 
                 var serverResponds = uniqueDetails;
                 const gridContainer = $("#grid-container");
-                
+
                 let gridPoints = [];
                 let floorIndex = 0;
                 let len = serverResponds.length;
@@ -1233,14 +1403,18 @@
                 var startingX;
                 var startingY;
 
-                const validLabelsMale = ['male','MR', 'MRX','MRN','MRF']; // Add more labels as needed for abbrev
-                const validLabelsFemale = ['female','FR', 'FRU','FRF','FRZ']; // Add more labels as needed for abbrev
+                const validLabelsMale = ['male', 'MR', 'MRX', 'MRN', 'MRE',
+                    'MRF', "MRO"
+                ]; // Add more labels as needed for abbrev
+                const validLabelsFemale = ['female', 'FR', 'FRU', 'FRF',
+                    'FRZ'
+                ]; // Add more labels as needed for abbrev
 
                 let uniqueEntries = new Set();
 
                 function createGridPoints(target, prevBool) {
                     if (floorIndex < len) {
-                        
+
                         // $('#next-floor-button').hide();
                         // $('#back-floor-button').hide();
                         // console.log('count', floorIndex, '<', len)
@@ -1248,7 +1422,7 @@
                         $('.floor-title').text(serverResponds[floorIndex]['floor'])
                         // console.log(serverResponds[floorIndex]['floor'])
                         targetFacilities = target;
-                       
+
                         gridContainer.empty(); // Clear the existing grid using jQuery
                         // && serverResponds['gridDetails'] && Array.isArray(serverResponds['gridDetails'])
                         if (serverResponds && serverResponds[floorIndex]['gridDetails'] && Array.isArray(
@@ -1294,8 +1468,17 @@
                                 point.attr("data-label", coordinates.sublabel);
                                 // point.text(`${parseInt(coordinates.x)},${parseInt(coordinates.y)}`); // Optionally, you can label points with their coordinates
                                 // Use a ternary operator to set the text based on coordinates.label
-                                point.text(coordinates.label !== null ? truncateText(coordinates
-                                    .label, 7) : '');
+                                // point.text(coordinates.label !== null ? truncateText(coordinates
+                                //     .label, 7) : '');
+                                // Check if an element with the same label already exists
+                                const existingElement = $('.grid-point[data-label="' + coordinates.sublabel + '"]');
+                                if (existingElement.length > 0) {
+                                    // If an element with the same label exists, set the text of the new element to blank
+                                    point.text('');
+                                } else {
+                                    // If no element with the same label exists, set the text based on coordinates.label
+                                    point.text(coordinates.label !== null ? truncateText(coordinates.label, 7) : '');
+                                }
                                 gridContainer.append(point).fadeIn(
                                     'slow'); // Append the point to the grid container using jQuery
                                 // point.addClass(coordinates.isBlock === 'true' ? 'blocked' : '');
@@ -1303,7 +1486,8 @@
                                 let currentEntry = coordinates;
                                 // Check if the combination of label and sublabel is unique
                                 let entryKey = currentEntry.label + currentEntry.sublabel;
-                                if(coordinates.label !== null && coordinates.sublabel !== null && !uniqueEntries.has(entryKey)){
+                                if (coordinates.label !== null && coordinates.sublabel !== null && !
+                                    uniqueEntries.has(entryKey)) {
                                     // Add the combination to the set to mark it as encountered
                                     uniqueEntries.add(entryKey);
                                     populatesAbbrev(currentEntry.label, currentEntry.sublabel)
@@ -1316,7 +1500,7 @@
                                     // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
                                 } else if (coordinates.label == targetFacilities || coordinates
                                     .sublabel == targetFacilities) {
-                                         // Remove the class 'targetFacilities' from all elements
+                                    // Remove the class 'targetFacilities' from all elements
                                     // $('.st').removeClass('targetFacilities');
                                     point.addClass('targetFacilities');
                                     targetX = parseInt(coordinates.x);
@@ -1324,7 +1508,7 @@
                                     // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
                                     // Set the flag to true when the target is found
                                     isTargetFound = true;
-                                    console.log("nag true mna",isTargetFound)
+                                    // console.log("nag true mna", isTargetFound)
                                 } else if (coordinates.label === 'front') {
                                     startingX = parseInt(coordinates.x);
                                     startingY = parseInt(coordinates.y);
@@ -1333,10 +1517,10 @@
                                     point.append(`<i class="fa-solid fa-street-view fa-2xl"></i>`)
                                 } else if (coordinates.label === 'wall') {
                                     point.addClass('blocked wall');
-                                   
-                                } 
 
-                                
+                                }
+
+
 
                                 if (coordinates.label === 'wall') {
                                     point.addClass('blocked wall');
@@ -1371,9 +1555,9 @@
                                     )
                                 }
 
-                                if (coordinates.label === 'stair-in' && floorIndex < len-1) {
+                                if (coordinates.label === 'stair-in' && floorIndex < len - 1) {
                                     // console.log(floorIndex , len)
-            
+
                                     point.addClass('targetFacilities st');
                                     point.removeClass('blocked')
                                     targetX = parseInt(coordinates.x);
@@ -1387,28 +1571,264 @@
                                 // $('#target-selection').html(targetSelection);
 
                                 if (target != 'n/a' && startingX != 0 && startingY != 0) {
-                                    console.log(startingX, startingY, targetX, targetY)
+                                    // console.log(startingX, startingY, targetX, targetY)
                                     dijkstra(startingX, startingY, targetX, targetY);
-                               
-                                    
+
+
                                 }
-                               if(floorIndex < len-1){
-                                    console.log("ito yun")
+                                if (floorIndex < len - 1) {
+                                    // console.log("ito yun")
                                     startingX = 0;
                                     startingY = 0;
-                               }
+                                }
 
                             });
+
+                            // Create a new variable to store the filtered gridDetails
+                            var filteredServerResponds = {};
+
+                            // for (var key in serverResponds) {
+                            if (serverResponds.hasOwnProperty(floorIndex)) {
+
+                                var gridDetails = serverResponds[floorIndex]['gridDetails'];
+                                // console.log('gridDetails')
+                                // console.log(serverResponds[floorIndex]['gridDetails'])
+                                // Create a Set to track unique labels
+                                var seenLabels = new Set();
+
+                                // Filter duplicates based on the label property within the forEach loop
+                                var filteredGridDetails = gridDetails.filter(function(item) {
+                                    var label = item['label'];
+
+                                    // Check if label is non-null and unique
+                                    if (label !== null && !seenLabels.has(label)) {
+                                        seenLabels.add(label);
+                                        return true;
+                                    }
+                                    return false;
+                                });
+
+                                // Create a new object with the filtered gridDetails
+                                filteredServerResponds[floorIndex] = {
+                                    ...serverResponds[floorIndex],
+                                    gridDetails: filteredGridDetails,
+                                };
+                            }
+                            // }
+
+
+                            //populate the keys
+                            populateKeys(floorIndex, filteredServerResponds)
+
+                            // populates the keys
+                            function populateKeys(key, filteredServerRespondsData) {
+                                var keysDisplay = ''
+                                var icons = ''
+                                var iconText = ''
+                                const male = ['male', 'MR', 'MRX', 'MRN', 'MRE', "MRO",
+                                    'MRF'
+                                ]; // Add more labels as needed for abbrev
+                                const female = ['female', 'FR', 'FRU', 'FRF',
+                                    'FRZ'
+                                ]; // Add more labels as needed for abbrev
+                                filteredServerRespondsData[key]['gridDetails'].forEach(data => {
+                                    switch (data.label) {
+                                        case 'wall':
+                                            icons =
+                                                `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
+                                            iconText = `Blocked Cell`
+                                            break;
+                                        case 'front':
+                                            icons = `<i class="fa-solid fa-street-view fa-lg"></i>`
+                                            iconText = `Student Lounge`
+                                            break;
+                                        case 'stair-in':
+                                            icons =
+                                                `<i class="fa-solid fa-stairs fa-lg" style="color: #0f56d2;"></i>`
+                                            iconText = `Stairs`
+                                            break;
+                                        case 'guard house':
+                                            icons =
+                                                `<i class="fa-solid fa-person-military-pointing fa-lg"></i>`
+                                            iconText = data.sublabel
+                                            break;
+
+                                        case 'front':
+                                            icons =
+                                                `<i class="fa-solid fa-street-view fa-lg"></i>`
+                                            iconText = `Your location`
+                                            break;
+
+                                        default:
+                                            icons = data.label
+                                            iconText = data.sublabel
+                                            break;
+                                    }
+
+                                    // for rest room
+                                    if (female.includes(data.label)) {
+                                        icons =
+                                            `<i class="fa-solid fa-person-dress fa-lg" style="color: #eb05c1;"></i>`
+                                    }
+                                    if (male.includes(data.label)) {
+                                        icons =
+                                            `<i class="fa-solid fa-person fa-lg" style="color: #0f56d2;"></i>`
+                                    }
+
+
+
+                                    keysDisplay += `
+                                        <div class="keys mb-2">
+                                            <span class="floor-keys">${icons}</span>
+                                            <span class="floor-mean">${iconText}</span>
+                                        </div>
+                                        `
+                                })
+
+                                $('#keysDisplay').html(keysDisplay)
+                            }
                             // console.log()
                             // starting point x, y  target x,y
-                            
-                           
+
+                            // working problem is the color combination
+
+                            var labelCounts = {};
+
+                            // Function to generate a random color
+                            function getRandomColor() {
+                                // Convert the background color to HSL
+                                var baseHSL = rgbToHsl(0, 3, 3.9); // RGB values for #263024
+
+                                // Generate a random color with a similar hue and lighter lightness
+                                var hue = (baseHSL[0] + Math.random() * 30) % 360; // Adjust 30 as needed
+                                var saturation = 50 + Math.random() * 10; // Adjust as needed
+                                var lightness = 60 + Math.random() * 40; // Adjust for a lighter range
+
+                                // Convert HSL back to RGB
+                                var rgbColor = hslToRgb(hue, saturation, lightness);
+
+                                // Format RGB values to a CSS color string
+                                return "rgb(" + rgbColor.join(", ") + ")";
+                            }
+
+                            // Convert RGB to HSL
+                            function rgbToHsl(r, g, b) {
+                                r /= 255;
+                                g /= 255;
+                                b /= 255;
+
+                                var max = Math.max(r, g, b),
+                                    min = Math.min(r, g, b);
+
+                                var h,
+                                    s,
+                                    l = (max + min) / 2;
+
+                                if (max == min) {
+                                    h = s = 0; // achromatic
+                                } else {
+                                    var d = max - min;
+                                    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+                                    switch (max) {
+                                        case r:
+                                            h = (g - b) / d + (g < b ? 6 : 0);
+                                            break;
+                                        case g:
+                                            h = (b - r) / d + 2;
+                                            break;
+                                        case b:
+                                            h = (r - g) / d + 4;
+                                            break;
+                                    }
+
+                                    h /= 6;
+                                }
+
+                                return [h * 360, s * 100, l * 100];
+                            }
+
+                            // Convert HSL to RGB
+                            function hslToRgb(h, s, l) {
+                                h /= 360;
+                                s /= 100;
+                                l /= 100;
+
+                                var r, g, b;
+
+                                if (s === 0) {
+                                    r = g = b = l; // achromatic
+                                } else {
+                                    function hue2rgb(p, q, t) {
+                                        if (t < 0) t += 1;
+                                        if (t > 1) t -= 1;
+                                        if (t < 1 / 6) return p + (q - p) * 6 * t;
+                                        if (t < 1 / 2) return q;
+                                        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+                                        return p;
+                                    }
+
+                                    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                                    var p = 2 * l - q;
+
+                                    r = hue2rgb(p, q, h + 1 / 3);
+                                    g = hue2rgb(p, q, h);
+                                    b = hue2rgb(p, q, h - 1 / 3);
+                                }
+
+                                return [
+                                    Math.round(r * 255),
+                                    Math.round(g * 255),
+                                    Math.round(b * 255),
+                                ];
+                            }
+
+                            // Iterate through each element with data-label attribute
+                            $(".grid-point").each(function() {
+                                var dataLabel = $(this).text();
+                                // console.log('ginagawa')
+                                console.log(dataLabel)
+                                // Count occurrences of each data-label
+                                labelCounts[dataLabel] = (labelCounts[dataLabel] || 0) + 1;
+                                // Add a class based on the data label
+                                if (labelCounts[dataLabel] > 1) {
+                                    $(this).addClass('group-' + dataLabel);
+                                }
+                            });
+
+                            // Display the counts and set a random background color for elements with more than one occurrence
+                            // for (var label in labelCounts) {
+                            //     console.log(label)
+                            //     if (
+                            //         labelCounts.hasOwnProperty(label) &&
+                            //         labelCounts[label] > 0 && label.trim() !== ""
+                            //     ) {
+                            //         console.log(
+                            //             "Data Label:",
+                            //             label,
+                            //             "Count:",
+                            //             labelCounts[label]
+                            //         );
+
+                            //         // Set a random background color for all elements with the specific data-label
+                            //         var randomColor = getRandomColor();
+                            //        // Filter the elements based on the text content
+                            //         $(".grid-point").filter(function() {
+                            //             return $(this).text().trim() === label;
+                            //         }).css("background-color", randomColor);
+                            //     }
+                            // }
+                            // working problem is the color combination
 
 
 
                             // speak the guidelines
                             startToSpeak(responseData.navigationMessage[floorIndex])
-
+                                .then((done) => {
+                                    if (done) {
+                                        hideIndicatorSpeaking()
+                                    }
+                                })
                             if (!prevBool) {
                                 floorIndex++; // Move to the next floor
                                 setTimeout(() => createGridPoints(facility, false),
@@ -1612,13 +2032,14 @@
                                             // Update the distance if a shorter path is found
                                             if (
                                                 !visited[y][x] &&
-                                                distances[currentY][currentX] + distanceToNeighbor < distances[y][x]
+                                                distances[currentY][currentX] + distanceToNeighbor <
+                                                distances[y][x]
                                             ) {
                                                 distances[y][x] =
                                                     distances[currentY][currentX] + distanceToNeighbor;
                                             }
                                         }
-                                    } 
+                                    }
 
                                 }
                             }
@@ -1685,62 +2106,64 @@
                         });
 
                         // Highlight the shortest path in the grid
-                    async function animateShortestPath(shortestPath) {
-                        return new Promise(async (resolve) => {
-                            for (let i = 1; i < shortestPath.length; i++) {
+                        async function animateShortestPath(shortestPath) {
+                            return new Promise(async (resolve) => {
+                                for (let i = 1; i < shortestPath.length; i++) {
 
-                                const {
-                                    x: currentX,
-                                    y: currentY
-                                } = shortestPath[i - 1];
-                                const {
-                                    x: nextX,
-                                    y: nextY
-                                } = shortestPath[i];
+                                    const {
+                                        x: currentX,
+                                        y: currentY
+                                    } = shortestPath[i - 1];
+                                    const {
+                                        x: nextX,
+                                        y: nextY
+                                    } = shortestPath[i];
 
-                                const node = grid[currentY][currentX];
-                                node.classList.add(
-                                "passed"); // Highlight the current node as passed
+                                    const node = grid[currentY][currentX];
+                                    node.classList.add(
+                                        "passed"
+                                    ); // Highlight the current node as passed
 
-                                // Determine the direction (up or down)
-                                let directionClass = "";
-                                // if (nextY < currentY) {
-                                //     // alert('yes')
-                                //     directionClass = "left";
-                                // } else {
-                                //     directionClass = "up";
-                                // }
-                                if (nextY < currentY) {
-                                    directionClass = "left";
-                                } else if (nextY > currentY) {
-                                    directionClass = "right";
-                                } else if (nextX < currentX) {
-                                    directionClass = "up";
-                                } else if (nextX > currentX) {
-                                    directionClass = "down";
+                                    // Determine the direction (up or down)
+                                    let directionClass = "";
+                                    // if (nextY < currentY) {
+                                    //     // alert('yes')
+                                    //     directionClass = "left";
+                                    // } else {
+                                    //     directionClass = "up";
+                                    // }
+                                    if (nextY < currentY) {
+                                        directionClass = "left";
+                                    } else if (nextY > currentY) {
+                                        directionClass = "right";
+                                    } else if (nextX < currentX) {
+                                        directionClass = "up";
+                                    } else if (nextX > currentX) {
+                                        directionClass = "down";
+                                    }
+
+                                    // Check if directionClass is not empty before adding it as a class
+                                    if (directionClass !== "") {
+                                        // Create the ball element with the direction class
+                                        // const ball = document.createElement("div");
+                                        // ball.classList.add("ball", directionClass);
+                                        node.classList.add(directionClass);
+
+                                        // Append the ball to the grid container
+                                        // node.append(ball);
+
+                                        // Wait for 200 milliseconds (remove the ball after 200ms)
+                                        await new Promise((resolve) => setTimeout(
+                                            resolve, 400));
+
+                                        // Remove the added class
+                                        // node.classList.remove(directionClass);
+                                    }
                                 }
-
-                                // Check if directionClass is not empty before adding it as a class
-                                if (directionClass !== "") {
-                                    // Create the ball element with the direction class
-                                    // const ball = document.createElement("div");
-                                    // ball.classList.add("ball", directionClass);
-                                    node.classList.add(directionClass);
-
-                                    // Append the ball to the grid container
-                                    // node.append(ball);
-
-                                    // Wait for 200 milliseconds (remove the ball after 200ms)
-                                    await new Promise((resolve) => setTimeout(resolve, 400));
-
-                                    // Remove the added class
-                                    // node.classList.remove(directionClass);
-                                }
-                            }
-                            // Animation is complete, resolve the promise
-                            // resolve();
-                        })
-                    }
+                                // Animation is complete, resolve the promise
+                                // resolve();
+                            })
+                        }
 
                         // Initialize a flag to track if animation is running
                         let isAnimationRunning = false;
@@ -1879,6 +2302,7 @@
                 startToSpeak(updatesCompleted)
                     .then((finished) => {
                         if (finished) {
+                            hideIndicatorSpeaking()
                             console.log(finished)
                             localStorage.setItem('updates', false)
                         } else {
@@ -1924,7 +2348,7 @@
                                 `;
 
                     });
-                }else{
+                } else {
                     teach = `<h4 class="text-center no-record">There's is no record on this facilities</h4>  
                     `
                     // <lord-icon
@@ -1936,7 +2360,9 @@
                 }
 
                 $('.l-des').html(teach)
-                $('#designatedPopup').css({'display':'flex'})
+                $('#designatedPopup').css({
+                    'display': 'flex'
+                })
 
             });
 
@@ -1946,8 +2372,8 @@
             })
 
             //random response for exit
-            function ranExit(){
-                  // Array of possible responses
+            function ranExit() {
+                // Array of possible responses
                 const responses = [
                     "Sure, how can I assist you?",
                     "Absolutely! What do you need help with?",
@@ -1982,7 +2408,12 @@
                     }, (totalBoxes - index - 1) * 200);
                 });
                 stopSpeaking()
-                startToSpeak(ranExit());
+                startToSpeak(ranExit())
+                    .then((done) => {
+                        if (done) {
+                            hideIndicatorSpeaking()
+                        }
+                    })
                 setTimeout(function() {
                     $('#searchModal').fadeOut(500);
                     $('#popup-continuation').fadeOut(500);
@@ -1990,6 +2421,7 @@
             });
 
             $(document).on('click', '.box-content', async function() {
+                stopSpeaking()
                 var bxi = $(this).data('value')
                 var bxiModel = $(this).data('model')
                 // alert(bxi)
@@ -2010,13 +2442,18 @@
 
             //navigation exit
             $(document).on('click', '.navi-exit', function() {
+                resetTyping()
                 abbrevPeriodicTable.empty()
                 stopSpeaking()
-                startToSpeak(
-                ranExit());
+                startToSpeak(ranExit())
+                    .then((done) => {
+                        if (done) {
+                            hideIndicatorSpeaking()
+                        }
+                    })
                 $('#navigationPopup').fadeOut(500);
-                 // Remove the existing <source> element
-                    // Pause the video
+                // Remove the existing <source> element
+                // Pause the video
                 $('#east-play')[0].pause();
                 $('#east-play source').remove();
                 $('#hymnPopup').fadeOut(400);
@@ -2029,10 +2466,12 @@
             })
 
             //back
-            $(document).on('click', '.mv-back', function(){
+            $(document).on('click', '.mv-back', function() {
+                resetTyping()
+                stopSpeaking()
                 $('#navigationPopup').fadeOut(500);
-                 // Remove the existing <source> element
-                    // Pause the video
+                // Remove the existing <source> element
+                // Pause the video
                 $('#east-play')[0].pause();
                 $('#east-play source').remove();
                 $('#hymnPopup').fadeOut(400);
@@ -2044,40 +2483,309 @@
             })
             //navigation exit
             $(document).on('click', '.conti-exit', function() {
+                resetTyping()
                 stopSpeaking()
                 abbrevPeriodicTable.empty()
                 startToSpeak(
-                ranExit());
+                        ranExit())
+                    .then((done) => {
+                        if (done) {
+                            hideIndicatorSpeaking()
+                        }
+                    })
                 $('#popup-continuation').fadeOut(500);
-                $('#searchModal').css({"display":'flex'}).hide().fadeIn(500);;
+                $('#searchModal').css({
+                    "display": 'flex'
+                }).hide().fadeIn(500);;
                 search2Pops.css({
                     'display': 'flex'
                 });
             })
 
             // open abbrev popups
-            $(document).on('click', '.abbrev-means', function(){
+            $(document).on('click', '.abbrev-means', function() {
+                resetTyping()
+                stopSpeaking()
                 // $('#navigationPopup').fadeOut(500);
-                $('#abbrevPopup').css({"display":'flex'}).hide().fadeIn(500);
+                $('#abbrevPopup').css({
+                    "display": 'flex'
+                }).hide().fadeIn(500);
             })
-            $(document).on('click', '.abbrev-means-back', function(){
+            $(document).on('click', '.abbrev-means-back', function() {
+                resetTyping()
+                stopSpeaking()
                 // abbrevPeriodicTable.empty()
-                $('#navigationPopup').css({"display":'flex'}).hide().fadeIn(50);
+                $('#navigationPopup').css({
+                    "display": 'flex'
+                }).hide().fadeIn(50);
                 $('#abbrevPopup').fadeOut(500);
                 $('#designatedPopup').fadeOut(500);
             })
-            $(document).on('click','.des-back-home', function(){
-                $('#navigationPopup').css({"display":'flex'}).hide().fadeIn(50);
+            $(document).on('click', '.des-back-home', function() {
+                resetTyping()
+                stopSpeaking()
+                $('#navigationPopup').css({
+                    "display": 'flex'
+                }).hide().fadeIn(50);
                 $('#designatedPopup').fadeOut(500);
             })
 
             //populates abbrev
-            function populatesAbbrev(ab,abm){
-                
+            function populatesAbbrev(ab, abm) {
+
                 abbrevPeriodicTable.append(`
                     <div class="abbrev-element"><span class="abbr">${ab}</span><br><span class="abbr-m">${abm}</span></div>
                 `)
             }
+
+            // This method will trigger user permissions
+            const availableCamera = () => {
+                return Html5Qrcode.getCameras()
+                    .then((devices) => {
+                        /**
+                         * devices would be an array of objects of type:
+                         * { id: "id", label: "label" }
+                         */
+                        if (devices && devices.length) {
+                            // i want to return only the first one camera
+                            var availableCamera = devices[0];
+                            return availableCamera;
+                        }
+                    })
+                    .catch((err) => {
+                        // handle err
+                        throw err; // Re-throw the error to be caught later
+                    });
+            };
+
+            const html5QrCode = new Html5Qrcode( /* element id */ "reader");
+            let scannerIsRunning = false;
+
+            async function startScanner(camera) {
+                try {
+                    await html5QrCode.start(
+                        camera.id, {
+                            fps: 20,
+                            qrbox: {
+                                width: 250,
+                                height: 250
+                            },
+                        },
+                        async (decodedText, decodedResult) => {
+                                stopScanner();
+                                const data = {};
+                                const fields = decodedResult.decodedText.split(", ");
+                                fields.forEach((field) => {
+                                    const [key, value] = field.split(": ");
+                                    data[key] = value;
+                                });
+
+
+
+                                console.log(data);
+                                stopSpeaking()
+                                if (data.type === "Eastwoods" && isValidNumber(data.code)) {
+                                    startToSpeak('Welcome to eastwoods, have a nice day.')
+                                        .then((finished) => {
+                                            if (finished) {
+                                                hideIndicatorSpeaking()
+                                            }
+                                            $('#popup-scanner').removeClass('active')
+                                        })
+                                } else {
+                                    // Attach click event to the button
+                                    // $('#autoClicker').on('click', buttonClickHandler);
+                                    // $('#autoClicker').trigger('click');
+
+                                    var updatesCompleted =
+                                        "Im sorry but this qr is not recognized. Authentication Failed!"
+
+                                    startToSpeak(updatesCompleted)
+                                        .then(async (finished) => {
+                                            if (finished) {
+                                                hideIndicatorSpeaking()
+                                                input.hide()
+                                                subBTN.hide()
+                                                const camera = await availableCamera();
+                                                startScanner(camera);
+                                            } else {
+                                                console.log('not finished')
+                                            }
+                                        })
+
+                                }
+
+                            },
+                            (errorMessage) => {
+                                // parse error, ignore it.
+                                console.log(errorMessage);
+                            }
+                    );
+                    scannerIsRunning = true;
+                } catch (err) {
+                    // Start failed, handle it.
+                    console.log(err);
+                    stopScanner()
+                    const camera = await availableCamera();
+                    startScanner(camera);
+                }
+            }
+
+            // Function to check if a string is a valid number
+            function isValidNumber(str) {
+                // Use regular expression to check if the string consists only of digits
+                return /^\d+$/.test(str);
+            }
+
+            function stopScanner() {
+                if (scannerIsRunning) {
+                    html5QrCode.stop().then(() => {
+                        scannerIsRunning = false;
+                    });
+                }
+            }
+
+            (async function() {
+                try {
+                    const camera = await availableCamera();
+                    console.log(camera);
+
+                    const response = await fetch('/auth-required', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken,
+                        },
+
+                    });
+                    // const responseData = await response.json();
+                    // handleResponse(response)
+                    const responseData = await response.json();
+
+                    // console.log(responseData)
+
+                    if (!responseData.auth.status) {
+
+                        stopSpeaking()
+                        stopScanner()
+                        $('#popup-scanner').removeClass('active')
+
+                    } else {
+
+                        stopSpeaking()
+                        input.hide()
+                        subBTN.hide()
+                        $('#popup-scanner').toggleClass('active')
+                        startScanner(camera);
+                        // Call startSessionTimer when the user logs in
+
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            })();
+
+            const sessionTimeout = 60000; // 30 seconds for testing, adjust as needed
+            let timeoutId;
+            let countdownInterval;
+
+            function startSessionTimer() {
+                // Reset the timer on any user interaction (mousemove, keypress, or touch)
+                $(document).on('mousemove keypress touchstart', resetSessionTimer);
+
+                // Start the timer
+                timeoutId = setTimeout(startLogoutCountdown, sessionTimeout);
+            }
+
+            function resetSessionTimer() {
+                // Reset both the session timeout and countdown interval
+                console.log('Timer is reset...');
+                clearTimeout(timeoutId);
+                clearInterval(countdownInterval);
+                $('#popup-count').removeClass('active');
+                $('#c').text("0" + 5);
+                // Start the timer again
+                timeoutId = setTimeout(startLogoutCountdown, sessionTimeout);
+            }
+
+            function startLogoutCountdown() {
+                // Display a warning message or trigger some visual indication
+                console.log('Session will expire soon. Please interact to continue.');
+                //   $('#popup-scanner').removeClass('active');
+                $('#popup-count').addClass('active');
+
+                // Start a countdown (adjust the duration as needed)
+                let countdown = 5; // 5 seconds warning
+                countdownInterval = setInterval(() => {
+                    // console.log(countdown);
+                    countdown--;
+                    if (countdown !== -1) {
+                        $('#c').text("0" + countdown);
+                    }
+
+                    if (countdown < 0) {
+                        clearInterval(countdownInterval);
+                        logoutUser();
+                    }
+                }, 1000); // Update every second
+            }
+
+            function logoutUser() {
+                // Perform logout actions (e.g., redirect to logout endpoint on the server)
+                console.log('User logged out due to inactivity.');
+                window.location.reload();
+            }
+
+            // Call startSessionTimer when the user logs in
+            startSessionTimer();
+
+            // Function to display the speech indicator
+            function showIndicator() {
+                const speechIndicator = document.getElementById('speechIndicator');
+                speechIndicator.style.display = 'flex';
+            }
+
+            // Function to hide the speech indicator
+            function hideIndicator() {
+                const speechIndicator = document.getElementById('speechIndicator');
+                speechIndicator.style.display = 'none';
+            }
+
+            // Function to update the HTML content of the speech indicator
+            function updateIndicatorText(html) {
+                const textContainer = document.querySelector('.speech-bubble .text-container');
+                textContainer.innerHTML = html;
+            }
+
+            // You can simulate changes in the indicator based on your logic
+            function simulateSpeaking() {
+                // Display the indicator
+                showIndicatorSpeaking();
+            }
+
+            // Function to display the speech indicator
+            function showIndicatorSpeaking() {
+                const speechIndicator = document.getElementById('speakingIndicator');
+                speechIndicator.style.display = 'flex';
+            }
+
+            // Function to hide the speech indicator
+            function hideIndicatorSpeaking() {
+                const speechIndicator = document.getElementById('speakingIndicator');
+                speechIndicator.style.display = 'none';
+            }
+
+            // Check if the page is refreshed
+            if (performance.navigation.type === 1) {
+                stopSpeaking()
+                hideIndicator()
+                hideIndicatorSpeaking()
+            } else {
+                console.log('Page is not refreshed');
+            }
+
+            // indicator speech
+            // showIndicator();
 
         });
     </script>

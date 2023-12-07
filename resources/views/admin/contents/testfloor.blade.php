@@ -41,6 +41,9 @@
     {{-- edit modal --}}
     <link rel="stylesheet" href="{{ asset('css/editmodal.css') }}">
     <style>
+        .col-sm-2:hover{
+            transform: translateZ(10px);
+        }
         /* Style for the grid container */
         .grid-container {
             padding: 10px;
@@ -55,7 +58,7 @@
             /* Adjust the number of columns */
             grid-template-rows: repeat(14, 1fr);
             /* Adjust the number of rows */
-            gap: 5px;
+            /* gap: 5px; */
             /* Adjust the gap between rooms */
             background-color: transparent;
             /* Background color for the floorplan */
@@ -74,7 +77,7 @@
             height: 60px;
             background-color: transparent;
             /* Light background color for rooms */
-            border: 0.5px transparent;
+            /* border: 0.5px transparent; */
 
             /* Add borders */
             display: flex;
@@ -106,11 +109,13 @@
         .blocked {
             /* background-color: transparent; */
             /* Dark background color for walls */
-            box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
-            color: greenyellow;
-            border: 1px solid transparent;
+            /* box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+            color: rgb(14, 199, 8);
+            background: rgba(10, 10, 10, 0.1);
+            /* border: 1px solid transparent; */
             transform: translateZ(20px);
             cursor: pointer;
+            /* font-weight: 700; */
 
         }
 
@@ -132,7 +137,7 @@
             color: white;
 
             transition: transform ease-in-out;
-            Apply the rotation animation over 3 seconds opacity: 0;
+            /* Apply the rotation animation over 3 seconds opacity: 0; */
             /* Initially hide the background image */
         }
 
@@ -159,24 +164,24 @@
             transform: translateZ(20px);
             /* Dark background color for walls */
             box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
-            color: rgb(11, 93, 234);
+            color: rgb(8, 59, 199);
         }
 
         /* starting point */
         .targetFacilities {
-            border: 1px solid rgb(11, 93, 234);
+            border: 0.2px solid rgba(11, 93, 234, 0.384);
             /* border: 1px solid green; */
             /* Dark background color for walls */
             box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
-            color: rgb(11, 93, 234);
+            color: rgb(8, 199, 8);
             transform: translateZ(20px);
             cursor: pointer;
-            text-shadow: 2px 2px 3px rgba(7, 7, 7, 0.8);
+            text-shadow: 1px 1px 2px rgba(7, 7, 7, 0.8);
             font-weight: 600;
         }
 
         .wall {
-            background-color: transparent;
+            background-color: rgba(36, 35, 35, 0.1);
             /* Set the background color for the grid points */
             /* color: transparent; */
             /* width: 15px; */
@@ -184,13 +189,17 @@
             /* height: 20px; Set the height of each grid point */
             /* display: inline-block; Display the grid points in a row */
             /* margin: 2px; */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border: .6px solid transparent;
+            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+            /* border: .6px solid transparent; */
+            /* background:  transparent; */
             /* Add a border to each grid point */
             /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px, rgba(0, 0, 0, 0.3) 0px 1px 3px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
             transform: translateZ(10px);
         }
     </style>
+
+    {{-- floor keys --}}
+    <link rel="stylesheet" href="{{ asset('css/floorkeys.css') }}">
 @endsection
 
 @section('content')
@@ -217,25 +226,46 @@
 
             <div class="row">
 
-                <div class="col-xl-12">
+                <div class="col-xl-3">
+                    
+                    <div class="card">
+                        <h5 class="text-center text-success mt-2">FACILITIES</h5>
+                        <div class="card-body" id="keysDisplay">
+                           
+
+                            <div class="keys mb-2">
+                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                                <span class="floor-keys">EDF</span>
+                                <span class="floor-mean">Engineering Department Faculty</span>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-9">
                     <div class="card">
                         <div class="card-body">
 
                             <div class="row mb-2">
+
                                 <div class="col-md-4">
                                     <h4 class="card-title mb-4 mt-2">
                                         <i
                                             class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                                        Testing Phase > <span class="text-success">Floor Deployed layout</span>
+                                        <span class="text-success">Floor Deployed</span>
                                     </h4>
                                 </div>
+
                                 <div class="col-md-4"> <!-- Adjust the column size as needed -->
                                     <select id="target-floor" class="form-control text-center target-floor">
                                         @foreach ($details as $key => $floor)
-                                            <option value="{{ $key }}" data-floor="{{ $floor->floor }}">{{ $floor->floor }}</option>
+                                            <option value="{{ $key }}" data-floor="{{ $floor->floor }}" data-f="{{ $floor->floor }}">{{ $floor->floor }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+
                                 <div class="col-md-4 text-end"> <!-- Adjust the column size as needed -->
                                     <div class="dropdown">
                                         <a href="#" class="dropdown-toggle arrow-none card-drop"
@@ -339,7 +369,7 @@
             // width and hieght is the row and columns
             // x = horizontal, y = vertical line 
             function createGridPoints(target, key) {
-                console.log(target, key)
+                // console.log(target, key)
                 var targetFacilities = target;
                 var targetSelection = '';
                 // var targetX;
@@ -349,6 +379,8 @@
                 // var startingY;
 
                 gridContainer.empty(); // Clear the existing grid using jQuery
+                // console.log(serverResponds[key]['gridDetails'])
+                
 
                 serverResponds[key]['gridDetails'].forEach(coordinates => {
 
@@ -361,12 +393,7 @@
                         highestY = parseInt(coordinates.y);
                     }
 
-                    // $("#grid-container").css({
-                    //         'width': "fit-content",
-                    //         'height': "fit-content",
-                    //         'grid-template-rows':`repeat(${highestX+1}, 1fr)`,
-                    //         'grid-template-columns':`repeat(${highestY+1}, 1fr)`,
-                    //     });
+                    
                     if (highestX < highestY) {
                         // Set the width and height of gridContainer to fit-content
                         $("#grid-container").css({
@@ -388,6 +415,9 @@
                     // console.log(coordinates)
                     const point = $("<div></div>"); // Create a new div element using jQuery
                     point.addClass("grid-point");
+                    point.attr('data-bs-toggle', 'tooltip')
+                    point.attr('data-bs-placement', 'top')
+                    point.attr('title', coordinates.sublabel)
                     point.attr("data-x", parseInt(coordinates.x)); // Set x-coordinate as a data attribute
                     point.attr("data-y", parseInt(coordinates.y)); // Set y-coordinate as a data attribute
                     // point.attr("data-l", coordinates.label !== "wall" ? coordinates.label : '');
@@ -466,6 +496,95 @@
                     }
 
                 });
+
+                // Create a new variable to store the filtered gridDetails
+                var filteredServerResponds = {};
+
+                // for (var key in serverResponds) {
+                    if (serverResponds.hasOwnProperty(key)) {
+                        var gridDetails = serverResponds[key]['gridDetails'];
+
+                        // Create a Set to track unique labels
+                        var seenLabels = new Set();
+
+                        // Filter duplicates based on the label property within the forEach loop
+                        var filteredGridDetails = gridDetails.filter(function (item) {
+                            var label = item['label'];
+
+                            // Check if label is non-null and unique
+                            if (label !== null && !seenLabels.has(label)) {
+                                seenLabels.add(label);
+                                return true;
+                            }
+                            return false;
+                        });
+
+                        // Create a new object with the filtered gridDetails
+                        filteredServerResponds[key] = {
+                            ...serverResponds[key],
+                            gridDetails: filteredGridDetails,
+                        };
+                    }
+                // }
+
+                // Log the filteredServerResponds variable
+                // console.log(filteredServerResponds);
+                //populate the keys
+                populateKeys(key,filteredServerResponds)
+            }
+            
+            // populates the keys
+            function populateKeys(key,filteredServerRespondsData){
+                var keysDisplay = ''
+                var icons = ''
+                var iconText = ''
+                const male = ['male', 'MR', 'MRX', 'MRN',
+                'MRF']; // Add more labels as needed for abbrev
+                const female = ['female', 'FR', 'FRU', 'FRF',
+                'FRZ']; // Add more labels as needed for abbrev
+                filteredServerRespondsData[key]['gridDetails'].forEach(data => {
+                    switch (data.label) {
+                        case 'wall':
+                            icons = `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
+                            iconText = `Blocked Cell`
+                            break;
+                        case 'front':
+                            icons = `<i class="fa-solid fa-street-view fa-2xl"></i>`
+                            iconText = `Student Lounge`
+                            break;
+                        case 'stair-in':
+                            icons = `<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>`
+                            iconText = `Stairs`
+                            break;
+                        case 'stair-in':
+                            icons = `<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>`
+                            iconText = `Stairs`
+                            break;
+                        
+                        default:
+                            icons = data.label
+                            iconText = data.sublabel
+                            break;
+                    }
+
+                    // for rest room
+                    if (female.includes(data.label)) {
+                        icons = `<i class="fa-solid fa-person-dress fa-2xl" style="color: #eb05c1;"></i>`
+                    }
+                    if (male.includes(data.label)) {
+                        icons = `<i class="fa-solid fa-person fa-2xl" style="color: #eb05c1;"></i>`
+                    }
+
+                    keysDisplay += `
+                    <div class="keys mb-2">
+                        <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                        <span class="floor-keys">${icons}</span>
+                        <span class="floor-mean">${iconText}</span>
+                    </div>
+                    `
+                })
+
+                $('#keysDisplay').html(keysDisplay)
             }
 
             // Function to truncate text if it exceeds a specified length
@@ -793,7 +912,9 @@
                 }
                 // alert($(this).data("l"))
                 const l = $(this).data("l")
+                const tf = $('#target-floor').val()
 
+                // alert(serverResponds[tf].floor)
                 const response = await fetch('/facilities-edit', {
                     method: 'POST',
                     headers: {
@@ -802,6 +923,7 @@
                     },
                     body: JSON.stringify({
                         abbrev: `${l}`,
+                        floor: serverResponds[tf].floor,
                     }),
 
                 });
@@ -813,28 +935,28 @@
                 var w = ''
                 responseData.fac.forEach(data => {
                     fc += `
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 p-2">
                             <div class="card edit-col">
                                 
-                                <h5 class="card-title border ct" data-sublabel="${data.facilities}">${data.abbrev}</h5>
+                                <h5 class="card-title border ct" data-sublabel="${data.facilities}" data-bs-toggle="tooltip" data-bs-placement="top" title="${data.facilities}">${data.abbrev}</h5>
                                
                             </div>
                         </div>
                         `
                 });
                 fc += `
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 p-2">
                             <div class="card edit-col">
                                
-                                <h5 class="card-title border wall ct" data-sublabel="stair-in">Stair</h5>
+                                <h5 class="card-title border wall ct" data-sublabel="stair-in" data-bs-toggle="tooltip" data-bs-placement="top" title="Stairs">Stair</h5>
                                
                             </div>
                         </div>
                 `
-                fc += `<div class="col-sm-2">
+                fc += `<div class="col-sm-2 p-2">
                             <div class="card edit-col">
                                
-                                <h5 class="card-title border wall cw" data-sublabel="wall">wall</h5>
+                                <h5 class="card-title border wall cw" data-sublabel="wall" data-bs-toggle="tooltip" data-bs-placement="top" title="wall block path">wall</h5>
                                
                             </div>
                         </div>`
@@ -997,6 +1119,12 @@
                             "hideMethod": "fadeOut"
                         };
                         toastr['success']('Your Floor Plan is ready to used!');
+
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2000);
+                        
+                        
                     },
                     error: function(xhr, status, error) {
                         // Handle any errors that occur during the AJAX request

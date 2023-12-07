@@ -81,7 +81,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Facility</th>
-                                                <th>Operation</th>
+                                                {{-- <th>Operation</th> --}}
                                                 <th>floor</th>
                                             </tr>
                                         </thead><!-- end thead -->
@@ -97,7 +97,7 @@
                                                             placeholder="Library" required>
                                                     </h6>
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     <h6 class="font-size-13">
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
@@ -105,13 +105,13 @@
                                                         <input type="text" name="operation_hours[]"
                                                             class="form-control text-white mt-2" placeholder="08:00 AM" required>
                                                     </h6>
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     <h6 class="font-size-13">
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Select your Floor.</span>
-                                                        <select name="selected_floor[]" class="form-control text-white mt-2" required>
+                                                        <select name="selected_floor[]" class="form-control mt-2" required>
                                                             <option value="" disabled selected>Select a Floor</option>
                                                             @for ($floor = 0; $floor <= 10; $floor++)
                                                                 <option value="{{ $floor === 0 ? 'ground-floor' : 'floor-' . $floor }}">
@@ -157,7 +157,7 @@
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Facility</th>
-                                                <th>Operation</th>
+                                                {{-- <th>Operation</th> --}}
                                                 <th>floor</th>
                                                 {{-- <th width='30'>Action</th> --}}
                                             </tr>
@@ -174,13 +174,13 @@
                                                             <div class="input-group align-items-center text-danger">
                                                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                                 <input type="text" name="facilities[]"
-                                                                    class="form-control text-white mt-2 edit-input"
+                                                                    class="form-control mt-2 edit-input"
                                                                     value="{{ $facility->facilities }}">
 
                                                             </div>
                                                         </h6>
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         <h6 class="font-size-13">
 
                                                             <span class="text-secondary"><span
@@ -194,7 +194,7 @@
 
                                                             </div>
                                                         </h6>
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         <h6 class="font-size-13">
 
@@ -203,7 +203,7 @@
                                                             <div class="input-group align-items-center text-danger">
                                                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                                 <input type="text" name="selected_floor[]"
-                                                                    class="form-control text-white mt-2 edit-input"
+                                                                    class="form-control mt-2 edit-input"
                                                                     placeholder="who is navi team?"
                                                                     value="{{ $facility->floor }}">
 
@@ -225,7 +225,7 @@
                                     </table> <!-- end table -->
 
                                     <button type="submit" class="btn btn-danger" id="editTeachers">Update
-                                        Teachers</button>
+                                        Facilities</button>
                                 </form>
                             </div>
                         </div><!-- end card -->
@@ -293,14 +293,7 @@
                                     placeholder="Library" required>
                             </h6>
                         </td>
-                        <td>
-                            <h6 class="font-size-13">
-                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
-                                <span class="text-secondary">Please Enter your operation time.</span>
-                                <input type="text" name="operation_hours[]"
-                                    class="form-control text-white mt-2" placeholder="08:00 AM" required>
-                            </h6>
-                        </td>
+                        
                         <td>
                             <h6 class="font-size-13">
                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>

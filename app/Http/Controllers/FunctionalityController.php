@@ -39,4 +39,10 @@ class FunctionalityController extends Controller
     // Redirect back with a success message and the inserted products
     return back()->with('notification', $notificationJson);
     }
+
+    //check auth
+    public function checkAuth(){
+        $checkingAuth = Functionality::where('function','scanner')->first();
+        return response()->json(['auth'=>$checkingAuth]);
+    }
 }

@@ -56,53 +56,7 @@
             <!-- end page title -->
 
             <div class="row">
-
-                {{-- <div class="col-xl-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">New Users</p>
-                                    <h4 class="mb-2">8246</h4>
-                                    <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i
-                                                class="ri-arrow-right-up-line me-1 align-middle"></i>16.2%</span>from
-                                        previous period</p>
-                                </div>
-                                <div class="avatar-sm">
-                                    <span class="avatar-title bg-light text-primary rounded-3">
-                                        <i class="ri-user-3-line font-size-24"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div><!-- end cardbody -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
-
-                <div class="col-xl-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Unique Visitors</p>
-                                    <h4 class="mb-2">29670</h4>
-                                    <p class="text-muted mb-0"><span class="text-success fw-bold font-size-12 me-2"><i
-                                                class="ri-arrow-right-up-line me-1 align-middle"></i>11.7%</span>from
-                                        previous period</p>
-                                </div>
-                                <div class="avatar-sm">
-                                    <span class="avatar-title bg-light text-success rounded-3">
-                                        <i class="mdi mdi-currency-btc font-size-24"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div><!-- end cardbody -->
-                    </div><!-- end card -->
-                </div><!-- end col --> --}}
-
-            </div><!-- end row -->
-
-            <div class="row">
-                <div class="col-xl-6">
+                <div class="col-xl-6" style="max-height:480px;overflow:auto;">
                     <div class="card">
                         <div class="card-body">
 
@@ -117,11 +71,7 @@
                                         <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                         Manage
                                     </a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item text-danger">
-                                        <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
-                                        Event's
-                                    </a>
+                                    
                                 </div>
                             </div>
 
@@ -138,7 +88,7 @@
                                         @foreach ($frequentlies as $frequently)
                                             <tr>
                                                 <td>
-                                                    <h6 class="font-size-13">
+                                                    <h6 class="font-size-13 font-size-16">
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                         {{ $frequently->frequently }}
@@ -155,7 +105,7 @@
                 </div>
                 <!-- end col -->
 
-                <div class="col-xl-6">
+                <div class="col-xl-6" style="max-height:480px;overflow:auto;">
                     <div class="card">
                         <div class="card-body">
 
@@ -170,11 +120,7 @@
                                         <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                         Manage
                                     </a>
-                                    <!-- item-->
-                                    <a href="{{ route('admin.teachers') }}" class="dropdown-item text-danger">
-                                        <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
-                                        Event's
-                                    </a>
+                                    
                                 </div>
                             </div>
 
@@ -192,14 +138,14 @@
                                         @foreach ($teachers as $teacher)
                                             <tr>
                                                 <td>
-                                                    <h6 class="font-size-13">
+                                                    <h6 class="font-size-16">
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                         {{ $teacher->name }}
                                                     </h6>
                                                 </td>
                                                 <td>
-                                                    <h6 class="font-size-13">
+                                                    <h6 class="font-size-16">
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                         {{ $teacher->position }}

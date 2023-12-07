@@ -72,10 +72,10 @@
                                             Manage
                                         </a>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item text-danger" disabled>
+                                        {{-- <a href="javascript:void(0);" class="dropdown-item text-danger" disabled>
                                             <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                             Event's
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,10 @@
                                         <thead class="table-light">
                                             <tr class="text-capitalize">
                                                 @foreach ($columns as $column)
-                                                    <th>{{ $column }}</th>
+                                                    @if ($column !== 'id')
+                                                        <th>{{ $column }}</th>
+                                                    @endif
+                                                   
                                                 @endforeach
                                                 <th>Select</th>
                                                 {{-- <th>Destroy</th> --}}
@@ -103,6 +106,7 @@
                                             @foreach ($datas as $data)
                                                 <tr>
                                                     @foreach ($columns as $column)
+                                                    @if ($column !== 'id')
                                                         <td>
                                                             <h6 class="font-size-13">
                                                                 <div class="input-group align-items-center text-danger">
@@ -114,6 +118,7 @@
                                                                 </div>
                                                             </h6>
                                                         </td>
+                                                        @endif
                                                     @endforeach
                                                     <td class="text-center" width="100">
                                                         <div class="form-check form-switch mt-1 h4" dir="ltr">

@@ -1,0 +1,54 @@
+.con{
+    background: #263024;
+}
+.con .t{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+    /* height: 150px; */
+}
+.con #mes{
+    /* font-size: 6rem; */
+    background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(224, 7, 7), rgb(0, 255, 21));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textMove 5s linear infinite;
+    font-size: 50px;
+    width: 100%;
+    word-break: break-all;
+    
+    /* margin-left: 30px; */
+    /* border: 1px solid red; */
+    letter-spacing: 3px;
+}
+.con #mes2{
+    /* font-size: 6rem; */
+    background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 228, 227), rgb(0, 255, 21));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textMove 3s linear infinite;
+    font-size: 35px;
+    /* margin-left: 30px; */
+    /* border: 1px solid red; */
+    letter-spacing: 3px;
+}
+.con .cb{
+    background: #263024;
+    height: 350px;
+}
+.con #c{
+    /* font-size: 6rem; */
+    background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(248, 6, 6), rgb(0, 255, 21));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textMove 3s linear infinite;
+    font-size: 150px;
+    /* margin-left: 30px; */
+    /* border: 1px solid red; */
+    letter-spacing: 3px;
+    margin-left: 220px;
+}

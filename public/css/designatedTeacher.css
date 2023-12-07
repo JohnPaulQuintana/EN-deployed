@@ -1,3 +1,28 @@
+
+.header-search #search-title{
+    background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textMove 3s linear infinite;
+    font-size: 52px;
+    /* border: 1px solid red; */
+    letter-spacing: 3px;
+    position: relative;
+    top: -250px;
+  }
+  .header-search #search-sub-title{
+    background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textMove 3s linear infinite;
+    font-size: 22px;
+    /* border: 1px solid red; */
+    letter-spacing: 3px;
+    position: relative;
+    top: -260px;
+  }
 .tc{
     margin-top: 40px;
 }

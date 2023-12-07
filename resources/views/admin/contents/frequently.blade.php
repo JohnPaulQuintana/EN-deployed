@@ -68,12 +68,7 @@
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <!-- item-->
                                     <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Teacher's</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Facilities</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Event's</a>
+                                    
                                 </div>
                             </div>
 
@@ -99,7 +94,7 @@
                                                         <span class="text-secondary">Please Enter your frequently
                                                             question.</span>
                                                         <input type="text" name="frequently_ask[]"
-                                                            class="form-control text-white mt-2"
+                                                            class="form-control font-size-16 mt-2"
                                                             placeholder="who is navi team?">
                                                     </h6>
                                                 </td>
@@ -153,7 +148,7 @@
                                                                 <i
                                                                     class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                                 <input type="text" name="frequently_ask[]"
-                                                                    class="form-control text-white mt-2 edit-input"
+                                                                    class="form-control mt-2 edit-input font-size-16"
                                                                     placeholder="who is navi team?"
                                                                     value="{{ $frequently->frequently }}">
 
@@ -240,7 +235,7 @@
                                             <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                             <span class="text-secondary">Please Enter your frequently question.</span>
                                             <div class="input-group d-flex align-items-center text-danger">
-                                                <input type="text" name="frequently_ask[]" class="form-control text-white mt-2"
+                                                <input type="text" name="frequently_ask[]" class="form-control font-size-16 mt-2"
                                                 placeholder="who is navi team?">
                                                 <i class="text-danger h3 fas fa-times delete-row" style="margin:15px auto 10px 10px;"></i>
                                             </div>
@@ -283,7 +278,7 @@
                     const originalHTML = `
                         <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                         <input type="text" name="frequently_ask[]"
-                            class="form-control text-white mt-2 edit-input"
+                            class="form-control font-size-16 mt-2 edit-input"
                             placeholder="who is navi team?" value="{{ $frequently->frequently }}">
                     `
                     console.log(originalHTML)
@@ -294,7 +289,7 @@
                                     <span class="text-secondary"><span class="text-danger">Update</span> your frequently question.</span>
                                     <div class="input-group align-items-center">
                                         <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
-                                        <input type="text" class="form-control text-white mt-2 edit-input" name="${originalName}" value="${selectedOption.val()}">
+                                        <input type="text" class="form-control font-size-16 mt-2 edit-input" name="${originalName}" value="${selectedOption.val()}">
                                         <i class="text-danger h3 fas fa-times cancel-edit" style="margin:15px auto 10px 10px;"></i>    
                                     </div>
                                 </h6>
