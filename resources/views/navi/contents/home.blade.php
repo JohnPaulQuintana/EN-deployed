@@ -841,6 +841,7 @@
                                         recognition.stop();
                                         stopSpeaking();
                                     } else {
+                                        alert(message)
                                         if(message != null || message != ''){
                                             $('#popup-continuation-speech').toggleClass('active');
                                             $('#speech-input').val(message + ' ?');
