@@ -699,7 +699,7 @@
                         } else {
                             var mess =
                                 "Speak Recognition Initialized!";
-                            const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+                            const recognition = new (webkitSpeechRecognition() || SpeechRecognition)();
                             recognition.continuous = true;
                             // recognition.interimResults = true;
                             // recognition.maxAlternatives = 5;
@@ -783,6 +783,10 @@
                                 try {
                                     // console.log(message);
                                     $('#popup-continuation-speech').removeClass('active');
+
+                                     // List of valid commands
+                                    const validCommandsCancel = ['exit', 'close'];
+
                                     if (message.includes('yes')) {
                                         recognition.stop();
                                         stopSpeaking();
@@ -822,7 +826,7 @@
                                                     hideIndicatorSpeaking()
                                                 }
                                             })
-                                    } else if (message.includes('exit')) {
+                                    } else if (validCommandsCancel.some(command => message.includes(command))) {
                                         startToSpeak(
                                                 'got it!'
                                             )
