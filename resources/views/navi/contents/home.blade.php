@@ -491,6 +491,11 @@
             let abbrevMeans = []
             let mvTimeout;
             let index = 0;
+
+            const sessionTimeout = 60000; // 30 seconds for testing, adjust as needed
+            let timeoutId;
+            let countdownInterval;
+
             const abbrevPeriodicTable = $('.abbrev-periodic-table')
             // Enable pusher logging - don't include this in production
             // Pusher.logToConsole = true;
@@ -792,7 +797,7 @@
                                     if (validCommandsYes.some(commands => message.includes(commands))) {
                                         recognition.stop();
                                         stopSpeaking();
-
+                                        startSessionTimer()
                                         const response = await fetch('/navi/process', {
                                             method: 'POST',
                                             headers: {
@@ -820,6 +825,7 @@
                                     } else if (validCommandsNo.some(command => message.includes(command))) {
                                         // Handle 'no' case
                                         $('#popup-continuation-speech').toggleClass('active');
+                                        startSessionTimer()
                                         startToSpeak(
                                                 'Oh, sorry! can speak again or manually type your question!'
                                             )
@@ -829,6 +835,7 @@
                                                 }
                                             })
                                     } else if (validCommandsCancel.some(command => message.includes(command))) {
+                                        startSessionTimer()
                                         startToSpeak(
                                                 'got it!'
                                             )
@@ -844,6 +851,7 @@
                                     } else {
                                         // alert(message)
                                         if(message !== null && message !== ''){
+                                            startSessionTimer()
                                             $('#popup-continuation-speech').toggleClass('active');
                                             $('#speech-input').val(message + ' ?');
                                             startToSpeak(message + 'I am right?')
@@ -2695,9 +2703,7 @@
                 }
             })();
 
-            const sessionTimeout = 60000; // 30 seconds for testing, adjust as needed
-            let timeoutId;
-            let countdownInterval;
+            
 
             function startSessionTimer() {
                 // Reset the timer on any user interaction (mousemove, keypress, or touch)
