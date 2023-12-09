@@ -1864,8 +1864,8 @@
                 // Back button preview
                 $(document).on('click', '#back-floor-button', function() {
                     if (floorIndex > 0) {
-                        console.log(floorIndex);
-                        floorIndex--; // Decrement floorIndex
+                        // console.log(floorIndex);
+                        
                         const gridContainer = $("#grid-container");
                         // Clear the grid points and reset variables
                         gridContainer.empty();
@@ -1879,6 +1879,7 @@
                         startingX = 0;
                         startingY = 0;
                         createGridPoints(facility, true);
+                        floorIndex-1; // Decrement floorIndex
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
                         $('#next-floor-button').prop("disabled", false).show();
@@ -1889,7 +1890,7 @@
                 $(document).on('click', '#next-floor-button', function() {
                     if (floorIndex < len) {
                         console.log(floorIndex);
-                        floorIndex++; // Increment floorIndex
+                        
                         const gridContainer = $("#grid-container");
                         // Clear the grid points and reset variables
                         gridContainer.empty();
@@ -1903,6 +1904,7 @@
                         startingX = 0;
                         startingY = 0;
                         createGridPoints(facility, true);
+                        floorIndex+1; // Increment floorIndex
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
                         $('#back-floor-button').prop("disabled", false).show();
