@@ -7,18 +7,18 @@
                     <span class="logo-sm">
                         <img src="backend/assets/images/epcst_logo.png" alt="logo-sm" height="22">
                     </span>
-                    <span class="logo-lg">
-                        <h4 class="font-size-16 mt-2"> Eastwoods Professional College of Science and Technology</h4>
-                    </span>
+                    {{-- <span class="logo-lg">
+                        <h4 class="card-title font-size-16 mt-2"> Eastwoods Professional College of Science and Technology</h4>
+                    </span> --}}
                 </a>
 
                 <a class="logo logo-light">
                     <span class="logo-sm">
                         <img src="backend/assets/images/epcst_logo.png" alt="logo-sm-light" height="22">
                     </span>
-                    <span class="logo-lg">
+                    {{-- <span class="logo-lg">
                         <h4 class="font-size-16 mt-2"> Eastwoods Professional College of Science and Technology</h4>
-                    </span>
+                    </span> --}}
                 </a>
             </div>
 
