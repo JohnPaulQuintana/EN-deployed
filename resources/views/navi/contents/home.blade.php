@@ -492,7 +492,7 @@
             let mvTimeout;
             let index = 0;
 
-            const sessionTimeout = 60000; // 30 seconds for testing, adjust as needed
+            const sessionTimeout = 60000; // 1 minute for testing, adjust as needed
             let timeoutId;
             let countdownInterval;
 
@@ -1856,7 +1856,7 @@
 
                         }
                     } else {
-                        $('#next-floor-button').fadeIn('slow');
+                        // $('#next-floor-button').fadeIn('slow');
                         $('#back-floor-button').fadeIn('slow');
                     }
                 }
