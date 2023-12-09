@@ -834,7 +834,7 @@
                                             )
                                             .then((done) => {
                                                 if (done) {
-                                                    $('#popup-continuation-speech').toggleClass('active');
+                                                    $('#popup-continuation-speech').removeClass('active');
                                                     hideIndicatorSpeaking()
                                                 }
 
