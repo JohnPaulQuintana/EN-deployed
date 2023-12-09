@@ -834,6 +834,7 @@
                                             )
                                             .then((done) => {
                                                 if (done) {
+                                                    $('#popup-continuation-speech').toggleClass('active');
                                                     hideIndicatorSpeaking()
                                                 }
 
@@ -841,8 +842,8 @@
                                         recognition.stop();
                                         stopSpeaking();
                                     } else {
-                                        alert(message)
-                                        if(message != null || message != ''){
+                                        // alert(message)
+                                        if(message !== null && message !== ''){
                                             $('#popup-continuation-speech').toggleClass('active');
                                             $('#speech-input').val(message + ' ?');
                                             startToSpeak(message + 'I am right?')
