@@ -789,7 +789,7 @@
                                     const validCommandsYes = ['yes', 'exactly', 'doit', 'yup','next', 'ofcourse','yep','do it', 'perfect'];
                                     const validCommandsNo = ['no', 'nope', 'wrong', 'bobo', 'not exactly'];
 
-                                    if (validCommandsYes.some(command => message.includes(command))) {
+                                    if (validCommandsYes.some(commands => message.includes(commands))) {
                                         recognition.stop();
                                         stopSpeaking();
 
