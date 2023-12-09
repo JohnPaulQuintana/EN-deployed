@@ -95,7 +95,7 @@
                                                             question.</span>
                                                         <input type="text" name="frequently_ask[]"
                                                             class="form-control font-size-16 mt-2"
-                                                            placeholder="who is navi team?">
+                                                            placeholder="who is navi team?" required>
                                                     </h6>
                                                 </td>
                                             </tr>
@@ -236,7 +236,7 @@
                                             <span class="text-secondary">Please Enter your frequently question.</span>
                                             <div class="input-group d-flex align-items-center text-danger">
                                                 <input type="text" name="frequently_ask[]" class="form-control font-size-16 mt-2"
-                                                placeholder="who is navi team?">
+                                                placeholder="who is navi team?" required>
                                                 <i class="text-danger h3 fas fa-times delete-row" style="margin:15px auto 10px 10px;"></i>
                                             </div>
                                         </h6>

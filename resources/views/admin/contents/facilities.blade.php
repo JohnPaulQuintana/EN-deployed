@@ -112,7 +112,7 @@
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Select your Floor.</span>
                                                         <select name="selected_floor[]" class="form-control mt-2" required>
-                                                            <option value="" disabled selected>Select a Floor</option>
+                                                            {{-- <option value="" disabled selected>Select a Floor</option> --}}
                                                             @for ($floor = 0; $floor <= 10; $floor++)
                                                                 <option value="{{ $floor === 0 ? 'ground-floor' : 'floor-' . $floor }}">
                                                                     {{ $floor === 0 ? 'Ground Floor' : 'Floor ' . $floor }}
@@ -300,7 +300,7 @@
                                 <span class="text-secondary">Please Select your Floor.</span>
                                 <div class="input-group d-flex align-items-center text-danger">
                                     <select name="selected_floor[]" class="form-control text-white mt-2" required>
-                                            <option value="" disabled selected>Select a Floor</option>
+                                           
                                         @for ($floor = 0; $floor <= 10; $floor++)
                                             <option value="{{ $floor === 0 ? 'ground-floor' : 'floor-' . $floor }}">
                                                 {{ $floor === 0 ? 'Ground Floor' : 'Floor ' . $floor }}

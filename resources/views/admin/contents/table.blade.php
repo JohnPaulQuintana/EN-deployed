@@ -61,7 +61,7 @@
 
                             <div class="dropdown float-end">
                                 <div class="input-group"> <!-- Wrap the input and button in an input group -->
-                                    <input type="text" class="form-control arrow-none search" placeholder="Search Teachers..." id="search-input" />
+                                    <input type="text" class="form-control arrow-none search" placeholder="Search..." id="search-input" />
                                     <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </button>

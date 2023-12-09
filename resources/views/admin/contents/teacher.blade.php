@@ -94,10 +94,10 @@
                                                     <h6 class="font-size-13">
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
-                                                        <span class="text-secondary">Please Enter location.</span>
+                                                        <span class="text-secondary">Please Enter a name.</span>
                                                         <input type="text" name="teachers_name[]"
                                                             class="form-control text-white mt-2 add-input"
-                                                            placeholder="jaypee quintana" required>
+                                                            placeholder="Percian Borja Joseph" required>
                                                     </h6>
                                                 </td>
                                                 <td width='100'>
@@ -321,7 +321,7 @@
                                                         <span class="text-secondary">Please Enter your name.</span>
                                                         <input type="text" name="teachers_name[]"
                                                             class="form-control text-white mt-2"
-                                                            placeholder="jaypee quintana">
+                                                            placeholder="Percian Borja Joseph" required>
                                                     </h6>
                                                 </td>
                                                 <td width='100'>
@@ -346,7 +346,7 @@
     
                                                             <input type="text" name="teachers_position[]"
                                                                     class="form-control text-white mt-2"
-                                                                    placeholder="Teacher">
+                                                                    placeholder="Teacher" required>
                                                     </h6>
                                                 </td>
                                                 

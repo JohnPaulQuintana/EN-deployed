@@ -28,34 +28,6 @@
         </div>
 
         <div class="d-flex">
-            {{-- <div class="dropdown d-none d-sm-inline-block">
-                <button type="button" class="btn header-item waves-effect"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-        
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
-                    </a>
-                </div>
-            </div> --}}
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
@@ -115,10 +87,17 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i class="ri-user-line align-middle me-1"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle me-1"></i> Lock screen</a>
+                    <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="ri-user-line align-middle me-1"></i> Profile</a>
+                    
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#"><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</a>
+                    {{-- <a class="dropdown-item text-danger" href="#"><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</a> --}}
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();this.closest('form').submit();"><i
+                            class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</a>
+
+                    </form>
                 </div>
             </div>
 
