@@ -1863,7 +1863,7 @@
 
                 // Back button preview
                 $(document).on('click', '#back-floor-button', function() {
-                    if (floorIndex > len) {
+                    if (floorIndex > 0) {
                         console.log(floorIndex);
                         floorIndex--; // Decrement floorIndex
                         const gridContainer = $("#grid-container");
