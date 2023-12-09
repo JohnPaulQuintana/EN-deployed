@@ -1879,7 +1879,7 @@
                         startingX = 0;
                         startingY = 0;
                         createGridPoints(facility, true);
-                        floorIndex-1; // Decrement floorIndex
+                        floorIndex--; // Decrement floorIndex
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
                         $('#next-floor-button').prop("disabled", false).show();
@@ -1904,7 +1904,7 @@
                         startingX = 0;
                         startingY = 0;
                         createGridPoints(facility, true);
-                        floorIndex+1; // Increment floorIndex
+                        floorIndex++; // Increment floorIndex
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
                         $('#back-floor-button').prop("disabled", false).show();
