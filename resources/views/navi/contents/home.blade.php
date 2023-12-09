@@ -785,9 +785,11 @@
                                     $('#popup-continuation-speech').removeClass('active');
 
                                      // List of valid commands
-                                    const validCommandsCancel = ['exit', 'close'];
+                                    const validCommandsCancel = ['exit', 'close', 'stop'];
+                                    const validCommandsYes = ['yes', 'exactly', 'doit', 'yup','next', 'ofcourse','yep','do it', 'perfect'];
+                                    const validCommandsNo = ['no', 'nope', 'wrong', 'bobo', 'not exactly'];
 
-                                    if (message.includes('yes')) {
+                                    if (validCommandsYes.some(command => message.includes(command))) {
                                         recognition.stop();
                                         stopSpeaking();
 
@@ -815,7 +817,7 @@
                                         $('#speech-input').val('');
                                         // Handle the data as needed
                                         console.log('its a yes');
-                                    } else if (message.includes('no')) {
+                                    } else if (validCommandsNo.some(command => message.includes(command))) {
                                         // Handle 'no' case
                                         $('#popup-continuation-speech').toggleClass('active');
                                         startToSpeak(
