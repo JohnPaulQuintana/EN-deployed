@@ -1880,8 +1880,8 @@
                         startingY = 0;
                         createGridPoints(facility, true);
                     } else {
-                        $(this).prop("disabled", true).addClass('btn btn-secondary');
-                        $('#next-floor-button').prop("disabled", false);
+                        $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
+                        $('#next-floor-button').prop("disabled", false).show();
                     }
                 });
 
@@ -1904,8 +1904,8 @@
                         startingY = 0;
                         createGridPoints(facility, true);
                     } else {
-                        $(this).prop("disabled", true).addClass('btn btn-secondary');
-                        $('#back-floor-button').prop("disabled", false);
+                        $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
+                        $('#back-floor-button').prop("disabled", false).show();
                     }
                 });
 
