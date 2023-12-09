@@ -1863,7 +1863,7 @@
 
                 // Back button preview
                 $(document).on('click', '#back-floor-button', function() {
-                    if (floorIndex > 0) {
+                    if (floorIndex-1 > 0) {
                         console.log(floorIndex);
                         floorIndex--; // Decrement floorIndex
                         const gridContainer = $("#grid-container");
@@ -1881,13 +1881,13 @@
                         createGridPoints(facility, true);
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
-                        $('#next-floor-button').prop("disabled", false).show();
+                        $('#next-floor-button').prop("disabled", false).removeClass('btn btn-secondary').show();
                     }
                 });
 
                 // Next button preview
                 $(document).on('click', '#next-floor-button', function() {
-                    if (floorIndex < len) {
+                    if (floorIndex < len-1) {
                         console.log(floorIndex);
                         floorIndex++; // Increment floorIndex
                         const gridContainer = $("#grid-container");
@@ -1905,7 +1905,7 @@
                         createGridPoints(facility, true);
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
-                        $('#back-floor-button').prop("disabled", false).show();
+                        $('#back-floor-button').prop("disabled", false).removeClass('btn btn-secondary').show();
                     }
                 });
 
