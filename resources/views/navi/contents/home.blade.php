@@ -1301,6 +1301,8 @@
                 // Stop any ongoing speech before starting a new one
                 stopSpeaking();
 
+                // hide all svg options
+                $('svg').hide()
                 // speak
                 input.hide()
                 subBTN.hide()
@@ -1345,7 +1347,7 @@
                                     conT.removeClass('container-title');
                                     en.removeClass('inside');
                                     location.removeClass('active');
-
+                                    $('svg').show();
                                     // show input
                                     input.show();
                                     subBTN.show();
