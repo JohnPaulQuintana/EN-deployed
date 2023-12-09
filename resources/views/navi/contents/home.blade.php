@@ -1393,21 +1393,21 @@
                 // handleResponse(response)
                 const responseData = await response.json();
 
-                console.log(responseData)
+                // console.log(responseData)
                 // Assuming responseData.details is an array of objects with an 'id' property
                 const uniqueDetails = Array.from(new Set(responseData.details.map(detail => detail.id)))
                     .map(id => {
                         return responseData.details.find(detail => detail.id === id);
                     });
 
-                console.log(uniqueDetails);
+                // console.log(uniqueDetails);
 
                 var serverResponds = uniqueDetails;
                 const gridContainer = $("#grid-container");
 
                 let gridPoints = [];
                 let floorIndex = 0;
-                let len = serverResponds.length;
+                let len = serverResponds.length - 1;
                 let startingPoint;
                 let isTargetFound = false;
                 let highestX = -Infinity; // Start with negative infinity as the initial value
