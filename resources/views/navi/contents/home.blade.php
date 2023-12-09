@@ -1863,7 +1863,7 @@
 
                 // Back button preview
                 $(document).on('click', '#back-floor-button', function() {
-                    if (floorIndex > 0) {
+                    if (floorIndex-1 > 0) {
                         console.log(floorIndex);
                         floorIndex--; // Decrement floorIndex
                         const gridContainer = $("#grid-container");
@@ -1887,7 +1887,7 @@
 
                 // Next button preview
                 $(document).on('click', '#next-floor-button', function() {
-                    if (floorIndex < 1) {
+                    if (floorIndex-1 < 1) {
                         console.log(floorIndex);
                         floorIndex++; // Increment floorIndex
                         const gridContainer = $("#grid-container");
