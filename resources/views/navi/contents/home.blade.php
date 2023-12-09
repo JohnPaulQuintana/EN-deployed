@@ -785,7 +785,7 @@
                                     $('#popup-continuation-speech').removeClass('active');
 
                                      // List of valid commands
-                                    const validCommandsCancel = ['exit', 'close', 'stop'];
+                                    const validCommandsCancel = ['exit', 'close', 'stop', 'cancel'];
                                     const validCommandsYes = ['yes', 'exactly', 'doit', 'yup','next', 'ofcourse','yep','do it', 'perfect'];
                                     const validCommandsNo = ['no', 'nope', 'wrong', 'bobo', 'not exactly'];
 
