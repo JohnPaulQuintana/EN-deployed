@@ -699,7 +699,7 @@
                         } else {
                             var mess =
                                 "Speak Recognition Initialized!";
-                            const recognition = new (webkitSpeechRecognition() || SpeechRecognition)();
+                            const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
                             recognition.continuous = true;
                             // recognition.interimResults = true;
                             // recognition.maxAlternatives = 5;
@@ -841,15 +841,17 @@
                                         recognition.stop();
                                         stopSpeaking();
                                     } else {
-
-                                        $('#popup-continuation-speech').toggleClass('active');
-                                        $('#speech-input').val(message + ' ?');
-                                        startToSpeak(message + 'I am right?')
-                                            .then((done) => {
-                                                if (done) {
-                                                    hideIndicatorSpeaking()
-                                                }
-                                            })
+                                        if(message !== null || message !== ''){
+                                            $('#popup-continuation-speech').toggleClass('active');
+                                            $('#speech-input').val(message + ' ?');
+                                            startToSpeak(message + 'I am right?')
+                                                .then((done) => {
+                                                    if (done) {
+                                                        hideIndicatorSpeaking()
+                                                    }
+                                                })
+                                        }
+                                        
                                     }
 
 
