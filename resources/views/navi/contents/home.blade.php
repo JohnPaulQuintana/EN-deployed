@@ -1407,7 +1407,7 @@
 
                 let gridPoints = [];
                 let floorIndex = 0;
-                let len = serverResponds.length - 1;
+                let len = serverResponds.length;
                 let startingPoint;
                 let isTargetFound = false;
                 let highestX = -Infinity; // Start with negative infinity as the initial value
