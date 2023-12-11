@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class TableController extends Controller
 {
@@ -12,6 +13,14 @@ class TableController extends Controller
         $tableName = $request->query('parameter');
         $actions = $request->query('actions');
         $going = $request->query('routes');
+
+        // Check if the table name is valid
+        if (!Schema::hasTable($tableName)) {
+            abort(404, 'Table not found');
+        }
+
+        // Get the current query parameters
+        $queryParams = $request->except('page');
 
         $allColumns = DB::getSchemaBuilder()->getColumnListing($tableName);
         // Columns to exclude (e.g., 'created_at', 'column_to_exclude', 'another_column_to_exclude')
@@ -25,9 +34,9 @@ class TableController extends Controller
             ->select($tableName.'.id',$tableName.'.name',$tableName.'.position',$tableName.'.created_at',
                 $tableName.'.gender',
                 'eastwoods_facilities.facilities as facilities_id')
-            ->get();
+            ->paginate(5,['*'],'page', $request->query('page'))->appends($queryParams);
         }else{
-            $data = DB::table($tableName)->get();
+            $data = DB::table($tableName)->paginate(5, ['*'], 'page', $request->query('page'))->appends($queryParams);
         }
         
         // dd($data);

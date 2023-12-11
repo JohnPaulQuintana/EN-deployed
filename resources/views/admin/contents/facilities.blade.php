@@ -60,14 +60,7 @@
                         <div class="card-body">
 
                             <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                                </div>
+                                <a href="{{ route('dashboard') }}" class="btn btn-secondary btn-sm">Dashboard</a>
                             </div>
 
                             <h4 class="card-title mb-4">Manage Faciltie's Information</h4>
@@ -140,6 +133,8 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
+                        <form action="{{ route('bulk.manage.facilities') }}" method="POST">
+                            @csrf
                         <div class="card-body">
 
                             <div class="dropdown float-end">
@@ -149,8 +144,7 @@
                             <h4 class="card-title mb-4">Update Facilitie's Information</h4>
 
                             <div class="table-responsive">
-                                <form action="{{ route('bulk.manage.facilities') }}" method="POST">
-                                    @csrf
+                                
                                     <input type="text" name="action" value="update" id="action" hidden>
                                     <table id="facility-table" class="table table-centered mb-0 align-middle table-hover table-nowrap">
 
@@ -180,21 +174,7 @@
                                                             </div>
                                                         </h6>
                                                     </td>
-                                                    {{-- <td>
-                                                        <h6 class="font-size-13">
-
-                                                            <span class="text-secondary"><span
-                                                                    class="text-danger">Update</span> Operation_Hours.</span>
-                                                            <div class="input-group align-items-center text-danger">
-                                                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                                                                <input type="text" name="operation_hours[]"
-                                                                    class="form-control text-white mt-2 edit-input"
-                                                                    placeholder="who is navi team?"
-                                                                    value="{{ $facility->operation_time }}">
-
-                                                            </div>
-                                                        </h6>
-                                                    </td> --}}
+                                                    
                                                     <td>
                                                         <h6 class="font-size-13">
 
@@ -210,13 +190,7 @@
                                                             </div>
                                                         </h6>
                                                     </td>
-                                                    {{-- <td class="text-center">
-                                                        <h6 class="font-size-13" style="margin-top: 20px;">
-                                                            <i class="text-danger h3 dripicons-trash delete-row"></i>
-                                                            <input type="checkbox" id="myCheckbox" name="myCheckbox" value="checkboxValue">
-
-                                                        </h6>
-                                                    </td> --}}
+                                                    
                                                 </tr>
                                             @endforeach
 
@@ -224,11 +198,26 @@
                                         </tbody><!-- end tbody -->
                                     </table> <!-- end table -->
 
-                                    <button type="submit" class="btn btn-danger" id="editTeachers">Update
-                                        Facilities</button>
-                                </form>
+                                    {{-- <button type="submit" class="btn btn-danger" id="editTeachers">Update
+                                        Facilities</button> --}}
+                                
+                            </div>
+                            <!-- Combined Total Records Count and Pagination Links -->
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>
+                                    <p>Total: {{ $facilities->total() }} records | Current Page: {{ $facilities->currentPage() }}</p>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-danger me-3 btn-sm" id="editTeachers">
+                                        Update Facilities
+                                    </button>
+                                </div>
+                                <div>
+                                    {{ $facilities->links('pagination::simple-bootstrap-5') }}
+                                </div>
                             </div>
                         </div><!-- end card -->
+                    </form>
                     </div><!-- end card -->
                 </div>
                 <!-- end col -->

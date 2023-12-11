@@ -57,34 +57,23 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
+                        <form action="{{ route('bulk.manage.teachers') }}" method="POST">
+                            @csrf
                         <div class="card-body">
 
                             <div class="dropdown float-end">
                                 <div class="input-group"> <!-- Wrap the input and button in an input group -->
                                     <input type="text" class="form-control arrow-none search" placeholder="Search..." id="search-input" />
-                                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <!-- item-->
-                                        <a href="{{ route($going) }}" class="dropdown-item">
-                                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                                            Manage
-                                        </a>
-                                        <!-- item-->
-                                        {{-- <a href="javascript:void(0);" class="dropdown-item text-danger" disabled>
-                                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
-                                            Event's
-                                        </a> --}}
-                                    </div>
+                                    <a href="{{ route($going) }}" class="btn btn-secondary btn-sm d-flex align-items-center">
+                                        Manage
+                                    </a>
                                 </div>
                             </div>
                             
 
                             <h4 class="card-title mb-4 text-capitalize">{{ $title }} Information</h4>
                             <div class="table-responsive">
-                                <form action="{{ route('bulk.manage.teachers') }}" method="POST">
-                                    @csrf
+                                
                                     <input type="text" name="teachers_name[]" value="0" hidden>
                                     <input type="text" name="ids[]" value="" id="delete_id" hidden>
                                     <input type="text" name="action" value="{{ $actions }}" id="action" hidden>
@@ -139,16 +128,29 @@
                                     </table> <!-- end table -->
                                     <div class="d-flex justify-content-end me-4">
                                         {{-- <i type="submit" class="text-danger h3 dripicons-trash delete-row" id="delete"></i> --}}
-                                        <button type="submit" class="btn me-3" id="delete"
-                                            style="display: none;">
-                                            <i class="text-danger h3 dripicons-trash"></i>
-                                        </button>
+                                        
                                     </div>
 
 
-                                </form>
+                                
+                            </div>
+                            <!-- Combined Total Records Count and Pagination Links -->
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>
+                                    <p>Total: {{ $datas->total() }} records | Current Page: {{ $datas->currentPage() }}</p>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-danger me-3 btn-sm" id="delete"
+                                        style="display: none;">
+                                        Delete Records
+                                    </button>
+                                </div>
+                                <div>
+                                    {{ $datas->links('pagination::simple-bootstrap-5') }}
+                                </div>
                             </div>
                         </div><!-- end card -->
+                    </form>
                     </div><!-- end card -->
                 </div>
                 <!-- end col -->

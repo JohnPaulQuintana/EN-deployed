@@ -61,15 +61,7 @@
                         <div class="card-body">
 
                             <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                                    
-                                </div>
+                                <a href="{{ route('dashboard') }}" class="btn btn-secondary btn-sm">Dashboard</a>
                             </div>
 
                             <h4 class="card-title mb-4">Frequently Ask Questions</h4>
@@ -115,15 +107,12 @@
 
                 <div class="col-xl-6">
                     <div class="card">
+                        <form action="{{ route('bulk.manage.frequently') }}" method="POST">
+                            @csrf
                         <div class="card-body">
 
-                            <h4 class="card-title mb-4">
-                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                                Deployed Questions</h4>
-
                             <div class="table-responsive">
-                                <form action="{{ route('bulk.manage.frequently') }}" method="POST">
-                                    @csrf
+                               
                                     <input type="text" name="action" value="update" id="action" hidden>
                                     <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
 
@@ -169,11 +158,24 @@
                                         </tbody><!-- end tbody -->
                                     </table> <!-- end table -->
 
-                                    <button type="submit" class="btn btn-danger" id="editFrequently">Update
+                                    
+                               
+                            </div>
+                            <!-- Combined Total Records Count and Pagination Links -->
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>
+                                    <p>Total: {{ $frequentlies->total() }} records</p>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-danger btn-sm" id="editFrequently">Update
                                         Question</button>
-                                </form>
+                                </div>
+                                <div>
+                                    {{ $frequentlies->links('pagination::simple-bootstrap-5', ['paginator' => $frequentlies]) }}
+                                </div>
                             </div>
                         </div><!-- end card -->
+                    </form>
                     </div><!-- end card -->
                 </div>
                 <!-- end col -->
@@ -198,7 +200,7 @@
 
 
     <!-- apexcharts -->
-    <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
 
     <!-- jquery.vectormap map -->
     <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}">
@@ -215,7 +217,7 @@
     <script src="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
     </script>
 
-    <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script>
+    {{-- <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script> --}}
 
     <!-- toastr plugin -->
     <script src="{{ asset('backend/assets/libs/toastr/build/toastr.min.js') }}"></script>

@@ -16,7 +16,7 @@ class FacilityController extends Controller
     // public function facilties
     public function facilities(Request $request)
     {
-        $facilities = EastwoodsFacilities::get();
+        $facilities = EastwoodsFacilities::paginate(5, ['*'], 'page');
         return view('admin.contents.facilities')->with(['facilities' => $facilities]);
     }
 

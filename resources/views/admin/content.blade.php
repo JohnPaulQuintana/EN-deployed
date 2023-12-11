@@ -61,18 +61,9 @@
                         <div class="card-body">
 
                             <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
+                                <a href="{{ route('admin.frequently') }}" class="btn btn-secondary btn-sm">
+                                    Manage
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="{{ route('admin.frequently') }}" class="dropdown-item">
-                                        <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                                        Manage
-                                    </a>
-                                    
-                                </div>
                             </div>
 
                             <h4 class="card-title mb-4">Frequently Ask</h4>
@@ -88,7 +79,7 @@
                                         @foreach ($frequentlies as $frequently)
                                             <tr>
                                                 <td>
-                                                    <h6 class="font-size-13 font-size-16">
+                                                    <h6 class="font-size-16">
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
                                                         {{ $frequently->frequently }}
@@ -100,28 +91,28 @@
                                     </tbody><!-- end tbody -->
                                 </table> <!-- end table -->
                             </div>
+                            <!-- Combined Total Records Count and Pagination Links -->
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>
+                                    <p>Total: {{ $frequentlies->total() }} records</p>
+                                </div>
+                                <div>
+                                    {{ $frequentlies->links('pagination::simple-bootstrap-5', ['paginator' => $frequentlies]) }}
+                                </div>
+                            </div>
                         </div><!-- end card -->
                     </div><!-- end card -->
                 </div>
                 <!-- end col -->
 
-                <div class="col-xl-6" style="max-height:480px;overflow:auto;">
+                <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body">
 
                             <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
+                                <a href="{{ route('admin.teachers') }}" class="btn btn-secondary btn-sm">   
+                                    Manage
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="{{ route('admin.teachers') }}" class="dropdown-item">
-                                        <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                                        Manage
-                                    </a>
-                                    
-                                </div>
                             </div>
 
                             <h4 class="card-title mb-4">Teacher's Information</h4>
@@ -156,6 +147,16 @@
                                         <!-- end -->
                                     </tbody><!-- end tbody -->
                                 </table> <!-- end table -->
+                                
+                            </div>
+                             <!-- Combined Total Records Count and Pagination Links -->
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>
+                                    <p>Total: {{ $teachers->total() }} records</p>
+                                </div>
+                                <div>
+                                    {{ $teachers->links('pagination::simple-bootstrap-5', ['paginator' => $teachers]) }}
+                                </div>
                             </div>
                         </div><!-- end card -->
                     </div><!-- end card -->

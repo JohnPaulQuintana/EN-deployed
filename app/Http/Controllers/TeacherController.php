@@ -19,7 +19,7 @@ class TeacherController extends Controller
         $teachers = DB::table('teachers')
         ->select('teachers.*', 'f1.facilities AS facilities')
         ->join('eastwoods_facilities AS f1', 'teachers.facilities_id', '=', 'f1.id')
-        ->get();
+        ->paginate(5);
 
         // dd($teachers);
         return view('admin.contents.teacher')->with(['teachers' => $teachers, 'facilities'=>$facilities]);

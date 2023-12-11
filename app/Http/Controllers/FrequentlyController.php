@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class FrequentlyController extends Controller
 {
     public function frequently(){
-        $frequentlies = Frequently::get();
+        $frequentlies = Frequently::paginate(5, ['*'], 'frequently_page');
         return view('admin.contents.frequently')->with('frequentlies', $frequentlies);
     }
     
