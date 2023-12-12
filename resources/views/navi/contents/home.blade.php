@@ -1654,11 +1654,11 @@
                                     }
 
                                     // for rest room
-                                    if (female.includes(data.label)) {
+                                    if (detailInFemaleCr.includes(data.label)) {
                                         icons =
                                             `<i class="fa-solid fa-person-dress fa-lg" style="color: #eb05c1;"></i>`
                                     }
-                                    if (male.includes(data.label)) {
+                                    if (detailInMaleCr.includes(data.label)) {
                                         icons =
                                             `<i class="fa-solid fa-person fa-lg" style="color: #0f56d2;"></i>`
                                     }
