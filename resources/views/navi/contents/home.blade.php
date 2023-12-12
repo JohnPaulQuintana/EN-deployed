@@ -1667,7 +1667,7 @@
 
                                     keysDisplay += `
                                         <div class="keys mb-2">
-                                            <span class="floor-keys">${icons}</span>
+                                            <span class="floor-keys" style="background:${data.bgcolor}">${icons}</span>
                                             <span class="floor-mean">${iconText}</span>
                                         </div>
                                         `
