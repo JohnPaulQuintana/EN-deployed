@@ -242,15 +242,7 @@
                     <div class="card">
                         <h5 class="text-center text-success mt-2">FACILITIES</h5>
                         <div class="card-body" id="keysDisplay">
-                           
-
-                            <div class="keys mb-2">
-                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                                <span class="floor-keys">EDF</span>
-                                <span class="floor-mean">Engineering Department Faculty</span>
-                            </div>
-                            
-                            
+                         
                         </div>
                     </div>
                 </div>
@@ -285,9 +277,9 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                                            <a href="javascript:void(0);" class="dropdown-item">Teacher's</a>
-                                            <a href="javascript:void(0);" class="dropdown-item">Facilities</a>
-                                            <a href="javascript:void(0);" class="dropdown-item">Event's</a>
+                                            {{-- <a href="javascript:void(0);" class="dropdown-item">Teacher's</a>
+                                            <a href="javascript:void(0);" class="dropdown-item">Facilities</a> --}}
+                                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#guideModal">User Guide</a>
                                         </div>
                                     </div>
                                 </div>
@@ -313,6 +305,7 @@
         </div>
         {{-- edit modal --}}
         @include('admin.modal.edit')
+        @include('admin.modal.guide')
     </div>
 @endsection
 
