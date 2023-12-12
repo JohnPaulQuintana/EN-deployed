@@ -65,7 +65,7 @@
             padding: 10px;
             width: fit-content;
             /* Adjust the width of the floorplan */
-            max-height: 720px;
+            max-height: 710px;
             overflow: auto;
             /* Adjust the height of the floorplan */
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
