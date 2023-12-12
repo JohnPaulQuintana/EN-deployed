@@ -1626,10 +1626,7 @@
                                                 `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
                                             iconText = `Blocked Cell`
                                             break;
-                                        case 'front':
-                                            icons = `<i class="fa-solid fa-street-view fa-lg"></i>`
-                                            iconText = `Student Lounge`
-                                            break;
+                                       
                                         case 'stair-in':
                                             icons =
                                                 `<i class="fa-solid fa-stairs fa-lg" style="color: #0f56d2;"></i>`
