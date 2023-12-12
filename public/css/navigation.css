@@ -224,6 +224,7 @@
 
 /* keys floor */
 .popup-content .nav-container{
+  height: 600px;
   border: 1px solid rgb(231, 225, 225);
   display: flex;
 }
