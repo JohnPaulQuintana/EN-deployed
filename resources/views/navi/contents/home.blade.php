@@ -1463,8 +1463,14 @@
                                     // If an element with the same label exists, set the text of the new element to blank
                                     point.text('');
                                 } else {
-                                    // If no element with the same label exists, set the text based on coordinates.label
-                                    point.text(coordinates.label !== null ? truncateText(coordinates.label, 7) : '');
+                                    // // If no element with the same label exists, set the text based on coordinates.label
+                                    // point.text(coordinates.label !== null ? truncateText(coordinates.label, 7) : '');
+                                     // If no element with the same label exists and data-door=true, set the text based on coordinates.label
+                                    if (coordinates.label !== null && existingElement.data('door') === 'true') {
+                                        point.text(truncateText(coordinates.label, 7));
+                                    } else {
+                                        point.text('');
+                                    }
                                 }
                                 gridContainer.append(point).fadeIn(
                                     'slow'); // Append the point to the grid container using jQuery
@@ -1613,12 +1619,12 @@
                                 var keysDisplay = ''
                                 var icons = ''
                                 var iconText = ''
-                                const male = ['male', 'MR', 'MRX', 'MRN', 'MRE', "MRO",
-                                    'MRF'
-                                ]; // Add more labels as needed for abbrev
-                                const female = ['female', 'FR', 'FRU', 'FRF',
-                                    'FRZ'
-                                ]; // Add more labels as needed for abbrev
+                                // const male = ['male', 'MR', 'MRX', 'MRN', 'MRE', "MRO",
+                                //     'MRF'
+                                // ]; // Add more labels as needed for abbrev
+                                // const female = ['female', 'FR', 'FRU', 'FRF',
+                                //     'FRZ'
+                                // ]; // Add more labels as needed for abbrev
                                 filteredServerRespondsData[key]['gridDetails'].forEach(data => {
                                     switch (data.label) {
                                         case 'wall':
