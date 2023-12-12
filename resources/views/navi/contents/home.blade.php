@@ -88,6 +88,9 @@
             z-index: 1000;
         }
 
+        .grid-container::-webkit-scrollbar{
+            width: 0;
+        }
         /* Style for each room (grid point) */
         .grid-point {
             width: 60px;
