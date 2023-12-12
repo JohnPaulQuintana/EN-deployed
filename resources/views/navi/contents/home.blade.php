@@ -1463,14 +1463,8 @@
                                     // If an element with the same label exists, set the text of the new element to blank
                                     point.text('');
                                 } else {
-                                    // // If no element with the same label exists, set the text based on coordinates.label
-                                    // point.text(coordinates.label !== null ? truncateText(coordinates.label, 7) : '');
-                                     // If no element with the same label exists and data-door=true, set the text based on coordinates.label
-                                    if (coordinates.label !== null && existingElement.data('door') === 'true') {
-                                        point.text(truncateText(coordinates.label, 7));
-                                    } else {
-                                        point.text('');
-                                    }
+                                    // If no element with the same label exists, set the text based on coordinates.label
+                                    point.text(coordinates.label !== null ? truncateText(coordinates.label, 7) : '');
                                 }
                                 gridContainer.append(point).fadeIn(
                                     'slow'); // Append the point to the grid container using jQuery
