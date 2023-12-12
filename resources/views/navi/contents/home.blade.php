@@ -62,85 +62,53 @@
 
         /* Style for the grid container */
         .grid-container {
-            overflow-x: auto;
-
-
             padding: 10px;
-            /* width: fit-content; */
-            margin-top: 0;
-            /* margin-left: 170px; */
+            width: fit-content;
             /* Adjust the width of the floorplan */
-            height: 670px;
+            height: fit-content;
             /* Adjust the height of the floorplan */
-            box-shadow: rgba(37, 43, 59, 0.2) 0px 7px 29px 0px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             /* margin: 50px auto; */
             display: grid;
             grid-template-columns: repeat(10, 1fr);
             /* Adjust the number of columns */
-            grid-template-rows: repeat(4, 1fr);
+            grid-template-rows: repeat(14, 1fr);
             /* Adjust the number of rows */
-            /* gap: -5px; */
+            /* gap: 5px; */
             /* Adjust the gap between rooms */
             background-color: transparent;
-            background-clip: border-box;
-            border: 0 solid #2d3448;
             /* Background color for the floorplan */
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             /* Add a subtle shadow */
             border-radius: 10px;
             /* Add rounded corners */
-            perspective: 1000px;
+            /* perspective: 1000px; */
             /* Create perspective for 3D effect */
             z-index: 1000;
         }
 
-        /* Define scrollbar styles */
-        ::-webkit-scrollbar {
-            width: 5px;
-            /* Adjust as needed */
-        }
-
-        /* Track styles */
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        /* Handle styles */
-        ::-webkit-scrollbar-thumb {
-            background: rgba(11, 93, 234, 0.747);
-            /* Handle color */
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(22, 53, 107, 0.747);
-            /* Hover color */
-        }
-
-        /* .grid-container::-webkit-scrollbar{
-                                width: 0;
-                            } */
         /* Style for each room (grid point) */
         .grid-point {
-            width: 70px;
-            height: 70px;
-            /* background-color: transparent; */
+            width: 60px;
+            height: 60px;
+            background-color: transparent;
             /* Light background color for rooms */
             /* border: 0.5px transparent; */
+
             /* Add borders */
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
             /* Specify a common font */
-            font-size: 13px;
+            font-size: 14px;
             /* Adjust font size */
             color: #f3ecec;
             /* Text color */
             position: relative;
             transition: transform 0.3s ease-in-out;
             /* Add smooth transform transition */
-            /* transform-style: preserve-3d; */
+            transform-style: preserve-3d;
             /* Preserve 3D effect */
             z-index: 1;
         }
@@ -155,12 +123,15 @@
 
         /* Style for the walls (blocks) */
         .blocked {
-            /* box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
+            /* background-color: transparent; */
+            /* Dark background color for walls */
+            /* box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
             color: rgb(253, 253, 253);
             /* border: 1px solid transparent; */
             transform: translateZ(20px);
             cursor: pointer;
             font-weight: 700;
+
         }
 
         .grid-point.block::after {
@@ -168,7 +139,6 @@
             /* Set the content to the data-label attribute */
         }
 
-        /* Style for animation */
         /* Style for animation */
         .grid-point.passed:not(.targetFacilities):not(.starting-point) {
             /* background-color: transparent; */
@@ -186,7 +156,6 @@
             /* Initially hide the background image */
         }
 
-
         .grid-point.passed.up:not(.targetFacilities):not(.starting-point) {
             transform: rotate(0);
             /* Rotate the background image 0 degrees*/
@@ -202,29 +171,39 @@
             /* Rotate the background image 90 degrees clockwise */
         }
 
-        
-        .starting-point {
-            /* border: 1px solid rgb(11, 93, 234); */
 
-            transform: translateZ(20px);
+        /* starting point */
+        .starting-point {
+            /* background-color: #4434db; */
+            /* border: 1px solid rgb(14, 199, 8); */
+            /* transform: translateZ(20px); */
             /* Dark background color for walls */
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
-            color: rgb(11, 93, 234);
+            /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
+            /* color: rgb(14, 199, 8); */
         }
 
         /* starting point */
         .targetFacilities {
-            background: rgba(11, 93, 234, 0.747);
-            /* width: 75px; */
+            /* border: 0.2px solid rgba(11, 93, 234, 0.384); */
             /* border: 1px solid green; */
             /* Dark background color for walls */
             /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
-            color: rgb(246, 247, 250);
-            /* transform: translateZ(20px); */
+            color: #252b3b;
+            transform: translateZ(20px);
             cursor: pointer;
-            text-shadow: 2px 2px 3px rgba(7, 7, 7, 0.8);
+            text-shadow: 1px 1px 2px rgba(241, 239, 239, 0.8);
             font-weight: 600;
-            z-index: 1000;
+        }
+        .subTargetFacilities {
+            /* border: 0.2px solid rgba(11, 93, 234, 0.384); */
+            /* border: 1px solid green; */
+            /* Dark background color for walls */
+            /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
+            color: #252b3b;
+            transform: translateZ(20px);
+            cursor: pointer;
+            text-shadow: 1px 1px 2px rgba(235, 225, 225, 0.8);
+            font-weight: 600;
         }
 
         /* Define the animation */
