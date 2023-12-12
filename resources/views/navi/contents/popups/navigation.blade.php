@@ -37,11 +37,6 @@
             <div class="col-md-2 left-container">
                 <p class="text-center keys-title mt-2">FACILITIES</p>
                     <div class="card-body" id="keysDisplay">
-                       
-
-                        
-                        
-                        
                         
                     </div>
                 <div>
