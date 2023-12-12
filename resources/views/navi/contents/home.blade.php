@@ -65,7 +65,7 @@
             padding: 10px;
             width: fit-content;
             /* Adjust the width of the floorplan */
-            height: 800px;
+            height: 700px;
             /* Adjust the height of the floorplan */
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             /* margin: 50px auto; */
@@ -90,7 +90,7 @@
         /* Style for each room (grid point) */
         .grid-point {
             width: 60px;
-            height: 60px;
+            height: 70px;
             background-color: transparent;
             /* Light background color for rooms */
             /* border: 0.5px transparent; */
@@ -1382,12 +1382,12 @@
                 var startingX;
                 var startingY;
 
-                const validLabelsMale = ['male', 'MR', 'MRX', 'MRN', 'MRE',
-                    'MRF', "MRO"
-                ]; // Add more labels as needed for abbrev
-                const validLabelsFemale = ['female', 'FR', 'FRU', 'FRF',
-                    'FRZ'
-                ]; // Add more labels as needed for abbrev
+                // const validLabelsMale = ['male', 'MR', 'MRX', 'MRN', 'MRE',
+                //     'MRF', "MRO"
+                // ]; // Add more labels as needed for abbrev
+                // const validLabelsFemale = ['female', 'FR', 'FRU', 'FRF',
+                //     'FRZ'
+                // ]; // Add more labels as needed for abbrev
 
                 let uniqueEntries = new Set();
 
@@ -1423,14 +1423,14 @@
                                 if (highestX < highestY) {
                                     // Set the width and height of gridContainer to fit-content
                                     $("#grid-container").css({
-                                        'height': "fit-content",
+                                        // 'height': "fit-content",
                                         'grid-template-rows': `repeat(${highestX+1}, 1fr)`,
                                         'grid-template-columns': `repeat(${highestY+1}, 1fr)`,
                                     });
                                 } else {
                                     // Set the width and height of gridContainer to fit-content
                                     $("#grid-container").css({
-                                        'height': "fit-content",
+                                        // 'height': "fit-content",
                                         'grid-template-rows': `repeat(${highestX+1}, 1fr)`,
                                         'grid-template-columns': `repeat(${highestY+1}, 1fr)`,
                                     });
