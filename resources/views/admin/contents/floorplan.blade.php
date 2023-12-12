@@ -36,6 +36,11 @@
     <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
     <style>
+        [data-door="true"] {
+            /* Your CSS styles here */
+            border:1px solid rgb(30, 255, 0) !important;
+            /* Add any other styles as needed */
+        }
         .drag-container::-webkit-scrollbar{
             display: none;
         }
@@ -45,7 +50,7 @@
             overflow-y: auto; /* Enable vertical scrollbar if content overflows */
             /* border: 1px solid gray; */
             /* max-width: 200px; */
-            padding:10px ;
+            /* padding:10px ; */
         }
             /* Style for the draggable box */
         .drag-item {
@@ -54,8 +59,8 @@
             word-break: break-all; /* Break long words */
             text-align: center;
             /* background-color: #ffc107; Yellow background for draggable item */
-            border: 1px solid #999;
-            box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
+            /* border: 1px solid #999; */
+            /* box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
             font-weight: 600;
             text-shadow: 2px 2px 3px rgba(7, 7, 7, 0.8);
             display: flex;
@@ -80,7 +85,7 @@
 
         .zone.dragover {
             /* Add a shadow style when dragging over */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Customize the shadow style */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             transform: scale(1.1); /* Apply a scale transformation on hover */
             border-color: #f0eded;
         }
@@ -125,7 +130,7 @@
         display: grid;
         grid-template-columns: repeat(14, 1fr); /* Adjust the number of columns */
         grid-template-rows: repeat(10, 1fr); /* Adjust the number of rows */
-        gap: 5px; /* Adjust the gap between rooms */
+        /* gap: 5px; Adjust the gap between rooms */
         background-color: transparent; /* Background color for the floorplan */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
         border-radius: 10px; /* Add rounded corners */
@@ -139,7 +144,7 @@
         width: 60px;
         height: 60px;
         background-color: transparent; /* Light background color for rooms */
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.034);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -163,8 +168,8 @@
       /* Style for the walls (blocks) */
       .block {
         /* background-color: #999; Dark background color for walls */
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        color: white;
+        /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+        /* color: white; */
         font-size: 14px;
       }
 
@@ -282,6 +287,64 @@
         } */
 
     </style>
+
+<style>
+    .modal-content {
+        border-radius: 10px;
+    }
+
+    .modal-header {
+        background-color: #3498db;
+        color: #fff;
+        border-radius: 10px 10px 0 0;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-title i {
+        margin-right: 10px;
+    }
+
+    .gbody {
+        padding: 20px;
+    }
+
+    .instruction-section {
+        margin-bottom: 20px;
+    }
+
+    .instruction-section h6 {
+        color: #3498db;
+        margin-bottom: 10px;
+    }
+
+    .instruction-section p {
+        margin-bottom: 0;
+    }
+
+    .instruction-section ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 5px;
+    }
+
+    .instruction-section li {
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .instruction-section li::before {
+        content: "\2022"; /* Bullet point */
+        position: absolute;
+        left: 0;
+        color: #3498db;
+    }
+
+    
+</style>
+
 @endsection
 
 @section('content')
@@ -313,7 +376,7 @@
                         <div class="dropdown float-end">
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical"></i>
+                                <span class="font-size-14 bg-secondary text-white p-2  border rounded">Navigation</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
@@ -323,7 +386,7 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">Facilities</a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Event's</a>
+                                {{-- <a href="javascript:void(0);" class="dropdown-item">Event's</a> --}}
                             </div>
                         </div>
 
@@ -336,7 +399,7 @@
                                 </h4>
                                 <h6 class="font-size-13">
                                     <div class="input-group d-flex align-items-center text-success">
-                                        <select id="floor-selected" class="form-control text-white mt-2">
+                                        <select id="floor-selected" class="form-control mt-2">
                                             {{-- <option value="ground-floor">Ground Floor</option> --}}
                                             @php
                                                 // for ($i = 0; $i < count($flist)-1; $i++) { 
@@ -359,7 +422,7 @@
                                 </h4>
                                 <h6 class="font-size-13">
                                     <div class="input-group d-flex align-items-center text-success">
-                                        <input type="number" id="row-size" value="8" min="1" max="20" class="form-control text-white mt-2"
+                                        <input type="number" id="row-size" value="8" min="1" max="20" class="form-control mt-2"
                                         placeholder="add columns">
                                     </div>
                                 </h6>
@@ -372,7 +435,7 @@
                                 </h4>
                                 <h6 class="font-size-13">
                                     <div class="input-group d-flex align-items-center text-success">
-                                        <input type="number" id="column-size" value="14" min="1" max="20" class="form-control text-white mt-2"
+                                        <input type="number" id="column-size" value="14" min="1" max="20" class="form-control mt-2"
                                         placeholder="add columns">
                                     </div>
                                 </h6>
@@ -407,7 +470,7 @@
                                             </div>
                                         </h6>
                                     </div>
-                                    <div class="col-sm-2 mb-2 mx-auto drag-item wall-point blocked" id="wall-point" data-name="wall" data-label="wall" draggable="true">
+                                    {{-- <div class="col-sm-2 mb-2 mx-auto drag-item wall-point blocked" id="wall-point" data-name="wall" data-label="wall" draggable="true">
                                         <div class="drag-content">
                                             {{ __('blkd') }}
                                         </div>
@@ -423,14 +486,18 @@
                                         <div class="drag-content">
                                             {{ __('Stair') }}
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                 
                                     @foreach ($facilities as $facility)
                                         {{-- {{ $facility }} --}}
-                                    <div class="col-sm-2 border mx-auto mb-2 drag-item start" data-abbrev="{{ $facility->abbrev }}" id="{{ $facility->facilities }}" data-name="start" data-label="{{ $facility->abbrev }}" data-sublabel="{{ $facility->facilities }}" data-id="{{ $facility->id }}" data-floor="{{ $facility->floor }}" draggable="true">
+                                    <div class="col-sm-2 border mx-auto mb-2 drag-item start" 
+                                        data-abbrev="{{ $facility->abbrev ?? $facility->facilities }}" id="{{ $facility->facilities }}" 
+                                        data-name="start" data-label="{{ $facility->abbrev ?? $facility->facilities }}" data-sublabel="{{ $facility->facilities }}" 
+                                        data-id="{{ $facility->id }}" data-floor="{{ $facility->floor }}" data-color="{{ $facility->color }}" draggable="true"
+                                        style="background: {{ $facility->color }}">
                                         <div class="drag-content" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $facility->facilities }}">
-                                            {{ $facility->abbrev }}
+                                            {{ $facility->abbrev ?? $facility->facilities}}
                                         </div>
                                     </div>
                                     
@@ -446,14 +513,10 @@
                 <div class="col-xl-9">
                     <div class="card">
                         <div class="card-body">
-                            
-                            {{-- <div class="dropdown float-end">
-                                <div class="form-check form-switch mt-1" dir="ltr">
-                                    <label for="customSwitch1">Merge Cell</label>
-                                    <input type="checkbox" class="form-check-input custom-switch srh"
-                                        id="customSwitch1">
-                                </div>               
-                            </div> --}}
+
+                            <div class="dropdown float-end">
+                                <button type="button" class="btn btn-secondary btn-sm text-white" data-bs-toggle="modal" data-bs-target="#guideModal">Guide</button>
+                            </div>
                             
                             <h4 class="card-title mb-4">
                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
@@ -487,6 +550,7 @@
             <!-- end row -->
         </div>
 
+        @include('admin.modal.guide')
     </div>
 @endsection
 
@@ -772,7 +836,9 @@
                     const label = gridPoint.getAttribute("data-label");
                     const sublabel = gridPoint.getAttribute("data-sublabel");
                     const abbrev = gridPoint.getAttribute("data-abbrev");
-                    console.log(sublabel)
+                    const door = gridPoint.getAttribute("data-door");
+                    const bgcolor = gridPoint.getAttribute("data-color");
+                   
                     // static for now
                     floor = $('#floor-selected').val();
                     gridDetails.push({
@@ -786,6 +852,8 @@
                         label,
                         sublabel,
                         abbrev,
+                        door,
+                        bgcolor,
                     });
                 });
 
@@ -827,14 +895,16 @@
                     const computedStyle = getComputedStyle(box);
                     const label = $(box).attr("data-label");
                     const sublabel = $(box).attr("data-sublabel");
-                   
+                    const bgColor = $(box).attr("data-color")
                    
                     // Get CSS properties from computed style
                     const color = computedStyle.color;
                     const border = computedStyle.border;
+                    const back = computedStyle.background;
+                    // alert(back)
                     // const dataId = $(box).attr("data-id");
                     // addClass(dataId)
-                    $(e.target).addClass("block").text('').attr("data-sublabel", sublabel).attr("data-label", label).css({"color":color,"border":border});
+                    $(e.target).addClass("block").addClass('set-door').text('').attr("data-sublabel", sublabel).attr("data-label", label).attr("data-color", bgColor).css({"color":color, 'background':back});
                     
                     // Create a close button using jQuery
                     const closeButton = $("<button>").addClass("cancel-drag-button").text("X");
@@ -864,12 +934,12 @@
                                 break;
                         }
                     closeButton.on("click", function () {
-                        $(e.target).removeClass("block").removeAttr("data-label").removeAttr("data-sublabel");
+                        $(e.target).removeClass("block").removeClass('set-door').removeAttr("data-label").removeAttr("data-sublabel").removeAttr('data-door').removeAttr('data-color');
                         $(this).remove();
                         type.remove();
                         // Remove the <span> element with class "marks" inside $(e.target)
                         $(e.target).find('.marks').remove();
-                        $(e.target).css({'border':'1px solid rgba(0, 0, 0, 0.1)'})
+                        $(e.target).css({'border':'1px solid rgba(0, 0, 0, 0.1)','background':'none'})
                     });
 
                     // Append the close button to the grid point
@@ -1100,6 +1170,30 @@
                 filterFacilitiesByFloor(selectedFloor);
             });
 
+            // set door for facilities to use in pathfinder
+            $(document).on('click', '.set-door', function(){
+                // Set the "door" attribute to true
+                $(this).attr('data-door', 'true');
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": 300,
+                    "hideDuration": 1000,
+                    "timeOut": 5000,
+                    "extendedTimeOut": 1000,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                toastr['success']('Successfully set to door');
+            });
+
             //enabled mergin
             // $("#customSwitch1").on("click", function() {
             //     var isChecked = $("#customSwitch1").prop("checked");
@@ -1120,9 +1214,11 @@
                 if (floor === 'ground-floor') {
                     // Show only ground floor facilities
                     $('.drag-item[data-floor="ground-floor"]').fadeIn(300);
+                    $('.drag-item[data-floor="all"]').fadeIn(300);
                 } else {
                     // Show facilities for the selected floor
                     $('.drag-item[data-floor="' + floor + '"]').fadeIn(300);
+                    $('.drag-item[data-floor="all"]').fadeIn(300);
                 }
 
                 const response = await fetch('/floorplan-edit', {
@@ -1212,15 +1308,21 @@
             $("#drag-search").on("input", function () {
                 // Get the search query from the input
                 const searchQuery = $(this).val().toLowerCase();
-
+                const fls = $('#floor-selected').val().toLowerCase()
                 // Filter the drag items based on the search query
                 $(".drag-item").each(function () {
                     const itemName = $(this).text().toLowerCase();
-                    
-                    // Check if the item name contains the search query
-                    if (itemName.includes(searchQuery)) {
+                    const itemFl = ($(this).data("floor")).toLowerCase();
+                    console.log(fls,itemFl, searchQuery)
+                    // Check if the item name contains the search query and matches the selected floor
+                    if (
+                        itemName.includes(searchQuery) &&
+                        itemFl.includes(fls)
+                    ) {
                         $(this).show(); // Display matching items
+                        $('.drag-item[data-floor="all"]').fadeIn(300);
                     } else {
+                        $('.drag-item[data-floor="all"]').fadeIn(300);
                         $(this).hide(); // Hide non-matching items
                     }
                 });

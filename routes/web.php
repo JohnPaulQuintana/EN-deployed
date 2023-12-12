@@ -81,6 +81,9 @@ Route::middleware('auth')->group(function () {
 
     // qr
     Route::post('/qr',[QrcodeController::class, 'generateQrCode'])->name('qr');
+
+    // restroom
+    Route::post('/facilities-cr', [FacilityController::class, 'restroom']);
 });
 
 // navi route

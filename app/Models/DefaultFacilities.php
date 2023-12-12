@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EastwoodsFacilities extends Model
+class DefaultFacilities extends Model
 {
     use HasFactory;
-    public $fillable = ['facilities','operation_time', 'floor', 'color'];
+    public $fillable = ['facilities','floor', 'color'];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DefaultFacilities;
 use App\Models\FloorList;
 use App\Models\Update;
 use App\Models\Floorplan;
@@ -13,16 +14,22 @@ class FloorplanController extends Controller
    public function floorPlanLayout(){
       $data = DB::table('eastwoods_facilities')
       ->join('abbrevs', 'eastwoods_facilities.id', '=', 'abbrevs.facility_id')
-      ->select('eastwoods_facilities.id', 'eastwoods_facilities.facilities', 'eastwoods_facilities.floor', 'abbrevs.abbrev')
+      ->select('eastwoods_facilities.id', 'eastwoods_facilities.facilities', 'eastwoods_facilities.color' ,'eastwoods_facilities.floor', 'abbrevs.abbrev')
       ->get();
 
+      $defaultF = DB::table('default_facilities')
+         ->select('id','facilities','floor', 'color')
+         ->get();
+      // / Merge the results
+      $mergedData = $data->merge($defaultF);
+      // dd($mergedData);
       // floor
       $floorList = FloorList::pluck('floor');
       $nonExistingFloors = FloorList::whereNotIn('floor', function ($query) {
          $query->select('floor')->from('floorplans');
      })->pluck('floor')->toArray();
       // dd($nonExistingFloors);
-        return view('admin.contents.floorplan')->with(['facilities'=>$data, 'flist'=>$nonExistingFloors]);
+        return view('admin.contents.floorplan')->with(['facilities'=>$mergedData, 'flist'=>$nonExistingFloors]);
    }
 
    public function floorPlanLayoutSave(Request $request) {
@@ -58,8 +65,28 @@ class FloorplanController extends Controller
 
    public function floorPlanLayoutGet(Request $request){
       $floorplans = Floorplan::get();
+
+      $result = DB::table('eastwoods_facilities')
+      ->join('abbrevs', 'eastwoods_facilities.id', '=', 'abbrevs.facility_id')
+      ->select('eastwoods_facilities.facilities', 'abbrevs.abbrev')
+      ->whereIn('facilities', ['male restroom', 'female restroom'])
+      ->get();
+  
+      // Group the results by facility
+      $groupedResult = $result->groupBy('facilities');
+  
+      // Create an associative array where the keys are the facilities and the values are arrays of abbreviations
+      $groupedAbbreviations = $groupedResult->map(function ($items) {
+          return $items->pluck('abbrev')->toArray();
+      });
+  
+      // Access male restroom abbreviations
+      $maleRestroomAbbreviations = $groupedAbbreviations['male restroom'] ?? [];
+  
+      // Access female restroom abbreviations
+      $femaleRestroomAbbreviations = $groupedAbbreviations['female restroom'] ?? [];
       // dd($floorplans);
 
-      return view('admin.contents.testfloor')->with(['details'=>$floorplans]);
+      return view('admin.contents.testfloor')->with(['details'=>$floorplans, 'male'=>$maleRestroomAbbreviations, 'female'=>$femaleRestroomAbbreviations]);
    }
 }

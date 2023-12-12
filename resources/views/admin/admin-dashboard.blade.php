@@ -152,7 +152,7 @@
                                 $('noti-dot').css({'display':'block'})
                                 $('updates-btn').css({'display':'block'})
                                 response.updates.forEach(notif => {
-                                    notifyPopUps(`New updates availables`)
+                                    
                                     let classToApply;
                                     // Determine the class based on the action
                                     if (notif.action === 'added') {
@@ -176,6 +176,7 @@
                                         </div>
                                     </a>`
                                 });
+                                notifyPopUps(`New updates availables`)
                                 $('.notif-container').html(notifHtml)
 
                                 // $('.notification-item').on("click", function(){

@@ -26,6 +26,7 @@ class FacilityController extends Controller
         $facilities = array_map('strtolower', $request->input('facilities', []));
         $operation_hours = array_map('strtolower', $request->input('operation_hours', []));
         $selected_floor = array_map('strtolower', $request->input('selected_floor', []));
+        $selected_color = array_map('strtolower', $request->input('selected_color', []));
 
         $ids = $request->input('ids', []);
         $req = $request->input('action');
@@ -48,7 +49,7 @@ class FacilityController extends Controller
                         });
 
                         if(!$exists) {
-                            $input = EastwoodsFacilities::create(['facilities' => $facilities[$i], 'operation_time' => Carbon::now(), 'floor' => $selected_floor[$i]]);
+                            $input = EastwoodsFacilities::create(['facilities' => $facilities[$i], 'operation_time' => Carbon::now(), 'floor' => $selected_floor[$i], 'color' => $selected_color[$i]]);
                             $abbrevModel = Abbrev::create(['facility_id' => $input->id, 'abbrev' => $this->generateUniqueAbbreviation($facilities[$i])]);
                             $insertedNotif[] = $input;
                             $actionText = 'Successfully Added';
@@ -76,6 +77,9 @@ class FacilityController extends Controller
                             if ($input->operation_time !== Carbon::now()) {
                                 $input->operation_time = Carbon::now();
                             }
+                            if($input->color !== $selected_color[$i]){
+                                $input->color = $selected_color[$i];
+                            }
                             if ($input->floor !== $selected_floor[$i]) {
                                 $input->floor = $selected_floor[$i];
                             }
@@ -99,6 +103,7 @@ class FacilityController extends Controller
                                         if ($value['sublabel'] === $changeF) {
                                             $jsonData[$key]['label'] = $abbrev['abbrev'];
                                             $jsonData[$key]['sublabel'] = $input->facilities;
+                                            $jsonData[$key]['bgcolor'] = $input->color;
                                             $changesMade = true;
                                         }
                                     }
@@ -140,7 +145,7 @@ class FacilityController extends Controller
             }
         }
         // Build the success message
-        $message = $actionText . ' ' . count($insertedNotif) . ' ' . $actionName . ' record(s)!';
+        $message = $actionText . ' ' . $actionName . ' record(s)!';
         // Prepare the toast notification data
         $notification = [
             'status' => $actionType,
@@ -230,7 +235,16 @@ class FacilityController extends Controller
         }
 
         $allFac = $query->get();
-        return response()->json(['fac'=>$allFac]);
+
+        // Fetch data from default_facilities
+        $defaultFac = DB::table('default_facilities')
+        ->select('id', 'facilities', 'floor', 'color')
+        ->get();
+
+        // Merge the results
+        $mergedData = $allFac->merge($defaultFac);
+
+        return response()->json(['fac'=>$mergedData]);
        
     }
 
@@ -238,6 +252,7 @@ class FacilityController extends Controller
     function editFloorPlan(Request $request){
         $responseData = [];
         $floors = Floorplan::where('floor', '=', $request->input('floor'))->get();
+        
         foreach ($floors as $floor) {
             $floorData = $floor->toArray();
             $responseData[] = $floorData;
@@ -245,5 +260,31 @@ class FacilityController extends Controller
         
         }
         return response()->json(['floorplan'=>$responseData]);
+    }
+
+    function restroom(Request $request){
+        $result = DB::table('eastwoods_facilities')
+    ->join('abbrevs', 'eastwoods_facilities.id', '=', 'abbrevs.facility_id')
+    ->select('eastwoods_facilities.facilities', 'abbrevs.abbrev')
+    ->whereIn('facilities', ['male restroom', 'female restroom'])
+    ->get();
+
+    // Group the results by facility
+    $groupedResult = $result->groupBy('facilities');
+
+    // Create an associative array where the keys are the facilities and the values are arrays of abbreviations
+    $groupedAbbreviations = $groupedResult->map(function ($items) {
+        return $items->pluck('abbrev')->toArray();
+    });
+
+    // Access male restroom abbreviations
+    $maleRestroomAbbreviations = $groupedAbbreviations['male restroom'] ?? [];
+
+    // Access female restroom abbreviations
+    $femaleRestroomAbbreviations = $groupedAbbreviations['female restroom'] ?? [];
+
+// You can now use $maleRestroomAbbreviations and $femaleRestroomAbbreviations as needed
+
+        return response()->json(['male'=>$maleRestroomAbbreviations, 'female'=>$femaleRestroomAbbreviations]);
     }
 }

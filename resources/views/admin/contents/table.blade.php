@@ -95,19 +95,32 @@
                                             @foreach ($datas as $data)
                                                 <tr>
                                                     @foreach ($columns as $column)
-                                                    @if ($column !== 'id')
+                                                        @if ($column !== 'id' && $column !== 'color')
+                                                            <td>
+                                                                <h6 class="font-size-13">
+                                                                    <div class="input-group align-items-center text-danger">
+                                                                        <i
+                                                                            class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                                                                        <input type="text"
+                                                                            class="form-control mt-2 text-capitalize srh"
+                                                                            value="{{ $data->$column }}" readonly>
+                                                                    </div>
+                                                                </h6>
+                                                            </td>
+                                                        @elseif ($column === 'color')
                                                         <td>
                                                             <h6 class="font-size-13">
                                                                 <div class="input-group align-items-center text-danger">
                                                                     <i
-                                                                        class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                                                                    <input type="text"
+                                                                        class="font-size-10 text-success align-middle me-2">active</i>
+                                                                    <input type="color"
                                                                         class="form-control mt-2 text-capitalize srh"
-                                                                        value="{{ $data->$column }}" readonly>
+                                                                        value="{{ $data->$column }}" disabled>
                                                                 </div>
                                                             </h6>
                                                         </td>
                                                         @endif
+                                                        
                                                     @endforeach
                                                     <td class="text-center" width="100">
                                                         <div class="form-check form-switch mt-1 h4" dir="ltr">
@@ -173,7 +186,7 @@
 
 
     <!-- apexcharts -->
-    <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
 
     <!-- jquery.vectormap map -->
     <script src="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}">
@@ -190,7 +203,7 @@
     <script src="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
     </script>
 
-    <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script>
+    {{-- <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script> --}}
 
     <!-- toastr plugin -->
     <script src="{{ asset('backend/assets/libs/toastr/build/toastr.min.js') }}"></script>

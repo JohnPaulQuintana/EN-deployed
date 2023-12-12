@@ -65,10 +65,10 @@
             overflow-x: auto;
 
 
-            /* padding: 10px; */
+            padding: 10px;
             /* width: fit-content; */
             margin-top: 0;
-            margin-left: 170px;
+            /* margin-left: 170px; */
             /* Adjust the width of the floorplan */
             height: 670px;
             /* Adjust the height of the floorplan */
@@ -122,8 +122,8 @@
                             } */
         /* Style for each room (grid point) */
         .grid-point {
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             /* background-color: transparent; */
             /* Light background color for rooms */
             /* border: 0.5px transparent; */
@@ -156,13 +156,11 @@
         /* Style for the walls (blocks) */
         .blocked {
             /* box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
-            color: rgb(150, 189, 139);
-            font-size: 14pt;
-            font-weight: 700;
-            background: rgba(10, 10, 10, 0.2);
+            color: rgb(253, 253, 253);
             /* border: 1px solid transparent; */
             transform: translateZ(20px);
             cursor: pointer;
+            font-weight: 700;
         }
 
         .grid-point.block::after {
@@ -204,19 +202,9 @@
             /* Rotate the background image 90 degrees clockwise */
         }
 
-        /* Style for animation */
-        /* .grid-point.passed {
-                                                                                background-color: transparent;
-                                                                               
-                                                                                color: white;
-                                                                                border: none;
-                                                                                animation: animatePath 4s linear infinite;
-                                                                                
-                                                                            } */
-
-        /* starting point */
+        
         .starting-point {
-            border: 1px solid rgb(11, 93, 234);
+            /* border: 1px solid rgb(11, 93, 234); */
 
             transform: translateZ(20px);
             /* Dark background color for walls */
@@ -237,17 +225,6 @@
             text-shadow: 2px 2px 3px rgba(7, 7, 7, 0.8);
             font-weight: 600;
             z-index: 1000;
-        }
-
-        .wall {
-            background-color: transparent;
-            /* Set the background color for the grid points */
-            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
-            /* border: .6px solid transparent; */
-            /* Add a border to each grid point */
-            /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px, rgba(0, 0, 0, 0.3) 0px 1px 3px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
-            transform: translateZ(10px);
-
         }
 
         /* Define the animation */
@@ -470,6 +447,9 @@
             // $('#popup-continuation').css({'display':'flex'})
             // $('#popup-continuation-teacher').css({'display':'flex'})
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            var detailInMaleCr = @json($male); // Convert PHP array to JavaScript object
+            var detailInFemaleCr = @json($female); // Convert PHP array to JavaScript object
+            // console.log(detailInMaleCr)
             const form = $('form');
             const chatContainer = $('#chat_container');
             let circle = $('.circle');
@@ -1486,6 +1466,10 @@
                                 point.attr("data-y", parseInt(coordinates
                                     .y)); // Set y-coordinate as a data attribute
                                 point.attr("data-label", coordinates.sublabel);
+                                point.attr("data-door", coordinates.door)
+                                point.attr("data-color", coordinates.bgcolor)
+                                // css
+                                point.css({"background":coordinates.bgcolor})
                                 // point.text(`${parseInt(coordinates.x)},${parseInt(coordinates.y)}`); // Optionally, you can label points with their coordinates
                                 // Use a ternary operator to set the text based on coordinates.label
                                 // point.text(coordinates.label !== null ? truncateText(coordinates
@@ -1520,13 +1504,16 @@
                                     // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
                                 } else if (coordinates.label == targetFacilities || coordinates
                                     .sublabel == targetFacilities) {
-                                    // Remove the class 'targetFacilities' from all elements
-                                    // $('.st').removeClass('targetFacilities');
-                                    point.addClass('targetFacilities');
-                                    targetX = parseInt(coordinates.x);
-                                    targetY = parseInt(coordinates.y);
-                                    // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
-                                    // Set the flag to true when the target is found
+                                        if(coordinates.door === 'true'){
+                                            point.addClass('targetFacilities');
+                                            targetX = parseInt(coordinates.x);
+                                            targetY = parseInt(coordinates.y);
+                                        
+                                        }else{
+                                            point.addClass('subTargetFacilities');
+                                            point.addClass('blocked')
+                                        }
+                                    
                                     isTargetFound = true;
                                     // console.log("nag true mna", isTargetFound)
                                 } else if (coordinates.label === 'front') {
@@ -1543,20 +1530,18 @@
 
 
                                 if (coordinates.label === 'wall') {
-                                    point.addClass('blocked wall');
+                                    point.addClass('blocked wall').css({'background':'none'})
                                     point.text('')
-                                    point.append(
-                                        `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
-                                    )
+                                    
                                 }
-                                if (validLabelsMale.includes(coordinates.label)) {
+                                if (detailInMaleCr.includes(coordinates.label)) {
                                     console.log('yes')
                                     point.text('')
                                     point.append(
                                         `<i class="fa-solid fa-person fa-2xl" style="color: #0f56d2;"></i>`
                                     )
                                 }
-                                if (validLabelsFemale.includes(coordinates.label)) {
+                                if (detailInFemaleCr.includes(coordinates.label)) {
                                     point.text('')
                                     point.append(
                                         `<i class="fa-solid fa-person-dress fa-2xl" style="color: #eb05c1;"></i>`

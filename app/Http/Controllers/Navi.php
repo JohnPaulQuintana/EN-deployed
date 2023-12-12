@@ -2,25 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use GuzzleHttp\Client;
 use App\Models\Teacher;
 use App\Models\Floorplan;
 use App\Models\Frequently;
 use Illuminate\Http\Request;
-use App\Models\EastwoodsFacilities;
 use App\Models\Functionality;
+use Illuminate\Support\Facades\DB;
+use App\Models\EastwoodsFacilities;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class Navi extends Controller
 {
     public function startNaviServer(Request $request)
     {
+        $result = DB::table('eastwoods_facilities')
+    ->join('abbrevs', 'eastwoods_facilities.id', '=', 'abbrevs.facility_id')
+    ->select('eastwoods_facilities.facilities', 'abbrevs.abbrev')
+    ->whereIn('facilities', ['male restroom', 'female restroom'])
+    ->get();
+
+    // Group the results by facility
+    $groupedResult = $result->groupBy('facilities');
+
+    // Create an associative array where the keys are the facilities and the values are arrays of abbreviations
+    $groupedAbbreviations = $groupedResult->map(function ($items) {
+        return $items->pluck('abbrev')->toArray();
+    });
+
+    // Access male restroom abbreviations
+    $maleRestroomAbbreviations = $groupedAbbreviations['male restroom'] ?? [];
+
+    // Access female restroom abbreviations
+    $femaleRestroomAbbreviations = $groupedAbbreviations['female restroom'] ?? [];
+
         $frequentlies = Frequently::get();
         $systems = Functionality::all();
-        return view('navi.contents.home')->with(['frequentlies' => $frequentlies, 'systems' => $systems]);
+        return view('navi.contents.home')->with(['frequentlies' => $frequentlies, 'systems' => $systems, 'male' => $maleRestroomAbbreviations, 'female'=>$femaleRestroomAbbreviations]);
     }
 
     public function naviProcess(Request $request)

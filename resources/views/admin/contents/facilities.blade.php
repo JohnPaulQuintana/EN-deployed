@@ -76,6 +76,7 @@
                                                 <th>Facility</th>
                                                 {{-- <th>Operation</th> --}}
                                                 <th>floor</th>
+                                                <th>Color</th>
                                             </tr>
                                         </thead><!-- end thead -->
                                         <tbody id="teachers-table">
@@ -86,7 +87,7 @@
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Enter your facility.</span>
                                                         <input type="text" name="facilities[]"
-                                                            class="form-control text-white mt-2 add-input"
+                                                            class="form-control mt-2 add-input"
                                                             placeholder="Library" required>
                                                     </h6>
                                                 </td>
@@ -112,6 +113,23 @@
                                                                 </option>
                                                             @endfor
                                                         </select>
+                                                    </h6>
+                                                </td>
+
+                                                <td>
+                                                    <h6 class="font-size-13">
+                                                        <i
+                                                            class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
+                                                        <span class="text-secondary">Please Select your Color.</span>
+                                                            <div class="input-group align-items-center text-danger">
+                                                                <i class="font-size-10 text-success align-middle me-2">Default</i>
+                                                                <input type="color" name="selected_color[]"
+                                                                    class="mt-2"
+                                                                    placeholder="who is navi team?"
+                                                                    value="#999999"
+                                                                    style="width:50px;">
+                                                                   
+                                                            </div>
                                                     </h6>
                                                 </td>
                                             </tr>
@@ -152,7 +170,8 @@
                                             <tr>
                                                 <th>Facility</th>
                                                 {{-- <th>Operation</th> --}}
-                                                <th>floor</th>
+                                                <th>Floor</th>
+                                                <th>Color</th>
                                                 {{-- <th width='30'>Action</th> --}}
                                             </tr>
                                         </thead><!-- end thead -->
@@ -186,6 +205,22 @@
                                                                     class="form-control mt-2 edit-input"
                                                                     placeholder="who is navi team?"
                                                                     value="{{ $facility->floor }}">
+
+                                                            </div>
+                                                        </h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="font-size-13">
+
+                                                            <span class="text-secondary"><span
+                                                                    class="text-danger">Update</span> Color.</span>
+                                                            <div class="input-group align-items-center text-danger">
+                                                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
+                                                                <input type="color" name="selected_color[]"
+                                                                    class="mt-2 edit-input"
+                                                                    placeholder="who is navi team?"
+                                                                    value="{{ $facility->color }}"
+                                                                    style="width:50px;">
 
                                                             </div>
                                                         </h6>
@@ -278,7 +313,7 @@
                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                 <span class="text-secondary">Please Enter your facility.</span>
                                 <input type="text" name="facilities[]"
-                                    class="form-control text-white mt-2 add-input"
+                                    class="form-control mt-2 add-input"
                                     placeholder="Library" required>
                             </h6>
                         </td>
@@ -288,7 +323,7 @@
                                 <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                 <span class="text-secondary">Please Select your Floor.</span>
                                 <div class="input-group d-flex align-items-center text-danger">
-                                    <select name="selected_floor[]" class="form-control text-white mt-2" required>
+                                    <select name="selected_floor[]" class="form-control mt-2" required>
                                            
                                         @for ($floor = 0; $floor <= 10; $floor++)
                                             <option value="{{ $floor === 0 ? 'ground-floor' : 'floor-' . $floor }}">
@@ -296,8 +331,24 @@
                                             </option>
                                         @endfor
                                     </select>
-                                    <i class="text-danger h3 fas fa-times delete-row" style="margin:15px auto 10px 10px;"></i>
+                                    
                                 </div>   
+                            </h6>
+                        </td>
+
+                        <td>
+                            <h6 class="font-size-13">
+                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
+                                <span class="text-secondary">Please Select your Color.</span>
+                                    <div class="input-group align-items-center text-danger">
+                                        <i class="font-size-10 text-success align-middle me-2">Default</i>
+                                        <input type="color" name="selected_color[]"
+                                            class="mt-2"
+                                            placeholder="who is navi team?"
+                                            value="#999999"
+                                            style="width:50px;">
+                                            <i class="text-danger h3 fas fa-times delete-row" style="margin:15px auto 10px 10px;"></i>
+                                    </div>
                             </h6>
                         </td>
                     </tr>`;
@@ -317,7 +368,15 @@
 
             // Editable input/select functionality using jQuery
             $("#teachers-table-edit").on("change", ".edit-input", function() {
-                makeEditable(this);
+                 
+                if ($(this).attr('type') === 'color') {
+                    // Get the selected color value
+                    var selectedColor = $(this).val();
+                    makeEditable(this, selectedColor)
+                }else{
+                    makeEditable(this, false);
+                }
+                
             });
 
             $("#teachers-table-edit").on("click", ".cancel-edit", function() {
@@ -351,7 +410,7 @@
                 });
             });
 
-            function makeEditable(element) {
+            function makeEditable(element, b) {
                 $('#editTeachers').prop('disabled', false);
                 const originalName = $(element).attr("name");
                 const isInput = true; // Since it's an input field
@@ -361,16 +420,28 @@
                 if (selectedOption.val() !== "") {
                     const originalHTML = $(element).prop("outerHTML");
                     if(!$(element).hasClass("edited")){
-                        $(element).replaceWith(
-                        `
-                            <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
-                            <input type="text" name="${originalName}"
-                                class="form-control text-white mt-2 edited edit-input"
-                                placeholder="who is navi team?"
-                                value="${selectedOption.val()}">
-                            <i class="text-danger h3 fas fa-times cancel-edit" style="margin:15px auto 10px 10px;"></i>
+                        if($(element).is('input[type="text"]') && b === false){
                         
-                        `);
+                            $(element).replaceWith(
+                            `
+                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
+                                <input type="text" name="${originalName}"
+                                    class="form-control text-white mt-2 edited edit-input"
+                                    placeholder="who is navi team?"
+                                    value="${selectedOption.val()}">
+                                <i class="text-danger h3 fas fa-times cancel-edit" style="margin:15px auto 10px 10px;"></i>
+                        
+                            `);
+                        }else{
+                            $(element).replaceWith(
+                            `
+                                <input type="color" name="${originalName}"
+                                    class="text-white mt-2 edited edit-input" value="${b}">
+                                <i class="text-danger h3 fas fa-times cancel-edit" style="width:50px;margin:15px auto 10px 10px;"></i>
+
+                            `);
+                        }
+                        
                     }else{
                         $(element).removeClass('edited')
                     }

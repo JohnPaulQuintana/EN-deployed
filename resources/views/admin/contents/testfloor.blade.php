@@ -66,7 +66,7 @@
             /* Add a subtle shadow */
             border-radius: 10px;
             /* Add rounded corners */
-            perspective: 1000px;
+            /* perspective: 1000px; */
             /* Create perspective for 3D effect */
             z-index: 1000;
         }
@@ -110,12 +110,11 @@
             /* background-color: transparent; */
             /* Dark background color for walls */
             /* box-shadow: rgba(10, 10, 10, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
-            color: rgb(14, 199, 8);
-            background: rgba(10, 10, 10, 0.1);
+            color: rgb(253, 253, 253);
             /* border: 1px solid transparent; */
             transform: translateZ(20px);
             cursor: pointer;
-            /* font-weight: 700; */
+            font-weight: 700;
 
         }
 
@@ -160,28 +159,40 @@
         /* starting point */
         .starting-point {
             /* background-color: #4434db; */
-            border: 1px solid rgb(11, 93, 234);
-            transform: translateZ(20px);
+            /* border: 1px solid rgb(14, 199, 8); */
+            /* transform: translateZ(20px); */
             /* Dark background color for walls */
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
-            color: rgb(8, 59, 199);
+            /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
+            /* color: rgb(14, 199, 8); */
         }
 
         /* starting point */
         .targetFacilities {
-            border: 0.2px solid rgba(11, 93, 234, 0.384);
+            /* border: 0.2px solid rgba(11, 93, 234, 0.384); */
             /* border: 1px solid green; */
             /* Dark background color for walls */
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset;
-            color: rgb(8, 199, 8);
+            /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
+            color: #252b3b;
             transform: translateZ(20px);
             cursor: pointer;
-            text-shadow: 1px 1px 2px rgba(7, 7, 7, 0.8);
+            text-shadow: 1px 1px 2px rgba(241, 239, 239, 0.8);
+            font-weight: 600;
+        }
+        .subTargetFacilities {
+            /* border: 0.2px solid rgba(11, 93, 234, 0.384); */
+            /* border: 1px solid green; */
+            /* Dark background color for walls */
+            /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.5) 0px 7px 13px -3px, rgba(0, 0, 0, 0.5) 0px -3px 0px inset; */
+            color: #252b3b;
+            transform: translateZ(20px);
+            cursor: pointer;
+            text-shadow: 1px 1px 2px rgba(235, 225, 225, 0.8);
             font-weight: 600;
         }
 
+
         .wall {
-            background-color: rgba(36, 35, 35, 0.1);
+            /* background-color: rgba(36, 35, 35, 0.1); */
             /* Set the background color for the grid points */
             /* color: transparent; */
             /* width: 15px; */
@@ -194,7 +205,7 @@
             /* background:  transparent; */
             /* Add a border to each grid point */
             /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px, rgba(0, 0, 0, 0.3) 0px 1px 3px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
-            transform: translateZ(10px);
+            /* transform: translateZ(10px); */
         }
     </style>
 
@@ -352,7 +363,9 @@
             // $('#editModal').modal('show')
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             var detailInServer = @json($details); // Convert PHP array to JavaScript object
-            // console.log(detailInServer)
+            var detailInMaleCr = @json($male); // Convert PHP array to JavaScript object
+            var detailInFemaleCr = @json($female); // Convert PHP array to JavaScript object
+            // console.log(detailInMaleCr)
             // Now you have access to the details array, you can manipulate and use it
             var serverResponds = detailInServer;
             const gridContainer = $("#grid-container");
@@ -365,6 +378,8 @@
             // default starting point
             var startingX;
             var startingY;
+           
+            
             // Function to create and append points to the grid
             // width and hieght is the row and columns
             // x = horizontal, y = vertical line 
@@ -420,6 +435,12 @@
                     point.attr('title', coordinates.sublabel)
                     point.attr("data-x", parseInt(coordinates.x)); // Set x-coordinate as a data attribute
                     point.attr("data-y", parseInt(coordinates.y)); // Set y-coordinate as a data attribute
+                    point.attr("data-door", coordinates.door)
+                    point.attr("data-color", coordinates.bgcolor)
+                    // css
+                    point.css({"background":coordinates.bgcolor})
+                    console.log(coordinates.door)
+                    // point.attr("data-door", coordinates.door)
                     // point.attr("data-l", coordinates.label !== "wall" ? coordinates.label : '');
                     point.attr("data-l", coordinates.label !== "wall" ? coordinates.label : coordinates.label === "wall" ? "wall" : "");
 
@@ -440,17 +461,24 @@
                         targetSelection +=
                             `<option value="${coordinates.label}">${coordinates.label}</option>`
                     } else if (coordinates.label === targetFacilities) {
-                        point.addClass('targetFacilities');
-                        targetX = parseInt(coordinates.x);
-                        targetY = parseInt(coordinates.y);
-                        targetSelection +=
-                            `<option value="${coordinates.label}">${coordinates.label}</option>`
+                        if(coordinates.door === 'true'){
+                            point.addClass('targetFacilities');
+                            targetX = parseInt(coordinates.x);
+                            targetY = parseInt(coordinates.y);
+                            targetSelection +=
+                                `<option value="${coordinates.label}">${coordinates.label}</option>`
+                        
+                        }else{
+                            point.addClass('subTargetFacilities');
+                            point.addClass('blocked')
+                        }
+                        
                     } else if (coordinates.label === 'front') {
                         startingX = parseInt(coordinates.x);
                         startingY = parseInt(coordinates.y);
                         point.addClass('starting-point');
                         point.text('')
-                        point.append(`<i class="fa-solid fa-street-view fa-2xl"></i>`)
+                        point.append(`<i class="fa-solid fa-street-view fa-2xl" style="color:${coordinates.color};"></i>`)
 
 
                         // Create the ball element
@@ -459,28 +487,27 @@
                         // // Append the ball to the grid container
                         // point.append(ball);
                     } else if (coordinates.label === 'wall') {
-                        point.addClass('blocked wall');
+                        point.addClass('blocked wall').css({'background':'none'})
                         point.text('')
-                        point.append(
-                            `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
-                            )
+                    
+                        // point.append(
+                        //     `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
+                        //     )
                     }
 
-                    if (coordinates.label === 'male' || coordinates.label === 'RFMU' || coordinates
-                        .label === 'MR') {
-                        console.log('yes')
+                    if (detailInMaleCr.includes(coordinates.label)) {
+                        // console.log('yes')
                         point.text('')
                         point.append(`<i class="fa-solid fa-person fa-2xl" style="color: #0f56d2;"></i>`)
                     }
-                    if (coordinates.label === 'female' || coordinates.label === 'FR' || coordinates
-                        .label === 'CFF') {
+                    if (detailInFemaleCr.includes(coordinates.label)) {
                         point.text('')
                         point.append(
                             `<i class="fa-solid fa-person-dress fa-2xl" style="color: #eb05c1;"></i>`)
                     }
                     if (coordinates.label === 'stair-in') {
                         point.text('')
-                        point.append(`<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>`)
+                        point.append(`<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;background:${coordinates.bgcolor}"></i>`)
                     }
                     if (coordinates.label === 'guard') {
                         point.text('')
@@ -512,7 +539,7 @@
                             var label = item['label'];
 
                             // Check if label is non-null and unique
-                            if (label !== null && !seenLabels.has(label)) {
+                            if (label !== null && !seenLabels.has(label) && label !== 'wall') {
                                 seenLabels.add(label);
                                 return true;
                             }
@@ -532,53 +559,73 @@
                 //populate the keys
                 populateKeys(key,filteredServerResponds)
             }
+
             
+            // console.log(getMaleAbbrev)
             // populates the keys
-            function populateKeys(key,filteredServerRespondsData){
+           async function populateKeys(key,filteredServerRespondsData){
                 var keysDisplay = ''
                 var icons = ''
+                var bg = ''
                 var iconText = ''
-                const male = ['male', 'MR', 'MRX', 'MRN',
-                'MRF']; // Add more labels as needed for abbrev
-                const female = ['female', 'FR', 'FRU', 'FRF',
-                'FRZ']; // Add more labels as needed for abbrev
+
+                const response = await fetch('/facilities-cr', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    body: JSON.stringify({
+                        restroom: `restroom`,
+                    }),
+
+                });
+                // const responseData = await response.json();
+                // handleResponse(response)
+                const responseData = await response.json();
+                // console.log(responseData)
+                // const male = ['male', 'MR', 'MRX', 'MRN',
+                // 'MRF']; // Add more labels as needed for abbrev
+                // const female = ['female', 'FR', 'FRU', 'FRF',
+                // 'FRZ']; // Add more labels as needed for abbrev
                 filteredServerRespondsData[key]['gridDetails'].forEach(data => {
+                    // console.log(data)
                     switch (data.label) {
-                        case 'wall':
-                            icons = `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
-                            iconText = `Blocked Cell`
-                            break;
+                        
                         case 'front':
                             icons = `<i class="fa-solid fa-street-view fa-2xl"></i>`
-                            iconText = `Student Lounge`
+                            iconText = `Your Location`
+                            bg = data.bgcolor;
                             break;
                         case 'stair-in':
                             icons = `<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>`
                             iconText = `Stairs`
+                            bg = data.bgcolor;
                             break;
-                        case 'stair-in':
-                            icons = `<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>`
-                            iconText = `Stairs`
-                            break;
+                        // case 'stair-in':
+                        //     icons = `<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>`
+                        //     iconText = `Stairs`
+                        //     break;
                         
                         default:
                             icons = data.label
                             iconText = data.sublabel
+                            bg = data.bgcolor;
                             break;
                     }
 
                     // for rest room
-                    if (female.includes(data.label)) {
+                    if (responseData.female.includes(data.label)) {
                         icons = `<i class="fa-solid fa-person-dress fa-2xl" style="color: #eb05c1;"></i>`
                     }
-                    if (male.includes(data.label)) {
-                        icons = `<i class="fa-solid fa-person fa-2xl" style="color: #eb05c1;"></i>`
+                    if (responseData.male.includes(data.label)) {
+                        icons = `<i class="fa-solid fa-person fa-2xl" style="color: #0f56d2;"></i>`
                     }
 
                     keysDisplay += `
                     <div class="keys mb-2">
                         <i class="ri-checkbox-blank-circle-fill font-size-10 text-success align-middle me-2"></i>
-                        <span class="floor-keys">${icons}</span>
+                        <span class="floor-keys text-white" style="background:${bg}">${icons}</span>
                         <span class="floor-mean">${iconText}</span>
                     </div>
                     `
@@ -930,7 +977,7 @@
                 // const responseData = await response.json();
                 // handleResponse(response)
                 const responseData = await response.json();
-                console.log(responseData)
+                // console.log(responseData)
                 var fc = ''
                 var w = ''
                 responseData.fac.forEach(data => {
@@ -938,28 +985,32 @@
                         <div class="col-sm-2 p-2">
                             <div class="card edit-col">
                                 
-                                <h5 class="card-title border ct" data-sublabel="${data.facilities}" data-bs-toggle="tooltip" data-bs-placement="top" title="${data.facilities}">${data.abbrev}</h5>
+                                <h5 class="card-title" data-door="true" data-color="${data.color}" data-sublabel="${data.facilities}" 
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="${data.facilities}" style="background:${data.color}; padding:10px; cursor:pointer;text-align:center;"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="${data.facilities}">
+                                    ${data.abbrev !== undefined ? data.abbrev : data.facilities}
+                                </h5>
                                
                             </div>
                         </div>
                         `
                 });
-                fc += `
-                        <div class="col-sm-2 p-2">
-                            <div class="card edit-col">
+                // fc += `
+                //         <div class="col-sm-2 p-2">
+                //             <div class="card edit-col">
                                
-                                <h5 class="card-title border wall ct" data-sublabel="stair-in" data-bs-toggle="tooltip" data-bs-placement="top" title="Stairs">Stair</h5>
+                //                 <h5 class="card-title border wall ct" data-door="true" data-color="${data.color}" data-sublabel="stair-in" data-bs-toggle="tooltip" data-bs-placement="top" title="Stairs">Stair</h5>
                                
-                            </div>
-                        </div>
-                `
-                fc += `<div class="col-sm-2 p-2">
-                            <div class="card edit-col">
+                //             </div>
+                //         </div>
+                // `
+                // fc += `<div class="col-sm-2 p-2">
+                //             <div class="card edit-col">
                                
-                                <h5 class="card-title border wall cw" data-sublabel="wall" data-bs-toggle="tooltip" data-bs-placement="top" title="wall block path">wall</h5>
+                //                 <h5 class="card-title border wall cw" data-door="true" data-color="${data.color}" data-sublabel="wall" data-bs-toggle="tooltip" data-bs-placement="top" title="wall block path">wall</h5>
                                
-                            </div>
-                        </div>`
+                //             </div>
+                //         </div>`
 
                 $('.editing-fac').html(fc)
                 $('#editModal').modal({
@@ -980,6 +1031,7 @@
                     // Get the value of the data-sublabel attribute
                     const sublabelValue = $(this).find('.card-title').data('sublabel');
                     const floor = $(this).find('.card-title').data('floor');
+                    const bgcolor = $(this).find('.card-title').data('color');
                     // Update the data-l attribute value of the original grid point
                     
                     if(sublabelValue == 'wall'){
@@ -988,10 +1040,15 @@
                         gridPoint.attr("data-l", clickedValue);
                         gridPoint.attr("data-sublabel", '')
                         gridPoint.attr("data-floor", floor)
+                       
                         // gridPoint.attr("data-sublabel", sublabelValue)
                         gridPoint.addClass('wall')
                         gridPoint.append(`<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`)
                     }else{
+                        gridPoint.attr("data-color",bgcolor )
+                        gridPoint.attr("data-door", 'true' )
+                        gridPoint.css({"background": bgcolor} )
+                        gridPoint.addClass('blocked')
                         gridPoint.removeClass('wall')
                         gridPoint.attr("data-l", clickedValue);
                         gridPoint.attr("data-sublabel", sublabelValue)
@@ -1013,6 +1070,9 @@
                     gridPoint.text('')
                     gridPoint.removeAttr('data-sublabel');
                     gridPoint.removeAttr('data-floor');
+                    gridPoint.removeAttr('data-door');
+                    gridPoint.removeAttr('data-bgcolor');
+                    gridPoint.css({'background':'none'})
                     gridPoint.removeClass('blocked')
                     gridPoint.removeClass('wall')
                     gridPoint.removeAttr('data-l');
@@ -1057,6 +1117,8 @@
                     const sublabel = gridPoint.getAttribute("data-sublabel"); //meaning
                     const abbrev = gridPoint.getAttribute("data-abbrev");
                     const fl = gridPoint.getAttribute("data-floor");
+                    const door = gridPoint.getAttribute("data-door");
+                    const bgcolor = gridPoint.getAttribute("data-color");
                     console.log(sublabel)
                     // static for now
                      // Get the selected option on page load
@@ -1075,6 +1137,8 @@
                         label,
                         sublabel,
                         abbrev,
+                        door,
+                        bgcolor,
                     });
                 });
 
