@@ -1264,6 +1264,10 @@
                 // Stop any ongoing speech before starting a new one
                 stopSpeaking();
 
+                resetSessionTimer()
+                // Start the timer
+                timeoutId = setTimeout(startLogoutCountdown, sessionTimeout);
+
                 // hide all svg options
                 $('svg').hide()
                 // speak
