@@ -2326,6 +2326,7 @@
             if (updates !== 'false') {
                 input.hide();
                 subBTN.hide();
+                stopSpeaking()
                 var updatesCompleted =
                     "Updates Completed! Maintenance for the  system is done. We've made improvements and added new data. The system is now fully operational. Thank you for your understanding!"
                 startToSpeak(updatesCompleted)
