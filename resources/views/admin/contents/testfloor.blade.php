@@ -51,7 +51,7 @@
             /* Adjust the width of the floorplan */
             height: fit-content;
             /* Adjust the height of the floorplan */
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
             /* margin: 50px auto; */
             display: grid;
             grid-template-columns: repeat(10, 1fr);
@@ -62,9 +62,9 @@
             /* Adjust the gap between rooms */
             background-color: transparent;
             /* Background color for the floorplan */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
             /* Add a subtle shadow */
-            border-radius: 10px;
+            /* border-radius: 10px; */
             /* Add rounded corners */
             /* perspective: 1000px; */
             /* Create perspective for 3D effect */
