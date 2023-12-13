@@ -96,6 +96,7 @@ Route::post('/navi/process/navigation',[Navi::class, 'naviProcessNavigation'])->
 Route::post('/available',[Navi::class,'designatedTeacher'])->name('available');
 // auth required
 Route::get('/auth-required', [FunctionalityController::class,'checkAuth'])->name('checkAuth');
-
+// retraining
+Route::get('/retraining',[UpdateController::class,'Retraining'])->name('training');
 
 require __DIR__.'/auth.php';

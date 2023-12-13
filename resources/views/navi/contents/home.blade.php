@@ -88,9 +88,10 @@
             z-index: 1000;
         }
 
-        .grid-container::-webkit-scrollbar{
+        .grid-container::-webkit-scrollbar {
             width: 0;
         }
+
         /* Style for each room (grid point) */
         .grid-point {
             width: 60px;
@@ -198,6 +199,7 @@
             text-shadow: 1px 1px 2px rgba(241, 239, 239, 0.8);
             font-weight: 600;
         }
+
         .subTargetFacilities {
             /* border: 0.2px solid rgba(11, 93, 234, 0.384); */
             /* border: 1px solid green; */
@@ -468,13 +470,26 @@
             });
 
             var channel = pusher.subscribe('update-system');
-            channel.bind('initialize-updates', function(data) {
+            channel.bind('initialize-updates', async function(data) {
                 // Parse the JSON data
                 // var eventData = JSON.parse(data);
                 // console.log(data.message)
                 var message = data.message
                 input.hide();
                 subBTN.hide();
+
+                const responseTraining = await fetch('/retraining', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+
+                });
+
+                console.log(responseTraining)
+
+
                 startToSpeak(message)
                     .then((finished) => {
                         if (finished) {
@@ -752,10 +767,14 @@
                                     // console.log(message);
                                     $('#popup-continuation-speech').removeClass('active');
 
-                                     // List of valid commands
+                                    // List of valid commands
                                     const validCommandsCancel = ['exit', 'close', 'stop', 'cancel'];
-                                    const validCommandsYes = ['yes', 'exactly', 'doit', 'yup','next', 'ofcourse','yep','do it', 'perfect'];
-                                    const validCommandsNo = ['no', 'nope', 'wrong', 'bobo', 'not exactly'];
+                                    const validCommandsYes = ['yes', 'exactly', 'doit', 'yup', 'next',
+                                        'ofcourse', 'yep', 'do it', 'perfect'
+                                    ];
+                                    const validCommandsNo = ['no', 'nope', 'wrong', 'bobo',
+                                        'not exactly'
+                                    ];
 
                                     if (validCommandsYes.some(commands => message.includes(commands))) {
                                         recognition.stop();
@@ -785,7 +804,8 @@
                                         $('#speech-input').val('');
                                         // Handle the data as needed
                                         console.log('its a yes');
-                                    } else if (validCommandsNo.some(command => message.includes(command))) {
+                                    } else if (validCommandsNo.some(command => message.includes(
+                                            command))) {
                                         // Handle 'no' case
                                         $('#popup-continuation-speech').toggleClass('active');
                                         startSessionTimer()
@@ -797,14 +817,16 @@
                                                     hideIndicatorSpeaking()
                                                 }
                                             })
-                                    } else if (validCommandsCancel.some(command => message.includes(command))) {
+                                    } else if (validCommandsCancel.some(command => message.includes(
+                                            command))) {
                                         startSessionTimer()
                                         startToSpeak(
                                                 'got it!'
                                             )
                                             .then((done) => {
                                                 if (done) {
-                                                    $('#popup-continuation-speech').removeClass('active');
+                                                    $('#popup-continuation-speech').removeClass(
+                                                        'active');
                                                     hideIndicatorSpeaking()
                                                 }
 
@@ -813,7 +835,7 @@
                                         stopSpeaking();
                                     } else {
                                         // alert(message)
-                                        if(message !== null && message !== ''){
+                                        if (message !== null && message !== '') {
                                             startSessionTimer()
                                             $('#popup-continuation-speech').toggleClass('active');
                                             $('#speech-input').val(message + ' ?');
@@ -824,7 +846,7 @@
                                                     }
                                                 })
                                         }
-                                        
+
                                     }
 
 
@@ -1456,19 +1478,23 @@
                                 point.attr("data-door", coordinates.door)
                                 point.attr("data-color", coordinates.bgcolor)
                                 // css
-                                point.css({"background":coordinates.bgcolor})
+                                point.css({
+                                    "background": coordinates.bgcolor
+                                })
                                 // point.text(`${parseInt(coordinates.x)},${parseInt(coordinates.y)}`); // Optionally, you can label points with their coordinates
                                 // Use a ternary operator to set the text based on coordinates.label
                                 // point.text(coordinates.label !== null ? truncateText(coordinates
                                 //     .label, 7) : '');
                                 // Check if an element with the same label already exists
-                                const existingElement = $('.grid-point[data-label="' + coordinates.sublabel + '"]');
+                                const existingElement = $('.grid-point[data-label="' + coordinates
+                                    .sublabel + '"]');
                                 if (existingElement.length > 0) {
                                     // If an element with the same label exists, set the text of the new element to blank
                                     point.text('');
                                 } else {
                                     // If no element with the same label exists, set the text based on coordinates.label
-                                    point.text(coordinates.label !== null ? truncateText(coordinates.label, 7) : '');
+                                    point.text(coordinates.label !== null ? truncateText(coordinates
+                                        .label, 7) : '');
                                 }
                                 gridContainer.append(point).fadeIn(
                                     'slow'); // Append the point to the grid container using jQuery
@@ -1491,16 +1517,16 @@
                                     // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
                                 } else if (coordinates.label == targetFacilities || coordinates
                                     .sublabel == targetFacilities) {
-                                        if(coordinates.door === 'true'){
-                                            point.addClass('targetFacilities');
-                                            targetX = parseInt(coordinates.x);
-                                            targetY = parseInt(coordinates.y);
-                                        
-                                        }else{
-                                            point.addClass('subTargetFacilities');
-                                            point.addClass('blocked')
-                                        }
-                                    
+                                    if (coordinates.door === 'true') {
+                                        point.addClass('targetFacilities');
+                                        targetX = parseInt(coordinates.x);
+                                        targetY = parseInt(coordinates.y);
+
+                                    } else {
+                                        point.addClass('subTargetFacilities');
+                                        point.addClass('blocked')
+                                    }
+
                                     isTargetFound = true;
                                     // console.log("nag true mna", isTargetFound)
                                 } else if (coordinates.label === 'front') {
@@ -1517,9 +1543,11 @@
 
 
                                 if (coordinates.label === 'wall') {
-                                    point.addClass('blocked wall').css({'background':'none'})
+                                    point.addClass('blocked wall').css({
+                                        'background': 'none'
+                                    })
                                     point.text('')
-                                    
+
                                 }
                                 if (detailInMaleCr.includes(coordinates.label)) {
                                     console.log('yes')
@@ -1630,7 +1658,7 @@
                                                 `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
                                             iconText = `Blocked Cell`
                                             break;
-                                       
+
                                         case 'stair-in':
                                             icons =
                                                 `<i class="fa-solid fa-stairs fa-lg" style="color: #0f56d2;"></i>`
@@ -1852,13 +1880,14 @@
                         createGridPoints(facility, true);
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
-                        $('#next-floor-button').prop("disabled", false).removeClass('btn btn-secondary').show();
+                        $('#next-floor-button').prop("disabled", false).removeClass(
+                            'btn btn-secondary').show();
                     }
                 });
 
                 // Next button preview
                 $(document).on('click', '#next-floor-button', function() {
-                    if (floorIndex < len-1) {
+                    if (floorIndex < len - 1) {
                         console.log(floorIndex);
                         floorIndex++; // Increment floorIndex
                         const gridContainer = $("#grid-container");
@@ -1876,7 +1905,8 @@
                         createGridPoints(facility, true);
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
-                        $('#back-floor-button').prop("disabled", false).removeClass('btn btn-secondary').show();
+                        $('#back-floor-button').prop("disabled", false).removeClass(
+                            'btn btn-secondary').show();
                     }
                 });
 
@@ -2727,7 +2757,7 @@
                 }
             })();
 
-            
+
 
             function startSessionTimer() {
                 // Reset the timer on any user interaction (mousemove, keypress, or touch)

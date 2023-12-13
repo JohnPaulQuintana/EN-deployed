@@ -36,4 +36,21 @@ class UpdateController extends Controller
     // Redirect back with a success message and the inserted products
     return back()->with('notification', $notificationJson);
     }
+
+    public function Retraining(){
+        // Specify the file name or path relative to the base path of your Laravel application
+        $fileName = 'model.nlp';
+
+        // Get the full path to the file
+        $filePath = base_path($fileName);
+
+        // Check if the file exists before attempting to delete it
+        if (file_exists($filePath)) {
+            // Delete the file
+            unlink($filePath);
+            return response()->json(['status'=>'Successfully Deleted']);
+        } else {
+            return response()->json(['status'=>'Failed to Deleted']);
+        }
+    }
 }

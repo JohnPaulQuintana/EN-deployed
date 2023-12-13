@@ -13,7 +13,7 @@ let circle = document.querySelector('.circle');
 //       });
 // });
 
-$('.circle').on('click',()=>{
+$('.circle').on('dblclick',()=>{
   // stopSpeaking()
    location.reload(true)
     
