@@ -2301,7 +2301,7 @@
             $(document).on('click', '.targetFacilities .subTargetFacilities', async function() {
                 // Inside this function, 'this' refers to the clicked element
                 var clickedElement = $(this).data('label');
-
+                alert(clickedElement)
                 const responses = await fetch('/available', {
                     method: 'POST',
                     headers: {
