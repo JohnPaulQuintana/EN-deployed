@@ -37,7 +37,7 @@ class UpdateController extends Controller
     return back()->with('notification', $notificationJson);
     }
 
-    public function Retraining(){
+    public function retraining(){
         // Specify the file name or path relative to the base path of your Laravel application
         $fileName = 'model.nlp';
 
