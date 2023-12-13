@@ -606,6 +606,9 @@
             let details;
             let highestX = -Infinity; // Start with negative infinity as the initial value
             let highestY = -Infinity;
+            var detailInMaleCr = @json($male); // Convert PHP array to JavaScript object
+            var detailInFemaleCr = @json($female); // Convert PHP array to JavaScript object
+            console.log(detailInMaleCr)
             // Function to create and append points to the grid
             function createGridPoints(width, height, gridDetails) {
                 gridPointWidth = width;
@@ -922,9 +925,10 @@
                                 break;
                         
                             default:
-                                if(label === 'RFMU' || label === 'CFM' || label === 'MR'){
+                                console.log(label)
+                                if(detailInMaleCr.includes(label)){
                                     type.addClass("fa-solid fa-person fa-2xl marks").css({"color":"#0f56d2"})
-                                }else if(label === "FR" || label === "CFF"){
+                                }else if(detailInFemaleCr.includes(label)){
                                     type.addClass("fa-solid fa-person-dress fa-2xl marks").css({"color":"#eb05c1"})
                                 }else if (label === 'L'){
                                     type.addClass("fa-solid fa-street-view fa-2xl marks").css({"color":"rgb(11, 93, 234)"})

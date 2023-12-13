@@ -90,7 +90,7 @@
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Enter a name.</span>
                                                         <input type="text" name="teachers_name[]"
-                                                            class="form-control text-white mt-2 add-input"
+                                                            class="form-control mt-2 add-input"
                                                             placeholder="Percian Borja Joseph" required>
                                                     </h6>
                                                 </td>
@@ -114,7 +114,7 @@
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Enter your position.</span>
                                                         <input type="text" name="teachers_position[]"
-                                                            class="form-control text-white mt-2" placeholder="Teacher" required>
+                                                            class="form-control mt-2" placeholder="Teacher" required>
                                                     </h6>
                                                 </td>
                                                 <td width='100'>
@@ -328,7 +328,7 @@
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Enter your name.</span>
                                                         <input type="text" name="teachers_name[]"
-                                                            class="form-control text-white mt-2"
+                                                            class="form-control mt-2"
                                                             placeholder="Percian Borja Joseph" required>
                                                     </h6>
                                                 </td>
@@ -338,7 +338,7 @@
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Select a gender.</span>
-                                                        <select id="floor-selected" name="teachers_gender[]" class="form-select text-white mt-2">
+                                                        <select id="floor-selected" name="teachers_gender[]" class="form-select mt-2">
                                                             
                                                                 <option value="male">{{ __('Male') }}</option>
                                                                 <option value="female">{{ __('Female') }}</option>
@@ -353,7 +353,7 @@
                                                         <span class="text-secondary">Please Enter your position.</span>
     
                                                             <input type="text" name="teachers_position[]"
-                                                                    class="form-control text-white mt-2"
+                                                                    class="form-control mt-2"
                                                                     placeholder="Teacher" required>
                                                     </h6>
                                                 </td>
@@ -364,7 +364,7 @@
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Enter your facilities.</span>
                                                         <div class="input-group d-flex align-items-center text-danger">
-                                                            <select id="floor-selected" name="teachers_located[]" class="form-control text-white mt-2">
+                                                            <select id="floor-selected" name="teachers_located[]" class="form-control mt-2">
                                                                 @foreach ($facilities as $facility)
                                                                     <option value="{{ $facility->id }}">{{ $facility->facilities }}</option>
                                                                 @endforeach
@@ -443,7 +443,7 @@
                             <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                             
                             <input type="text" name="${originalName}"
-                                class="form-control text-white mt-2 edited edit-input"
+                                class="form-control mt-2 edited edit-input"
                                 placeholder="who is navi team?"
                                 value="${selectedOption.val()}">
                             <i class="text-danger h3 fas fa-times cancel-edit" style="margin:15px auto 10px 10px;"></i>

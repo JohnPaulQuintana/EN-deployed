@@ -28,8 +28,32 @@ class FloorplanController extends Controller
       $nonExistingFloors = FloorList::whereNotIn('floor', function ($query) {
          $query->select('floor')->from('floorplans');
      })->pluck('floor')->toArray();
+
+
+     $result = DB::table('eastwoods_facilities')
+    ->join('abbrevs', 'eastwoods_facilities.id', '=', 'abbrevs.facility_id')
+    ->select('eastwoods_facilities.facilities', 'abbrevs.abbrev')
+    ->whereIn('facilities', ['male restroom', 'female restroom'])
+    ->get();
+
+    // Group the results by facility
+    $groupedResult = $result->groupBy('facilities');
+
+    // Create an associative array where the keys are the facilities and the values are arrays of abbreviations
+    $groupedAbbreviations = $groupedResult->map(function ($items) {
+        return $items->pluck('abbrev')->toArray();
+    });
+
+    // Access male restroom abbreviations
+    $maleRestroomAbbreviations = $groupedAbbreviations['male restroom'] ?? [];
+
+    // Access female restroom abbreviations
+    $femaleRestroomAbbreviations = $groupedAbbreviations['female restroom'] ?? [];
+
+// You can now use $maleRestroomAbbreviations and $femaleRestroomAbbreviations as needed
+
       // dd($nonExistingFloors);
-        return view('admin.contents.floorplan')->with(['facilities'=>$mergedData, 'flist'=>$nonExistingFloors]);
+        return view('admin.contents.floorplan')->with(['facilities'=>$mergedData, 'flist'=>$nonExistingFloors, 'male'=>$maleRestroomAbbreviations, 'female'=>$femaleRestroomAbbreviations]);
    }
 
    public function floorPlanLayoutSave(Request $request) {
