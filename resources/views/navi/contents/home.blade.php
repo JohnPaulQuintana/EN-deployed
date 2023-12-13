@@ -2860,7 +2860,7 @@
 
             // Check if the page is refreshed
             if (performance.navigation.type === 1) {
-                stopSpeaking()
+                // stopSpeaking()
                 hideIndicator()
                 hideIndicatorSpeaking()
             } else {
