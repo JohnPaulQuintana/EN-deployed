@@ -15,7 +15,7 @@
         <box-icon name='chevrons-up' color='#f9f4f4' class="abbrev-means-back des-back-home"></box-icon> 
         <h2 class="floor-title">designated teacher's</h2>
         
-        <p class="floor-guide">list of designated teacher's on <span class="at"></span></p>
+        <p class="floor-guide">list of designated Staff's on <span class="at"></span></p>
        
         <div class="abbrev-periodic-table tc l-des">
             <!-- Static content for the periodic table -->
