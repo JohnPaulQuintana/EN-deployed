@@ -2328,19 +2328,19 @@
                 input.hide();
                 subBTN.hide();
                 stopSpeaking()
-               
-                var updatesCompleted =
-                    "Updates Completed! Maintenance for the  system is done. We've made improvements and added new data. The system is now fully operational. Thank you for your understanding!"
-                startToSpeak(updatesCompleted)
-                    .then((finished) => {
-                        if (finished) {
-                            hideIndicatorSpeaking()
-                            console.log(finished)
+                hideIndicatorSpeaking()
+                // var updatesCompleted =
+                //     "Updates Completed! Maintenance for the  system is done. We've made improvements and added new data. The system is now fully operational. Thank you for your understanding!"
+                // startToSpeak(updatesCompleted)
+                //     .then((finished) => {
+                //         if (finished) {
+                //             hideIndicatorSpeaking()
+                //             console.log(finished)
                             
-                        } else {
-                            console.log('not finished')
-                        }
-                    })
+                //         } else {
+                //             console.log('not finished')
+                //         }
+                //     })
             } else {
                 console.log('nothing to say')
             }
