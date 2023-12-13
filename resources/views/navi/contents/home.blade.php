@@ -487,7 +487,7 @@
                 $('#searchModal').fadeOut()
                 $('#popup-continuation-teacher').fadeOut()
                 $('#facilityInformationPopup').fadeOut()
-                stopSpeaking()
+                // stopSpeaking()
                 const responseTraining = await fetch('/retraining', {
                     method: 'GET',
                     headers: {
