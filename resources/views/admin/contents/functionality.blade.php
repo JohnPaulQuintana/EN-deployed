@@ -67,9 +67,10 @@
                             <div class="table-responsive">
                                 <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                     <thead class="table-light">
+                                        {{-- {{ $systems[0] }} --}}
                                         @php
-                                            if(isset($systems[2])){
-                                                $auth =  $systems[2]->status;
+                                            if(isset($systems[1])){
+                                                $auth =  $systems[1]->status;
                                                 if (!$auth) {
                                                     $className = 'text-danger';
                                                     $text = "Offline";
@@ -90,8 +91,8 @@
                                                     <img src="{{ asset('icons/auth.png') }}" class="card-img-top" alt="...">
                                                     <div class="card-body">
                                                         @php
-                                                            if(isset($systems[2])){
-                                                                $auth =  $systems[2]->status;
+                                                            if(isset($systems[1])){
+                                                                $auth =  $systems[1]->status;
                                                                 if (!$auth) {
                                                                     $className = 'btn-info';
                                                                     $text = "Enable";
@@ -101,7 +102,7 @@
                                                                 }
                                                             }
                                                         @endphp
-                                                        <button type="button" class="btn {{ $className }} form-control btn-system" data-action="{{ optional($systems[2])->status  }}" data-id="{{ optional($systems[2])->id }}">{{ $text }}</button>
+                                                        <button type="button" class="btn {{ $className }} form-control btn-system" data-action="{{ optional($systems[1])->status  }}" data-id="{{ optional($systems[1])->id }}">{{ $text }}</button>
                                                       {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
                                                     </div>
                                                   </div>
@@ -182,8 +183,8 @@
                                 <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
                                     <thead class="table-light">
                                         @php
-                                            if(isset($systems[1])){
-                                                $auth =  $systems[1]->status;
+                                            if(isset($systems[2])){
+                                                $auth =  $systems[2]->status;
                                                 if (!$auth) {
                                                     $className = 'text-danger';
                                                     $text = "Offline";
@@ -204,8 +205,8 @@
                                                     <img src="{{ asset('icons/text.png') }}" class="card-img-top" alt="...">
                                                     <div class="card-body">
                                                         @php
-                                                            if(isset($systems[1])){
-                                                                $auth =  $systems[1]->status;
+                                                            if(isset($systems[2])){
+                                                                $auth =  $systems[2]->status;
                                                                 if (!$auth) {
                                                                     $className = 'btn-info';
                                                                     $text = "Enable";
@@ -215,7 +216,7 @@
                                                                 }
                                                             }
                                                         @endphp
-                                                        <button type="button" class="btn {{ $className }} form-control btn-system" data-action="{{ optional($systems[1])->status  }}" data-id="{{ optional($systems[1])->id }}">{{ $text }}</button>
+                                                        <button type="button" class="btn {{ $className }} form-control btn-system" data-action="{{ optional($systems[2])->status  }}" data-id="{{ optional($systems[2])->id }}">{{ $text }}</button>
                                                       {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
                                                     </div>
                                                   </div>
