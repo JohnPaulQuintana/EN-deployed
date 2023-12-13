@@ -629,16 +629,16 @@ class Navi extends Controller
     ];
 
     public $positiveResponses = [
-        "Get ready to explore. Enjoy the map!",
-        "Discover the area with the map below!",
-        "Your map is coming up. Enjoy exploring!",
-        "Exciting! Dive into the map below.",
-        "Explore with the map coming up. Enjoy!",
-        "Ready? Map below. Enjoy your exploration!",
-        "Brace yourself for the map. Dive in!",
-        "Your map is ready. Start exploring!",
-        "Map coming up. Enjoy your exploration!",
-        "Map coming up. Enjoy your exploration!"
+        "Get ready to explore.!",
+        "Discover the area!",
+        "Your map is coming up.!",
+        "Exciting!",
+        "Enjoy!",
+        "Ready!",
+        "Brace yourself for the map!",
+        "Your map is ready.",
+        "Map coming up!",
+        "Map coming up!"
     ];
 
 
