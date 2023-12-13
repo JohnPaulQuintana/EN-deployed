@@ -562,20 +562,20 @@
                 var bg = ''
                 var iconText = ''
 
-                const response = await fetch('/facilities-cr', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                    },
-                    body: JSON.stringify({
-                        restroom: `restroom`,
-                    }),
+                // const response = await fetch('/facilities-cr', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //         'X-CSRF-TOKEN': csrfToken,
+                //     },
+                //     body: JSON.stringify({
+                //         restroom: `restroom`,
+                //     }),
 
-                });
+                // });
+                // // const responseData = await response.json();
+                // // handleResponse(response)
                 // const responseData = await response.json();
-                // handleResponse(response)
-                const responseData = await response.json();
                 // console.log(responseData)
                 // const male = ['male', 'MR', 'MRX', 'MRN',
                 // 'MRF']; // Add more labels as needed for abbrev
@@ -608,10 +608,10 @@
                     }
 
                     // for rest room
-                    if (responseData.female.includes(data.label)) {
+                    if (detailInFemaleCr.female.includes(data.label)) {
                         icons = `<i class="fa-solid fa-person-dress fa-2xl" style="color: #eb05c1;"></i>`
                     }
-                    if (responseData.male.includes(data.label)) {
+                    if (detailInMaleCr.male.includes(data.label)) {
                         icons = `<i class="fa-solid fa-person fa-2xl" style="color: #0f56d2;"></i>`
                     }
 
