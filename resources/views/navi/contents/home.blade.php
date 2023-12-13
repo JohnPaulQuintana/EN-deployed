@@ -483,7 +483,7 @@
                 $('#abbrevPopup').fadeOut();
                 $('#designatedPopup').fadeOut()
                 $('#popup-continuation').fadeOut()
-                $('#popup').removeClass('active');
+                // $('#popup').removeClass('active');
                 $('#searchModal').fadeOut()
                 $('#popup-continuation-teacher').fadeOut()
                 $('#facilityInformationPopup').fadeOut()
