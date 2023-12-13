@@ -519,7 +519,7 @@
                                 var currentURL = window.location.href;
                                 window.location.href = currentURL;
                                 localStorage.setItem('updates', true);
-                            }, 20000);
+                            }, 10000);
 
                         } else {
                             console.log('not fineshed')
