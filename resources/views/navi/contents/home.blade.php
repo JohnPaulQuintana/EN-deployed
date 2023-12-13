@@ -2854,6 +2854,11 @@
                 console.log('Page is not refreshed');
             }
 
+            $('.circle').on('dblclick',()=>{
+                stopSpeaking()
+                location.reload(true)
+                
+            })
             // indicator speech
             // showIndicator();
 

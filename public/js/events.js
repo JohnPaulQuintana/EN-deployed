@@ -13,11 +13,7 @@ let circle = document.querySelector('.circle');
 //       });
 // });
 
-$('.circle').on('dblclick',()=>{
-  // stopSpeaking()
-   location.reload(true)
-    
-})
+
 
 
 // toggle function
