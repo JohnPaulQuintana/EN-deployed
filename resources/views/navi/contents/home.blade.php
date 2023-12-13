@@ -2350,6 +2350,59 @@
                 })
 
             });
+            // subTarget
+            $(document).on('click', '.subTargetFacilities', async function() {
+                // Inside this function, 'this' refers to the clicked element
+                var clickedElement = $(this).data('label');
+                // alert(clickedElement)
+                const responses = await fetch('/available', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    body: JSON.stringify({
+                        designated: `${clickedElement}`,
+                    }),
+
+                });
+
+                const designatedTeachers = await responses.json();
+                // console.log(designatedTeachers)
+                $('#navigationPopup').fadeOut(500);
+
+                $('.at').text(designatedTeachers.result.facility.facilities);
+                var teach = ''
+                if (designatedTeachers.result.teachers.length > 0) {
+                    designatedTeachers.result.teachers.forEach(ts => {
+
+                        teach += `
+                                <div class="abbrev-element designated-teacher">
+                                    <box-icon name='user' type='solid' ></box-icon><br>
+                                    <span class="abbr designated-teacher-t">${ts.name}</span><br>
+                                    <hr>
+                                    <span class="abbr-m">${ts.position}</span>
+                                </div>
+                                `;
+
+                    });
+                } else {
+                    teach = `<h4 class="text-center no-record">There's is no record on this facilities</h4>  
+                    `
+                    // <lord-icon
+                    //     src="https://cdn.lordicon.com/amjaykqd.json"
+                    //     trigger="hover"
+                    //     colors="primary:#0a5c15,secondary:#66ee78"
+                    //     style="width:350px;height:350px">
+                    // </lord-icon>
+                }
+
+                $('.l-des').html(teach)
+                $('#designatedPopup').css({
+                    'display': 'flex'
+                })
+
+            });
 
             $('#preview-Cancel').on('click', function() {
                 $("#myModal").modal("show");
