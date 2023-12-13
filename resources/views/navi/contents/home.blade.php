@@ -477,14 +477,16 @@
                 var message = data.message
                 input.hide();
                 subBTN.hide();
-                $('#popup-scanner').removeClass('active')
                 $('#popup-count').removeClass('active')
                 $('#popup-scanner').removeClass('active')
                 $('#navigationPopup').fadeOut();
                 $('#abbrevPopup').fadeOut();
                 $('#designatedPopup').fadeOut()
                 $('#popup-continuation').fadeOut()
+                $('#popup').removeClass('active');
+                $('#searchModal').fadeOut()
                 $('#popup-continuation-teacher').fadeOut()
+                $('#facilityInformationPopup').fadeOut()
                 stopSpeaking()
                 const responseTraining = await fetch('/retraining', {
                     method: 'GET',
