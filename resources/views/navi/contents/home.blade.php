@@ -2324,7 +2324,7 @@
             console.log(updates)
             // checks for updates
             if (updates !== 'false') {
-                
+                localStorage.setItem('updates', false)
                 input.hide();
                 subBTN.hide();
                 stopSpeaking()
@@ -2336,7 +2336,7 @@
                         if (finished) {
                             hideIndicatorSpeaking()
                             console.log(finished)
-                            localStorage.setItem('updates', false)
+                            
                         } else {
                             console.log('not finished')
                         }
