@@ -2324,6 +2324,7 @@
             console.log(updates)
             // checks for updates
             if (updates !== 'false') {
+                location.reload(true)
                 input.hide();
                 subBTN.hide();
                 stopSpeaking()
