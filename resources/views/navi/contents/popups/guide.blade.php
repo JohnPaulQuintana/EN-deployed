@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body gbody">
                 <div class="instruction-section">
-                    <h6><i class="fa fa-solid fa-book"></i> Guide Book</h6>
+                    <h6><i class="fa fa-solid fa-book fa-3x"></i> Guide Book</h6>
                     <p>
                         All the information on how to use is present here.
                     </p>
