@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body gbody">
                 <div class="instruction-section">
-                    <h3><i class="fa fa-solid fa-book"></i> Guide Book</h3>
+                    <h3 class="text-success"><i class="fa fa-solid fa-book"></i> Guide Book</h3>
                     <p style="font-size: 22px; text-align: justify;">
                         All the information on how to use is present here.
                     </p>
@@ -17,7 +17,7 @@
 
                 <div class="instruction-section">
                     <div class="guide-section">
-                        <h3><i class="fa-solid fa-magnifying-glass"></i> How to Use Search Functionality</h3>
+                        <h3 class="text-success"><i class="fa-solid fa-magnifying-glass"></i> How to Use Search Functionality</h3>
                         <p style="font-size: 22px; text-align: justify;">
                             To find specific facilities, click on the Search icon. A search bar will appear where you can enter keywords, tags, or names associated with the facility you're looking for. The search results will dynamically update as you type, making it easy to locate and manage facilities efficiently.
                         </p>
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="instruction-section">
-                    <h3><i class="fa-solid fa-question"></i> Frequently Asked Questions</h3>
+                    <h3 class="text-success"><i class="fa-solid fa-question"></i> Frequently Asked Questions</h3>
                     <p style="font-size: 22px; text-align: justify;">
                         Access a list of commonly asked questions by users. This section provides answers and solutions to help you navigate through queries effectively.
                     </p>
@@ -34,7 +34,7 @@
                 
 
                 <div class="instruction-section">
-                    <h3><i class="fa-solid fa-microphone-lines"></i> Mastering Voice Commands</h3>
+                    <h3 class="text-success"><i class="fa-solid fa-microphone-lines"></i> Mastering Voice Commands</h3>
                     <p style="font-size: 22px; text-align: justify;">
                         Unlock the power of voice commands to streamline your experience. Activate the microphone by clicking its icon, then confidently speak your commands. Navigate through features, execute actions, and control the application effortlessly. To enhance accuracy, ensure a quiet environment and articulate your commands clearly. Embrace the convenience of hands-free interaction with our intuitive voice command system.
                     </p>
