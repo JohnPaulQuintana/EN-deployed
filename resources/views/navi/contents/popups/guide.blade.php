@@ -19,7 +19,47 @@
                     <div class="guide-section">
                         <h3 class="text-success"><i class="fa-solid fa-magnifying-glass"></i> How to Use Search Functionality</h3>
                         <p style="font-size: 22px; text-align: justify;">
-                            To find specific facilities, click on the Search icon. A search bar will appear where you can enter keywords, tags, or names associated with the facility you're looking for. The search results will dynamically update as you type, making it easy to locate and manage facilities efficiently.
+                            Displaying all the available option <span class="text-success">Facilities</span>, <span class="text-success">Teacher's</span>, <span class="text-success">Vision</span>, <span class="text-success">Mission</span>, <span class="text-success">Eastwoods Hymn</span>.
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="instruction-section">
+                    <div class="guide-section">
+                        <h3 class="text-success"><i class="fa-solid fa-building"></i> Available Facilities</h3>
+                        <p style="font-size: 22px; text-align: justify;">
+                            To find specific facilities, click on the facility icon. A search bar will appear where you can enter keywords, tags, or names associated with the facility you're looking for. The search results will dynamically update as you type, making it easy to locate and manage facilities efficiently.
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="instruction-section">
+                    <div class="guide-section">
+                        <h3 class="text-success"><i class="fa-solid fa-image-portrait"></i> Available Teachers</h3>
+                        <p style="font-size: 22px; text-align: justify;">
+                            To find specific Teacher, click on the teacher icon. A search bar will appear where you can enter keywords, tags, or names associated with the teacher's you're looking for. The search results will dynamically update as you type, making it easy to locate teacher's location efficiently.
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="instruction-section">
+                    <div class="guide-section">
+                        <h3 class="text-success"><i class="fa-solid fa-square-check"></i> Eastwoods Vision</h3>
+                        <p style="font-size: 22px; text-align: justify;">
+                            Displaying eastwoods vision with text-to-speech functionality.
+                        </p>
+                    </div>
+                    
+                </div>
+
+                <div class="instruction-section">
+                    <div class="guide-section">
+                        <h3 class="text-success"><i class="fa-solid fa-square-check"></i> Eastwoods Mission</h3>
+                        <p style="font-size: 22px; text-align: justify;">
+                            Displaying eastwoods mission with text-to-speech functionality.
                         </p>
                     </div>
                     
