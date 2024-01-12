@@ -1,10 +1,11 @@
 <span id="svg-title" class="text-white">
     <b>
         <svg class="icons" data-id="guide" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
-            <!-- Book Icon -->
-            <rect x="3" y="4" width="18" height="16" rx="2" ry="2" fill="currentColor"></rect>
-            <!-- Book Spine -->
-            <rect x="3" y="4" width="1.5" height="16" fill="#fff"></rect>
+            <rect x="2" y="3" width="20" height="18" rx="2" ry="2" fill="#fff" stroke="currentColor"></rect>
+            <!-- Book Pages -->
+            <line x1="2" y1="7" x2="22" y2="7" stroke="currentColor"></line>
+            <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor"></line>
+            <line x1="2" y1="17" x2="22" y2="17" stroke="currentColor"></line>
         </svg>
     </b>
 </span>
