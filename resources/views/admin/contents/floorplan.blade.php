@@ -291,6 +291,7 @@
 <style>
     .modal-content {
         border-radius: 10px;
+        
     }
 
     .modal-header {
