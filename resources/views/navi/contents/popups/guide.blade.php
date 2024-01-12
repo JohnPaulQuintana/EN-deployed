@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">
                     <i class="fas fa-info-circle"></i> User Guide Manual
                 </h5>
-                <button type="button" class="guide-close" aria-label="Close"></button>
+                <button type="button" class="btn-close guide-close" aria-label="Close"></button>
             </div>
             <div class="modal-body gbody">
                 <div class="instruction-section">
