@@ -48,6 +48,7 @@ class Navi extends Controller
     {
         // dd($request);
         $query = $request->input('query');
+        $prompt = $request->input('prompt');
         $allowedPrompts = ['yes', 'just do it', 'ofcourse', 'please'];
         // get all user names
         $names = Teacher::pluck('name');
@@ -75,7 +76,7 @@ class Navi extends Controller
                 Session::forget('floor');
                 Session::forget('facility');
 
-                return response()->json(['response' => $this->generateText($dataArray['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
+                return response()->json(['response' => $this->generateText($dataArray['navi'][0], $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
             } elseif ($request->input('prompt') === 'no') {
                 $floor = 'false';
                 $facility = 'false';
@@ -95,14 +96,9 @@ class Navi extends Controller
                 Session::forget('floor');
                 Session::forget('facility');
 
-                return response()->json(['response' => $this->generateText($dataArray['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
+                return response()->json(['response' => $this->generateText($dataArray['navi'][0], $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
             }
 
-            // Tokenize the prompt into words or tokens
-            // $tokens = str_word_count($request->input('prompt'), 1); // This splits the prompt into an array of words
-            // dd($tokens);
-            // dd('ginagwaa');
-            // dd($query);
             if ($request->input('prompt') !== null) {
                 $client = new Client();
                 $response = $client->post('http://localhost:5000/nlp', [
@@ -149,7 +145,7 @@ class Navi extends Controller
                                 "query" => "facilities.layout.not",
                                 "data" => $facility,
                             ];
-                            return response()->json(['response' => $this->generateText($response), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'information']);
+                            return response()->json(['response' => $this->generateText($response, $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'information']);
                         }
 
                         // dd($jsonData);
@@ -160,7 +156,7 @@ class Navi extends Controller
                             "query" => "facilities.layout.not",
                             "data" => $facility,
                         ];
-                        return response()->json(['response' => $this->generateText($response), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'information']);
+                        return response()->json(['response' => $this->generateText($response, $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'information']);
                     }
                 } else {
                     // dd($result);
@@ -215,7 +211,7 @@ class Navi extends Controller
                                 // $floor = false;
                                 $continuation = 'information';
                                 // dd($result['navi'][0]);
-                                return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
+                                return response()->json(['response' => $this->generateText($result['navi'][0], $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
                             
                             case 'persons.not':
                                 // dd($result['navi'][0]);
@@ -238,9 +234,9 @@ class Navi extends Controller
                                 // break;
 
                             case 'badwords':
-                                return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
+                                return response()->json(['response' => $this->generateText($result['navi'][0], $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
                             case 'greetings':
-                                return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
+                                return response()->json(['response' => $this->generateText($result['navi'][0], $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
 
                             case '404':
                                 $formatrequest = new Request([
@@ -253,7 +249,7 @@ class Navi extends Controller
                                 // dd($formatrequest);
                                 return $this->naviProcessInformationSearch($formatrequest);
                             default:
-                            return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
+                            return response()->json(['response' => $this->generateText($result['navi'][0], $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'deactivate']);
                                
                         }
                         $fac = EastwoodsFacilities::where('facilities', $result['navi'][0]['entity'])->first();
@@ -270,7 +266,7 @@ class Navi extends Controller
                     }
                 }
                 // dd($result['navi'][0]);
-                return response()->json(['response' => $this->generateText($result['navi'][0]), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
+                return response()->json(['response' => $this->generateText($result['navi'][0], $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => $continuation]);
             }else{
                 $response = [
                     'flag' => 'true',
@@ -449,7 +445,7 @@ class Navi extends Controller
                         ];
                         session(['floor' => $findInformation->floor, 'facility' => $findInformation->facilities]);
                         
-                        return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => $continuation]);
+                        return response()->json(['response' => $this->generateText($response, 'no question'), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => $continuation]);
                         // break; // Stop searching once found
                     } else {
                         // print($value['label']);
@@ -462,7 +458,7 @@ class Navi extends Controller
                         ];
 
                         
-                        return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'deactivate']);
+                        return response()->json(['response' => $this->generateText($response, 'no question'), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'deactivate']);
                     }
                     // dd($jsonData);
                 } else {
@@ -473,7 +469,7 @@ class Navi extends Controller
                         "entity" => false,
                         "data" => $findInformation->facilities,
                     ];
-                    return response()->json(['response' => $this->generateText($response), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'deactivate']);
+                    return response()->json(['response' => $this->generateText($response, 'no question'), 'floor' => $findInformation->floor, 'facility' => $findInformation->facilities, 'continuation' => 'deactivate']);
                 }
 
                 // for teachers
@@ -486,7 +482,7 @@ class Navi extends Controller
                 ];
                 session(['floor' => $request->input('locationFloor'), 'facility' => $request->input('teacherLocation')]);
                 $continuation = 'information';
-                return response()->json(['response' => $this->generateText($response), 'floor' => $request->input('locationFloor'), 'facility' => $request->input('teacherLocation'), 'continuation' => $continuation]);
+                return response()->json(['response' => $this->generateText($response, 'no question'), 'floor' => $request->input('locationFloor'), 'facility' => $request->input('teacherLocation'), 'continuation' => $continuation]);
 
             case null:
                 $response = [
@@ -497,16 +493,33 @@ class Navi extends Controller
                 ];
                
                 $continuation = 'deactivate';
-                return response()->json(['response' => $this->generateText($response), 'floor' => null, 'facility' => null, 'continuation' => $continuation]);
+                return response()->json(['response' => $this->generateText($response, 'no question'), 'floor' => null, 'facility' => null, 'continuation' => $continuation]);
             default:
                 # code...
                 break;
         }
     }
     // generating text
-    public function generateText($data)
+    public function generateText($data, $question)
     {
+        // array:5 [ // app\Http\Controllers\Navi.php:509
+        //     "flag" => "false"
+        //     "query" => "404"
+        //     "entity" => false
+        //     "answer" => "Sorry my knowledge is limited, i cant help you with that!"
+        //     "data" => ""
+        //   ]
         // dd($data);
+        if($data['query'] !== '404'){
+            // save the question
+            // dd($question);
+            // Check if the question exists in a case-insensitive manner
+            if (!Frequently::whereRaw('LOWER(frequently) = ?', [strtolower($question)])->exists()) {
+                // The question does not exist in the database
+                $input = Frequently::create(['frequently' => $question]);
+            } 
+            
+        }
         $recomposed = $this->randomText($data['query'], $data['data'], $data['entity']);
 
         $response = [
