@@ -6,9 +6,9 @@
             <!-- Book Binding -->
             <rect x="5" y="3" width="2" height="18" fill="#B4B4B4"></rect>
             <!-- Book Pages -->
-            <line x1="9" y1="3" x2="9" y2="21" stroke="#fff" stroke-linecap="round"></line>
-            <line x1="12" y1="3" x2="12" y2="21" stroke="#fff" stroke-linecap="round"></line>
-            <line x1="15" y1="3" x2="15" y2="21" stroke="#fff" stroke-linecap="round"></line>
+            <line x1="9" y1="3" x2="9" y2="21" stroke="#008000" stroke-linecap="round"></line>
+            <line x1="12" y1="3" x2="12" y2="21" stroke="#008000" stroke-linecap="round"></line>
+            <line x1="15" y1="3" x2="15" y2="21" stroke="#008000" stroke-linecap="round"></line>
         </svg>
     </b>
 </span>
