@@ -9,8 +9,8 @@
             </div>
             <div class="modal-body gbody">
                 <div class="instruction-section">
-                    <h3><i class="fa fa-solid fa-book fa-3x"></i> Guide Book</h3>
-                    <p style="font-size: 14px; text-align: justify;">
+                    <h3><i class="fa fa-solid fa-book"></i> Guide Book</h3>
+                    <p style="font-size: 22px; text-align: justify;">
                         All the information on how to use is present here.
                     </p>
                 </div>
