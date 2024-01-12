@@ -1,18 +1,12 @@
 <span id="svg-title" class="text-white">
-    <b>
-        <svg class="guide-logo" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
-            <!-- Book Icon -->
-            <rect x="3" y="4" width="18" height="16" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
-            <!-- Pages -->
-            <line x1="8" y1="4" x2="8" y2="20" stroke="currentColor" stroke-width="2"></line>
-            <line x1="16" y1="4" x2="16" y2="20" stroke="currentColor" stroke-width="2"></line>
-            <!-- Bookmark -->
-            <line x1="6" y1="4" x2="6" y2="9" stroke="currentColor" stroke-width="2"></line>
-            <polyline points="6 9 12 14 18 9" fill="none" stroke="currentColor" stroke-width="2"></polyline>
-        </svg>
-    </b>
+    <b><svg class="guide-logo" data-id="guide" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+        <!-- Open Book Icon -->
+        <rect x="3" y="4" width="18" height="16" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
+        <!-- Bookmark -->
+        <line x1="12" y1="4" x2="12" y2="9" stroke="currentColor" stroke-width="2"></line>
+        <polyline points="12 9 6 14 12 14 18 9" fill="none" stroke="currentColor" stroke-width="2"></polyline>
+    </svg></b>
 </span>
-
 
 <span id="svg-title" class="text-white">
     <b>
