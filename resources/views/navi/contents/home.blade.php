@@ -14,20 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- App favicon -->
-    {{-- <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}"> --}}
-
-    {{-- toast css --}}
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/libs/toastr/build/toastr.min.css') }}"> --}}
-
-    <!-- Bootstrap Css -->
-    {{-- <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" --}}
-    {{-- type="text/css" /> --}}
     <!-- Icons Css -->
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    {{-- loader css --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/loader.css') }}"> --}}
 
     {{-- new navigation --}}
     <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
@@ -294,6 +282,63 @@
 
     {{-- speaking --}}
     <link rel="stylesheet" href="{{ asset('css/speaking.css') }}">
+
+    {{-- guide --}}
+    <style>
+        .modal-content {
+            border-radius: 10px;
+        }
+
+        .modal-header {
+            background-color: #34db7f;
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title i {
+            margin-right: 10px;
+        }
+
+        .gbody {
+            padding: 20px;
+        }
+
+        .instruction-section {
+            margin-bottom: 20px;
+        }
+
+        .instruction-section h6 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .instruction-section p {
+            margin-bottom: 0;
+        }
+
+        .instruction-section ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 5px;
+        }
+
+        .instruction-section li {
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .instruction-section li::before {
+            content: "\2022";
+            /* Bullet point */
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+    </style>
 @endsection
 
 @section('contents')
@@ -383,6 +428,9 @@
         {{-- indicator of speacking --}}
         @include('navi.contents.popups.speaking')
         {{-- <button type="button" id="autoClicker"></button> --}}
+
+        {{-- guide --}}
+        @include('navi.contents.popups.guide')
     </section>
 
     <footer>
@@ -406,14 +454,9 @@
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
     <script src="{{ asset('html5-qrcodes/html5-qrcode.min.js') }}"></script>
-    <!-- materialdesign icon js-->
-    {{-- <script src="{{ asset('backend/assets/js/pages/materialdesign.init.js') }}"></script> --}}
     @if (session('message'))
         <script>
             var message = @json(session('message'));
-            // const initialUtterance = new SpeechSynthesisUtterance(message);
-            // const synth = window.speechSynthesis;
-            // synth.speak(initialUtterance);
         </script>
     @endif
 
@@ -829,7 +872,7 @@
                                             })
                                     } else if (validCommandsCancel.some(command => message.includes(
                                             command))) {
-                                        startSessionTimer()
+
                                         startToSpeak(
                                                 'got it!'
                                             )
@@ -846,7 +889,7 @@
                                     } else {
                                         // alert(message)
                                         if (message !== null && message !== '') {
-                                            startSessionTimer()
+
                                             $('#popup-continuation-speech').toggleClass('active');
                                             $('#speech-input').val(message + ' ?');
                                             startToSpeak(message + 'I am right?')
@@ -870,40 +913,31 @@
                         }
                         break;
 
-                    case 'scanner':
-                        if ($(this).hasClass('disabled')) {
-                            var scannerMess =
-                                "We apologize, but there is currently a scanner issue. Scanning functionality is temporarily unavailable. The icons have been highlighted in red to indicate this issue. Please try again at a later time. Thank you for your understanding.";
-
-                            startToSpeak(scannerMess)
-                                .then((finished) => {
-                                    if (finished) {
-                                        hideIndicatorSpeaking()
-                                        // Speech finished
-                                        console.log(finished)
-                                    }
-                                });
-                        } else {
-                            startToSpeak(
-                                    "Kindly Placed your qrcodes on the camera to start authentication process. thank you!"
-                                )
-                                .then((finished) => {
-                                    if (finished) {
-                                        hideIndicatorSpeaking()
-                                        // Speech finished
-                                        console.log(finished)
-                                    }
-                                });
-
-                            $('#popup-scanner').css({
-                                'display': 'flex'
-                            })
-                        }
+                    case 'guide':
+                        startToSpeak('Welcome to the Guide! This tool is designed to assist you effortlessly. Click on the guide icon to reveal a wealth of information. Navigate through sections using the intuitive layout, and find helpful tips and instructions for an enhanced experience. Feel free to explore and make the most of the guides features. If you have any questions, the guide is here to help!')
+                            .then((finished) => {
+                                if (finished) {
+                                    // Speech finished
+                                    hideIndicatorSpeaking()
+                                    console.log(finished)
+                                }
+                            });
+                        $('#guideModal').modal('show')
                         break;
                     default:
                         break;
                 }
 
+            })
+
+            // close guide
+            $(document).on('click', '.guide-close', function(){
+                // alert('dwadwa')
+                stopSpeaking()
+                
+                // hide all svg options
+                $('svg').show()
+                $('#guideModal').modal('hide')
             })
 
             // box-icons old
@@ -1296,9 +1330,6 @@
                 // Stop any ongoing speech before starting a new one
                 stopSpeaking();
 
-                resetSessionTimer()
-                // Start the timer
-                timeoutId = setTimeout(startLogoutCountdown, sessionTimeout);
 
                 // hide all svg options
                 $('svg').hide()
@@ -2329,18 +2360,6 @@
                 subBTN.hide();
                 stopSpeaking()
                 hideIndicatorSpeaking()
-                // var updatesCompleted =
-                //     "Updates Completed! Maintenance for the  system is done. We've made improvements and added new data. The system is now fully operational. Thank you for your understanding!"
-                // startToSpeak(updatesCompleted)
-                //     .then((finished) => {
-                //         if (finished) {
-                //             hideIndicatorSpeaking()
-                //             console.log(finished)
-                            
-                //         } else {
-                //             console.log('not finished')
-                //         }
-                //     })
             } else {
                 console.log('nothing to say')
             }
@@ -2623,204 +2642,24 @@
                 `)
             }
 
-            // This method will trigger user permissions
-            const availableCamera = () => {
-                return Html5Qrcode.getCameras()
-                    .then((devices) => {
-                        /**
-                         * devices would be an array of objects of type:
-                         * { id: "id", label: "label" }
-                         */
-                        if (devices && devices.length) {
-                            // i want to return only the first one camera
-                            var availableCamera = devices[0];
-                            return availableCamera;
-                        }
-                    })
-                    .catch((err) => {
-                        // handle err
-                        throw err; // Re-throw the error to be caught later
-                    });
-            };
-
-            const html5QrCode = new Html5Qrcode( /* element id */ "reader");
-            let scannerIsRunning = false;
-
-            async function startScanner(camera) {
-                try {
-                    await html5QrCode.start(
-                        camera.id, {
-                            fps: 20,
-                            qrbox: {
-                                width: 250,
-                                height: 250
-                            },
-                        },
-                        async (decodedText, decodedResult) => {
-                                stopScanner();
-                                const data = {};
-                                const fields = decodedResult.decodedText.split(", ");
-                                fields.forEach((field) => {
-                                    const [key, value] = field.split(": ");
-                                    data[key] = value;
-                                });
 
 
 
-                                console.log(data);
-                                stopSpeaking()
-                                if (data.type === "Eastwoods" && isValidNumber(data.code)) {
-                                    startToSpeak('Welcome to eastwoods, have a nice day.')
-                                        .then((finished) => {
-                                            if (finished) {
-                                                hideIndicatorSpeaking()
-                                            }
-                                            $('#popup-scanner').removeClass('active')
-                                        })
-                                } else {
-                                    // Attach click event to the button
-                                    // $('#autoClicker').on('click', buttonClickHandler);
-                                    // $('#autoClicker').trigger('click');
-
-                                    var updatesCompleted =
-                                        "Im sorry but this qr is not recognized. Authentication Failed!"
-
-                                    startToSpeak(updatesCompleted)
-                                        .then(async (finished) => {
-                                            if (finished) {
-                                                hideIndicatorSpeaking()
-                                                input.hide()
-                                                subBTN.hide()
-                                                const camera = await availableCamera();
-                                                startScanner(camera);
-                                            } else {
-                                                console.log('not finished')
-                                            }
-                                        })
-
-                                }
-
-                            },
-                            (errorMessage) => {
-                                // parse error, ignore it.
-                                console.log(errorMessage);
-                            }
-                    );
-                    scannerIsRunning = true;
-                } catch (err) {
-                    // Start failed, handle it.
-                    console.log(err);
-                    stopScanner()
-                    const camera = await availableCamera();
-                    startScanner(camera);
-                }
-            }
-
-            // Function to check if a string is a valid number
-            function isValidNumber(str) {
-                // Use regular expression to check if the string consists only of digits
-                return /^\d+$/.test(str);
-            }
-
-            function stopScanner() {
-                if (scannerIsRunning) {
-                    html5QrCode.stop().then(() => {
-                        scannerIsRunning = false;
-                    });
-                }
-            }
-
-            (async function() {
-                try {
-                    const camera = await availableCamera();
-                    console.log(camera);
-
-                    const response = await fetch('/auth-required', {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': csrfToken,
-                        },
-
-                    });
-                    // const responseData = await response.json();
-                    // handleResponse(response)
-                    const responseData = await response.json();
-
-                    // console.log(responseData)
-
-                    if (!responseData.auth.status) {
-
-                        stopSpeaking()
-                        stopScanner()
-                        $('#popup-scanner').removeClass('active')
-
-                    } else {
-
-                        stopSpeaking()
-                        input.hide()
-                        subBTN.hide()
-                        $('#popup-scanner').toggleClass('active')
-                        startScanner(camera);
-                        // Call startSessionTimer when the user logs in
-
-                    }
-                } catch (error) {
-                    console.error(error);
-                }
-            })();
 
 
 
-            function startSessionTimer() {
-                // Reset the timer on any user interaction (mousemove, keypress, or touch)
-                $(document).on('mousemove keypress touchstart', resetSessionTimer);
 
-                // Start the timer
-                timeoutId = setTimeout(startLogoutCountdown, sessionTimeout);
-            }
 
-            function resetSessionTimer() {
-                // Reset both the session timeout and countdown interval
-                console.log('Timer is reset...');
-                clearTimeout(timeoutId);
-                clearInterval(countdownInterval);
-                $('#popup-count').removeClass('active');
-                $('#c').text("0" + 5);
-                // Start the timer again
-                timeoutId = setTimeout(startLogoutCountdown, sessionTimeout);
-            }
 
-            function startLogoutCountdown() {
-                // Display a warning message or trigger some visual indication
-                console.log('Session will expire soon. Please interact to continue.');
-                //   $('#popup-scanner').removeClass('active');
-                $('#popup-count').addClass('active');
 
-                // Start a countdown (adjust the duration as needed)
-                let countdown = 5; // 5 seconds warning
-                countdownInterval = setInterval(() => {
-                    // console.log(countdown);
-                    countdown--;
-                    if (countdown !== -1) {
-                        $('#c').text("0" + countdown);
-                    }
 
-                    if (countdown < 0) {
-                        clearInterval(countdownInterval);
-                        logoutUser();
-                    }
-                }, 1000); // Update every second
-            }
 
-            function logoutUser() {
-                // Perform logout actions (e.g., redirect to logout endpoint on the server)
-                console.log('User logged out due to inactivity.');
-                window.location.reload();
-            }
 
-            // Call startSessionTimer when the user logs in
-            startSessionTimer();
+
+
+
+
+
 
             // Function to display the speech indicator
             function showIndicator() {
@@ -2867,10 +2706,10 @@
                 console.log('Page is not refreshed');
             }
 
-            $('.circle').on('dblclick',()=>{
+            $('.circle').on('dblclick', () => {
                 stopSpeaking()
                 location.reload(true)
-                
+
             })
             // indicator speech
             // showIndicator();
