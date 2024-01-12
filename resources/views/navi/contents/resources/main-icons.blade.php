@@ -2,12 +2,13 @@
     <b>
         <svg class="icons" data-id="guide" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
               <!-- Book Cover -->
-            <rect x="2" y="3" width="20" height="18" rx="2" ry="2" fill="currentColor"></rect>
+            <rect x="2" y="3" width="20" height="18" rx="2" ry="2" fill="#EAEAEA"></rect>
             <!-- Book Binding -->
-            <rect x="6" y="3" width="2" height="18" fill="#000000"></rect>
+            <rect x="5" y="3" width="2" height="18" fill="#B4B4B4"></rect>
             <!-- Book Pages -->
-            <line x1="10" y1="3" x2="10" y2="21" stroke="#000000"></line>
-            <line x1="14" y1="3" x2="14" y2="21" stroke="#000000"></line>
+            <line x1="9" y1="3" x2="9" y2="21" stroke="#fff" stroke-linecap="round"></line>
+            <line x1="12" y1="3" x2="12" y2="21" stroke="#fff" stroke-linecap="round"></line>
+            <line x1="15" y1="3" x2="15" y2="21" stroke="#fff" stroke-linecap="round"></line>
         </svg>
     </b>
 </span>
