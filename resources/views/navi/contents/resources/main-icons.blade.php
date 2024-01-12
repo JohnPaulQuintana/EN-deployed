@@ -1,5 +1,5 @@
 <span id="svg-title" class="text-white">
-    <b><svg class="guide-logo" data-id="guide" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+    <b><svg class="icons" data-id="guide" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
         <!-- Open Book Icon -->
         <rect x="3" y="4" width="18" height="16" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
         <!-- Bookmark -->
