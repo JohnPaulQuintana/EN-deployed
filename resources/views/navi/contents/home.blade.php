@@ -468,15 +468,7 @@ body::after {
     </style> --}}
 
     <style>
-        .cont .head-title{
-            text-align: center;
-            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
-                background-size: 200% 200%;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-        .cont .header-content{
+        .header-content{
             /* border: 1px solid red; */
             position: absolute;
             top: 0;
@@ -492,10 +484,10 @@ body::after {
         }
 
 
-        .cont .header-content::-webkit-scrollbar{
+        .header-content::-webkit-scrollbar{
             width: 0;
         }
-        .cont .header-content .card {
+        .header-content .card {
             background-color: #252b3b1c;
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -504,7 +496,7 @@ body::after {
             width: calc(15% - 20px); /* 25% width with 20px gap between cards */
             }
 
-            .cont .header-content .card  .icon {
+            .header-content .card  .icon {
             font-size: 44px;
             margin-bottom: 10px;
             border: 1px dashed grey;
@@ -517,7 +509,7 @@ body::after {
                 -webkit-text-fill-color: transparent;
             }
 
-            .cont .header-content .card .label {
+            .header-content .card .label {
                 background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
                 background-size: 200% 200%;
                 -webkit-background-clip: text;
@@ -526,25 +518,25 @@ body::after {
                 margin-bottom: 8px;
             }
 
-            .cont .header-content .card .description {
+            .header-content .card .description {
             color: #666;
             }
 
             /* Media queries for responsiveness */
             @media only screen and (max-width: 1200px) {
-                .cont .header-content .card {
+                .header-content .card {
                     width: calc(33.33% - 20px); /* 33.33% width with 20px gap between cards */
             }
             }
 
             @media only screen and (max-width: 800px) {
-                .cont  .header-content .card {
+                .header-content .card {
                 width: calc(50% - 20px); /* 50% width with 20px gap between cards */
             }
             }
 
             @media only screen and (max-width: 600px) {
-                .cont .header-content .card {
+                .header-content .card {
                 width: 100%; /* Full width on smaller screens */
             }
             }
@@ -553,57 +545,55 @@ body::after {
 @endsection
 
 @section('contents')
-    {{-- <div class="cont"> --}}
-        {{-- <h1 class="head-title">Exousia Features</h1> --}}
-        <div class="header-content"> 
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            <div class="card">
-                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-                <h2 class="label">Card Label</h2>
-                <p class="description">Card Description goes here.</p>
-            </div>
-            
+    
+    <div class="header-content">
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
         </div>
-    {{-- </div> --}}
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
+        </div>
+        <div class="card">
+            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+            <h2 class="label">Card Label</h2>
+            <p class="description">Card Description goes here.</p>
+        </div>
+        
+    </div>
     <div class="version">
         <span>Epcst-v1.0.1</span>
     </div>
