@@ -123,14 +123,11 @@
                     <p>Stair</p>
                 </div>
                 <div class="legend-box">
-                    <i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>
-                    <span>Blocked cell</span>
+                    <i class="fa-solid fa-location-dot fa-2xl" style="color: #0f56d2;"></i>
+                    <p>Stair</p>
                 </div>
+               
                 
-                <div class="legend-box">
-                    <box-icon name='chevrons-down' type='solid' style="fill:#fff; background:green; padding:2px;"></box-icon>
-                    <span>Definition Letter</span>
-                </div>
             </div>
             <div class="legend-contents">
                 <div class="legend-box">
