@@ -1066,6 +1066,8 @@ body::after {
 
                 // hide all svg options
                 $('svg').show()
+                input.show();
+                subBTN.show();
                 $('#guideModal').modal('hide')
             })
 
