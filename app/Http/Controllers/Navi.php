@@ -510,8 +510,8 @@ class Navi extends Controller
         //     "answer" => "Sorry my knowledge is limited, i cant help you with that!"
         //     "data" => ""
         //   ]
-        dd($data);
-        if($data['query'] !== '404'){
+        // dd($data);
+        if($data['query'] !== '404' && $question !== 'yes'){
             // save the question
             // dd($question);
             // Check if the question exists in a case-insensitive manner
