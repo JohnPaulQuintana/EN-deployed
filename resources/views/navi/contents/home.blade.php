@@ -553,57 +553,57 @@ body::after {
 @endsection
 
 @section('contents')
-    <div class="cont">
-        <h1 class="head-title">Exousia Features</h1>
-    <div class="header-content"> 
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
+    {{-- <div class="cont"> --}}
+        {{-- <h1 class="head-title">Exousia Features</h1> --}}
+        <div class="header-content"> 
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            <div class="card">
+                <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
+                <h2 class="label">Card Label</h2>
+                <p class="description">Card Description goes here.</p>
+            </div>
+            
         </div>
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
-        </div>
-        <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
-            <p class="description">Card Description goes here.</p>
-        </div>
-        
-    </div>
-    </div>
+    {{-- </div> --}}
     <div class="version">
         <span>Epcst-v1.0.1</span>
     </div>
