@@ -191,9 +191,9 @@ class Navi extends Controller
                                     ->first();
                                 // dd($t);
                                 $formatrequest = new Request([
-                                    'infoId' => $t ? $t['id'] : null,
-                                    'locationFloor' => $t ? $t['floor'] : null,
-                                    'teacherLocation' => $t ? $t['facilities'] : null,
+                                    'infoId' => $t['id'],
+                                    'locationFloor' => $t['floor'],
+                                    'teacherLocation' => $t['facilities'],
                                     'infoModel' => 'Teacher', // Replace with the actual model name
                                     'data' => $t,
                                 ]);

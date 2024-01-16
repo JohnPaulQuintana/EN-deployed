@@ -1097,6 +1097,7 @@ body::after {
                                         });
 
                                         if (!response.ok) {
+                                            console.log('error')
                                             throw new Error(`Fetch error: ${response.statusText}`);
                                         }
 
