@@ -511,7 +511,7 @@ class Navi extends Controller
         //     "data" => ""
         //   ]
         // dd($data);
-        if($data['query'] !== '404' && $question !== 'yes'){
+        if($data['query'] !== '404'){
             // save the question
             // dd($question);
             // Check if the question exists in a case-insensitive manner
