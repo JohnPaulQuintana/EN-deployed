@@ -24,7 +24,8 @@ class FloorplanController extends Controller
       $mergedData = $data->merge($defaultF);
       // dd($mergedData);
       // floor
-      $floorList = FloorList::pluck('floor');
+      $floorList = FloorList::select('floor', 'floor-img')->get();
+
       $nonExistingFloors = FloorList::whereNotIn('floor', function ($query) {
          $query->select('floor')->from('floorplans');
      })->pluck('floor')->toArray();
@@ -53,7 +54,7 @@ class FloorplanController extends Controller
 // You can now use $maleRestroomAbbreviations and $femaleRestroomAbbreviations as needed
 
       // dd($nonExistingFloors);
-        return view('admin.contents.floorplan')->with(['facilities'=>$mergedData, 'flist'=>$nonExistingFloors, 'male'=>$maleRestroomAbbreviations, 'female'=>$femaleRestroomAbbreviations]);
+        return view('admin.contents.floorplan2')->with(['facilities'=>$mergedData, 'flist'=>$nonExistingFloors, 'male'=>$maleRestroomAbbreviations, 'female'=>$femaleRestroomAbbreviations]);
    }
 
    public function floorPlanLayoutSave(Request $request) {
@@ -65,7 +66,7 @@ class FloorplanController extends Controller
          if ($existingFloor) {
 
             $existingFloor->floor = $request->gridDetails['floor'];
-            $existingFloor->gridSize = $request->gridDetails['gridSize'];
+            // $existingFloor->gridSize = $request->gridDetails['gridSize'];
             $existingFloor->gridDetails = $request->gridDetails['gridDetails'];
             $existingFloor->save();
             Update::create(['from' => "Floor Plan", 'list' => 'You have updated a '.$request->gridDetails['floor'].' layout.','status'=>0,'action'=>'updated']);
@@ -74,7 +75,7 @@ class FloorplanController extends Controller
 
           $floorplan = new Floorplan();
           $floorplan->floor = $request->gridDetails['floor'];
-          $floorplan->gridSize = $request->gridDetails['gridSize'];
+         //  $floorplan->gridSize = $request->gridDetails['gridSize'];
           $floorplan->gridDetails = $request->gridDetails['gridDetails'];
           $floorplan->save();
           Update::create(['from' => "Floor Plan", 'list' => 'You have added a '.$request->gridDetails['floor'].' layout.','status'=>0,'action'=>'added']);

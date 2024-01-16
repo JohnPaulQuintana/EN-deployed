@@ -70,7 +70,8 @@
                 </a>
                 <ul class="sub-menu" aria-expanded="true">
                     <li><a href="{{ route('admin.building.layouts') }}">Floor Plan</a></li>
-                    <li><a href="{{ route('admin.building.layouts.get') }}">Deployed Floor Layout</a></li>
+                    <li><a href="{{ route('admin.building.layouts.get') }}">Test Floor Layout</a></li>
+                    <li><a href="{{ route('deployed') }}">Deployed Floor Layout</a></li>
                 </ul>
             </li>
 

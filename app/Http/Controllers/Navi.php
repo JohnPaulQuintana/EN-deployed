@@ -364,7 +364,8 @@ class Navi extends Controller
         return response()->json(
             [
                 'details' => $responseData,
-                'navigationMessage' => $responseGuide
+                'navigationMessage' => $responseGuide,
+                'target' => $requestedFacilityLabel
             ]
         );
     }
@@ -429,7 +430,7 @@ class Navi extends Controller
                     // dd('nagtrue');
                     foreach ($floorFound['gridDetails'] as $value) {
                         // dd($value);
-                        if (isset($value['label']) && $value['label'] == $findInformation->facilities || $value['sublabel'] == $findInformation->facilities) {
+                        if (isset($value['label']) && $value['label'] == $findInformation->facilities) {
                             $facilityFound = true; // Set the flag to true if the facility is found
                             break; // Stop searching once found
                         }

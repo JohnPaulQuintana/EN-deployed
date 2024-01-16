@@ -471,25 +471,7 @@
                                             </div>
                                         </h6>
                                     </div>
-                                    {{-- <div class="col-sm-2 mb-2 mx-auto drag-item wall-point blocked" id="wall-point" data-name="wall" data-label="wall" draggable="true">
-                                        <div class="drag-content">
-                                            {{ __('blkd') }}
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-2 mb-2 mx-auto drag-item starting-point" id="starting-point" data-name="start" data-label="front" draggable="true">
-                                        <div class="drag-content">
-                                            {{ __('lobby') }}
-                                        </div>
-                                    </div>
                                     
-                                    <div class="col-sm-2 mb-2 mx-auto drag-item stair-point" id="stair-point" data-name="start" data-label="stair-in" draggable="true">
-                                        <div class="drag-content">
-                                            {{ __('Stair') }}
-                                        </div>
-                                    </div> --}}
-
-                                
                                     @foreach ($facilities as $facility)
                                         {{-- {{ $facility }} --}}
                                     <div class="col-sm-2 border mx-auto mb-2 drag-item start" 

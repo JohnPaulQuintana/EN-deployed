@@ -27,10 +27,10 @@
     <div class="popup-content">
         {{-- <span class="close-btn" onclick="closePopup()">&times;</span> --}}
         <h2 class="floor-title">ground floor</h2>
-        <div class="abbrev">            
+        {{-- <div class="abbrev">            
             <p class="floor-guide">Abbrev available here</p>
             <box-icon name='chevrons-down' color='#f9f4f4' class="abbrev-means"></box-icon> 
-        </div>
+        </div> --}}
         <p class="floor-guide">follow the navigation guide to reach your destination.</p>
    
         <div class="nav-container row">
@@ -99,7 +99,7 @@
                     </div> --}}
                 </div>
             </div>
-            <div class="grid-container col-md-10" id="grid-container"></div>
+            <div class="grid-container col-md-10 grid" id="grid-container"></div>
         </div>
         <hr>
         <div class="legend">

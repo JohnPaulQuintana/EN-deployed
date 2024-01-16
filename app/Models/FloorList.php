@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class FloorList extends Model
 {
     use HasFactory;
-    public $fillable = ['floor'];
+    public $fillable = ['floor', 'floor-img'];
 }

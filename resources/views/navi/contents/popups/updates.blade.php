@@ -26,5 +26,5 @@
                     </div>
                 </div>
             </div>
-            <div class="loading-text" id="loadingText">Loading...</div>
+            <div class="loading-text" id="loadingText">Loading System Resources...</div>
         </div>

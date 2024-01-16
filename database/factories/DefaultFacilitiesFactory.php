@@ -15,9 +15,9 @@ class DefaultFacilitiesFactory extends Factory
     public function definition(): array
     {
         return [
-            'facilities' => 'default',
+            'facilities' => 'female restroom',
             'floor' => 'all',
-            'color' => '#999',
+            'color' => '#ff9999',
         ];
     }
 
@@ -25,6 +25,15 @@ class DefaultFacilitiesFactory extends Factory
     {
         return [
             'facilities' => 'wall',
+            'floor' => 'all',
+            'color' => '#0000ff',
+        ];
+    }
+
+    public function male(): array
+    {
+        return [
+            'facilities' => 'female restroom',
             'floor' => 'all',
             'color' => '#999',
         ];

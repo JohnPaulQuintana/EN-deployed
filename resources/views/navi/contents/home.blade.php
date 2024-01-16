@@ -20,7 +20,7 @@
     {{-- new navigation --}}
     <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
     {{-- navigation style --}}
-    <style>
+    {{-- <style>
         /* Set the max-width to fit-content for the modal dialog */
         .modal-dialog,
         .card {
@@ -239,8 +239,118 @@
                 /* Add a subtle shadow */
             }
         }
+    </style> --}}
+
+    {{-- new --}}
+    <style>
+        /* Set the max-width to fit-content for the modal dialog */
+        .modal-dialog,
+        .card {
+            max-width: fit-content;
+            color: #fff;
+
+        }
+
+        .card-body {
+            width: fit-content;
+        }
+
+        /* Add a background and box-shadow to the modal content */
+        .modal-content,
+        .card {
+            width: fit-content;
+            background: rgba(37, 43, 59, 0.7);
+            box-shadow: rgba(37, 43, 59, 0.2) 0px 7px 29px 0px;
+            /* Box shadow */
+        }
+
+        /* Position the close button on the right side of the modal header */
+        .modal-header .btn-close {
+            ms-auto;
+            /* Push the button to the right */
+        }
+        .grid {
+            max-width: 1100px;
+            height: 700px;
+            /* margin: 100px auto; */
+            display: grid;
+            grid-template-columns: repeat(100, 1fr);
+            grid-template-rows: repeat(100, 1fr);
+            gap: 0px;
+
+            /* background-image: url('third.jpg');
+                                               
+                                                background-position: center;
+                                                background-size:cover; */
+            overflow: hidden;
+        }
+
+        .cell {
+            /* border: 1px solid red; */
+            display: grid;
+            color: transparent;
+            width: 11px;
+            height: 8px;
+        }
+
+        .cell:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.795);
+            /* Customize the shadow style */
+            /* transform: scale(1.1); */
+            cursor: pointer;
+
+
+        }
+
+
+
+        .blocked {
+            /* border: 0px solid transparent; */
+            /* background-color: #080808fb; */
+
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        .passed {
+            /* background-image: url('foot.png'); */
+            /* background-repeat: no-repeat; */
+            /* background-size: cover; */
+            box-shadow: 0 0 10px rgba(28, 5, 238, 0.3);
+            /* Customize the shadow style */
+            /* transform: scale(1.5); */
+            /* position: absolute; */
+            /* z-index: 1; */
+            background: blue;
+
+
+        }
     </style>
 
+    {{-- body --}}
+    {{-- <style>
+    body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('{{ asset('background/bg.jpg') }}');
+  background-size: cover;
+  opacity: 0.2; 
+  z-index: -1;
+}
+</style> --}}
     {{-- updating system --}}
     <link rel="stylesheet" href="{{ asset('css/updating.css') }}">
 
@@ -339,6 +449,23 @@
             color: #3498db;
         }
     </style>
+
+    {{-- header image --}}
+    {{-- <style>
+        .header-image{
+            border: 1px solid red;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 500px;
+            background-image: url('{{ asset('background/header.jpg') }}');
+            background-size:fit-content;
+            background-repeat:no-repeat;
+            background-position: center;
+            opacity:0.4;
+
+        }
+    </style> --}}
 @endsection
 
 @section('contents')
@@ -360,8 +487,8 @@
     </main>
 
     @php
-        if (isset($systems[2])) {
-            $auth = $systems[2]->status;
+        if (isset($systems[1])) {
+            $auth = $systems[1]->status;
             if ($auth) {
                 $className = '';
             } else {
@@ -506,7 +633,7 @@
 
             const abbrevPeriodicTable = $('.abbrev-periodic-table')
             // Enable pusher logging - don't include this in production
-            // Pusher.logToConsole = true;
+            Pusher.logToConsole = true;
 
             var pusher = new Pusher('4ef07d09e997c8b8f24b', {
                 cluster: 'ap1'
@@ -516,7 +643,7 @@
             channel.bind('initialize-updates', async function(data) {
                 // Parse the JSON data
                 // var eventData = JSON.parse(data);
-                // console.log(data.message)
+                console.log(data.message)
                 var message = data.message
                 input.hide();
                 subBTN.hide();
@@ -540,19 +667,19 @@
 
                 });
 
-                console.log(responseTraining)
+                // console.log(responseTraining)
 
 
                 startToSpeak(message)
                     .then((finished) => {
                         if (finished) {
                             // Speech finished
-                            // console.log(finished)
+                            console.log(finished)
                             hideIndicatorSpeaking()
                             $('#overlay-updates').toggleClass('active');
                             $('#popup').toggleClass('active');
                             // Call the animateCube function to start the animation
-                            animateCube();
+                            animateCube("Updating System...");
 
                             setTimeout(() => {
                                 // Display the overlay and popup
@@ -565,7 +692,7 @@
                             }, 10000);
 
                         } else {
-                            console.log('not fineshed')
+                            // console.log('not fineshed')
 
                             // Speech synthesis not supported
                             // Handle accordingly
@@ -601,7 +728,7 @@
 
                 // Clear the loading indicator
                 clearInterval(loadInterval);
-                console.log(response)
+                // console.log(response)
                 handleResponse(response)
             };
 
@@ -624,7 +751,7 @@
             // frequently ask
             $(document).on('click', '#frequently-question', async function() {
                 var q = $(this).data('id')
-                console.log(q)
+                // console.log(q)
                 const response = await fetch('/navi/process', {
                     method: 'POST',
                     headers: {
@@ -685,7 +812,7 @@
             // svg clicked handler
             $(document).on('click', 'svg', function() {
                 var svg = $(this).data('id')
-                console.log(svg)
+                // console.log(svg)
                 switch (svg) {
                     // frequently ask
                     case 'ask':
@@ -729,7 +856,7 @@
                                     if (finished) {
                                         // Speech finished
                                         hideIndicatorSpeaking()
-                                        console.log(finished)
+                                        // console.log(finished)
                                     }
                                 });
                         } else {
@@ -751,7 +878,7 @@
                                         .then((s) => {
                                             if (s) {
                                                 hideIndicatorSpeaking()
-                                                console.log('done speaking...')
+                                                // console.log('done speaking...')
                                                 recognition.start();
 
                                                 // indicator speech
@@ -766,7 +893,7 @@
                                         .then((s) => {
                                             if (s) {
                                                 hideIndicatorSpeaking()
-                                                console.log('done speaking...')
+                                                // console.log('done speaking...')
                                                 recognition.start();
 
                                                 showIndicator();
@@ -778,7 +905,7 @@
                                     startToSpeak("Good Evening..." + mess)
                                         .then((s) => {
                                             if (s) {
-                                                console.log('done speaking...')
+                                                // console.log('done speaking...')
                                                 recognition.start();
 
                                                 // indicator speech
@@ -795,7 +922,7 @@
                             recognition.onresult = function(event) {
                                 const currentIndex = event.resultIndex;
                                 const transcript = event.results[currentIndex][0].transcript;
-                                // console.log(transcript);//we need to display the text to input later with modal show
+                                console.log(transcript);//we need to display the text to input later with modal show
                                 // if (!isListening) {
                                 // recognition.stop(); // Stop recognition if not listening
                                 takeCommand(transcript.toLowerCase());
@@ -803,12 +930,12 @@
                             };
 
                             recognition.onspeechstart = () => {
-                                console.log("Speech has been detected");
+                                // console.log("Speech has been detected");
                                 isListening = true;
                             };
 
                             recognition.onspeechend = () => {
-                                console.log("Speech has stopped being detected");
+                                // console.log("Speech has stopped being detected");
                                 hideIndicator()
                                 input.show();
                                 subBTN.show();
@@ -817,7 +944,7 @@
 
                             async function takeCommand(message) {
                                 try {
-                                    // console.log(message);
+                                    console.log(message);
                                     $('#popup-continuation-speech').removeClass('active');
 
                                     // List of valid commands
@@ -850,13 +977,13 @@
 
                                         // Clear the loading indicator
                                         clearInterval(loadInterval);
-                                        // console.log(response)
+                                        console.log(response)
                                         handleResponse(response)
 
                                         $('#popup-continuation-speech').removeClass('active');
                                         $('#speech-input').val('');
                                         // Handle the data as needed
-                                        console.log('its a yes');
+                                        // console.log('its a yes');
                                     } else if (validCommandsNo.some(command => message.includes(
                                             command))) {
                                         // Handle 'no' case
@@ -905,7 +1032,7 @@
 
                                     // recognition.start(); // Resume recognition after responding
                                 } catch (error) {
-                                    console.error('An error occurred:', error);
+                                    // console.error('An error occurred:', error);
                                     // Handle the error as needed
                                 }
                             }
@@ -914,7 +1041,9 @@
                         break;
 
                     case 'guide':
-                        startToSpeak('Welcome to the Guide! This tool is designed to assist you effortlessly. Click on the guide icon to reveal a wealth of information. Navigate through sections using the intuitive layout, and find helpful tips and instructions for an enhanced experience. Feel free to explore and make the most of the guides features. If you have any questions, the guide is here to help!')
+                        startToSpeak(
+                                'Welcome to the Guide! This tool is designed to assist you effortlessly. Click on the guide icon to reveal a wealth of information. Navigate through sections using the intuitive layout, and find helpful tips and instructions for an enhanced experience. Feel free to explore and make the most of the guides features. If you have any questions, the guide is here to help!'
+                                )
                             .then((finished) => {
                                 if (finished) {
                                     // Speech finished
@@ -931,10 +1060,10 @@
             })
 
             // close guide
-            $(document).on('click', '.guide-close', function(){
+            $(document).on('click', '.guide-close', function() {
                 // alert('dwadwa')
                 stopSpeaking()
-                
+
                 // hide all svg options
                 $('svg').show()
                 $('#guideModal').modal('hide')
@@ -942,6 +1071,7 @@
 
             // box-icons old
             $(document).on('click', '.browseCard', async function() {
+                alert('yes')
                 var bxi = $(this).data('value')
                 var bxiModel = $(this).data('model')
                 // alert(bxi)
@@ -1051,9 +1181,18 @@
                                                 processFacilitiesNavigation(responseData.floor,
                                                     responseData.facility);
                                                 $('#searchModal').fadeOut(500);
+                                                //show loader here
                                                 $("#navigationPopup").css({
-                                                    "display": "flex"
+                                                    "display": "none"
                                                 });
+                                                
+                                                hideIndicatorSpeaking()
+                                                $('#overlay-updates').toggleClass('active');
+                                                $('#popup').toggleClass('active');
+                                                // Call the animateCube function to start the animation
+                                                animateCube("Processing Navigation Guide...");
+
+
                                                 break;
                                         }
 
@@ -1435,6 +1574,7 @@
                 // console.log(uniqueDetails);
 
                 var serverResponds = uniqueDetails;
+                var targetFloor = responseData.target
                 const gridContainer = $("#grid-container");
 
                 let gridPoints = [];
@@ -1452,7 +1592,15 @@
                 // default starting point
                 var startingX;
                 var startingY;
+                // Initialize grid dimensions
+                const gridWidth = 100;
+                const gridHeight = 100;
 
+                var subcellCount = 1;
+                var topCount = 1;
+                var target = {}
+                var starting = {}
+                var found = false;
                 // const validLabelsMale = ['male', 'MR', 'MRX', 'MRN', 'MRE',
                 //     'MRF', "MRO"
                 // ]; // Add more labels as needed for abbrev
@@ -1462,15 +1610,20 @@
 
                 let uniqueEntries = new Set();
 
-                function createGridPoints(target, prevBool) {
+                function createGridPoints(target, prevBool, callback) {
+                    var startTime = performance.now(); // Record the start time
+                    console.log(serverResponds)
                     if (floorIndex < len) {
+                        var floorKey = serverResponds[floorIndex]['floor'];
 
-                        // $('#next-floor-button').hide();
-                        // $('#back-floor-button').hide();
-                        // console.log('count', floorIndex, '<', len)
-                        // console.log(serverResponds[floorIndex]['gridDetails'])
-                        $('.floor-title').text(serverResponds[floorIndex]['floor'])
-                        // console.log(serverResponds[floorIndex]['floor'])
+                        $('.floor-title').text(serverResponds[floorIndex]['floor']);
+
+                        gridContainer.css({
+                            'background-image': `url("{{ asset('backend/assets/deployed/${floorKey}.jpg') }}")`,
+                            'background-position': 'center',
+                            'background-size': 'cover'
+                        })
+
                         targetFacilities = target;
 
                         gridContainer.empty(); // Clear the existing grid using jQuery
@@ -1478,172 +1631,359 @@
                         if (serverResponds && serverResponds[floorIndex]['gridDetails'] && Array.isArray(
                                 serverResponds[floorIndex]['gridDetails'])) {
                             // serverResponds.forEach(floor => {
-                            // console.log(floor)
-                            serverResponds[floorIndex]['gridDetails'].forEach(coordinates => {
-                                if (!isNaN(parseInt(coordinates.x)) && parseInt(coordinates.x) >
-                                    highestX) {
-                                    highestX = parseInt(coordinates.x);
+                            // old model
+                            // serverResponds[floorIndex]['gridDetails'].forEach(coordinates => {
+                            //     if (!isNaN(parseInt(coordinates.x)) && parseInt(coordinates.x) >
+                            //         highestX) {
+                            //         highestX = parseInt(coordinates.x);
 
-                                }
+                            //     }
 
-                                if (!isNaN(parseInt(coordinates.y)) && parseInt(coordinates.y) >
-                                    highestY) {
-                                    highestY = parseInt(coordinates.y);
-                                }
+                            //     if (!isNaN(parseInt(coordinates.y)) && parseInt(coordinates.y) >
+                            //         highestY) {
+                            //         highestY = parseInt(coordinates.y);
+                            //     }
 
-                                if (highestX < highestY) {
-                                    // Set the width and height of gridContainer to fit-content
-                                    $("#grid-container").css({
-                                        // 'height': "fit-content",
-                                        'grid-template-rows': `repeat(${highestX+1}, 1fr)`,
-                                        'grid-template-columns': `repeat(${highestY+1}, 1fr)`,
+                            //     if (highestX < highestY) {
+                            //         // Set the width and height of gridContainer to fit-content
+                            //         $("#grid-container").css({
+                            //             // 'height': "fit-content",
+                            //             'grid-template-rows': `repeat(${highestX+1}, 1fr)`,
+                            //             'grid-template-columns': `repeat(${highestY+1}, 1fr)`,
+                            //         });
+                            //     } else {
+                            //         // Set the width and height of gridContainer to fit-content
+                            //         $("#grid-container").css({
+                            //             // 'height': "fit-content",
+                            //             'grid-template-rows': `repeat(${highestX+1}, 1fr)`,
+                            //             'grid-template-columns': `repeat(${highestY+1}, 1fr)`,
+                            //         });
+                            //     }
+
+                            //     // console.log(coordinates)
+                            //     const point = $(
+                            //         "<div></div>"); // Create a new div element using jQuery
+                            //     point.addClass("grid-point");
+                            //     point.attr("data-x", parseInt(coordinates
+                            //         .x)); // Set x-coordinate as a data attribute
+                            //     point.attr("data-y", parseInt(coordinates
+                            //         .y)); // Set y-coordinate as a data attribute
+                            //     point.attr("data-label", coordinates.sublabel);
+                            //     point.attr("data-door", coordinates.door)
+                            //     point.attr("data-color", coordinates.bgcolor)
+                            //     // css
+                            //     point.css({
+                            //         "background": coordinates.bgcolor
+                            //     })
+                            //     // point.text(`${parseInt(coordinates.x)},${parseInt(coordinates.y)}`); // Optionally, you can label points with their coordinates
+                            //     // Use a ternary operator to set the text based on coordinates.label
+                            //     // point.text(coordinates.label !== null ? truncateText(coordinates
+                            //     //     .label, 7) : '');
+                            //     // Check if an element with the same label already exists
+                            //     const existingElement = $('.grid-point[data-label="' + coordinates
+                            //         .sublabel + '"]');
+                            //     if (existingElement.length > 0) {
+                            //         // If an element with the same label exists, set the text of the new element to blank
+                            //         point.text('');
+                            //     } else {
+                            //         // If no element with the same label exists, set the text based on coordinates.label
+                            //         point.text(coordinates.label !== null ? truncateText(coordinates
+                            //             .label, 7) : '');
+                            //     }
+                            //     gridContainer.append(point).fadeIn(
+                            //         'slow'); // Append the point to the grid container using jQuery
+                            //     // point.addClass(coordinates.isBlock === 'true' ? 'blocked' : '');
+
+                            //     let currentEntry = coordinates;
+                            //     // Check if the combination of label and sublabel is unique
+                            //     let entryKey = currentEntry.label + currentEntry.sublabel;
+                            //     if (coordinates.label !== null && coordinates.sublabel !== null && !
+                            //         uniqueEntries.has(entryKey)) {
+                            //         // Add the combination to the set to mark it as encountered
+                            //         uniqueEntries.add(entryKey);
+                            //         populatesAbbrev(currentEntry.label, currentEntry.sublabel)
+                            //     }
+                            //     // console.log(coordinates.label ,targetFacilities ,coordinates.sublabel ,targetFacilities)
+                            //     if (coordinates.isBlock === 'true' && coordinates.sublabel !==
+                            //         targetFacilities && coordinates.label !== 'front' && coordinates
+                            //         .label !== 'wall') {
+                            //         point.addClass('blocked');
+                            //         // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
+                            //     } else if (coordinates.label == targetFacilities || coordinates
+                            //         .sublabel == targetFacilities) {
+                            //         if (coordinates.door === 'true') {
+                            //             point.addClass('targetFacilities');
+                            //             targetX = parseInt(coordinates.x);
+                            //             targetY = parseInt(coordinates.y);
+
+                            //         } else {
+                            //             point.addClass('subTargetFacilities');
+                            //             point.addClass('blocked')
+                            //         }
+
+                            //         isTargetFound = true;
+                            //         // console.log("nag true mna", isTargetFound)
+                            //     } else if (coordinates.label === 'front') {
+                            //         startingX = parseInt(coordinates.x);
+                            //         startingY = parseInt(coordinates.y);
+                            //         point.addClass('starting-point');
+                            //         point.text('')
+                            //         point.append(`<i class="fa-solid fa-street-view fa-2xl"></i>`)
+                            //     } else if (coordinates.label === 'wall') {
+                            //         point.addClass('blocked wall');
+
+                            //     }
+
+
+
+                            //     if (coordinates.label === 'wall') {
+                            //         point.addClass('blocked wall').css({
+                            //             'background': 'none'
+                            //         })
+                            //         point.text('')
+
+                            //     }
+                            //     if (detailInMaleCr.includes(coordinates.label)) {
+                            //         console.log('yes')
+                            //         point.text('')
+                            //         point.append(
+                            //             `<i class="fa-solid fa-person fa-2xl" style="color: #0f56d2;"></i>`
+                            //         )
+                            //     }
+                            //     if (detailInFemaleCr.includes(coordinates.label)) {
+                            //         point.text('')
+                            //         point.append(
+                            //             `<i class="fa-solid fa-person-dress fa-2xl" style="color: #eb05c1;"></i>`
+                            //         )
+                            //     }
+                            //     if (coordinates.label === 'stair-in') {
+                            //         point.text('')
+                            //         point.append(
+                            //             `<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>`
+                            //         )
+                            //     }
+                            //     if (coordinates.label === 'guard') {
+                            //         point.text('')
+                            //         point.append(
+                            //             `<i class="fa-solid fa-person-military-pointing fa-2xl"></i>`
+                            //         )
+                            //     }
+
+                            //     if (coordinates.label === 'stair-in' && floorIndex < len - 1) {
+                            //         // console.log(floorIndex , len)
+
+                            //         point.addClass('targetFacilities st');
+                            //         point.removeClass('blocked')
+                            //         targetX = parseInt(coordinates.x);
+                            //         targetY = parseInt(coordinates.y);
+                            //         // console.log(coordinates.label,targetX, targetY)
+                            //         // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
+                            //     }
+
+                            //     // Add the point to the gridPoints array
+                            //     gridPoints.push(point);
+                            //     // $('#target-selection').html(targetSelection);
+
+                            //     if (target != 'n/a' && startingX != 0 && startingY != 0) {
+                            //         // console.log(startingX, startingY, targetX, targetY)
+                            //         dijkstra(startingX, startingY, targetX, targetY);
+
+
+                            //     }
+                            //     if (floorIndex < len - 1) {
+                            //         // console.log("ito yun")
+                            //         startingX = 0;
+                            //         startingY = 0;
+                            //     }
+
+                            // });
+
+                            // new updates
+                            gridContainer.empty()
+                            // Create a 2D array to store subcells
+                            var subcellGrid = new Array(gridWidth);
+                            for (var i = 0; i < gridWidth; i++) {
+                                subcellGrid[i] = new Array(gridHeight);
+                            }
+
+                            for (var i = 0; i < gridWidth; i++) {
+                                for (var j = 0; j < gridHeight; j++) {
+                                    subcellGrid[i][j] = [];
+                                    // Initialize cell outside the inner loop
+                                    var cell = $(`<div data-x='${i}' data-y='${j}'>${i}</div>`).addClass(
+                                        "cell");
+
+
+                                    // Check the x and y to populate
+                                    // detailInServer[key].forEach(details => {
+                                        serverResponds[floorIndex].gridDetails.forEach(detail => {
+                                            // console.log(detail)
+                                       
+                                        if (i === parseInt(detail.x) && j === parseInt(detail.y)) {
+                                            // Update cell properties based on conditions
+                                            if (detail.abbrev !== 'undefined' && detail.abbrev !==
+                                                undefined) {
+                                                cell.addClass("facility")
+                                                    .css({
+                                                        "backgroundColor": detail.color
+                                                    })
+                                                    .attr("data-label", detail.label)
+                                                    .attr("data-abbrev", detail.abbrev)
+                                                    .attr("data-color", detail.color)
+                                                    .append(
+                                                        `<i class="fa-solid fa-location-dot fa-2xl fa-bounce target-ico" data-floor="${floorKey}" data-label="${detail.label}" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
+                                                    );
+                                            }
+
+                                            if (detail.label === targetFloor) {
+                                                cell.removeClass('blocked facility').addClass(
+                                                        'target')
+                                                    .css({
+                                                        "backgroundColor": detail.color
+                                                    })
+                                                    .attr("data-label", detail.label)
+                                                    .attr("data-abbrev", detail.abbrev)
+                                                    .attr("data-color", detail.color);
+                                                target = {
+                                                    x: parseInt(detail.x),
+                                                    y: parseInt(detail.y),
+                                                    l: detail.label,
+                                                }
+
+                                                found = true;
+                                            }
+
+                                            // pag nakita na target
+                                            if(detail.label === "stair-in" && !found){
+                                                cell.removeClass('blocked facility').addClass(
+                                                        'target')
+                                                    .css({
+                                                        "backgroundColor": detail.color
+                                                    })
+                                                    .attr("data-label", detail.label)
+                                                    .attr("data-abbrev", detail.abbrev)
+                                                    .attr("data-color", detail.color);
+                                                target = {
+                                                    x: parseInt(detail.x),
+                                                    y: parseInt(detail.y),
+                                                    l:detail.label,
+                                                }
+                                            }
+
+                                            if (detail.label === "front") {
+                                                cell.removeClass('blocked facility').addClass(
+                                                        'starting-point')
+                                                    .css({
+                                                        "backgroundColor": detail.color
+                                                    })
+                                                    .attr("data-label", detail.label)
+                                                    .attr("data-abbrev", detail.abbrev)
+                                                    .attr("data-color", detail.color)
+                                                    .append(
+                                                        `<i class="fa-solid fa-street-view fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
+                                                    );
+                                                starting = {
+                                                    x: parseInt(detail.x),
+                                                    y: parseInt(detail.y)
+                                                }
+                                            }
+
+                                            if (detail.label === "male") {
+                                                cell.removeClass('blocked facility').addClass(
+                                                        'starting-point')
+                                                    .css({
+                                                        "backgroundColor": detail.color
+                                                    })
+                                                    .attr("data-label", detail.label)
+                                                    .attr("data-abbrev", detail.abbrev)
+                                                    .attr("data-color", detail.color)
+                                                    .append(
+                                                        `<i class="fa-solid fa-person fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
+                                                    );
+                                                starting = {
+                                                    x: parseInt(detail.x),
+                                                    y: parseInt(detail.y)
+                                                }
+                                            }
+
+                                            if (detail.label === "female restroom") {
+                                                cell.removeClass('blocked facility').addClass(
+                                                        'starting-point')
+                                                    .css({
+                                                        "backgroundColor": detail.color
+                                                    })
+                                                    .attr("data-label", detail.label)
+                                                    .attr("data-abbrev", detail.abbrev)
+                                                    .attr("data-color", detail.color)
+                                                    .append(
+                                                        `<i class="fa-solid fa-person-dress fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
+                                                    );
+                                                starting = {
+                                                    x: parseInt(detail.x),
+                                                    y: parseInt(detail.y)
+                                                }
+                                            }
+
+                                            if (detail.label === "stair-in") {
+                                                cell.removeClass('blocked facility').addClass(
+                                                        'starting-point')
+                                                    .css({
+                                                        "backgroundColor": detail.color
+                                                    })
+                                                    .attr("data-label", detail.label)
+                                                    .attr("data-abbrev", detail.abbrev)
+                                                    .attr("data-color", detail.color)
+                                                    .append(
+                                                        `<i class="fa-solid fa-signal fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
+                                                    );
+                                                starting = {
+                                                    x: parseInt(detail.x),
+                                                    y: parseInt(detail.y)
+                                                }
+                                            }
+
+                                            if (detail.label === "wall") {
+                                                cell.addClass('blocked')
+                                                    .attr("data-label", detail.label)
+                                                    .attr("data-abbrev", detail.abbrev)
+                                                    .attr("data-color", detail.color);
+
+                                            }
+
+                                        }
+                                        
+                                        
+
+
+
                                     });
-                                } else {
-                                    // Set the width and height of gridContainer to fit-content
-                                    $("#grid-container").css({
-                                        // 'height': "fit-content",
-                                        'grid-template-rows': `repeat(${highestX+1}, 1fr)`,
-                                        'grid-template-columns': `repeat(${highestY+1}, 1fr)`,
-                                    });
-                                }
+                                    // });
 
-                                // console.log(coordinates)
-                                const point = $(
-                                    "<div></div>"); // Create a new div element using jQuery
-                                point.addClass("grid-point");
-                                point.attr("data-x", parseInt(coordinates
-                                    .x)); // Set x-coordinate as a data attribute
-                                point.attr("data-y", parseInt(coordinates
-                                    .y)); // Set y-coordinate as a data attribute
-                                point.attr("data-label", coordinates.sublabel);
-                                point.attr("data-door", coordinates.door)
-                                point.attr("data-color", coordinates.bgcolor)
-                                // css
-                                point.css({
-                                    "background": coordinates.bgcolor
-                                })
-                                // point.text(`${parseInt(coordinates.x)},${parseInt(coordinates.y)}`); // Optionally, you can label points with their coordinates
-                                // Use a ternary operator to set the text based on coordinates.label
-                                // point.text(coordinates.label !== null ? truncateText(coordinates
-                                //     .label, 7) : '');
-                                // Check if an element with the same label already exists
-                                const existingElement = $('.grid-point[data-label="' + coordinates
-                                    .sublabel + '"]');
-                                if (existingElement.length > 0) {
-                                    // If an element with the same label exists, set the text of the new element to blank
-                                    point.text('');
-                                } else {
-                                    // If no element with the same label exists, set the text based on coordinates.label
-                                    point.text(coordinates.label !== null ? truncateText(coordinates
-                                        .label, 7) : '');
-                                }
-                                gridContainer.append(point).fadeIn(
-                                    'slow'); // Append the point to the grid container using jQuery
-                                // point.addClass(coordinates.isBlock === 'true' ? 'blocked' : '');
 
-                                let currentEntry = coordinates;
-                                // Check if the combination of label and sublabel is unique
-                                let entryKey = currentEntry.label + currentEntry.sublabel;
-                                if (coordinates.label !== null && coordinates.sublabel !== null && !
-                                    uniqueEntries.has(entryKey)) {
-                                    // Add the combination to the set to mark it as encountered
-                                    uniqueEntries.add(entryKey);
-                                    populatesAbbrev(currentEntry.label, currentEntry.sublabel)
-                                }
-                                // console.log(coordinates.label ,targetFacilities ,coordinates.sublabel ,targetFacilities)
-                                if (coordinates.isBlock === 'true' && coordinates.sublabel !==
-                                    targetFacilities && coordinates.label !== 'front' && coordinates
-                                    .label !== 'wall') {
-                                    point.addClass('blocked');
-                                    // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
-                                } else if (coordinates.label == targetFacilities || coordinates
-                                    .sublabel == targetFacilities) {
-                                    if (coordinates.door === 'true') {
-                                        point.addClass('targetFacilities');
-                                        targetX = parseInt(coordinates.x);
-                                        targetY = parseInt(coordinates.y);
 
-                                    } else {
-                                        point.addClass('subTargetFacilities');
-                                        point.addClass('blocked')
+                                    var x = i;
+                                    var y = j;
+
+
+                                    if (i > highestX) {
+                                        highestX = i;
+
                                     }
 
-                                    isTargetFound = true;
-                                    // console.log("nag true mna", isTargetFound)
-                                } else if (coordinates.label === 'front') {
-                                    startingX = parseInt(coordinates.x);
-                                    startingY = parseInt(coordinates.y);
-                                    point.addClass('starting-point');
-                                    point.text('')
-                                    point.append(`<i class="fa-solid fa-street-view fa-2xl"></i>`)
-                                } else if (coordinates.label === 'wall') {
-                                    point.addClass('blocked wall');
+                                    if (y > highestY) {
+                                        highestY = y;
+                                    }
+
+
+
+
+                                    gridContainer.append(cell);
 
                                 }
+                                
 
-
-
-                                if (coordinates.label === 'wall') {
-                                    point.addClass('blocked wall').css({
-                                        'background': 'none'
-                                    })
-                                    point.text('')
-
-                                }
-                                if (detailInMaleCr.includes(coordinates.label)) {
-                                    console.log('yes')
-                                    point.text('')
-                                    point.append(
-                                        `<i class="fa-solid fa-person fa-2xl" style="color: #0f56d2;"></i>`
-                                    )
-                                }
-                                if (detailInFemaleCr.includes(coordinates.label)) {
-                                    point.text('')
-                                    point.append(
-                                        `<i class="fa-solid fa-person-dress fa-2xl" style="color: #eb05c1;"></i>`
-                                    )
-                                }
-                                if (coordinates.label === 'stair-in') {
-                                    point.text('')
-                                    point.append(
-                                        `<i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>`
-                                    )
-                                }
-                                if (coordinates.label === 'guard') {
-                                    point.text('')
-                                    point.append(
-                                        `<i class="fa-solid fa-person-military-pointing fa-2xl"></i>`
-                                    )
-                                }
-
-                                if (coordinates.label === 'stair-in' && floorIndex < len - 1) {
-                                    // console.log(floorIndex , len)
-
-                                    point.addClass('targetFacilities st');
-                                    point.removeClass('blocked')
-                                    targetX = parseInt(coordinates.x);
-                                    targetY = parseInt(coordinates.y);
-                                    // console.log(coordinates.label,targetX, targetY)
-                                    // targetSelection += `<option value="${coordinates.label}">${coordinates.label}</option>`
-                                }
-
-                                // Add the point to the gridPoints array
-                                gridPoints.push(point);
-                                // $('#target-selection').html(targetSelection);
-
-                                if (target != 'n/a' && startingX != 0 && startingY != 0) {
-                                    // console.log(startingX, startingY, targetX, targetY)
-                                    dijkstra(startingX, startingY, targetX, targetY);
-
-
-                                }
-                                if (floorIndex < len - 1) {
-                                    // console.log("ito yun")
-                                    startingX = 0;
-                                    startingY = 0;
-                                }
-
-                            });
+                            }
+                            // dijkstra(starting.x, starting.y, target.x, target.y)
 
                             // Create a new variable to store the filtered gridDetails
                             var filteredServerResponds = {};
@@ -1693,33 +2033,31 @@
                                 //     'FRZ'
                                 // ]; // Add more labels as needed for abbrev
                                 filteredServerRespondsData[key]['gridDetails'].forEach(data => {
+                                    console.log(data)
                                     switch (data.label) {
-                                        case 'wall':
-                                            icons =
-                                                `<i class="fa-regular fa-rectangle-xmark fa-lg" style="color: #511f24;"></i>`
-                                            iconText = `Blocked Cell`
-                                            break;
 
                                         case 'stair-in':
                                             icons =
-                                                `<i class="fa-solid fa-stairs fa-lg" style="color: #0f56d2;"></i>`
+                                                `<i class="fa-solid fa-signal fa-lg fa-bounce" style="color: #0f56d2;"></i>`
                                             iconText = `Stairs`
                                             break;
                                         case 'guard house':
                                             icons =
                                                 `<i class="fa-solid fa-person-military-pointing fa-lg"></i>`
-                                            iconText = data.sublabel
+                                            iconText = data.label
                                             break;
 
                                         case 'front':
                                             icons =
-                                                `<i class="fa-solid fa-street-view fa-lg"></i>`
+                                                `<i class="fa-solid fa-street-view fa-lg fa-bounce" style="color:${data.color}"></i>`
                                             iconText = `Your location`
                                             break;
 
                                         default:
-                                            icons = data.label
-                                            iconText = data.sublabel
+                                            if(data.label !== 'wall'){
+                                                icons = `<li class="fa-solid fa-location-dot fa-lg fa-bounce" style="color:${data.color}"></li>`
+                                                iconText = data.label
+                                            }
                                             break;
                                     }
 
@@ -1885,24 +2223,51 @@
                                 .then((done) => {
                                     if (done) {
                                         hideIndicatorSpeaking()
+                                        if (!prevBool) {
+                                    floorIndex++; // Move to the next floor
+                                    setTimeout(() => createGridPoints(facility, false),
+                                        2000); // Display the next floor after 10 seconds
+                                    }
+
                                     }
                                 })
-                            if (!prevBool) {
-                                floorIndex++; // Move to the next floor
-                                setTimeout(() => createGridPoints(facility, false),
-                                    6000); // Display the next floor after 10 seconds
-                            }
+                            
 
 
                         }
+
+                        // Simulating an asynchronous process
+                    setTimeout(function() {
+                        console.log("Grid creation finished");
+                        // ... rest of the logic
+                        //hide loader
+                        $('#overlay-updates').removeClass('active');
+                        $('#popup').removeClass('active');
+                
+                        localStorage.setItem('updates', false);
+                        var endTime = performance.now(); // Record the end time
+                        var elapsedTime = endTime - startTime;
+
+                        dijkstra(starting.x, starting.y, target.x, target.y)
+
+                        $('#navigationPopup').css({'display':'flex'})
+
+                        // Invoke the callback function with the elapsed time
+                        callback(elapsedTime);
+                    }, Math.random() * 1000); // Simulating variable processing time
+
                     } else {
                         // $('#next-floor-button').fadeIn('slow');
                         $('#back-floor-button').fadeIn('slow');
                     }
+
+                    
+                    
                 }
 
                 // Back button preview
                 $(document).on('click', '#back-floor-button', function() {
+                    
                     if (floorIndex > 0) {
                         console.log(floorIndex);
                         floorIndex--; // Decrement floorIndex
@@ -1913,23 +2278,30 @@
                         highestX = -Infinity;
                         highestY = -Infinity;
                         isTargetFound = false;
+                    
                         targetFacilities = '';
                         targetX = 0;
                         targetY = 0;
                         startingX = 0;
                         startingY = 0;
+                        target = {};
+                        starting = {};
+                        found = false;
                         createGridPoints(facility, true);
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
                         $('#next-floor-button').prop("disabled", false).removeClass(
                             'btn btn-secondary').show();
                     }
+
+                    console.log(floorIndex)
                 });
 
                 // Next button preview
                 $(document).on('click', '#next-floor-button', function() {
+                    
                     if (floorIndex < len - 1) {
-                        console.log(floorIndex);
+                        
                         floorIndex++; // Increment floorIndex
                         const gridContainer = $("#grid-container");
                         // Clear the grid points and reset variables
@@ -1943,12 +2315,17 @@
                         targetY = 0;
                         startingX = 0;
                         startingY = 0;
+                        target = {};
+                        starting = {};
+                        found = false;
                         createGridPoints(facility, true);
                     } else {
                         $(this).prop("disabled", true).addClass('btn btn-secondary').hide();
                         $('#back-floor-button').prop("disabled", false).removeClass(
                             'btn btn-secondary').show();
                     }
+
+                    console.log(floorIndex)
                 });
 
 
@@ -1977,332 +2354,610 @@
                     return text; // Text is within the maxLength limit
                 }
                 // Call the function to create a 10x10 grid of points
-                createGridPoints(facility, false);
-
-
-
+                createGridPoints(facility, false, function(elapsedTime){
+                    console.log("Elapsed Time:", elapsedTime.toFixed(2) + " ms");
+                });
 
                 // Dijkstra's Algorithm
-                async function dijkstra(startX, startY, endX, endY) {
-                    // console.log(startX, startY, endX, endY)
-                    try {
-                        const startNode = document.querySelector(
-                            `[data-x="${startX}"][data-y="${startY}"]`
-                        );
-                        const endNode = document.querySelector(
-                            `[data-x="${endX}"][data-y="${endY}"]`
-                        );
+                // async function dijkstra(startX, startY, endX, endY) {
+                //     // console.log(startX, startY, endX, endY)
+                //     try {
+                //         const startNode = document.querySelector(
+                //             `[data-x="${startX}"][data-y="${startY}"]`
+                //         );
+                //         const endNode = document.querySelector(
+                //             `[data-x="${endX}"][data-y="${endY}"]`
+                //         );
 
-                        const width = highestX + 1; // Adjust to match the width of the grid
-                        const height = highestY + 1; // Adjust to match the height of the grid
+                //         const width = highestX + 1; // Adjust to match the width of the grid
+                //         const height = highestY + 1; // Adjust to match the height of the grid
 
-                        // Create a 2D array to represent the grid
-                        const grid = new Array(height);
+                //         // Create a 2D array to represent the grid
+                //         const grid = new Array(height);
+                //         for (let y = 0; y < height; y++) {
+                //             grid[y] = new Array(width);
+                //             for (let x = 0; x < width; x++) {
+                //                 grid[y][x] = document.querySelector(
+                //                     `[data-x="${x}"][data-y="${y}"]`
+                //                 );
+                //             }
+                //         }
+
+                //         // Helper function to calculate the distance between two grid points
+                //         function calculateDistance(node1, node2) {
+                //             if (node1 && node2 && node1.dataset && node2.dataset) {
+                //                 const dx = Math.abs(node1.dataset.x - node2.dataset.x);
+                //                 const dy = Math.abs(node1.dataset.y - node2.dataset.y);
+                //                 return Math.sqrt(dx * dx + dy * dy);
+                //             } else {
+                //                 // Handle the case where either node1 or node2 (or their datasets) is null or undefined
+                //                 // console.log('Invalid nodes or datasets.');
+                //                 return Infinity; // or any other appropriate value
+                //             }
+                //         }
+
+
+                //         // Initialize distance array with Infinity and visited array with false
+                //         const distances = new Array(height)
+                //             .fill(null)
+                //             .map(() => new Array(width).fill(Infinity));
+                //         const visited = new Array(height)
+                //             .fill(null)
+                //             .map(() => new Array(width).fill(false));
+
+                //         // Set the distance of the starting point to 0
+                //         distances[startY][startX] = 0;
+
+                //         // Dijkstra's algorithm
+                //         while (!visited[endY][endX]) {
+                //             let currentMinDistance = Infinity;
+                //             let currentX = null;
+                //             let currentY = null;
+
+                //             // Find the unvisited node with the smallest distance
+                //             for (let y = 0; y < height; y++) {
+                //                 for (let x = 0; x < width; x++) {
+                //                     if (!visited[y][x] && distances[y][x] < currentMinDistance) {
+                //                         currentMinDistance = distances[y][x];
+                //                         currentX = x;
+                //                         currentY = y;
+                //                     }
+                //                 }
+                //             }
+
+                //             // Mark the current node as visited
+                //             visited[currentY][currentX] = true;
+
+                //             // Explore neighbors
+                //             const neighbors = [{
+                //                     x: currentX - 1,
+                //                     y: currentY
+                //                 },
+                //                 {
+                //                     x: currentX + 1,
+                //                     y: currentY
+                //                 },
+                //                 {
+                //                     x: currentX,
+                //                     y: currentY - 1
+                //                 },
+                //                 {
+                //                     x: currentX,
+                //                     y: currentY + 1
+                //                 },
+                //             ];
+
+                //             for (const neighbor of neighbors) {
+                //                 const {
+                //                     x,
+                //                     y
+                //                 } = neighbor;
+
+                //                 // Check if the neighbor is within the grid
+                //                 if (x >= 0 && x < width && y >= 0 && y < height) {
+                //                     const neighborNode = grid[y][x];
+
+                //                     // Check if the neighbor is not a block
+                //                     if (neighborNode !== null && neighborNode !== undefined) {
+                //                         if (!neighborNode.classList.contains("blocked")) {
+                //                             const distanceToNeighbor = calculateDistance(
+                //                                 grid[currentY][currentX],
+                //                                 neighborNode
+                //                             );
+
+                //                             // Update the distance if a shorter path is found
+                //                             if (
+                //                                 !visited[y][x] &&
+                //                                 distances[currentY][currentX] + distanceToNeighbor <
+                //                                 distances[y][x]
+                //                             ) {
+                //                                 distances[y][x] =
+                //                                     distances[currentY][currentX] + distanceToNeighbor;
+                //                             }
+                //                         }
+                //                     }
+
+                //                 }
+                //             }
+                //         }
+
+                //         // Backtrack to find the shortest path
+                //         const shortestPath = [];
+                //         let currentX = endX;
+                //         let currentY = endY;
+
+                //         while (currentX !== startX || currentY !== startY) {
+                //             shortestPath.unshift({
+                //                 x: currentX,
+                //                 y: currentY
+                //             });
+                //             const neighbors = [{
+                //                     x: currentX - 1,
+                //                     y: currentY
+                //                 },
+                //                 {
+                //                     x: currentX + 1,
+                //                     y: currentY
+                //                 },
+                //                 {
+                //                     x: currentX,
+                //                     y: currentY - 1
+                //                 },
+                //                 {
+                //                     x: currentX,
+                //                     y: currentY + 1
+                //                 },
+                //             ];
+
+                //             for (const neighbor of neighbors) {
+                //                 const {
+                //                     x,
+                //                     y
+                //                 } = neighbor;
+
+                //                 // Check if the neighbor is within the grid
+                //                 if (x >= 0 && x < width && y >= 0 && y < height) {
+                //                     const neighborNode = grid[y][x];
+                //                     const distanceToNeighbor = calculateDistance(
+                //                         grid[currentY][currentX],
+                //                         neighborNode
+                //                     );
+
+                //                     if (
+                //                         distances[y][x] + distanceToNeighbor ===
+                //                         distances[currentY][currentX]
+                //                     ) {
+                //                         currentX = x;
+                //                         currentY = y;
+                //                         break;
+                //                     }
+                //                 }
+                //             }
+                //         }
+
+                //         // Add the starting point to the shortest path
+                //         shortestPath.unshift({
+                //             x: startX,
+                //             y: startY
+                //         });
+
+                //         // Highlight the shortest path in the grid
+                //         async function animateShortestPath(shortestPath) {
+                //             return new Promise(async (resolve) => {
+                //                 for (let i = 1; i < shortestPath.length; i++) {
+
+                //                     const {
+                //                         x: currentX,
+                //                         y: currentY
+                //                     } = shortestPath[i - 1];
+                //                     const {
+                //                         x: nextX,
+                //                         y: nextY
+                //                     } = shortestPath[i];
+
+                //                     const node = grid[currentY][currentX];
+                //                     node.classList.add(
+                //                         "passed"
+                //                     ); // Highlight the current node as passed
+
+                //                     // Determine the direction (up or down)
+                //                     let directionClass = "";
+                //                     // if (nextY < currentY) {
+                //                     //     // alert('yes')
+                //                     //     directionClass = "left";
+                //                     // } else {
+                //                     //     directionClass = "up";
+                //                     // }
+                //                     if (nextY < currentY) {
+                //                         directionClass = "left";
+                //                     } else if (nextY > currentY) {
+                //                         directionClass = "right";
+                //                     } else if (nextX < currentX) {
+                //                         directionClass = "up";
+                //                     } else if (nextX > currentX) {
+                //                         directionClass = "down";
+                //                     }
+
+                //                     // Check if directionClass is not empty before adding it as a class
+                //                     if (directionClass !== "") {
+                //                         // Create the ball element with the direction class
+                //                         // const ball = document.createElement("div");
+                //                         // ball.classList.add("ball", directionClass);
+                //                         node.classList.add(directionClass);
+
+                //                         // Append the ball to the grid container
+                //                         // node.append(ball);
+
+                //                         // Wait for 200 milliseconds (remove the ball after 200ms)
+                //                         await new Promise((resolve) => setTimeout(
+                //                             resolve, 400));
+
+                //                         // Remove the added class
+                //                         // node.classList.remove(directionClass);
+                //                     }
+                //                 }
+                //                 // Animation is complete, resolve the promise
+                //                 // resolve();
+                //             })
+                //         }
+
+                //         // Initialize a flag to track if animation is running
+                //         let isAnimationRunning = false;
+                //         // Run animation recursively with a delay
+                //         async function runAnimation() {
+                //             await animateShortestPath(shortestPath);
+                //             // console.log("Animation is complete");
+
+                //             // dijkstra(startingX, startingY, targetX, targetY);
+                //             // new
+                //             dijkstra(starting.x, starting.y, target.x, target.y)
+                //         }
+
+                //         // Start the animation
+                //         runAnimation();
+
+                //         //original
+                //         // Highlight the shortest path in the grid
+                //         // async function animateShortestPath(shortestPath) {
+                //         //     for (let i = 1; i < shortestPath.length; i++) {
+
+                //         //         const {
+                //         //             x: currentX,
+                //         //             y: currentY
+                //         //         } = shortestPath[i - 1];
+                //         //         const {
+                //         //             x: nextX,
+                //         //             y: nextY
+                //         //         } = shortestPath[i];
+
+                //         //         const node = grid[currentY][currentX];
+                //         //         node.classList.add(
+                //         //             "passed"); // Highlight the current node as passed
+
+                //         //         // Determine the direction (up or down)
+                //         //         let directionClass = "";
+                //         //         // if (nextY < currentY) {
+                //         //         //     // alert('yes')
+                //         //         //     directionClass = "left";
+                //         //         // } else {
+                //         //         //     directionClass = "up";
+                //         //         // }
+                //         //         if (nextY < currentY) {
+                //         //             directionClass = "left";
+                //         //         } else if (nextY > currentY) {
+                //         //             directionClass = "right";
+                //         //         } else if (nextX < currentX) {
+                //         //             directionClass = "up";
+                //         //         } else if (nextX > currentX) {
+                //         //             directionClass = "down";
+                //         //         }
+
+                //         //         // Check if directionClass is not empty before adding it as a class
+                //         //         if (directionClass !== "") {
+                //         //             // Create the ball element with the direction class
+                //         //             // const ball = document.createElement("div");
+                //         //             // ball.classList.add("ball", directionClass);
+                //         //             node.classList.add(directionClass);
+
+                //         //             // Append the ball to the grid container
+                //         //             // node.append(ball);
+
+                //         //             // Wait for 200 milliseconds (remove the ball after 200ms)
+                //         //             await new Promise((resolve) => setTimeout(resolve, 400));
+
+                //         //             // Remove the ball element
+                //         //             // ball.remove();
+                //         //         }
+                //         //     }
+
+                //         //     // Repeat the animation infinitely
+                //         //     animateShortestPath(shortestPath);
+                //         // }
+
+                //         // Start the animation
+                //         // animateShortestPath(shortestPath);
+                //     } catch (error) {
+                //         // console.log(error)
+                //     }
+                // }
+
+
+                //new
+                // // Highlight the shortest path in the grid
+            async function animateShortestPath(grid, shortestPath) {
+                return new Promise(async (resolve) => {
+                    for (let i = 1; i < shortestPath.length; i++) {
+
+                        const {
+                            x: currentX,
+                            y: currentY
+                        } = shortestPath[i - 1];
+                        const {
+                            x: nextX,
+                            y: nextY
+                        } = shortestPath[i];
+
+                        const node = grid[currentY][currentX];
+                        node.classList.add(
+                            "passed"); // Highlight the current node as passed
+
+                        // Determine the direction (up or down)
+                        let directionClass = "";
+                        // if (nextY < currentY) {
+                        //     // alert('yes')
+                        //     directionClass = "left";
+                        // } else {
+                        //     directionClass = "up";
+                        // }
+                        if (nextY < currentY) {
+                            directionClass = "left";
+                        } else if (nextY > currentY) {
+                            directionClass = "right";
+                        } else if (nextX < currentX) {
+                            directionClass = "up";
+                        } else if (nextX > currentX) {
+                            directionClass = "down";
+                        }
+
+                        // Check if directionClass is not empty before adding it as a class
+                        if (directionClass !== "") {
+                            // Create the ball element with the direction class
+                            // const ball = document.createElement("div");
+                            // ball.classList.add("ball", directionClass);
+                            node.classList.add(directionClass);
+
+                            // Append the ball to the grid container
+                            // node.append(ball);
+
+                            // Wait for 200 milliseconds (remove the ball after 200ms)
+                            await new Promise((resolve) => setTimeout(resolve, 1));
+
+                            // Remove the added class
+                            // node.classList.remove(directionClass);
+                        }
+                    }
+                    // Animation is complete, resolve the promise
+                    // resolve();
+                })
+
+                // Repeat the animation infinitely
+                // animateShortestPath(shortestPath);
+            }
+
+            // Function to animate all paths
+            async function animateAllPaths(grid, allPaths) {
+                for (const path of allPaths) {
+                    await animateShortestPath(grid, path);
+                    // Optionally, you can add a delay between paths
+                    // await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            }
+
+
+            // Dijkstra's Algorithm
+            async function dijkstra(startX, startY, endX, endY) {
+                try {
+                    const startNode = document.querySelector(
+                        `[data-x="${startX}"][data-y="${startY}"]`
+                    );
+                    const endNode = document.querySelector(
+                        `[data-x="${endX}"][data-y="${endY}"]`
+                    );
+
+                    const width = highestX + 1; // Adjust to match the width of the grid
+                    const height = highestY + 1; // Adjust to match the height of the grid
+
+                    // Create a 2D array to represent the grid
+                    const grid = new Array(height);
+                    for (let y = 0; y < height; y++) {
+                        grid[y] = new Array(width);
+                        for (let x = 0; x < width; x++) {
+                            grid[y][x] = document.querySelector(
+                                `[data-x="${x}"][data-y="${y}"]`
+                            );
+                        }
+                    }
+
+                    // Helper function to calculate the distance between two grid points
+                    function calculateDistance(node1, node2) {
+                        const dx = Math.abs(node1.dataset.x - node2.dataset.x);
+                        const dy = Math.abs(node1.dataset.y - node2.dataset.y);
+                        return Math.sqrt(dx * dx + dy * dy);
+                    }
+
+                    // Initialize distance array with Infinity and visited array with false
+                    const distances = new Array(height)
+                        .fill(null)
+                        .map(() => new Array(width).fill(Infinity));
+                    const visited = new Array(height)
+                        .fill(null)
+                        .map(() => new Array(width).fill(false));
+
+                    // Set the distance of the starting point to 0
+                    distances[startY][startX] = 0;
+
+                    // Array to store all paths
+                    const allPaths = [];
+
+                    // Dijkstra's algorithm
+                    while (!visited[endY][endX]) {
+                        let currentMinDistance = Infinity;
+                        let currentX = null;
+                        let currentY = null;
+
+                        // Find the unvisited node with the smallest distance
                         for (let y = 0; y < height; y++) {
-                            grid[y] = new Array(width);
                             for (let x = 0; x < width; x++) {
-                                grid[y][x] = document.querySelector(
-                                    `[data-x="${x}"][data-y="${y}"]`
-                                );
-                            }
-                        }
-
-                        // Helper function to calculate the distance between two grid points
-                        function calculateDistance(node1, node2) {
-                            if (node1 && node2 && node1.dataset && node2.dataset) {
-                                const dx = Math.abs(node1.dataset.x - node2.dataset.x);
-                                const dy = Math.abs(node1.dataset.y - node2.dataset.y);
-                                return Math.sqrt(dx * dx + dy * dy);
-                            } else {
-                                // Handle the case where either node1 or node2 (or their datasets) is null or undefined
-                                // console.log('Invalid nodes or datasets.');
-                                return Infinity; // or any other appropriate value
-                            }
-                        }
-
-
-                        // Initialize distance array with Infinity and visited array with false
-                        const distances = new Array(height)
-                            .fill(null)
-                            .map(() => new Array(width).fill(Infinity));
-                        const visited = new Array(height)
-                            .fill(null)
-                            .map(() => new Array(width).fill(false));
-
-                        // Set the distance of the starting point to 0
-                        distances[startY][startX] = 0;
-
-                        // Dijkstra's algorithm
-                        while (!visited[endY][endX]) {
-                            let currentMinDistance = Infinity;
-                            let currentX = null;
-                            let currentY = null;
-
-                            // Find the unvisited node with the smallest distance
-                            for (let y = 0; y < height; y++) {
-                                for (let x = 0; x < width; x++) {
-                                    if (!visited[y][x] && distances[y][x] < currentMinDistance) {
-                                        currentMinDistance = distances[y][x];
-                                        currentX = x;
-                                        currentY = y;
-                                    }
-                                }
-                            }
-
-                            // Mark the current node as visited
-                            visited[currentY][currentX] = true;
-
-                            // Explore neighbors
-                            const neighbors = [{
-                                    x: currentX - 1,
-                                    y: currentY
-                                },
-                                {
-                                    x: currentX + 1,
-                                    y: currentY
-                                },
-                                {
-                                    x: currentX,
-                                    y: currentY - 1
-                                },
-                                {
-                                    x: currentX,
-                                    y: currentY + 1
-                                },
-                            ];
-
-                            for (const neighbor of neighbors) {
-                                const {
-                                    x,
-                                    y
-                                } = neighbor;
-
-                                // Check if the neighbor is within the grid
-                                if (x >= 0 && x < width && y >= 0 && y < height) {
-                                    const neighborNode = grid[y][x];
-
-                                    // Check if the neighbor is not a block
-                                    if (neighborNode !== null && neighborNode !== undefined) {
-                                        if (!neighborNode.classList.contains("blocked")) {
-                                            const distanceToNeighbor = calculateDistance(
-                                                grid[currentY][currentX],
-                                                neighborNode
-                                            );
-
-                                            // Update the distance if a shorter path is found
-                                            if (
-                                                !visited[y][x] &&
-                                                distances[currentY][currentX] + distanceToNeighbor <
-                                                distances[y][x]
-                                            ) {
-                                                distances[y][x] =
-                                                    distances[currentY][currentX] + distanceToNeighbor;
-                                            }
-                                        }
-                                    }
-
+                                if (!visited[y][x] && distances[y][x] < currentMinDistance) {
+                                    currentMinDistance = distances[y][x];
+                                    currentX = x;
+                                    currentY = y;
                                 }
                             }
                         }
 
-                        // Backtrack to find the shortest path
-                        const shortestPath = [];
-                        let currentX = endX;
-                        let currentY = endY;
+                        // Mark the current node as visited
+                        visited[currentY][currentX] = true;
 
-                        while (currentX !== startX || currentY !== startY) {
-                            shortestPath.unshift({
-                                x: currentX,
+                        // Explore neighbors
+                        const neighbors = [{
+                                x: currentX - 1,
                                 y: currentY
-                            });
-                            const neighbors = [{
-                                    x: currentX - 1,
-                                    y: currentY
-                                },
-                                {
-                                    x: currentX + 1,
-                                    y: currentY
-                                },
-                                {
-                                    x: currentX,
-                                    y: currentY - 1
-                                },
-                                {
-                                    x: currentX,
-                                    y: currentY + 1
-                                },
-                            ];
+                            },
+                            {
+                                x: currentX + 1,
+                                y: currentY
+                            },
+                            {
+                                x: currentX,
+                                y: currentY - 1
+                            },
+                            {
+                                x: currentX,
+                                y: currentY + 1
+                            },
+                        ];
 
-                            for (const neighbor of neighbors) {
-                                const {
-                                    x,
-                                    y
-                                } = neighbor;
+                        for (const neighbor of neighbors) {
+                            const {
+                                x,
+                                y
+                            } = neighbor;
 
-                                // Check if the neighbor is within the grid
-                                if (x >= 0 && x < width && y >= 0 && y < height) {
-                                    const neighborNode = grid[y][x];
+                            // Check if the neighbor is within the grid
+                            if (x >= 0 && x < width && y >= 0 && y < height) {
+                                const neighborNode = grid[y][x];
+
+                                // Check if the neighbor is not a block
+                                //working add to if to enabled option path && !neighborNode.classList.contains("passed")
+                                if (!neighborNode.classList.contains("blocked")) {
                                     const distanceToNeighbor = calculateDistance(
                                         grid[currentY][currentX],
                                         neighborNode
                                     );
 
+                                    // Update the distance if a shorter path is found
                                     if (
-                                        distances[y][x] + distanceToNeighbor ===
-                                        distances[currentY][currentX]
+                                        !visited[y][x] &&
+                                        distances[currentY][currentX] + distanceToNeighbor <
+                                        distances[y][x]
                                     ) {
-                                        currentX = x;
-                                        currentY = y;
-                                        break;
+                                        distances[y][x] =
+                                            distances[currentY][currentX] + distanceToNeighbor;
                                     }
                                 }
                             }
                         }
-
-                        // Add the starting point to the shortest path
-                        shortestPath.unshift({
-                            x: startX,
-                            y: startY
-                        });
-
-                        // Highlight the shortest path in the grid
-                        async function animateShortestPath(shortestPath) {
-                            return new Promise(async (resolve) => {
-                                for (let i = 1; i < shortestPath.length; i++) {
-
-                                    const {
-                                        x: currentX,
-                                        y: currentY
-                                    } = shortestPath[i - 1];
-                                    const {
-                                        x: nextX,
-                                        y: nextY
-                                    } = shortestPath[i];
-
-                                    const node = grid[currentY][currentX];
-                                    node.classList.add(
-                                        "passed"
-                                    ); // Highlight the current node as passed
-
-                                    // Determine the direction (up or down)
-                                    let directionClass = "";
-                                    // if (nextY < currentY) {
-                                    //     // alert('yes')
-                                    //     directionClass = "left";
-                                    // } else {
-                                    //     directionClass = "up";
-                                    // }
-                                    if (nextY < currentY) {
-                                        directionClass = "left";
-                                    } else if (nextY > currentY) {
-                                        directionClass = "right";
-                                    } else if (nextX < currentX) {
-                                        directionClass = "up";
-                                    } else if (nextX > currentX) {
-                                        directionClass = "down";
-                                    }
-
-                                    // Check if directionClass is not empty before adding it as a class
-                                    if (directionClass !== "") {
-                                        // Create the ball element with the direction class
-                                        // const ball = document.createElement("div");
-                                        // ball.classList.add("ball", directionClass);
-                                        node.classList.add(directionClass);
-
-                                        // Append the ball to the grid container
-                                        // node.append(ball);
-
-                                        // Wait for 200 milliseconds (remove the ball after 200ms)
-                                        await new Promise((resolve) => setTimeout(
-                                            resolve, 400));
-
-                                        // Remove the added class
-                                        // node.classList.remove(directionClass);
-                                    }
-                                }
-                                // Animation is complete, resolve the promise
-                                // resolve();
-                            })
-                        }
-
-                        // Initialize a flag to track if animation is running
-                        let isAnimationRunning = false;
-                        // Run animation recursively with a delay
-                        async function runAnimation() {
-                            await animateShortestPath(shortestPath);
-                            // console.log("Animation is complete");
-
-                            dijkstra(startingX, startingY, targetX, targetY);
-                        }
-
-                        // Start the animation
-                        runAnimation();
-
-                        //original
-                        // Highlight the shortest path in the grid
-                        // async function animateShortestPath(shortestPath) {
-                        //     for (let i = 1; i < shortestPath.length; i++) {
-
-                        //         const {
-                        //             x: currentX,
-                        //             y: currentY
-                        //         } = shortestPath[i - 1];
-                        //         const {
-                        //             x: nextX,
-                        //             y: nextY
-                        //         } = shortestPath[i];
-
-                        //         const node = grid[currentY][currentX];
-                        //         node.classList.add(
-                        //             "passed"); // Highlight the current node as passed
-
-                        //         // Determine the direction (up or down)
-                        //         let directionClass = "";
-                        //         // if (nextY < currentY) {
-                        //         //     // alert('yes')
-                        //         //     directionClass = "left";
-                        //         // } else {
-                        //         //     directionClass = "up";
-                        //         // }
-                        //         if (nextY < currentY) {
-                        //             directionClass = "left";
-                        //         } else if (nextY > currentY) {
-                        //             directionClass = "right";
-                        //         } else if (nextX < currentX) {
-                        //             directionClass = "up";
-                        //         } else if (nextX > currentX) {
-                        //             directionClass = "down";
-                        //         }
-
-                        //         // Check if directionClass is not empty before adding it as a class
-                        //         if (directionClass !== "") {
-                        //             // Create the ball element with the direction class
-                        //             // const ball = document.createElement("div");
-                        //             // ball.classList.add("ball", directionClass);
-                        //             node.classList.add(directionClass);
-
-                        //             // Append the ball to the grid container
-                        //             // node.append(ball);
-
-                        //             // Wait for 200 milliseconds (remove the ball after 200ms)
-                        //             await new Promise((resolve) => setTimeout(resolve, 400));
-
-                        //             // Remove the ball element
-                        //             // ball.remove();
-                        //         }
-                        //     }
-
-                        //     // Repeat the animation infinitely
-                        //     animateShortestPath(shortestPath);
-                        // }
-
-                        // Start the animation
-                        // animateShortestPath(shortestPath);
-                    } catch (error) {
-                        // console.log(error)
                     }
-                }
 
+                    // Backtrack to find the shortest path
+                    const shortestPath = [];
+                    let currentX = endX;
+                    let currentY = endY;
+
+                    while (currentX !== startX || currentY !== startY) {
+                        shortestPath.unshift({
+                            x: currentX,
+                            y: currentY
+                        });
+                        const neighbors = [{
+                                x: currentX - 1,
+                                y: currentY
+                            },
+                            {
+                                x: currentX + 1,
+                                y: currentY
+                            },
+                            {
+                                x: currentX,
+                                y: currentY - 1
+                            },
+                            {
+                                x: currentX,
+                                y: currentY + 1
+                            },
+                        ];
+
+                        for (const neighbor of neighbors) {
+                            const {
+                                x,
+                                y
+                            } = neighbor;
+
+                            // Check if the neighbor is within the grid
+                            if (x >= 0 && x < width && y >= 0 && y < height) {
+                                const neighborNode = grid[y][x];
+                                const distanceToNeighbor = calculateDistance(
+                                    grid[currentY][currentX],
+                                    neighborNode
+                                );
+
+                                if (
+                                    distances[y][x] + distanceToNeighbor ===
+                                    distances[currentY][currentX]
+                                ) {
+                                    currentX = x;
+                                    currentY = y;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    // Add the starting point to the shortest path
+                    shortestPath.unshift({
+                        x: startX,
+                        y: startY
+                    });
+
+                    // Store the current path in the array of all paths
+                    allPaths.push(shortestPath);
+
+                    // Start the animation of all paths
+                    await animateAllPaths(grid, allPaths);
+
+
+                    // // Initialize a flag to track if animation is running
+                    // let isAnimationRunning = false;
+                    // // Run animation recursively with a delay
+                    // async function runAnimation() {
+                    //     await animateShortestPath(shortestPath);
+                    //     console.log("Animation is complete");
+
+                    //     dijkstra(startingX, startingY, targetX, targetY);
+                    // }
+
+                    // // Start the animation
+                    // runAnimation();
+
+
+
+
+
+                } catch (error) {
+
+                }
+            }
                 // Helper function to add a delay for animation
                 function sleep(ms) {
                     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -2329,30 +2984,30 @@
             }
 
             // Update loading text
-            function updateLoadingText() {
+            function updateLoadingText(m) {
                 const loadingText = document.getElementById('loadingText');
-                loadingText.textContent = 'Updating System...';
+                loadingText.textContent = m;
             }
 
             // Assemble and disassemble the cube continuously
-            function animateCube() {
+            function animateCube(m) {
                 const loadingCube = document.getElementById('loadingCube');
                 loadingCube.classList.add('loaded');
 
-                updateLoadingText(); // Update text initially
+                updateLoadingText(m); // Update text initially
 
                 // Update cube face colors in an interval
                 setInterval(updateCubeColors, 500);
 
                 setTimeout(() => {
                     loadingCube.classList.remove('loaded');
-                    updateLoadingText(); // Update text after disassembling
+                    updateLoadingText(m); // Update text after disassembling
                     setTimeout(animateCube, 2000); // Adjust the delay duration (milliseconds) as needed
                 }, 1000); // Adjust the delay duration (milliseconds) as needed
             }
 
             // updates completed
-            console.log(updates)
+            // console.log(updates)
             // checks for updates
             if (updates !== 'false') {
                 localStorage.setItem('updates', false)
@@ -2361,10 +3016,10 @@
                 stopSpeaking()
                 hideIndicatorSpeaking()
             } else {
-                console.log('nothing to say')
+                // console.log('nothing to say')
             }
 
-            $(document).on('click', '.targetFacilities', async function() {
+            $(document).on('click', '.target-ico', async function() {
                 // Inside this function, 'this' refers to the clicked element
                 var clickedElement = $(this).data('label');
                 // alert(clickedElement)
@@ -2381,7 +3036,7 @@
                 });
 
                 const designatedTeachers = await responses.json();
-                // console.log(designatedTeachers)
+                console.log(designatedTeachers)
                 $('#navigationPopup').fadeOut(500);
 
                 $('.at').text(designatedTeachers.result.facility.facilities);
@@ -2434,7 +3089,7 @@
                 });
 
                 const designatedTeachers = await responses.json();
-                // console.log(designatedTeachers)
+                console.log(designatedTeachers)
                 $('#navigationPopup').fadeOut(500);
 
                 $('.at').text(designatedTeachers.result.facility.facilities);
@@ -2703,7 +3358,7 @@
                 hideIndicator()
                 hideIndicatorSpeaking()
             } else {
-                console.log('Page is not refreshed');
+                // console.log('Page is not refreshed');
             }
 
             $('.circle').on('dblclick', () => {

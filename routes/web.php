@@ -3,6 +3,7 @@
 use App\Models\Frequently;
 use App\Http\Controllers\Navi;
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Deployed;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\FloorplanController;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,9 @@ Route::middleware('auth')->group(function () {
 
     // restroom
     Route::post('/facilities-cr', [FacilityController::class, 'restroom']);
+
+    // route deployed
+    Route::get('/deployed', [Deployed::class, 'deployed'])->name('deployed');
 });
 
 // navi route

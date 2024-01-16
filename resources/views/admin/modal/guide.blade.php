@@ -8,24 +8,44 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body gbody">
+
                 <div class="instruction-section">
-                    <h6><i class="fas fa-arrows-alt"></i> Drag and Drop Facilities</h6>
+                    <h6><i class="fa-solid fa-circle-exclamation text-danger"></i> Important Notes for editing floorplan</h6>
                     <p>
-                        To rearrange facilities, click and hold on a facility, then drag it to the desired location. The grid will provide visual feedback during the drag operation.
+                        after a selection on control. just click any part of the floorplan its highlighted indicate that those spot is added the selected controls.
+                    </p>
+                </div>
+                <div class="instruction-section">
+                    <h6><i class="fa-solid fa-circle-exclamation text-danger"></i> Important Notes for wall</h6>
+                    <p>
+                        if you selected a wall make sure that you click it twice when your done on floorplan. its stop adding on the floor.
+                    </p>
+                </div>
+                <div class="instruction-section">
+                    <h6><i class="fa-solid fa-circle-exclamation text-danger"></i> Important Notes for selection</h6>
+                    <p>
+                        if you change your selected make sure that you click it twice. and test it before used it..
+                    </p>
+                </div>
+
+                <div class="instruction-section">
+                    <h6><i class="fas fa-arrows-alt"></i> Identify Walls</h6>
+                    <p>
+                        Identify the walls in your floorplan. These are usually the outer edges and any internal walls. kindly select the wall on controls.  
                     </p>
                 </div>
 
                 <div class="instruction-section">
                     <h6><i class="fas fa-edit"></i> Edit Facility - For Deployed Floor Layout only</h6>
                     <p>
-                        To edit a facility, simply right-click on it. A context menu will appear with options to modify the facility's properties. Make sure to save your changes after editing.
+                        To edit a facility, simply right-click on it. its removing from the floorplan then select what facilities do you want on the control, after a selection click the spot on floorplan dont forget to double click it.
                     </p>
                 </div>
 
                 <div class="instruction-section">
                     <h6><i class="fas fa-trash-alt text-danger"></i> Delete Facility</h6>
                     <p>
-                        To delete a facility, simply click the icon on facility.
+                        To delete a facility, simply right click the icon on facility or the dots colored.
                     </p>
                 </div>
                 
@@ -33,7 +53,7 @@
                 <div class="instruction-section">
                     <h6><i class="fas fa-mouse-pointer"></i> Test Navigation</h6>
                     <p>
-                        For testing navigation, click on any facility area you wish to explore. The content will be highlighted or selected.
+                        For testing navigation, click on any facility available on controll. The content will be highlighted or selected then click the start button.
                     </p>
                 </div>
 

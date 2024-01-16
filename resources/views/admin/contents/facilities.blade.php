@@ -66,16 +66,41 @@
                             <h4 class="card-title mb-4">Manage Faciltie's Information</h4>
 
                             <div class="table-responsive">
-                                <form action="{{ route('bulk.manage.facilities') }}" method="POST">
+                                <form action="{{ route('bulk.manage.facilities') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="text" name="action" value="add" id="action" hidden>
+                                    
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
+                                                <label for="floor-img">Please Upload your floorplan</label>
+                                                <input type="file" class="form-control mb-2" name="floor-img" id="floor-img" required>
+                                                
+                                            </div>
+                                            <div class="col-sm-6">
+                                                
+                                                    <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
+                                                    <label for="selected_floor">Please Upload your floorplan</label>
+                                                            <select name="selected_floor[]" class="form-control" required>
+                                                                {{-- <option value="" disabled selected>Select a Floor</option> --}}
+                                                                @for ($floor = 0; $floor <= 10; $floor++)
+                                                                    <option value="{{ $floor === 0 ? 'ground-floor' : 'floor-' . $floor }}">
+                                                                        {{ $floor === 0 ? 'Ground Floor' : 'Floor ' . $floor }}
+                                                                    </option>
+                                                                @endfor
+                                                            </select>
+                                                        
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
                                     <table class="table table-centered mb-0 align-middle table-hover table-nowrap">
-
                                         <thead class="table-light">
                                             <tr>
                                                 <th>Facility</th>
                                                 {{-- <th>Operation</th> --}}
-                                                <th>floor</th>
+                                                {{-- <th>floor</th> --}}
                                                 <th>Color</th>
                                             </tr>
                                         </thead><!-- end thead -->
@@ -100,13 +125,13 @@
                                                             class="form-control text-white mt-2" placeholder="08:00 AM" required>
                                                     </h6>
                                                 </td> --}}
-                                                <td>
+                                                {{-- <td>
                                                     <h6 class="font-size-13">
                                                         <i
                                                             class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
                                                         <span class="text-secondary">Please Select your Floor.</span>
                                                         <select name="selected_floor[]" class="form-control mt-2" required>
-                                                            {{-- <option value="" disabled selected>Select a Floor</option> --}}
+                                                         
                                                             @for ($floor = 0; $floor <= 10; $floor++)
                                                                 <option value="{{ $floor === 0 ? 'ground-floor' : 'floor-' . $floor }}">
                                                                     {{ $floor === 0 ? 'Ground Floor' : 'Floor ' . $floor }}
@@ -114,7 +139,7 @@
                                                             @endfor
                                                         </select>
                                                     </h6>
-                                                </td>
+                                                </td> --}}
 
                                                 <td>
                                                     <h6 class="font-size-13">
@@ -318,23 +343,7 @@
                             </h6>
                         </td>
                         
-                        <td>
-                            <h6 class="font-size-13">
-                                <i class="ri-checkbox-blank-circle-fill font-size-10 text-danger align-middle me-2"></i>
-                                <span class="text-secondary">Please Select your Floor.</span>
-                                <div class="input-group d-flex align-items-center text-danger">
-                                    <select name="selected_floor[]" class="form-control mt-2" required>
-                                           
-                                        @for ($floor = 0; $floor <= 10; $floor++)
-                                            <option value="{{ $floor === 0 ? 'ground-floor' : 'floor-' . $floor }}">
-                                                {{ $floor === 0 ? 'Ground Floor' : 'Floor ' . $floor }}
-                                            </option>
-                                        @endfor
-                                    </select>
-                                    
-                                </div>   
-                            </h6>
-                        </td>
+        
 
                         <td>
                             <h6 class="font-size-13">

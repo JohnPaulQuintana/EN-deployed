@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class EastwoodsFacilities extends Model
 {
     use HasFactory;
-    public $fillable = ['facilities','operation_time', 'floor', 'color'];
+    public $fillable = ['facilities','operation_time', 'floor', 'color', 'floor-img'];
 }
