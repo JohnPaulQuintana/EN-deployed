@@ -46,11 +46,19 @@ class TeacherController extends Controller
             for ($i = 0; $i < count($inputs); $i++) {
                 switch ($req) {
                     case 'add':
-                        $input = Teacher::create(['name' => $inputs[$i],'gender' => $inputsGender[$i], 'position' => $inputsPosition[$i], 'facilities_id' => $inputsLocated[$i]]);
-                        $insertedNotif[] = $input;
-                        $actionText = 'Added';
-                        $actionType = 'success';
-                        $actionName = "Teacher";
+                        $existingTeacher = Teacher::whereRaw('LOWER(name) = ?', [strtolower($inputs[$i])])->first();
+                        if($existingTeacher){
+                            $actionText = 'Error';
+                            $actionType = 'error';
+                            $actionName = "Teacher";
+                        }else{
+                            $input = Teacher::create(['name' => $inputs[$i],'gender' => $inputsGender[$i], 'position' => $inputsPosition[$i], 'facilities_id' => $inputsLocated[$i]]);
+                            $insertedNotif[] = $input;
+                            $actionText = 'Added';
+                            $actionType = 'success';
+                            $actionName = "Teacher";
+                        }
+                        
                         // Update::create(['from' => "Teachers Information", 'list' => 'You have added a new information.','status'=>0,'action'=>'added']);
                         break;
                     case 'update':
