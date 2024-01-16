@@ -1225,6 +1225,29 @@ body::after {
                 // alert('dwadwa')
                 stopSpeaking()
 
+                const afterElement = circle.find('.circle-after');
+
+                            if (afterElement.length) {
+                                circle.remove(afterElement);
+
+                                setTimeout(() => {
+                                    afterElement.removeClass('circle-after');
+                                    conC.removeClass('container-circle');
+                                    conT.removeClass('container-title');
+                                    en.removeClass('inside');
+                                    location.removeClass('active');
+                                    $('svg').show();
+                                    // show input
+                                    input.show();
+                                    subBTN.show();
+
+                                    resolve(
+                                        true
+                                    ); // Resolve the Promise when speech finishes
+                                }, 1000);
+                            }
+                            
+
                 // hide all svg options
                 $('svg').show()
                 input.show();
