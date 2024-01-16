@@ -159,7 +159,7 @@ class Navi extends Controller
                         return response()->json(['response' => $this->generateText($response, $prompt), 'floor' => $floor, 'facility' => $facility, 'continuation' => 'information']);
                     }
                 } else {
-                    dd($result);
+                    // dd($result);
                     if ($result['navi'][0]['data']) {
                         // dd('if');
                         // 'floor' key is not present in the specified structure
@@ -191,9 +191,9 @@ class Navi extends Controller
                                     ->first();
                                 // dd($t);
                                 $formatrequest = new Request([
-                                    'infoId' => $t['id'],
-                                    'locationFloor' => $t['floor'],
-                                    'teacherLocation' => $t['facilities'],
+                                    'infoId' => $t ? $t['id'] : null,
+                                    'locationFloor' => $t ? $t['floor'] : null,
+                                    'teacherLocation' => $t ? $t['facilities'] : null,
                                     'infoModel' => 'Teacher', // Replace with the actual model name
                                     'data' => $t,
                                 ]);
