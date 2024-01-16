@@ -488,7 +488,7 @@ body::after {
             width: 0;
         }
         .header-content .card {
-            background-color: #252b3b4b;
+            background-color: #252b3b1c;
             border: 1px solid #ccc;
             border-radius: 8px;
             padding: 20px;
