@@ -1146,6 +1146,10 @@ body::after {
                                             .then((done) => {
                                                 if (done) {
                                                     hideIndicatorSpeaking()
+                                                    $('svg').hide()
+                                                        // speak
+                                                        input.hide()
+                                                        subBTN.hide()
                                                 }
                                             })
                                     } else if (validCommandsCancel.some(command => message.includes(
