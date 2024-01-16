@@ -489,7 +489,7 @@ body::after {
         }
         .header-content .card {
             background-color: #252b3b1c;
-            border: 1px solid #ccc;
+            /* border: 1px solid #ccc; */
             border-radius: 8px;
             padding: 20px;
             text-align: center;
@@ -1246,7 +1246,7 @@ body::after {
                                     ); // Resolve the Promise when speech finishes
                                 }, 1000);
                             }
-                            
+
 
                 // hide all svg options
                 $('svg').show()
