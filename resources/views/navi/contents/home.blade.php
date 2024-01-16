@@ -269,6 +269,7 @@
             ms-auto;
             /* Push the button to the right */
         }
+
         .grid {
             max-width: 1100px;
             height: 700px;
@@ -279,9 +280,9 @@
             gap: 0px;
 
             /* background-image: url('third.jpg');
-                                               
-                                                background-position: center;
-                                                background-size:cover; */
+                                                   
+                                                    background-position: center;
+                                                    background-size:cover; */
             overflow: hidden;
         }
 
@@ -468,7 +469,7 @@ body::after {
     </style> --}}
 
     <style>
-        .header-content{
+        .header-content {
             /* border: 1px solid red; */
             position: absolute;
             top: 0;
@@ -484,19 +485,21 @@ body::after {
         }
 
 
-        .header-content::-webkit-scrollbar{
+        .header-content::-webkit-scrollbar {
             width: 0;
         }
+
         .header-content .card {
             background-color: #252b3b1c;
             /* border: 1px solid #ccc; */
             border-radius: 8px;
             padding: 20px;
             text-align: center;
-            width: calc(15% - 20px); /* 25% width with 20px gap between cards */
-            }
+            width: calc(15% - 20px);
+            /* 25% width with 20px gap between cards */
+        }
 
-            .header-content .card  .icon {
+        .header-content .card .icon {
             font-size: 44px;
             margin-bottom: 10px;
             border: 1px dashed grey;
@@ -504,101 +507,103 @@ body::after {
             margin: auto;
             padding: 30px;
             background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
-                background-size: 200% 200%;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-            .header-content .card .label {
-                background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
-                background-size: 200% 200%;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                font-size: 18px;
-                margin-bottom: 8px;
-            }
+        .header-content .card .label {
+            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
 
-            .header-content .card .description {
-                background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
-                background-size: 200% 200%;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
+        .header-content .card .description {
+            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-            /* Media queries for responsiveness */
-            @media only screen and (max-width: 1200px) {
-                .header-content .card {
-                    width: calc(33.33% - 20px); /* 33.33% width with 20px gap between cards */
+        /* Media queries for responsiveness */
+        @media only screen and (max-width: 1200px) {
+            .header-content .card {
+                width: calc(33.33% - 20px);
+                /* 33.33% width with 20px gap between cards */
             }
-            }
+        }
 
-            @media only screen and (max-width: 800px) {
-                .header-content .card {
-                width: calc(50% - 20px); /* 50% width with 20px gap between cards */
+        @media only screen and (max-width: 800px) {
+            .header-content .card {
+                width: calc(50% - 20px);
+                /* 50% width with 20px gap between cards */
             }
-            }
+        }
 
-            @media only screen and (max-width: 600px) {
-                .header-content .card {
-                width: 100%; /* Full width on smaller screens */
+        @media only screen and (max-width: 600px) {
+            .header-content .card {
+                width: 100%;
+                /* Full width on smaller screens */
             }
-            }
-
+        }
     </style>
 @endsection
 
 @section('contents')
-    
     <div class="header-content">
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-book fa-2xl"></i></div>
+            <h2 class="label">User Manual</h2>
             <p class="description">Card Description goes here.</p>
         </div>
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></div>
+            <h2 class="label">Different Option</h2>
             <p class="description">Card Description goes here.</p>
         </div>
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-question fa-2xl"></i></div>
+            <h2 class="label">Frequently Quesion</h2>
             <p class="description">Card Description goes here.</p>
         </div>
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-microphone-lines fa-2xl"></i></div>
+            <h2 class="label">Speech Recognition</h2>
             <p class="description">Card Description goes here.</p>
         </div>
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-building fa-2xl"></i></div>
+            <h2 class="label">Facilities List</h2>
             <p class="description">Card Description goes here.</p>
         </div>
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-address-book fa-2xl"></i></div>
+            <h2 class="label">Teacher List</h2>
             <p class="description">Card Description goes here.</p>
         </div>
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-square-check fa-2xl"></i></div>
+            <h2 class="label">Vision</h2>
             <p class="description">Card Description goes here.</p>
         </div>
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-square-check fa-2xl"></i></div>
+            <h2 class="label">Mission</h2>
             <p class="description">Card Description goes here.</p>
         </div>
         <div class="card">
-            <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
-            <h2 class="label">Card Label</h2>
+            <div class="icon"><i class="fa-solid fa-play fa-2xl"></i></div>
+            <h2 class="label">Eastwoods Hymn</h2>
             <p class="description">Card Description goes here.</p>
         </div>
-        
+
     </div>
     <div class="version">
         <span>Epcst-v1.0.1</span>
+       
     </div>
 
     <header>
@@ -689,7 +694,9 @@ body::after {
     </section>
 
     <footer>
-        <span>Capstone2</span>
+        {{-- <span>Capstone2</span> --}}
+        <i class="fa-solid fa-users fa-2xl mb-2" style="font-size:100px; margin-left:30px;"></i>
+        <h2 class="label">Especial Thanks </h2>
     </footer>
 @endsection
 
@@ -1062,7 +1069,8 @@ body::after {
                             recognition.onresult = function(event) {
                                 const currentIndex = event.resultIndex;
                                 const transcript = event.results[currentIndex][0].transcript;
-                                console.log(transcript);//we need to display the text to input later with modal show
+                                console.log(
+                                transcript); //we need to display the text to input later with modal show
                                 // if (!isListening) {
                                 // recognition.stop(); // Stop recognition if not listening
                                 takeCommand(transcript.toLowerCase());
@@ -1120,9 +1128,11 @@ body::after {
                                         if (!response.ok) {
                                             console.log('error')
                                             stopSpeaking()
-                                            startToSpeak('oh! sorry, looks like im encountering an error!. try a different question.')
-                                                .then((f)=>{
-                                                    if(f){
+                                            startToSpeak(
+                                                    'oh! sorry, looks like im encountering an error!. try a different question.'
+                                                    )
+                                                .then((f) => {
+                                                    if (f) {
 
                                                     }
                                                 })
@@ -1150,9 +1160,9 @@ body::after {
                                                 if (done) {
                                                     hideIndicatorSpeaking()
                                                     $('svg').hide()
-                                                        // speak
-                                                        input.hide()
-                                                        subBTN.hide()
+                                                    // speak
+                                                    input.hide()
+                                                    subBTN.hide()
                                                 }
                                             })
                                     } else if (validCommandsCancel.some(command => message.includes(
@@ -1174,7 +1184,7 @@ body::after {
                                     } else {
                                         // alert(message)
                                         if (message !== null && message !== '') {
-                                            
+
 
                                             $('#popup-continuation-speech').toggleClass('active');
                                             $('#speech-input').val(message + ' ?');
@@ -1204,10 +1214,10 @@ body::after {
                         break;
 
                     case 'guide':
-                    $('.popup').removeClass('active')
+                        $('.popup').removeClass('active')
                         startToSpeak(
                                 'Welcome to the Guide! This tool is designed to assist you effortlessly. Click on the guide icon to reveal a wealth of information. Navigate through sections using the intuitive layout, and find helpful tips and instructions for an enhanced experience. Feel free to explore and make the most of the guides features. If you have any questions, the guide is here to help!'
-                                )
+                            )
                             .then((finished) => {
                                 if (finished) {
                                     // Speech finished
@@ -1230,25 +1240,25 @@ body::after {
 
                 const afterElement = circle.find('.circle-after');
 
-                            if (afterElement.length) {
-                                circle.remove(afterElement);
+                if (afterElement.length) {
+                    circle.remove(afterElement);
 
-                                setTimeout(() => {
-                                    afterElement.removeClass('circle-after');
-                                    conC.removeClass('container-circle');
-                                    conT.removeClass('container-title');
-                                    en.removeClass('inside');
-                                    location.removeClass('active');
-                                    $('svg').show();
-                                    // show input
-                                    input.show();
-                                    subBTN.show();
+                    setTimeout(() => {
+                        afterElement.removeClass('circle-after');
+                        conC.removeClass('container-circle');
+                        conT.removeClass('container-title');
+                        en.removeClass('inside');
+                        location.removeClass('active');
+                        $('svg').show();
+                        // show input
+                        input.show();
+                        subBTN.show();
 
-                                    resolve(
-                                        true
-                                    ); // Resolve the Promise when speech finishes
-                                }, 1000);
-                            }
+                        resolve(
+                            true
+                        ); // Resolve the Promise when speech finishes
+                    }, 1000);
+                }
 
 
                 // hide all svg options
@@ -1374,7 +1384,7 @@ body::after {
                                                 $("#navigationPopup").css({
                                                     "display": "none"
                                                 });
-                                                
+
                                                 hideIndicatorSpeaking()
                                                 $('#overlay-updates').toggleClass('active');
                                                 $('#popup').toggleClass('active');
@@ -2005,9 +2015,9 @@ body::after {
 
                                     // Check the x and y to populate
                                     // detailInServer[key].forEach(details => {
-                                        serverResponds[floorIndex].gridDetails.forEach(detail => {
-                                            // console.log(detail)
-                                       
+                                    serverResponds[floorIndex].gridDetails.forEach(detail => {
+                                        // console.log(detail)
+
                                         if (i === parseInt(detail.x) && j === parseInt(detail.y)) {
                                             // Update cell properties based on conditions
                                             if (detail.abbrev !== 'undefined' && detail.abbrev !==
@@ -2043,7 +2053,7 @@ body::after {
                                             }
 
                                             // pag nakita na target
-                                            if(detail.label === "stair-in" && !found){
+                                            if (detail.label === "stair-in" && !found) {
                                                 cell.removeClass('blocked facility').addClass(
                                                         'target')
                                                     .css({
@@ -2055,7 +2065,7 @@ body::after {
                                                 target = {
                                                     x: parseInt(detail.x),
                                                     y: parseInt(detail.y),
-                                                    l:detail.label,
+                                                    l: detail.label,
                                                 }
                                             }
 
@@ -2089,7 +2099,7 @@ body::after {
                                                     .append(
                                                         `<i class="fa-solid fa-person fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
                                                     );
-                                                
+
                                             }
 
                                             if (detail.label === "female restroom") {
@@ -2104,7 +2114,7 @@ body::after {
                                                     .append(
                                                         `<i class="fa-solid fa-person-dress fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
                                                     );
-                                                
+
                                             }
 
                                             if (detail.label === "stair-in") {
@@ -2119,7 +2129,7 @@ body::after {
                                                     .append(
                                                         `<i class="fa-solid fa-signal fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
                                                     );
-                                                
+
                                             }
 
                                             if (detail.label === "wall") {
@@ -2131,8 +2141,8 @@ body::after {
                                             }
 
                                         }
-                                        
-                                        
+
+
 
 
 
@@ -2160,7 +2170,7 @@ body::after {
                                     gridContainer.append(cell);
 
                                 }
-                                
+
 
                             }
                             // dijkstra(starting.x, starting.y, target.x, target.y)
@@ -2234,8 +2244,9 @@ body::after {
                                             break;
 
                                         default:
-                                            if(data.label !== 'wall'){
-                                                icons = `<li class="fa-solid fa-location-dot fa-lg fa-bounce" style="color:${data.color}"></li>`
+                                            if (data.label !== 'wall') {
+                                                icons =
+                                                    `<li class="fa-solid fa-location-dot fa-lg fa-bounce" style="color:${data.color}"></li>`
                                                 iconText = data.label
                                             }
                                             break;
@@ -2404,50 +2415,52 @@ body::after {
                                     if (done) {
                                         hideIndicatorSpeaking()
                                         if (!prevBool) {
-                                    floorIndex++; // Move to the next floor
-                                    setTimeout(() => createGridPoints(facility, false),
-                                        2000); // Display the next floor after 10 seconds
-                                    }
+                                            floorIndex++; // Move to the next floor
+                                            setTimeout(() => createGridPoints(facility, false),
+                                                2000); // Display the next floor after 10 seconds
+                                        }
 
                                     }
                                 })
-                            
+
 
 
                         }
 
                         // Simulating an asynchronous process
-                    setTimeout(function() {
-                        console.log("Grid creation finished");
-                        // ... rest of the logic
-                        //hide loader
-                        $('#overlay-updates').removeClass('active');
-                        $('#popup').removeClass('active');
-                
-                        localStorage.setItem('updates', false);
-                        var endTime = performance.now(); // Record the end time
-                        var elapsedTime = endTime - startTime;
+                        setTimeout(function() {
+                            console.log("Grid creation finished");
+                            // ... rest of the logic
+                            //hide loader
+                            $('#overlay-updates').removeClass('active');
+                            $('#popup').removeClass('active');
 
-                        dijkstra(starting.x, starting.y, target.x, target.y)
+                            localStorage.setItem('updates', false);
+                            var endTime = performance.now(); // Record the end time
+                            var elapsedTime = endTime - startTime;
 
-                        $('#navigationPopup').css({'display':'flex'})
+                            dijkstra(starting.x, starting.y, target.x, target.y)
 
-                        // Invoke the callback function with the elapsed time
-                        callback(elapsedTime);
-                    }, Math.random() * 1000); // Simulating variable processing time
+                            $('#navigationPopup').css({
+                                'display': 'flex'
+                            })
+
+                            // Invoke the callback function with the elapsed time
+                            callback(elapsedTime);
+                        }, Math.random() * 1000); // Simulating variable processing time
 
                     } else {
                         // $('#next-floor-button').fadeIn('slow');
                         $('#back-floor-button').fadeIn('slow');
                     }
 
-                    
-                    
+
+
                 }
 
                 // Back button preview
                 $(document).on('click', '#back-floor-button', function() {
-                    
+
                     if (floorIndex > 0) {
                         console.log(floorIndex);
                         floorIndex--; // Decrement floorIndex
@@ -2458,7 +2471,7 @@ body::after {
                         highestX = -Infinity;
                         highestY = -Infinity;
                         isTargetFound = false;
-                    
+
                         targetFacilities = '';
                         targetX = 0;
                         targetY = 0;
@@ -2479,9 +2492,9 @@ body::after {
 
                 // Next button preview
                 $(document).on('click', '#next-floor-button', function() {
-                    
+
                     if (floorIndex < len - 1) {
-                        
+
                         floorIndex++; // Increment floorIndex
                         const gridContainer = $("#grid-container");
                         // Clear the grid points and reset variables
@@ -2534,7 +2547,7 @@ body::after {
                     return text; // Text is within the maxLength limit
                 }
                 // Call the function to create a 10x10 grid of points
-                createGridPoints(facility, false, function(elapsedTime){
+                createGridPoints(facility, false, function(elapsedTime) {
                     console.log("Elapsed Time:", elapsedTime.toFixed(2) + " ms");
                 });
 
@@ -2864,280 +2877,280 @@ body::after {
 
                 //new
                 // // Highlight the shortest path in the grid
-            async function animateShortestPath(grid, shortestPath) {
-                return new Promise(async (resolve) => {
-                    for (let i = 1; i < shortestPath.length; i++) {
+                async function animateShortestPath(grid, shortestPath) {
+                    return new Promise(async (resolve) => {
+                        for (let i = 1; i < shortestPath.length; i++) {
 
-                        const {
-                            x: currentX,
-                            y: currentY
-                        } = shortestPath[i - 1];
-                        const {
-                            x: nextX,
-                            y: nextY
-                        } = shortestPath[i];
+                            const {
+                                x: currentX,
+                                y: currentY
+                            } = shortestPath[i - 1];
+                            const {
+                                x: nextX,
+                                y: nextY
+                            } = shortestPath[i];
 
-                        const node = grid[currentY][currentX];
-                        node.classList.add(
-                            "passed"); // Highlight the current node as passed
+                            const node = grid[currentY][currentX];
+                            node.classList.add(
+                                "passed"); // Highlight the current node as passed
 
-                        // Determine the direction (up or down)
-                        let directionClass = "";
-                        // if (nextY < currentY) {
-                        //     // alert('yes')
-                        //     directionClass = "left";
-                        // } else {
-                        //     directionClass = "up";
-                        // }
-                        if (nextY < currentY) {
-                            directionClass = "left";
-                        } else if (nextY > currentY) {
-                            directionClass = "right";
-                        } else if (nextX < currentX) {
-                            directionClass = "up";
-                        } else if (nextX > currentX) {
-                            directionClass = "down";
+                            // Determine the direction (up or down)
+                            let directionClass = "";
+                            // if (nextY < currentY) {
+                            //     // alert('yes')
+                            //     directionClass = "left";
+                            // } else {
+                            //     directionClass = "up";
+                            // }
+                            if (nextY < currentY) {
+                                directionClass = "left";
+                            } else if (nextY > currentY) {
+                                directionClass = "right";
+                            } else if (nextX < currentX) {
+                                directionClass = "up";
+                            } else if (nextX > currentX) {
+                                directionClass = "down";
+                            }
+
+                            // Check if directionClass is not empty before adding it as a class
+                            if (directionClass !== "") {
+                                // Create the ball element with the direction class
+                                // const ball = document.createElement("div");
+                                // ball.classList.add("ball", directionClass);
+                                node.classList.add(directionClass);
+
+                                // Append the ball to the grid container
+                                // node.append(ball);
+
+                                // Wait for 200 milliseconds (remove the ball after 200ms)
+                                await new Promise((resolve) => setTimeout(resolve, 1));
+
+                                // Remove the added class
+                                // node.classList.remove(directionClass);
+                            }
                         }
+                        // Animation is complete, resolve the promise
+                        // resolve();
+                    })
 
-                        // Check if directionClass is not empty before adding it as a class
-                        if (directionClass !== "") {
-                            // Create the ball element with the direction class
-                            // const ball = document.createElement("div");
-                            // ball.classList.add("ball", directionClass);
-                            node.classList.add(directionClass);
-
-                            // Append the ball to the grid container
-                            // node.append(ball);
-
-                            // Wait for 200 milliseconds (remove the ball after 200ms)
-                            await new Promise((resolve) => setTimeout(resolve, 1));
-
-                            // Remove the added class
-                            // node.classList.remove(directionClass);
-                        }
-                    }
-                    // Animation is complete, resolve the promise
-                    // resolve();
-                })
-
-                // Repeat the animation infinitely
-                // animateShortestPath(shortestPath);
-            }
-
-            // Function to animate all paths
-            async function animateAllPaths(grid, allPaths) {
-                for (const path of allPaths) {
-                    await animateShortestPath(grid, path);
-                    // Optionally, you can add a delay between paths
-                    // await new Promise(resolve => setTimeout(resolve, 500));
+                    // Repeat the animation infinitely
+                    // animateShortestPath(shortestPath);
                 }
-            }
 
-
-            // Dijkstra's Algorithm
-            async function dijkstra(startX, startY, endX, endY) {
-                try {
-                    const startNode = document.querySelector(
-                        `[data-x="${startX}"][data-y="${startY}"]`
-                    );
-                    const endNode = document.querySelector(
-                        `[data-x="${endX}"][data-y="${endY}"]`
-                    );
-
-                    const width = highestX + 1; // Adjust to match the width of the grid
-                    const height = highestY + 1; // Adjust to match the height of the grid
-
-                    // Create a 2D array to represent the grid
-                    const grid = new Array(height);
-                    for (let y = 0; y < height; y++) {
-                        grid[y] = new Array(width);
-                        for (let x = 0; x < width; x++) {
-                            grid[y][x] = document.querySelector(
-                                `[data-x="${x}"][data-y="${y}"]`
-                            );
-                        }
+                // Function to animate all paths
+                async function animateAllPaths(grid, allPaths) {
+                    for (const path of allPaths) {
+                        await animateShortestPath(grid, path);
+                        // Optionally, you can add a delay between paths
+                        // await new Promise(resolve => setTimeout(resolve, 500));
                     }
+                }
 
-                    // Helper function to calculate the distance between two grid points
-                    function calculateDistance(node1, node2) {
-                        const dx = Math.abs(node1.dataset.x - node2.dataset.x);
-                        const dy = Math.abs(node1.dataset.y - node2.dataset.y);
-                        return Math.sqrt(dx * dx + dy * dy);
-                    }
 
-                    // Initialize distance array with Infinity and visited array with false
-                    const distances = new Array(height)
-                        .fill(null)
-                        .map(() => new Array(width).fill(Infinity));
-                    const visited = new Array(height)
-                        .fill(null)
-                        .map(() => new Array(width).fill(false));
+                // Dijkstra's Algorithm
+                async function dijkstra(startX, startY, endX, endY) {
+                    try {
+                        const startNode = document.querySelector(
+                            `[data-x="${startX}"][data-y="${startY}"]`
+                        );
+                        const endNode = document.querySelector(
+                            `[data-x="${endX}"][data-y="${endY}"]`
+                        );
 
-                    // Set the distance of the starting point to 0
-                    distances[startY][startX] = 0;
+                        const width = highestX + 1; // Adjust to match the width of the grid
+                        const height = highestY + 1; // Adjust to match the height of the grid
 
-                    // Array to store all paths
-                    const allPaths = [];
-
-                    // Dijkstra's algorithm
-                    while (!visited[endY][endX]) {
-                        let currentMinDistance = Infinity;
-                        let currentX = null;
-                        let currentY = null;
-
-                        // Find the unvisited node with the smallest distance
+                        // Create a 2D array to represent the grid
+                        const grid = new Array(height);
                         for (let y = 0; y < height; y++) {
+                            grid[y] = new Array(width);
                             for (let x = 0; x < width; x++) {
-                                if (!visited[y][x] && distances[y][x] < currentMinDistance) {
-                                    currentMinDistance = distances[y][x];
-                                    currentX = x;
-                                    currentY = y;
+                                grid[y][x] = document.querySelector(
+                                    `[data-x="${x}"][data-y="${y}"]`
+                                );
+                            }
+                        }
+
+                        // Helper function to calculate the distance between two grid points
+                        function calculateDistance(node1, node2) {
+                            const dx = Math.abs(node1.dataset.x - node2.dataset.x);
+                            const dy = Math.abs(node1.dataset.y - node2.dataset.y);
+                            return Math.sqrt(dx * dx + dy * dy);
+                        }
+
+                        // Initialize distance array with Infinity and visited array with false
+                        const distances = new Array(height)
+                            .fill(null)
+                            .map(() => new Array(width).fill(Infinity));
+                        const visited = new Array(height)
+                            .fill(null)
+                            .map(() => new Array(width).fill(false));
+
+                        // Set the distance of the starting point to 0
+                        distances[startY][startX] = 0;
+
+                        // Array to store all paths
+                        const allPaths = [];
+
+                        // Dijkstra's algorithm
+                        while (!visited[endY][endX]) {
+                            let currentMinDistance = Infinity;
+                            let currentX = null;
+                            let currentY = null;
+
+                            // Find the unvisited node with the smallest distance
+                            for (let y = 0; y < height; y++) {
+                                for (let x = 0; x < width; x++) {
+                                    if (!visited[y][x] && distances[y][x] < currentMinDistance) {
+                                        currentMinDistance = distances[y][x];
+                                        currentX = x;
+                                        currentY = y;
+                                    }
+                                }
+                            }
+
+                            // Mark the current node as visited
+                            visited[currentY][currentX] = true;
+
+                            // Explore neighbors
+                            const neighbors = [{
+                                    x: currentX - 1,
+                                    y: currentY
+                                },
+                                {
+                                    x: currentX + 1,
+                                    y: currentY
+                                },
+                                {
+                                    x: currentX,
+                                    y: currentY - 1
+                                },
+                                {
+                                    x: currentX,
+                                    y: currentY + 1
+                                },
+                            ];
+
+                            for (const neighbor of neighbors) {
+                                const {
+                                    x,
+                                    y
+                                } = neighbor;
+
+                                // Check if the neighbor is within the grid
+                                if (x >= 0 && x < width && y >= 0 && y < height) {
+                                    const neighborNode = grid[y][x];
+
+                                    // Check if the neighbor is not a block
+                                    //working add to if to enabled option path && !neighborNode.classList.contains("passed")
+                                    if (!neighborNode.classList.contains("blocked")) {
+                                        const distanceToNeighbor = calculateDistance(
+                                            grid[currentY][currentX],
+                                            neighborNode
+                                        );
+
+                                        // Update the distance if a shorter path is found
+                                        if (
+                                            !visited[y][x] &&
+                                            distances[currentY][currentX] + distanceToNeighbor <
+                                            distances[y][x]
+                                        ) {
+                                            distances[y][x] =
+                                                distances[currentY][currentX] + distanceToNeighbor;
+                                        }
+                                    }
                                 }
                             }
                         }
 
-                        // Mark the current node as visited
-                        visited[currentY][currentX] = true;
+                        // Backtrack to find the shortest path
+                        const shortestPath = [];
+                        let currentX = endX;
+                        let currentY = endY;
 
-                        // Explore neighbors
-                        const neighbors = [{
-                                x: currentX - 1,
-                                y: currentY
-                            },
-                            {
-                                x: currentX + 1,
-                                y: currentY
-                            },
-                            {
+                        while (currentX !== startX || currentY !== startY) {
+                            shortestPath.unshift({
                                 x: currentX,
-                                y: currentY - 1
-                            },
-                            {
-                                x: currentX,
-                                y: currentY + 1
-                            },
-                        ];
+                                y: currentY
+                            });
+                            const neighbors = [{
+                                    x: currentX - 1,
+                                    y: currentY
+                                },
+                                {
+                                    x: currentX + 1,
+                                    y: currentY
+                                },
+                                {
+                                    x: currentX,
+                                    y: currentY - 1
+                                },
+                                {
+                                    x: currentX,
+                                    y: currentY + 1
+                                },
+                            ];
 
-                        for (const neighbor of neighbors) {
-                            const {
-                                x,
-                                y
-                            } = neighbor;
+                            for (const neighbor of neighbors) {
+                                const {
+                                    x,
+                                    y
+                                } = neighbor;
 
-                            // Check if the neighbor is within the grid
-                            if (x >= 0 && x < width && y >= 0 && y < height) {
-                                const neighborNode = grid[y][x];
-
-                                // Check if the neighbor is not a block
-                                //working add to if to enabled option path && !neighborNode.classList.contains("passed")
-                                if (!neighborNode.classList.contains("blocked")) {
+                                // Check if the neighbor is within the grid
+                                if (x >= 0 && x < width && y >= 0 && y < height) {
+                                    const neighborNode = grid[y][x];
                                     const distanceToNeighbor = calculateDistance(
                                         grid[currentY][currentX],
                                         neighborNode
                                     );
 
-                                    // Update the distance if a shorter path is found
                                     if (
-                                        !visited[y][x] &&
-                                        distances[currentY][currentX] + distanceToNeighbor <
-                                        distances[y][x]
+                                        distances[y][x] + distanceToNeighbor ===
+                                        distances[currentY][currentX]
                                     ) {
-                                        distances[y][x] =
-                                            distances[currentY][currentX] + distanceToNeighbor;
+                                        currentX = x;
+                                        currentY = y;
+                                        break;
                                     }
                                 }
                             }
                         }
-                    }
 
-                    // Backtrack to find the shortest path
-                    const shortestPath = [];
-                    let currentX = endX;
-                    let currentY = endY;
-
-                    while (currentX !== startX || currentY !== startY) {
+                        // Add the starting point to the shortest path
                         shortestPath.unshift({
-                            x: currentX,
-                            y: currentY
+                            x: startX,
+                            y: startY
                         });
-                        const neighbors = [{
-                                x: currentX - 1,
-                                y: currentY
-                            },
-                            {
-                                x: currentX + 1,
-                                y: currentY
-                            },
-                            {
-                                x: currentX,
-                                y: currentY - 1
-                            },
-                            {
-                                x: currentX,
-                                y: currentY + 1
-                            },
-                        ];
 
-                        for (const neighbor of neighbors) {
-                            const {
-                                x,
-                                y
-                            } = neighbor;
+                        // Store the current path in the array of all paths
+                        allPaths.push(shortestPath);
 
-                            // Check if the neighbor is within the grid
-                            if (x >= 0 && x < width && y >= 0 && y < height) {
-                                const neighborNode = grid[y][x];
-                                const distanceToNeighbor = calculateDistance(
-                                    grid[currentY][currentX],
-                                    neighborNode
-                                );
+                        // Start the animation of all paths
+                        await animateAllPaths(grid, allPaths);
 
-                                if (
-                                    distances[y][x] + distanceToNeighbor ===
-                                    distances[currentY][currentX]
-                                ) {
-                                    currentX = x;
-                                    currentY = y;
-                                    break;
-                                }
-                            }
-                        }
+
+                        // // Initialize a flag to track if animation is running
+                        // let isAnimationRunning = false;
+                        // // Run animation recursively with a delay
+                        // async function runAnimation() {
+                        //     await animateShortestPath(shortestPath);
+                        //     console.log("Animation is complete");
+
+                        //     dijkstra(startingX, startingY, targetX, targetY);
+                        // }
+
+                        // // Start the animation
+                        // runAnimation();
+
+
+
+
+
+                    } catch (error) {
+
                     }
-
-                    // Add the starting point to the shortest path
-                    shortestPath.unshift({
-                        x: startX,
-                        y: startY
-                    });
-
-                    // Store the current path in the array of all paths
-                    allPaths.push(shortestPath);
-
-                    // Start the animation of all paths
-                    await animateAllPaths(grid, allPaths);
-
-
-                    // // Initialize a flag to track if animation is running
-                    // let isAnimationRunning = false;
-                    // // Run animation recursively with a delay
-                    // async function runAnimation() {
-                    //     await animateShortestPath(shortestPath);
-                    //     console.log("Animation is complete");
-
-                    //     dijkstra(startingX, startingY, targetX, targetY);
-                    // }
-
-                    // // Start the animation
-                    // runAnimation();
-
-
-
-
-
-                } catch (error) {
-
                 }
-            }
                 // Helper function to add a delay for animation
                 function sleep(ms) {
                     return new Promise((resolve) => setTimeout(resolve, ms));
