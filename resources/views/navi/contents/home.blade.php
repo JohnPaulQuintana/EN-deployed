@@ -1098,6 +1098,13 @@ body::after {
 
                                         if (!response.ok) {
                                             console.log('error')
+                                            stopSpeaking()
+                                            startToSpeak('oops! sorry, looks like im encountering an error!. try a different question.')
+                                                .then((f)=>{
+                                                    if(f){
+
+                                                    }
+                                                })
                                             throw new Error(`Fetch error: ${response.statusText}`);
                                         }
 
