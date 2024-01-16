@@ -189,7 +189,7 @@ class Navi extends Controller
                                 $t = Teacher::join('eastwoods_Facilities', 'teachers.facilities_id', '=', 'eastwoods_Facilities.id')
                                     ->where('teachers.name', $result['navi'][0]['entity'])
                                     ->first();
-                                // dd($t);
+                                dd($t);
                                 $formatrequest = new Request([
                                     'infoId' => $t['id'],
                                     'locationFloor' => $t['floor'],
