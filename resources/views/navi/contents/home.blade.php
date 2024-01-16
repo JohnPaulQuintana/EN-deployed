@@ -519,7 +519,10 @@ body::after {
             }
 
             .header-content .card .description {
-            color: #666;
+                background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
 
             /* Media queries for responsiveness */
