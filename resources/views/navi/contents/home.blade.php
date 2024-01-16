@@ -944,16 +944,18 @@ body::after {
                         stopSpeaking()
                         $('#popup-ask').toggleClass('active');
                         $('#popup-searching').removeClass('active');
+                        // $('.popup').removeClass('active')
                         break;
                         // browsing
                     case 'search':
                         stopSpeaking()
                         $('#popup-ask').removeClass('active');
                         $('#popup-searching').toggleClass('active');
+                        $('.popup').removeClass('active')
                         break;
                     case 'search2':
                         $('#popup-ask').removeClass('active');
-
+                        $('.popup').removeClass('active')
                         boxes.show(); // Ensure boxes are visible before fading in
                         // searchCirlce.toggleClass('circle-after')
                         stopSpeaking()
@@ -973,6 +975,7 @@ body::after {
                         // modal.style.display = 'flex';
                         break;
                     case 'speech':
+                        $('.popup').removeClass('active')
                         if ($(this).hasClass('disabled')) {
                             var mess =
                                 "We apologize, but our speech recognition service is currently temporary unavailable. The icons have been highlighted in red to indicate this issue. Please try again at a later time. Thank you for your understanding.";
@@ -1099,7 +1102,7 @@ body::after {
                                         if (!response.ok) {
                                             console.log('error')
                                             stopSpeaking()
-                                            startToSpeak('oops! sorry, looks like im encountering an error!. try a different question.')
+                                            startToSpeak('oh! sorry, looks like im encountering an error!. try a different question.')
                                                 .then((f)=>{
                                                     if(f){
 
@@ -1174,6 +1177,7 @@ body::after {
                         break;
 
                     case 'guide':
+                    $('.popup').removeClass('active')
                         startToSpeak(
                                 'Welcome to the Guide! This tool is designed to assist you effortlessly. Click on the guide icon to reveal a wealth of information. Navigate through sections using the intuitive layout, and find helpful tips and instructions for an enhanced experience. Feel free to explore and make the most of the guides features. If you have any questions, the guide is here to help!'
                                 )
