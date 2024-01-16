@@ -490,9 +490,10 @@ body::after {
         }
 
         .header-content .card {
-            background-color: #252b3b1c;
+            background-color: transparent;
+            border: transparent;
             /* border: 1px solid #ccc; */
-            border-radius: 8px;
+            /* border-radius: 8px; */
             padding: 20px;
             text-align: center;
             width: calc(15% - 20px);
