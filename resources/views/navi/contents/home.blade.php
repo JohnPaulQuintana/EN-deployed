@@ -468,6 +468,14 @@ body::after {
     </style> --}}
 
     <style>
+        .head-title{
+            text-align: center;
+            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
         .header-content{
             /* border: 1px solid red; */
             position: absolute;
@@ -545,7 +553,9 @@ body::after {
 @endsection
 
 @section('contents')
+    
     <div class="header-content">
+        <h1 class="head-title">Exousia Features</h1>
         <div class="card">
             <div class="icon"><i class="fa-solid fa-star fa-2xl"></i></div>
             <h2 class="label">Card Label</h2>
