@@ -1084,7 +1084,7 @@ body::after {
                                     if (validCommandsYes.some(commands => message.includes(commands))) {
                                         recognition.stop();
                                         stopSpeaking();
-                                        startSessionTimer()
+                                        // startSessionTimer()
                                         const response = await fetch('/navi/process', {
                                             method: 'POST',
                                             headers: {
@@ -1113,7 +1113,7 @@ body::after {
                                             command))) {
                                         // Handle 'no' case
                                         $('#popup-continuation-speech').toggleClass('active');
-                                        startSessionTimer()
+                                        // startSessionTimer()
                                         startToSpeak(
                                                 'Oh, sorry! can speak again or manually type your question!'
                                             )
