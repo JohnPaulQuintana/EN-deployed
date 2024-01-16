@@ -447,7 +447,7 @@
                                                 .append(
                                                     `<i class="fa-solid fa-street-view fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
                                                 );
-                                            starting = {
+                                                starting = {
                                                 x: parseInt(detail.x),
                                                 y: parseInt(detail.y)
                                             }
@@ -465,10 +465,7 @@
                                                 .append(
                                                     `<i class="fa-solid fa-person fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
                                                 );
-                                            starting = {
-                                                x: parseInt(detail.x),
-                                                y: parseInt(detail.y)
-                                            }
+                                            
                                         }
 
                                         if (detail.label === "female restroom") {
@@ -483,10 +480,7 @@
                                                 .append(
                                                     `<i class="fa-solid fa-person-dress fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
                                                 );
-                                            starting = {
-                                                x: parseInt(detail.x),
-                                                y: parseInt(detail.y)
-                                            }
+                                            
                                         }
 
                                         if (detail.label === "stair-in") {
@@ -501,10 +495,7 @@
                                                 .append(
                                                     `<i class="fa-solid fa-signal fa-2xl fa-bounce" style="color:${detail.color};z-index:1;position:absolute;" data-bs-toggle="tooltip" data-bs-placement="top" title="${detail.label}"></i>`
                                                 );
-                                            starting = {
-                                                x: parseInt(detail.x),
-                                                y: parseInt(detail.y)
-                                            }
+                                            
                                         }
 
                                         if (detail.label === "wall") {
