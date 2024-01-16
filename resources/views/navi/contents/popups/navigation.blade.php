@@ -119,21 +119,18 @@
                     <p>Female Restroom</p>
                 </div>
                 <div class="legend-box">
-                    <i class="fa-solid fa-stairs fa-2xl" style="color: #0f56d2;"></i>
+                    <i class="fa-solid fa-signal fa-2xl" style="color: #0f56d2;"></i>
                     <p>Stair</p>
                 </div>
                 <div class="legend-box">
                     <i class="fa-solid fa-location-dot fa-2xl" style="color: #0f56d2;"></i>
-                    <p>Stair</p>
+                    <p>Your Destination</p>
                 </div>
-               
+                
                 
             </div>
             <div class="legend-contents">
-                <div class="legend-box">
-                    <div style="background:#0f56d2; padding:2px;color:#0f56d2; width:20px; height:20px;"></div>
-                    <p>Your destination</p>
-                </div>
+                
             </div>
         </div>
         
