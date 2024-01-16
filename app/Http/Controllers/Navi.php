@@ -510,7 +510,7 @@ class Navi extends Controller
         //     "answer" => "Sorry my knowledge is limited, i cant help you with that!"
         //     "data" => ""
         //   ]
-        // dd($data);
+        dd($data);
         if($data['query'] !== '404'){
             // save the question
             // dd($question);
