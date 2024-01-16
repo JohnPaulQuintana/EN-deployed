@@ -1167,6 +1167,11 @@ body::after {
                                     } else {
                                         // alert(message)
                                         if (message !== null && message !== '') {
+                                            // hide all svg options
+                                            $('svg').hide()
+                                            // speak
+                                            input.hide()
+                                            subBTN.hide()
 
                                             $('#popup-continuation-speech').toggleClass('active');
                                             $('#speech-input').val(message + ' ?');
