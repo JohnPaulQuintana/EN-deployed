@@ -1012,8 +1012,11 @@ body::after {
                                                 // indicator speech
                                                 showIndicator();
 
-                                                input.hide();
-                                                subBTN.hide();
+                                                // hide all svg options
+                                                $('svg').hide()
+                                                // speak
+                                                input.hide()
+                                                subBTN.hide()
                                             }
                                         })
                                 } else if (hour > 12 && hour < 17) {
@@ -1025,8 +1028,11 @@ body::after {
                                                 recognition.start();
 
                                                 showIndicator();
-                                                input.hide();
-                                                subBTN.hide();
+                                                // hide all svg options
+                                                $('svg').hide()
+                                                // speak
+                                                input.hide()
+                                                subBTN.hide()
                                             }
                                         })
                                 } else {
@@ -1038,8 +1044,11 @@ body::after {
 
                                                 // indicator speech
                                                 showIndicator();
-                                                input.hide();
-                                                subBTN.hide();
+                                                // hide all svg options
+                                                $('svg').hide()
+                                                // speak
+                                                input.hide()
+                                                subBTN.hide()
                                             }
                                         })
                                 }
@@ -1072,6 +1081,12 @@ body::after {
 
                             async function takeCommand(message) {
                                 try {
+                                    // hide all svg options
+                                    $('svg').hide()
+                                    // speak
+                                    input.hide()
+                                    subBTN.hide()
+
                                     console.log(message);
                                     $('#popup-continuation-speech').removeClass('active');
 
