@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="
+        https://cdn.jsdelivr.net/npm/intro.js@7.2.0/minified/introjs.min.css
+        " rel="stylesheet">
     <!-- Icons Css -->
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -280,9 +284,9 @@
             gap: 0px;
 
             /* background-image: url('third.jpg');
-                                                   
-                                                    background-position: center;
-                                                    background-size:cover; */
+                                                                   
+                                                                    background-position: center;
+                                                                    background-size:cover; */
             overflow: hidden;
         }
 
@@ -394,6 +398,8 @@ body::after {
     {{-- speaking --}}
     <link rel="stylesheet" href="{{ asset('css/speaking.css') }}">
 
+
+
     {{-- guide --}}
     <style>
         .modal-content {
@@ -468,7 +474,7 @@ body::after {
         }
     </style> --}}
 
-    <style>
+    {{-- <style>
         .header-content {
             /* border: 1px solid red; */
             position: absolute;
@@ -550,15 +556,15 @@ body::after {
                 /* Full width on smaller screens */
             }
         }
-    </style>
+    </style> --}}
 @endsection
 
 @section('contents')
-    <div class="header-content">
+    {{-- <div class="header-content">
         <div class="card">
             <div class="icon"><i class="fa-solid fa-book fa-2xl"></i></div>
             <h2 class="label">User Manual</h2>
-            <p class="description">Card Description goes here.</p>
+            <p class="description">All the available .</p>
         </div>
         <div class="card">
             <div class="icon"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></div>
@@ -601,10 +607,10 @@ body::after {
             <p class="description">Card Description goes here.</p>
         </div>
 
-    </div>
+    </div> --}}
     <div class="version">
         <span>Epcst-v1.0.1</span>
-       
+
     </div>
 
     <header>
@@ -717,6 +723,10 @@ body::after {
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
     <script src="{{ asset('html5-qrcodes/html5-qrcode.min.js') }}"></script>
+
+    <script src="
+            https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js
+            "></script>
     @if (session('message'))
         <script>
             var message = @json(session('message'));
@@ -1071,7 +1081,8 @@ body::after {
                                 const currentIndex = event.resultIndex;
                                 const transcript = event.results[currentIndex][0].transcript;
                                 console.log(
-                                transcript); //we need to display the text to input later with modal show
+                                    transcript
+                                ); //we need to display the text to input later with modal show
                                 // if (!isListening) {
                                 // recognition.stop(); // Stop recognition if not listening
                                 takeCommand(transcript.toLowerCase());
@@ -1131,7 +1142,7 @@ body::after {
                                             stopSpeaking()
                                             startToSpeak(
                                                     'oh! sorry, looks like im encountering an error!. try a different question.'
-                                                    )
+                                                )
                                                 .then((f) => {
                                                     if (f) {
 
@@ -3562,6 +3573,182 @@ body::after {
             })
             // indicator speech
             // showIndicator();
+
+            // speak
+            const startToSpeakTour = async (sentence) => {
+                // Stop any ongoing speech before starting a new one
+                stopSpeaking();
+                if ('speechSynthesis' in window) {
+                    return new Promise((resolve, reject) => {
+                        const utterance = new SpeechSynthesisUtterance();
+                        utterance.volume = 1;
+                        utterance.rate = 0.9;
+                        utterance.pitch = 1;
+                        utterance.text = sentence;
+
+                        // Store the current utterance
+                        currentUtterance = utterance;
+                        var index = 1;
+                        for (index; index < window.speechSynthesis.getVoices().length; index++) {
+                            if (window.speechSynthesis.getVoices()[index].voiceURI.search(
+                                    'Zeera') != -1) {
+                                utterance.voice = window.speechSynthesis.getVoices()[index];
+                            }
+                        }
+                        utterance.voice = window.speechSynthesis.getVoices()[index];
+
+                        setTimeout(() => {
+                            utterance.voice = window.speechSynthesis.getVoices()[1];
+                        }, 1000);
+
+                        utterance.addEventListener('end', () => {
+                            console.log('Speech finished');
+                            currentUtterance =
+                                null; // Clear the current utterance reference when speech finishes
+                            // loader
+                            hideIndicatorSpeaking()
+                            // $('.loader').hide();
+                            const afterElement = circle.find('.circle-after');
+
+                            if (afterElement.length) {
+                                circle.remove(afterElement);
+
+                                setTimeout(() => {
+                                    afterElement.removeClass('circle-after');
+                                    conC.removeClass('container-circle');
+                                    conT.removeClass('container-title');
+                                    en.removeClass('inside');
+                                    location.removeClass('active');
+
+                                    resolve(
+                                        true
+                                    ); // Resolve the Promise when speech finishes
+                                }, 1000);
+                            }
+                        });
+
+                        // start talked
+                        setTimeout(() => {
+                            afterElement.addClass('circle-after');
+                            // $('.loader').show();
+                            //show indicator
+                            simulateSpeaking()
+                            circle.append(afterElement);
+                            speechSynthesis.speak(utterance);
+                        }, 1000);
+                    });
+                } else {
+                    console.log('Speech synthesis not supported in this browser');
+                    return false; // Return false if speech synthesis is not supported
+                }
+            };
+            // quick tour
+
+            $(document).on('click', '.tour', function() {
+                var step = [
+                        {
+                            message: `Welcome, im Exousia Navi,Lets start your quick tour!, just click the next button or exit`,
+                            element: document.querySelector('.t-tour'),
+                            intro: 'Lets start your quick tour! 👋',
+                            position: 'left'
+                        },
+                        {
+                            message: `This is the user manual section. all the guide is listed on.`,
+                            element: document.querySelector('.t-guide'),
+                            intro: 'User Manual! 👋',
+                            position: 'left'
+                        },
+                        {
+                            message: `This is the Searching section. all the options available is shown.`,
+                            element: document.querySelector('.t-search'),
+                            intro: 'Searching Section! 👋',
+                            position: 'left'
+                        },
+                        {
+                            message: `This is the Frequently ask question if you dont want to used typing or searching.`,
+                            element: document.querySelector('.t-ask'),
+                            intro: 'Frequently Ask Question! 👋',
+                            position: 'left'
+                        },
+                        {
+                            message: `This is the Speech recognition if you dont want to used typing or searching.`,
+                            element: document.querySelector('.t-speech'),
+                            intro: 'Speech Recognition Option! 👋',
+                            position: 'left'
+                        },
+                        {
+                            message: `This is the Text Area for prompting a question about school.`,
+                            element: document.querySelector('#input'),
+                            intro: 'Prompt Section! 👋',
+                            position: 'top'
+                        },
+                            
+                    ];
+                introJs()
+                    .setOptions({
+                        steps: step
+
+                    })
+                    .onbeforechange(function(target, element) {
+                        startToSpeakTour(step[element].message)
+                            .then(function(f){
+                                $('#guideModal').modal('hide')
+                               
+                                // boxes.hide()
+                                // search2Pops.css({
+                                //     'display': 'flex'
+                                // }).hide().fadeIn(200);
+                            })
+                        // This will be triggered before each step change
+                        console.log('Next button clicked or step changed',element );
+                        switch (element) {
+                            case 0:
+                                 boxes.hide()
+                                search2Pops.css({
+                                    'display': 'none'
+                                }).hide();
+                                $('#guideModal').modal('hide')
+                                $('#popup-ask').removeClass('active');
+                                break;
+                            case 1:
+                                boxes.hide()
+                                search2Pops.css({
+                                    'display': 'none'
+                                }).hide();
+                                $('#guideModal').modal('show')
+                                $('#popup-ask').removeClass('active');
+                                break;
+                            case 2:
+                                $('#popup-ask').removeClass('active');
+                                $('#guideModal').modal('hide')
+                                boxes.show()
+                                search2Pops.css({
+                                    'display': 'flex'
+                                }).hide().fadeIn(200);
+                                break;
+                            case 3:
+                                $('#guideModal').modal('hide')
+                                boxes.hide()
+                                search2Pops.css({
+                                    'display': 'none'
+                                }).hide();
+                                $('#popup-ask').addClass('active');
+                                break;
+                            case 4:
+                                $('#guideModal').modal('hide')
+                                boxes.hide()
+                                search2Pops.css({
+                                    'display': 'none'
+                                }).hide();
+                                $('#popup-ask').removeClass('active');
+                                break;
+                        
+                            default:
+                                break;
+                        }
+                    })
+                    .start();
+            })
 
         });
     </script>

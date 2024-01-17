@@ -1,4 +1,9 @@
-<span id="svg-title" class="text-white">
+<span id="svg-title" class="text-white t-tour">
+    <b>
+        <i class="fa-solid fa-circle-info fa-2xl tour"  data-id="tour" style="font-size: 60px;"></i>
+    </b>
+</span>
+<span id="svg-title" class="text-white t-guide">
     <b>
         <svg class="icons" data-id="guide" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
               <!-- Book Cover -->
@@ -13,7 +18,7 @@
     </b>
 </span>
 
-<span id="svg-title" class="text-white">
+<span id="svg-title" class="text-white t-search">
     <b>
         <svg class="icons" data-id="search2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24">
@@ -25,7 +30,7 @@
     </b>
 </span>
 
-<span id="svg-title" class="text-white">
+<span id="svg-title" class="text-white t-ask">
     <b><svg class="icons" data-id="ask" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
             viewBox="0 0 24 24">
             <path
@@ -44,7 +49,7 @@
         }
     }
 @endphp
-<span id="svg-title" class="text-white">
+<span id="svg-title" class="text-white t-speech">
     <b><svg class="{{ $className }}" data-id="speech" xmlns="http://www.w3.org/2000/svg" width="30"
             height="40" viewBox="0 0 24 24">
             <path
