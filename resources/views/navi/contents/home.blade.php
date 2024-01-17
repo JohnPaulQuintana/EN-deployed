@@ -3645,7 +3645,7 @@ body::after {
             // quick tour
 
             $(document).on('click', '.tour', function() {
-                var steps = [{
+                var step = [{
                         message: `Welcome! I'm Exousia Navi, your guide through this platform. Let's embark on a quick tour. Simply click the "Next" button or choose to exit at any time.`,
                         element: document.querySelector('.t-tour'),
                         intro: 'Quick Tour Start! 👋',
