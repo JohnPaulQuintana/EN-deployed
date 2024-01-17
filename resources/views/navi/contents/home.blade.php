@@ -284,9 +284,9 @@
             gap: 0px;
 
             /* background-image: url('third.jpg');
-                                                                       
-                                                                        background-position: center;
-                                                                        background-size:cover; */
+                                                                                   
+                                                                                    background-position: center;
+                                                                                    background-size:cover; */
             overflow: hidden;
         }
 
@@ -474,7 +474,7 @@ body::after {
         }
     </style> --}}
 
-    {{-- <style>
+    <style>
         .header-content {
             /* border: 1px solid red; */
             position: absolute;
@@ -482,12 +482,27 @@ body::after {
             width: 100%;
             margin: 20px auto;
             max-height: 550px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 10px;
+            padding: 50px;
             justify-content: center;
             overflow: auto;
+        }
+
+        .header-content .typing-text {
+
+            font-size: 32px;
+            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-content .mv-text-title{
+            font-size: 32px;
+            text-align: center;
+            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
 
@@ -495,73 +510,26 @@ body::after {
             width: 0;
         }
 
-        .header-content .card {
-            background-color: transparent;
-            border: transparent;
-            /* border: 1px solid #ccc; */
-            /* border-radius: 8px; */
-            padding: 20px;
-            text-align: center;
-            width: calc(15% - 20px);
-            /* 25% width with 20px gap between cards */
-        }
 
-        .header-content .card .icon {
-            font-size: 44px;
-            margin-bottom: 10px;
-            border: 1px dashed grey;
-            width: fit-content;
-            margin: auto;
-            padding: 30px;
-            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
 
-        .header-content .card .label {
-            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
-        .header-content .card .description {
-            background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Media queries for responsiveness */
-        @media only screen and (max-width: 1200px) {
-            .header-content .card {
-                width: calc(33.33% - 20px);
-                /* 33.33% width with 20px gap between cards */
-            }
-        }
-
-        @media only screen and (max-width: 800px) {
-            .header-content .card {
-                width: calc(50% - 20px);
-                /* 50% width with 20px gap between cards */
-            }
-        }
-
-        @media only screen and (max-width: 600px) {
-            .header-content .card {
-                width: 100%;
-                /* Full width on smaller screens */
-            }
-        }
-    </style> --}}
+        /* .header-content .card .description {
+                        background: linear-gradient(45deg, rgba(65, 230, 79, 1), rgb(233, 233, 227), rgb(0, 255, 21));
+                        background-size: 200% 200%;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    } */
+    </style>
 @endsection
 
 @section('contents')
-    {{-- <div class="header-content">
-        <div class="card">
+    <div class="header-content">
+        <div class="mv-text-title">
+
+        </div>
+        <div class="mv-text-head">
+
+        </div>
+        {{-- <div class="card">
             <div class="icon"><i class="fa-solid fa-book fa-2xl"></i></div>
             <h2 class="label">User Manual</h2>
             <p class="description">All the available .</p>
@@ -605,9 +573,9 @@ body::after {
             <div class="icon"><i class="fa-solid fa-play fa-2xl"></i></div>
             <h2 class="label">Eastwoods Hymn</h2>
             <p class="description">Card Description goes here.</p>
-        </div>
+        </div> --}}
 
-    </div> --}}
+    </div>
     <div class="version">
         <span>Epcst-v1.0.1</span>
 
@@ -725,8 +693,8 @@ body::after {
     <script src="{{ asset('html5-qrcodes/html5-qrcode.min.js') }}"></script>
 
     <script src="
-                https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js
-                "></script>
+                            https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js
+                            "></script>
     @if (session('message'))
         <script>
             var message = @json(session('message'));
@@ -1679,6 +1647,31 @@ body::after {
             const startToSpeak = async (sentence) => {
                 // Stop any ongoing speech before starting a new one
                 stopSpeaking();
+
+                resetTypingHead();
+                const textToType = sentence;
+
+                function typeText() {
+                    $('.mv-text-title').html(
+                        `<span class="text-center">Exousi Navi</span>`
+                    )
+                    $('.mv-text-head').html(
+                        `
+                        <span class="typing-text">
+                            "${textToType.substring(0, index)}"
+                        </span>
+                    `
+                    );
+
+                    index++;
+
+                    if (index <= textToType.length) {
+                        mvTimeout = setTimeout(typeText,
+                            60); // Adjust the delay as needed
+                    }
+                }
+
+                typeText();
 
 
                 // hide all svg options
@@ -3573,11 +3566,41 @@ body::after {
             })
             // indicator speech
             // showIndicator();
-
+            // reset typing text
+            function resetTypingHead() {
+                clearTimeout(mvTimeout);
+                index = 0;
+                $('.mv-text-title').html('');
+                $('.mv-text-head').html('');
+            }
             // speak
             const startToSpeakTour = async (sentence) => {
                 // Stop any ongoing speech before starting a new one
                 stopSpeaking();
+                resetTypingHead();
+                const textToType = sentence;
+
+                function typeText() {
+                    $('.mv-text-title').html(
+                        `<span class="text-center">Exousi Navi</span>`
+                    )
+                    $('.mv-text-head').html(
+                        `
+                        <span class="typing-text">
+                            "${textToType.substring(0, index)}"
+                        </span>
+                    `
+                    );
+
+                    index++;
+
+                    if (index <= textToType.length) {
+                        mvTimeout = setTimeout(typeText,
+                            60); // Adjust the delay as needed
+                    }
+                }
+
+                typeText();
                 if ('speechSynthesis' in window) {
                     return new Promise((resolve, reject) => {
                         const utterance = new SpeechSynthesisUtterance();
