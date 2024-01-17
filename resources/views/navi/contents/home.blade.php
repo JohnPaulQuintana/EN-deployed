@@ -284,9 +284,9 @@
             gap: 0px;
 
             /* background-image: url('third.jpg');
-                                                                   
-                                                                    background-position: center;
-                                                                    background-size:cover; */
+                                                                       
+                                                                        background-position: center;
+                                                                        background-size:cover; */
             overflow: hidden;
         }
 
@@ -725,8 +725,8 @@ body::after {
     <script src="{{ asset('html5-qrcodes/html5-qrcode.min.js') }}"></script>
 
     <script src="
-            https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js
-            "></script>
+                https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js
+                "></script>
     @if (session('message'))
         <script>
             var message = @json(session('message'));
@@ -3645,45 +3645,44 @@ body::after {
             // quick tour
 
             $(document).on('click', '.tour', function() {
-                var step = [
-                        {
-                            message: `Welcome, im Exousia Navi,Lets start your quick tour!, just click the next button or exit`,
-                            element: document.querySelector('.t-tour'),
-                            intro: 'Lets start your quick tour! 👋',
-                            position: 'left'
-                        },
-                        {
-                            message: `This is the user manual section. all the guide is listed on.`,
-                            element: document.querySelector('.t-guide'),
-                            intro: 'User Manual! 👋',
-                            position: 'left'
-                        },
-                        {
-                            message: `This is the Searching section. all the options available is shown.`,
-                            element: document.querySelector('.t-search'),
-                            intro: 'Searching Section! 👋',
-                            position: 'left'
-                        },
-                        {
-                            message: `This is the Frequently ask question if you dont want to used typing or searching.`,
-                            element: document.querySelector('.t-ask'),
-                            intro: 'Frequently Ask Question! 👋',
-                            position: 'left'
-                        },
-                        {
-                            message: `This is the Speech recognition if you dont want to used typing or searching.`,
-                            element: document.querySelector('.t-speech'),
-                            intro: 'Speech Recognition Option! 👋',
-                            position: 'left'
-                        },
-                        {
-                            message: `This is the Text Area for prompting a question about school.`,
-                            element: document.querySelector('#input'),
-                            intro: 'Prompt Section! 👋',
-                            position: 'top'
-                        },
-                            
-                    ];
+                var steps = [{
+                        message: `Welcome! I'm Exousia Navi, your guide through this platform. Let's embark on a quick tour. Simply click the "Next" button or choose to exit at any time.`,
+                        element: document.querySelector('.t-tour'),
+                        intro: 'Quick Tour Start! 👋',
+                        position: 'left'
+                    },
+                    {
+                        message: `Explore the User Manual section, where you'll find comprehensive guides and information.`,
+                        element: document.querySelector('.t-guide'),
+                        intro: 'User Manual Overview! 👋',
+                        position: 'left'
+                    },
+                    {
+                        message: `Navigate through the Searching section to discover all available options and features.`,
+                        element: document.querySelector('.t-search'),
+                        intro: 'Exploring the Search Options! 👋',
+                        position: 'left'
+                    },
+                    {
+                        message: `Access the Frequently Asked Questions for quick answers without the need for typing or searching.`,
+                        element: document.querySelector('.t-ask'),
+                        intro: 'Frequently Asked Questions! 👋',
+                        position: 'left'
+                    },
+                    {
+                        message: `Experience the convenience of Speech Recognition if you prefer not to type or search.`,
+                        element: document.querySelector('.t-speech'),
+                        intro: 'Speech Recognition Option! 👋',
+                        position: 'left'
+                    },
+                    {
+                        message: `Utilize the Text Area to prompt questions related to school and receive prompt responses.`,
+                        element: document.querySelector('#input'),
+                        intro: 'Interactive Prompt Section! 👋',
+                        position: 'top'
+                    }
+                ];
+
                 introJs()
                     .setOptions({
                         steps: step
@@ -3691,19 +3690,12 @@ body::after {
                     })
                     .onbeforechange(function(target, element) {
                         startToSpeakTour(step[element].message)
-                            .then(function(f){
-                                $('#guideModal').modal('hide')
-                               
-                                // boxes.hide()
-                                // search2Pops.css({
-                                //     'display': 'flex'
-                                // }).hide().fadeIn(200);
-                            })
+
                         // This will be triggered before each step change
-                        console.log('Next button clicked or step changed',element );
+                        console.log('Next button clicked or step changed', element);
                         switch (element) {
                             case 0:
-                                 boxes.hide()
+                                boxes.hide()
                                 search2Pops.css({
                                     'display': 'none'
                                 }).hide();
@@ -3742,7 +3734,7 @@ body::after {
                                 }).hide();
                                 $('#popup-ask').removeClass('active');
                                 break;
-                        
+
                             default:
                                 break;
                         }
