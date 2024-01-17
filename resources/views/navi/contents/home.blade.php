@@ -670,7 +670,7 @@ body::after {
 
     <footer>
         {{-- <span>Capstone2</span> --}}
-        <i class="fa-solid fa-users fa-2xl mb-2" style="font-size:100px; margin-left:30px;"></i>
+        <i class="fa-solid fa-users fa-2xl mb-2 special" style="font-size:100px; margin-left:30px;"></i>
         <h2 class="label">Especial Thanks </h2>
     </footer>
 @endsection
@@ -1003,6 +1003,7 @@ body::after {
 
                                                 // hide all svg options
                                                 $('svg').hide()
+                                                $('.tour').hide()
                                                 // speak
                                                 input.hide()
                                                 subBTN.hide()
@@ -1019,6 +1020,7 @@ body::after {
                                                 showIndicator();
                                                 // hide all svg options
                                                 $('svg').hide()
+                                                $('.tour').hide()
                                                 // speak
                                                 input.hide()
                                                 subBTN.hide()
@@ -1035,6 +1037,7 @@ body::after {
                                                 showIndicator();
                                                 // hide all svg options
                                                 $('svg').hide()
+                                                $('.tour').hide()
                                                 // speak
                                                 input.hide()
                                                 subBTN.hide()
@@ -1074,6 +1077,7 @@ body::after {
                                 try {
                                     // hide all svg options
                                     $('svg').hide()
+                                    $('.tour').hide()
                                     // speak
                                     input.hide()
                                     subBTN.hide()
@@ -1140,6 +1144,7 @@ body::after {
                                                 if (done) {
                                                     hideIndicatorSpeaking()
                                                     $('svg').hide()
+                                                    $('.tour').hide()
                                                     // speak
                                                     input.hide()
                                                     subBTN.hide()
@@ -1173,6 +1178,7 @@ body::after {
                                                     if (done) {
                                                         hideIndicatorSpeaking()
                                                         $('svg').hide()
+                                                        $('.tour').hide()
                                                         // speak
                                                         input.hide()
                                                         subBTN.hide()
@@ -1230,6 +1236,7 @@ body::after {
                         en.removeClass('inside');
                         location.removeClass('active');
                         $('svg').show();
+                        $('.tour').show()
                         // show input
                         input.show();
                         subBTN.show();
@@ -1243,6 +1250,7 @@ body::after {
 
                 // hide all svg options
                 $('svg').show()
+                $('.tour').show()
                 input.show();
                 subBTN.show();
                 $('#guideModal').modal('hide')
@@ -1648,7 +1656,7 @@ body::after {
                 // Stop any ongoing speech before starting a new one
                 stopSpeaking();
 
-                resetTypingHead();
+               resetTypingHead();
                 const textToType = sentence;
 
                 function typeText() {
@@ -1676,6 +1684,7 @@ body::after {
 
                 // hide all svg options
                 $('svg').hide()
+                $('.tour').hide()
                 // speak
                 input.hide()
                 subBTN.hide()
@@ -1721,6 +1730,7 @@ body::after {
                                     en.removeClass('inside');
                                     location.removeClass('active');
                                     $('svg').show();
+                                    $('.tour').show()
                                     // show input
                                     input.show();
                                     subBTN.show();
@@ -3764,6 +3774,10 @@ body::after {
                     })
                     .start();
             })
+
+
+            // special
+            
 
         });
     </script>
